@@ -6,15 +6,15 @@ const prefix = '.';
 
 bot.on('ready', () =>
 {
-    console.log("bot is online ")
-    console.log(prefix)
+    console.log("bot is online ");
+    console.log("prefix:"+prefix);
 })
 
 bot.on('message', msg=>
 {
     let args = msg.content.substring(prefix.length).split(" ");
 
-     switch(args)
+     switch(args[0])
     {
         case 'help':
             msg.channel.send("*"+prefix+"help \t will bring up this page*");

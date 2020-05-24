@@ -68,5 +68,4 @@ bot.on('message', msg=>
         
     }
 })
-
 bot.login(token) // turn bot online

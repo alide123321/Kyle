@@ -39,11 +39,11 @@ bot.on('message', msg=>
             break;
 
         case 'spam':
-            msg.channel.send(text.slice(5,)+" ");
-            msg.channel.send(text.slice(5,)+" ");
-            msg.channel.send(text.slice(5,)+" ");
-            msg.channel.send(text.slice(5,)+" ");
-            msg.channel.send(text.slice(5,)+" ");
+            msg.reply(" said "+text.slice(5,)+" ");
+            msg.reply(" said "+text.slice(5,)+" ");
+            msg.reply(" said "+text.slice(5,)+" ");
+            msg.reply(" said "+text.slice(5,)+" ");
+            msg.reply(" said "+text.slice(5,)+" ");
             break;
 
         case 'info':
@@ -59,11 +59,16 @@ bot.on('message', msg=>
             }
             break;
 
-        /*case 'clear':
+        case 'clear':
             if(!args[1]) return msg.reply("Error please define how many messages do you want to delete");
             msg.channel.bulkDelete(args[1]);
             break;
-        */
+        
+        case 'permtest':
+            if (message.member.roles.some(role => role.name === 'The Homies')) 
+            {
+                msg.channel.send("you have the homies role");
+            }
         
     }
 })

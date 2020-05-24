@@ -14,7 +14,7 @@ bot.on('message', msg=>
 {
     let args = msg.content.substring(prefix.length).split(" ");
 
-     switch(args[0])
+     switch(args)
     {
         case 'help':
             msg.channel.send("*"+prefix+"help \t will bring up this page*");
@@ -33,7 +33,7 @@ bot.on('message', msg=>
             break;
 
         case 'spam':
-            msg.channel.send(msg+" ");
+            msg.channel.send(args.slice(4,)+" ");
             msg.channel.send(args[1]+" ");
             msg.channel.send(args[1]+" ");
             msg.channel.send(args[1]+" ");

@@ -33,7 +33,7 @@ bot.on('message', msg=>
             break;
 
         case 'spam':
-            msg.channel.send(args+" ");
+            msg.channel.send(msg+" ");
             msg.channel.send(args[1]+" ");
             msg.channel.send(args[1]+" ");
             msg.channel.send(args[1]+" ");

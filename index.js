@@ -18,9 +18,11 @@ bot.on('ready', () =>
 
 bot.on('message', msg=>
 {
+
     let args = msg.content.substring(prefix.length).split(" ");
     let text = msg.content;
-     switch(args[0])
+
+    switch(args[0])
     {
         case 'help':
             msg.channel.send("*"+prefix+"help \t will bring up this page*");

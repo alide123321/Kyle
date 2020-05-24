@@ -39,11 +39,11 @@ bot.on('message', msg=>
             break;
 
         case 'spam':
-            msg.reply(" said "+text.slice(5,)+" ");
-            msg.reply(" said "+text.slice(5,)+" ");
-            msg.reply(" said "+text.slice(5,)+" ");
-            msg.reply(" said "+text.slice(5,)+" ");
-            msg.reply(" said "+text.slice(5,)+" ");
+            msg.reply(" said: "+text.slice(5,)+" ");
+            msg.reply(" said: "+text.slice(5,)+" ");
+            msg.reply(" said: "+text.slice(5,)+" ");
+            msg.reply(" said: "+text.slice(5,)+" ");
+            msg.reply(" said: "+text.slice(5,)+" ");
             break;
 
         case 'info':
@@ -65,7 +65,7 @@ bot.on('message', msg=>
             break;
         
         case 'permtest':
-            if (message.member.roles.some(role => role.name === 'The Homies')) 
+            if (msg.member.roles.some(role => role.name === 'The Homies')) 
             {
                 msg.channel.send("you have the homies role");
             }

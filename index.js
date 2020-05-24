@@ -3,6 +3,7 @@ const bot = new Discord.Client();
 const token = "NzEzODc4MTA5NTA5Nzc5NTE2.Xsml-w.Tbs0Ig4yy2Z27UZYF79CRSSPltQ";
 const version = "1.0.0";
 const prefix = '.';
+const auther = "alide123321#9518";
 
 bot.on('ready', () =>
 {
@@ -18,10 +19,11 @@ bot.on('message', msg=>
     {
         case 'help':
             msg.channel.send("*"+prefix+"help \t will bring up this page*");
-            msg.channel.send("*"+prefix+"ping \t will tell you if the bot is online*");                msg.channel.send("*"+prefix+"memes \t for the best memes*");
+            msg.channel.send("*"+prefix+"ping \t will tell you if the bot is online*");
+            msg.channel.send("*"+prefix+"memes \t for the best memes*");
             msg.channel.send("*"+prefix+"spam \t will spam whatever you tell it to 5X*");
-            msg.channel.send ("*"+prefix+"info \t more information about the bot*");
-
+            msg.channel.send("*"+prefix+"info \t more information about the bot*");
+            msg.channel.send("*If you need additional help dm"+auther);
             break;
 
         case 'ping':
@@ -44,7 +46,7 @@ bot.on('message', msg=>
             if (args[1] === "version")
                 msg.channel.send("version"+version);
             if (args[1] === "auther")
-                msg.channel.send("alide123321#9518");
+                msg.channel.send(auther);
             if (args[1] !== "version" && args[1] !== "auther")
             {
                 msg.channel.send("sorry that isnt a command try these");

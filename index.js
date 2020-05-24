@@ -5,6 +5,11 @@ const version = "1.0.0";
 const prefix = '.';
 const auther = "alide123321#9518";
 
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
+});
+
 bot.on('ready', () =>
 {
     console.log("bot is online ");

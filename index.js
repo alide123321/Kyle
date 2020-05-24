@@ -65,7 +65,7 @@ bot.on('message', msg=>
             break;
         */
         case 'permtest':
-            if (message.member.roles.cache.find(r => r.name === "The Homies")) 
+            if (msg.member.roles.cache.find(r => r.name === "The Homies")) 
             {
                 msg.channel.send("you have the homies role");
             }

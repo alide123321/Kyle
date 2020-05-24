@@ -14,14 +14,14 @@ bot.on('ready', () =>
 bot.on('message', msg=>
 {
     let args = msg.content.substring(prefix.length).split(" ");
-
+    let text = msg.content;
      switch(args[0])
     {
         case 'help':
             msg.channel.send("*"+prefix+"help \t will bring up this page*");
             msg.channel.send("*"+prefix+"ping \t will tell you if the bot is online*");
             msg.channel.send("*"+prefix+"memes \t for the best memes*");
-            msg.channel.send("*"+prefix+"spam \t will spam whatever you tell it to 5X*");
+            //msg.channel.send("*"+prefix+"spam \t will spam whatever you tell it to 5X*");
             msg.channel.send("*"+prefix+"info \t more information about the bot*");
             msg.channel.send("*If you need additional help dm *"+auther);
             break;
@@ -35,11 +35,11 @@ bot.on('message', msg=>
             break;
 
         case 'spam':
-            msg.channel.send(args.slice(4,)+" ");
-            msg.channel.send(args[1]+" ");
-            msg.channel.send(args[1]+" ");
-            msg.channel.send(args[1]+" ");
-            msg.channel.send(args[1]+" ");
+            msg.channel.send(text.slice(5,)+" ");
+            msg.channel.send(text.slice(5,)+" ");
+            msg.channel.send(text.slice(5,)+" ");
+            msg.channel.send(text.slice(5,)+" ");
+            msg.channel.send(text.slice(5,)+" ");
             break;
 
         case 'info':

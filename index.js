@@ -26,7 +26,9 @@ bot.on('message', msg=>
             msg.channel.send("*"+prefix+"ping \t will tell you if the bot is online*");
             msg.channel.send("*"+prefix+"memes \t for the best memes*");
             msg.channel.send("*"+prefix+"spam \t will spam whatever you tell it to 5X*");
+            msg.channel.send("*"+prefix+"clear <#> \t clears the messages above it by # (only works with The Homie role)*");
             msg.channel.send("*"+prefix+"info \t more information about the bot*");
+
             msg.channel.send("*If you need additional help dm *"+auther);
             break;
 

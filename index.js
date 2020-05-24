@@ -62,6 +62,6 @@ bot.on('message', msg=>
         */
         
     }
-}).listen(process.env.PORT || 5000)
+})
 
 bot.login(token) // turn bot online

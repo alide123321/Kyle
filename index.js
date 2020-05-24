@@ -59,16 +59,17 @@ bot.on('message', msg=>
             }
             break;
 
-        case 'clear':
+        /*case 'clear':
             if(!args[1]) return msg.reply("Error please define how many messages do you want to delete");
             msg.channel.bulkDelete(args[1]);
             break;
-        
+        */
         case 'permtest':
-            if (msg.member.roles.some(role => role.name === 'The Homies')) 
+            if (message.member.roles.cache.find(r => r.name === "The Homies")) 
             {
                 msg.channel.send("you have the homies role");
             }
+            
         
     }
 })

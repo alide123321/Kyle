@@ -75,12 +75,12 @@ bot.on('message', msg=>
                 const embed = new Discord.MessageEmbed()
                 
                 .setTitle("All the commands")
-                .setDescription("*"+prefix+"help \t will bring up this page*"
-                \n "*"+prefix+"ping \t will tell you if the bot is online*"
-                \n "*"+prefix+"memes \t for the best memes*"
-                \n "*"+prefix+"spam \t will spam whatever you tell it to 5X*"
-                \n "*"+prefix+"clear <#> \t clears the messages above it by # (only works with The Homie role)*"
-                \n "*"+prefix+"info \t more information about the bot*"
+                .setDescription("*"+prefix+"help \t will bring up this page* \n",
+                "*" +prefix+"ping \t will tell you if the bot is online* \n",
+                "*"+prefix+"memes \t for the best memes* \n",
+                "*"+prefix+"spam \t will spam whatever you tell it to 5X* \n",
+                "*"+prefix+"clear <#> \t clears the messages above it by # (only works with The Homie role)* \n",
+                "*"+prefix+"info \t more information about the bot* \n"
                 )
                 
                 msg.channel.send(embed);

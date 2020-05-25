@@ -53,9 +53,9 @@ bot.on('message', msg=>
 
         case 'info':
             if (args[1] === "version")
-                msg.channel.send("version"+version);
+                msg.channel.send("version: "+version);
             if (args[1] === "auther")
-                msg.channel.send(auther);
+                msg.channel.send("auther: "+auther);
             if (args[1] !== "version" && args[1] !== "auther")
             {
                 msg.channel.send("sorry that isnt a command try these");

@@ -6,12 +6,12 @@ const prefix = '.';
 const auther = "alide123321#9518";
 var help =
 [
-    "*"+prefix+"help \t will bring up this page*",
-    "*"+prefix+"ping \t will tell you if the bot is online*",
-    "*"+prefix+"memes \t for the best memes*",
-    "*"+prefix+"spam \t will spam whatever you tell it to 5X*",
-    "*"+prefix+"clear <#> \t clears the messages above it by # (only works with The Homie role)*",
-    "*"+prefix+"info \t more information about the bot*"
+    "*"+prefix+"help          will bring up this page*",
+    "*"+prefix+"ping          will tell you if the bot is online*",
+    "*"+prefix+"memes         for the best memes*",
+    "*"+prefix+"spam          will spam whatever you tell it to 5X*",
+    "*"+prefix+"clear <#>     clears the messages above it by # (only works with The Homie role)*",
+    "*"+prefix+"info          more information about the bot*"
 ]
 
 bot.on('ready', () =>
@@ -22,7 +22,6 @@ bot.on('ready', () =>
 
 bot.on('message', msg=>
 {
-
     let args = msg.content.substring(prefix.length).split(" ");
     let text = msg.content;
 

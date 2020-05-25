@@ -1,11 +1,10 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const token = "NzEzODc4MTA5NTA5Nzc5NTE2.Xsml-w.Tbs0Ig4yy2Z27UZYF79CRSSPltQ";
-const version = "1.0.0";
+const version = "1.0.1";
 const prefix = '.';
 const auther = "alide123321#9518";
-const help = "*"+prefix+"help \t will bring up this page* \n *"+prefix+"ping \t will tell you if the bot is online* \n *"+prefix+"memes \t for the best memes* \n *"+prefix+"spam \t will spam whatever you tell it to 5X* \n *"+prefix+"clear <#> \t clears the messages above it by # (only works with The Homie role)* \n *"+prefix+"info \t more information about the bot*";
-var helparr= 
+var help =
 [
     "*"+prefix+"help \t will bring up this page*",
     "*"+prefix+"ping \t will tell you if the bot is online*",
@@ -30,14 +29,11 @@ bot.on('message', msg=>
     switch(args[0])
     {
         case 'help':
-            msg.channel.send("*"+prefix+"help \t will bring up this page*");
-            msg.channel.send("*"+prefix+"ping \t will tell you if the bot is online*");
-            msg.channel.send("*"+prefix+"memes \t for the best memes*");
-            msg.channel.send("*"+prefix+"spam \t will spam whatever you tell it to 5X*");
-            msg.channel.send("*"+prefix+"clear <#> \t clears the messages above it by # (only works with The Homie role)*");
-            msg.channel.send("*"+prefix+"info \t more information about the bot*");
-
-            msg.channel.send("*If you need additional help dm *"+auther);
+            const embed = new Discord.MessageEmbed()
+            .setTitle("All the commands")
+            .addField("help",help)
+            .setColor(0X5DADE2)
+            msg.channel.send(embed);
             break;
 
         case 'ping':
@@ -80,13 +76,6 @@ bot.on('message', msg=>
                 msg.channel.send("sorry you dont have the correct role to exacute the command");
             break;
         
-        case 'embed':
-                const embed = new Discord.MessageEmbed()
-                .setTitle("All the commands")
-                .addField("help",helparr)
-                .setColor(0X5DADE2)
-                msg.channel.send(embed);
-                break;
 
 
             

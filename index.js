@@ -6,14 +6,14 @@ const prefix = '.';
 const auther = "alide123321#9518";
 var help =
 [
-    "*"+prefix+"help__________     will bring up this page*",
-    "*"+prefix+"website_______     Do you to check put our website?*",
-    "*"+prefix+"ping__________     will tell you if the bot is online*",
-    "*"+prefix+"memes_________     for the best memes*",
-    "*"+prefix+"spam__________     will spam whatever you tell it to 5X*",
-    "*"+prefix+"clear <#>_____     clears the messages above it by #*",
-    "*"+prefix+"info__________     more information about the bot*",
-    "*"+prefix+"Report________     to report anything related to this server*"
+    "*"+prefix+"help__________will bring up this page*",
+    "*"+prefix+"website_______Do you to check put our website?*",
+    "*"+prefix+"ping__________will tell you if the bot is online*",
+    "*"+prefix+"memes_________for the best memes*",
+    "*"+prefix+"spam__________will spam whatever you tell it to 5X*",
+    "*"+prefix+"clear <#>_____clears the messages above it by #*",
+    "*"+prefix+"info__________more information about the bot*",
+    "*"+prefix+"Report________to report anything related to this server*"
 ]
 
 bot.on('ready', () =>

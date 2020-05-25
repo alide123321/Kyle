@@ -5,8 +5,6 @@ const version = "1.0.0";
 const prefix = '.';
 const auther = "alide123321#9518";
 
-const embed = new Discord.MessageEmbed()
-.addField('Player Name', msg.auther.name);
 
 bot.on('ready', () =>
 {
@@ -71,12 +69,15 @@ bot.on('message', msg=>
             }
             if (msg.member.roles.cache.find(r => r.name !== "The Homies")) 
                 msg.channel.send("sorry you dont have the correct role to exacute the command");
+            break;
         
         case 'embed':
-            {
+                const embed = new Discord.MessageEmbed()
+                .addField('Player Name', msg.auther.name);
+
                 msg.channel.send(embed);
                 break;
-            }
+
 
             
         

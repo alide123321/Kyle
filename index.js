@@ -73,7 +73,7 @@ bot.on('message', msg=>
         
         case 'embed':
                 const embed = new Discord.MessageEmbed()
-                .addField('Player Name', Message.auther.auther);
+                .addField('Player Name', msg.auther.auther);
 
                 msg.channel.send(embed);
                 break;

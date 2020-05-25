@@ -7,11 +7,13 @@ const auther = "alide123321#9518";
 var help =
 [
     "*"+prefix+"help__________will bring up this page*",
+    "*"+prefix+"website_______Do you to check put our website?",
     "*"+prefix+"ping__________will tell you if the bot is online*",
     "*"+prefix+"memes_________for the best memes*",
     "*"+prefix+"spam__________will spam whatever you tell it to 5X*",
-    "*"+prefix+"clear <#>_____clears the messages above it by # (only works with The Homie role)*",
-    "*"+prefix+"info__________more information about the bot*"
+    "*"+prefix+"clear <#>_____clears the messages above it by #*",
+    "*"+prefix+"info__________more information about the bot*",
+    "*"+prefix+"Report________to report anything related to this server"
 ]
 
 bot.on('ready', () =>
@@ -75,6 +77,14 @@ bot.on('message', msg=>
                 msg.channel.send("sorry you dont have the correct role to exacute the command");
             break;
         
+        case 'website':
+            msg.channel.send("https://sites.google.com/view/cockparty");
+            break;
+        
+        case 'report':
+            msg.channel.send("We handle all of our reports online check out our website \n you can use the command "+prefix+"website for the link");
+            break;
+
 
 
             

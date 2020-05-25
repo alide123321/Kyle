@@ -4,7 +4,16 @@ const token = "NzEzODc4MTA5NTA5Nzc5NTE2.Xsml-w.Tbs0Ig4yy2Z27UZYF79CRSSPltQ";
 const version = "1.0.0";
 const prefix = '.';
 const auther = "alide123321#9518";
-const help = "*"+prefix+"help \t will bring up this page* \n *"+prefix+"ping \t will tell you if the bot is online* \n *"+prefix+"memes \t for the best memes* \n *"+prefix+"spam \t will spam whatever you tell it to 5X* \n *"+prefix+"clear <#> \t clears the messages above it by # (only works with The Homie role)* \n *"+prefix+"info \t more information about the bot*"
+const help = "*"+prefix+"help \t will bring up this page* \n *"+prefix+"ping \t will tell you if the bot is online* \n *"+prefix+"memes \t for the best memes* \n *"+prefix+"spam \t will spam whatever you tell it to 5X* \n *"+prefix+"clear <#> \t clears the messages above it by # (only works with The Homie role)* \n *"+prefix+"info \t more information about the bot*";
+var helparr= 
+[
+    "*"+prefix+"help \t will bring up this page*",
+    "*"+prefix+"ping \t will tell you if the bot is online*",
+    "*"+prefix+"memes \t for the best memes*",
+    "*"+prefix+"spam \t will spam whatever you tell it to 5X*",
+    "*"+prefix+"clear <#> \t clears the messages above it by # (only works with The Homie role)*",
+    "*"+prefix+"info \t more information about the bot*"
+]
 
 bot.on('ready', () =>
 {
@@ -74,7 +83,7 @@ bot.on('message', msg=>
         case 'embed':
                 const embed = new Discord.MessageEmbed()
                 .setTitle("All the commands")
-                .addField("help",help)
+                .addField("help",helparr)
                 .setColor(0X5DADE2)
                 msg.channel.send(embed);
                 break;

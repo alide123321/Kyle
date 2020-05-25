@@ -6,12 +6,9 @@ const prefix = '.';
 const auther = "alide123321#9518";
 var help =
 [
-    "*"+prefix+"help__________will bring up this page*",
     "*"+prefix+"website_______Do you to check put our website?*",
-    "*"+prefix+"ping__________will tell you if the bot is online*",
     "*"+prefix+"memes_________for the best memes*",
     "*"+prefix+"spam__________will spam whatever you tell it to 5X*",
-    "*"+prefix+"clear <#>_____clears the messages above it by #*",
     "*"+prefix+"info__________more information about the bot*",
     "*"+prefix+"Report________to report anything related to this server*"
 ]
@@ -32,7 +29,7 @@ bot.on('message', msg=>
         case 'help':
             const embed = new Discord.MessageEmbed()
             .setTitle("All the commands")
-            .addField("Check out the commands on our website \nhttps://sites.google.com/view/cockparty/chad-the-bot-help?authuser=0")
+            .addField("Check out the commands on our website \nhttps://sites.google.com/view/cockparty/chad-the-bot-help?authuser=0 \n some off our commands are",help)
             .setColor(0X5DADE2)
             msg.channel.send(embed);
             break;

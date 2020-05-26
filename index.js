@@ -37,19 +37,19 @@ bot.on('message', msg =>
 
     switch(args[0])
     {
-        case 'help':
+        case 'help':{
             let embed = new Discord.MessageEmbed()
             .setTitle("All the commands")
             .addField("Check out the commands on our website \nhttps://sites.google.com/view/kool-kitties-klub/chad-the-bot-help\n some off our commands are",help)
             .setColor(0X5DADE2)
             msg.channel.send(embed);
-            break;
+            break;}
 
-        case 'ping':
+        case 'ping':{
             msg.channel.send("Im alive");
-            break;
+            break;}
         
-        case 'memes':
+        case 'memes':{
             fetch('https://meme-api.herokuapp.com/gimme')
                 .then(res => res.json())
                 .then(json => 
@@ -60,17 +60,14 @@ bot.on('message', msg =>
                             .setFooter("Link: "+json.postLink+" | Subreddit : "+json.subreddit+"\nfor better memes follow @saudinigga123 on isntagram")
                             msg.channel.send(embed);
                     });
-            break;
+            break;}
 
-        case 'spam':
-            msg.reply(" said: "+text.slice(5,)+" ");
-            msg.reply(" said: "+text.slice(5,)+" ");
-            msg.reply(" said: "+text.slice(5,)+" ");
-            msg.reply(" said: "+text.slice(5,)+" ");
-            msg.reply(" said: "+text.slice(5,)+" ");
-            break;
+        case 'spam':{
+            for(var i = 0 ; i !== 5 ; ++i)
+                msg.reply(" said: "+text.slice(5,)+" ");
+            break;}
 
-        case 'info':
+        case 'info':{
             if (args[1] === "version")
                 msg.channel.send("version: "+version);
             if (args[1] === "auther")
@@ -81,9 +78,9 @@ bot.on('message', msg =>
                 msg.channel.send("*"+prefix+"info version*");
                 msg.channel.send("*"+prefix+"info auther*");
             }
-            break;
+            break;}
 
-        case 'clear':
+        case 'clear':{
             if (msg.member.roles.cache.find(r => r.name === "The Homies")) 
             {
                 if(!args[1]) return msg.reply("Error please define how many messages do you want to delete");
@@ -92,17 +89,24 @@ bot.on('message', msg =>
             }
             if (msg.member.roles.cache.find(r => r.name !== "The Homies")) 
                 msg.channel.send("sorry you dont have the correct role to exacute the command");
-            break;
+            break;}
         
-        case 'website':
+        case 'website':{
             msg.channel.send(WebLink);
-            break;
+            break;}
         
-        case 'report':
-            {
+        case 'report':{
             msg.channel.send("We handle all of our reports online check out our website \nyou can use the command "+prefix+"website for the link");
             break;}
 
+        case 'play':{
+            api.BotJoinCommand({
+            name: "Channel ID or Variable.",
+            code: `
+            Joined Command Code Here.
+            `
+            });
+            break}
             
         
     }

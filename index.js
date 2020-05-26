@@ -6,7 +6,6 @@ const version = "1.0.2";
 const prefix = '.';
 const auther = "alide123321#9518";
 const WebLink = "https://sites.google.com/view/kool-kitties-klub";
-let embed = new Discord.MessageEmbed()
 function sleep(milliseconds) {
     const date = Date.now();
     let currentDate = null;
@@ -38,7 +37,7 @@ bot.on('message', msg =>
     switch(args[0])
     {
         case 'help':
-            embed = new Discord.MessageEmbed()
+            let embed = new Discord.MessageEmbed()
             .setTitle("All the commands")
             .addField("Check out the commands on our website \nhttps://sites.google.com/view/kool-kitties-klub/chad-the-bot-help\n some off our commands are",help)
             .setColor(0X5DADE2)
@@ -54,7 +53,7 @@ bot.on('message', msg =>
                 .then(res => res.json())
                 .then(json => 
                     {
-                        embed = new Discord.MessageEmbed()
+                        let embed = new Discord.MessageEmbed()
                             .setTitle(json.title)
                             .setImage(json.url)
                             .setFooter("Link: "+json.postLink+" | Subreddit : "+json.subreddit+"\nfor better memes follow @saudinigga123 on isntagram")

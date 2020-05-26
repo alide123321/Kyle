@@ -42,7 +42,6 @@ bot.on('message', msg=>
             break;
         
         case 'memes':
-            msg.channel.send("if you wanted memes follow @saudinigga123 on instagram");
             fetch('https://meme-api.herokuapp.com/gimme')
                 .then(res => res.json())
                 .then(json => 
@@ -53,6 +52,76 @@ bot.on('message', msg=>
                             .setFooter("Link: "+json.postLink+" | Subreddit : "+json.subreddit)
                             msg.channel.send(embed);
                     });
+            if(args[1] === 2)
+            {
+                
+                for(var x = 0 ; x < 1 ; ++X)
+                {
+                    fetch('https://meme-api.herokuapp.com/gimme')
+                        .then(res => res.json())
+                    .then(json => 
+                        {
+                            embed = new Discord.MessageEmbed()
+                                .setTitle(json.title)
+                                .setImage(json.url)
+                                .setFooter("Link: "+json.postLink+" | Subreddit : "+json.subreddit)
+                            msg.channel.send(embed);
+                        });
+                }
+            }
+            if(args[1] === 3)
+            {
+                
+                for(var x = 0 ; x < 2 ; ++X)
+                {
+                    fetch('https://meme-api.herokuapp.com/gimme')
+                        .then(res => res.json())
+                    .then(json => 
+                        {
+                            embed = new Discord.MessageEmbed()
+                                .setTitle(json.title)
+                                .setImage(json.url)
+                                .setFooter("Link: "+json.postLink+" | Subreddit : "+json.subreddit)
+                            msg.channel.send(embed);
+                        });
+                }
+            }
+            if(args[1] === 4)
+            {
+                
+                for(var x = 0 ; x < 3 ; ++X)
+                {
+                    fetch('https://meme-api.herokuapp.com/gimme')
+                        .then(res => res.json())
+                    .then(json => 
+                        {
+                            embed = new Discord.MessageEmbed()
+                                .setTitle(json.title)
+                                .setImage(json.url)
+                                .setFooter("Link: "+json.postLink+" | Subreddit : "+json.subreddit)
+                            msg.channel.send(embed);
+                        });
+                }
+            }
+            if(args[1] === 5)
+            {
+                
+                for(var x = 0 ; x < 4 ; ++X)
+                {
+                    fetch('https://meme-api.herokuapp.com/gimme')
+                        .then(res => res.json())
+                    .then(json => 
+                        {
+                            embed = new Discord.MessageEmbed()
+                                .setTitle(json.title)
+                                .setImage(json.url)
+                                .setFooter("Link: "+json.postLink+" | Subreddit : "+json.subreddit)
+                            msg.channel.send(embed);
+                        });
+                }
+            }
+
+            msg.channel.send("if you wanted memes follow @saudinigga123 on instagram");
             break;
 
         case 'spam':

@@ -99,8 +99,9 @@ bot.on('message', msg =>
             break;
         
         case 'report':
+            {
             msg.channel.send("We handle all of our reports online check out our website \nyou can use the command "+prefix+"website for the link");
-            break;
+            break;}
 
             
         

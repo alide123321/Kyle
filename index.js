@@ -54,7 +54,7 @@ bot.on('message', msg=>
                     });
             if(args[1] === "2")
             { 
-                for(var x = 0 ; x < 1 ; ++X)
+                for(var x = 0 ; x !== 1 ; ++X)
                 {
                     fetch('https://meme-api.herokuapp.com/gimme')
                         .then(res => res.json())
@@ -70,7 +70,7 @@ bot.on('message', msg=>
             }
             if(args[1] === '3')
             {
-                for(var x = 0 ; x < 2 ; ++X)
+                for(var x = 0 ; x !== 2 ; ++X)
                 {
                     fetch('https://meme-api.herokuapp.com/gimme')
                         .then(res => res.json())

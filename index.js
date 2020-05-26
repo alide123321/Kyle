@@ -1,10 +1,12 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const token = "NzEzODc4MTA5NTA5Nzc5NTE2.Xsml-w.Tbs0Ig4yy2Z27UZYF79CRSSPltQ";
+const fetch = require('node-fetch');
 const version = "1.0.1";
 const prefix = '.';
 const auther = "alide123321#9518";
 const WebLink = "https://sites.google.com/view/kool-kitties-klub";
+let embed = new Discord.MessageEmbed()
 var help =
 [
     "*"+prefix+"website_______Do you to check put our website?*",
@@ -28,7 +30,7 @@ bot.on('message', msg=>
     switch(args[0])
     {
         case 'help':
-            const embed = new Discord.MessageEmbed()
+            embed = new Discord.MessageEmbed()
             .setTitle("All the commands")
             .addField("Check out the commands on our website \nhttps://sites.google.com/view/kool-kitties-klub/chad-the-bot-help\n some off our commands are",help)
             .setColor(0X5DADE2)
@@ -83,9 +85,18 @@ bot.on('message', msg=>
             msg.channel.send("We handle all of our reports online check out our website \nyou can use the command "+prefix+"website for the link");
             break;
 
-
-
-            
+        case 'meme':
+            fetch('https://meme-api.herokuapp.com/gimme')
+                .then(res => res.json())
+                .then(json => 
+                    {
+                        embed = new Discord.MessageEmbed()
+                            .setTitle(json.title)
+                            .setImage(json.url)
+                            .setFooter("Link: "+json.postLink+" | Subreddit : "+json.subreddit)
+                            msg.channel.send(embed);
+                    });
+            break;
         
     }
 })

@@ -7,6 +7,13 @@ const prefix = '.';
 const auther = "alide123321#9518";
 const WebLink = "https://sites.google.com/view/kool-kitties-klub";
 let embed = new Discord.MessageEmbed()
+function sleep(milliseconds) {
+    const date = Date.now();
+    let currentDate = null;
+    do {
+      currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
+  }
 var help =
 [
     "*"+prefix+"website_______Do you to check put our website?*",
@@ -65,6 +72,7 @@ bot.on('message', msg=>
                                 .setImage(json.url)
                                 .setFooter("Link: "+json.postLink+" | Subreddit : "+json.subreddit)
                             msg.channel.send(embed);
+                            sleep(2000);
                         });
                 }
             }
@@ -86,7 +94,7 @@ bot.on('message', msg=>
             }
             if(args[1] === 4)
             {
-                for(var x = 0 ; x < 3 ; ++X)
+                for(var x = 0 ; x < 3 ; ++x)
                 {
                     fetch('https://meme-api.herokuapp.com/gimme')
                         .then(res => res.json())
@@ -102,7 +110,7 @@ bot.on('message', msg=>
             }
             if(args[1] === '5')
             {
-                for(var x = 0 ; x < 4 ; ++X)
+                for(var x = 0 ; x < 4 ; ++x)
                 {
                     fetch('https://meme-api.herokuapp.com/gimme')
                         .then(res => res.json())

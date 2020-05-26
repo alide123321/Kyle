@@ -74,7 +74,7 @@ bot.on('message', msg =>
                 msg.channel.send("auther: "+auther);
             if (args[1] !== "version" && args[1] !== "auther")
             {
-                msg.channel.send("sorry that isnt a command try these");
+                msg.channel.send("What do you want more information about?");
                 msg.channel.send("*"+prefix+"info version*");
                 msg.channel.send("*"+prefix+"info auther*");
             }
@@ -99,16 +99,13 @@ bot.on('message', msg =>
             msg.channel.send("We handle all of our reports online check out our website \nyou can use the command "+prefix+"website for the link");
             break;}
 
-        case 'play':{
-            api.BotJoinCommand({
-            name: "Channel ID or Variable.",
-            code: `
-            Joined Command Code Here.
-            `
-            });
+        case 'image':{
+            
             break}
             
         
     }
+
+    
 })
 bot.login(token) // turn bot online

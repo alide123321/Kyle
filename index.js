@@ -56,10 +56,9 @@ bot.on('message', msg=>
                         embed = new Discord.MessageEmbed()
                             .setTitle(json.title)
                             .setImage(json.url)
-                            .setFooter("Link: "+json.postLink+" | Subreddit : "+json.subreddit)
+                            .setFooter("Link: "+json.postLink+" | Subreddit : "+json.subreddit+"\nfor better memes follow @saudinigga123 on isntagram")
                             msg.channel.send(embed);
                     });
-            msg.channel.send("if you wanted memes follow @saudinigga123 on instagram");
             break;
 
         case 'spam':

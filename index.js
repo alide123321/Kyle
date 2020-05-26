@@ -29,7 +29,7 @@ bot.on('ready', () =>
     console.log("prefix:"+prefix);
 })
 
-bot.on('message', msg=>
+bot.on('message', msg =>
 {
     let args = msg.content.substring(prefix.length).split(" ");
     let text = msg.content;

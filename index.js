@@ -52,7 +52,7 @@ bot.on('message', msg=>
                             .setFooter("Link: "+json.postLink+" | Subreddit : "+json.subreddit)
                             msg.channel.send(embed);
                     });
-            if(args[1] === '2')
+            if(args[1] === "2")
             { 
                 for(var x = 0 ; x < 1 ; ++X)
                 {

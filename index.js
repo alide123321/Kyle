@@ -53,9 +53,8 @@ bot.on('message', msg=>
                             msg.channel.send(embed);
                     });
             if(args[1] === 2)
-            {
-                
-                for(var x = 0 ; x < 1 ; ++X)
+            { 
+                for(var x = 0 ; x < 1 ; X++)
                 {
                     fetch('https://meme-api.herokuapp.com/gimme')
                         .then(res => res.json())
@@ -71,7 +70,6 @@ bot.on('message', msg=>
             }
             if(args[1] === 3)
             {
-                
                 for(var x = 0 ; x < 2 ; ++X)
                 {
                     fetch('https://meme-api.herokuapp.com/gimme')
@@ -88,7 +86,6 @@ bot.on('message', msg=>
             }
             if(args[1] === 4)
             {
-                
                 for(var x = 0 ; x < 3 ; ++X)
                 {
                     fetch('https://meme-api.herokuapp.com/gimme')
@@ -105,7 +102,6 @@ bot.on('message', msg=>
             }
             if(args[1] === 5)
             {
-                
                 for(var x = 0 ; x < 4 ; ++X)
                 {
                     fetch('https://meme-api.herokuapp.com/gimme')

@@ -43,6 +43,16 @@ bot.on('message', msg=>
         
         case 'memes':
             msg.channel.send("if you wanted memes follow @saudinigga123 on instagram");
+            fetch('https://meme-api.herokuapp.com/gimme')
+                .then(res => res.json())
+                .then(json => 
+                    {
+                        embed = new Discord.MessageEmbed()
+                            .setTitle(json.title)
+                            .setImage(json.url)
+                            .setFooter("Link: "+json.postLink+" | Subreddit : "+json.subreddit)
+                            msg.channel.send(embed);
+                    });
             break;
 
         case 'spam':
@@ -85,18 +95,7 @@ bot.on('message', msg=>
             msg.channel.send("We handle all of our reports online check out our website \nyou can use the command "+prefix+"website for the link");
             break;
 
-        case 'meme':
-            fetch('https://meme-api.herokuapp.com/gimme')
-                .then(res => res.json())
-                .then(json => 
-                    {
-                        embed = new Discord.MessageEmbed()
-                            .setTitle(json.title)
-                            .setImage(json.url)
-                            .setFooter("Link: "+json.postLink+" | Subreddit : "+json.subreddit)
-                            msg.channel.send(embed);
-                    });
-            break;
+            
         
     }
 })

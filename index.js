@@ -30,7 +30,7 @@ bot.on('message', msg=>
         case 'help':
             const embed = new Discord.MessageEmbed()
             .setTitle("All the commands")
-            .addField("Check out the commands on our website \n"+WebLink+"\n some off our commands are",help)
+            .addField("Check out the commands on our website \nhttps://sites.google.com/view/kool-kitties-klub/chad-the-bot-help\n some off our commands are",help)
             .setColor(0X5DADE2)
             msg.channel.send(embed);
             break;

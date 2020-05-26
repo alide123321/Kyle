@@ -4,6 +4,7 @@ const token = "NzEzODc4MTA5NTA5Nzc5NTE2.Xsml-w.Tbs0Ig4yy2Z27UZYF79CRSSPltQ";
 const version = "1.0.1";
 const prefix = '.';
 const auther = "alide123321#9518";
+const WebLink = "https://sites.google.com/view/kool-kitties-klub";
 var help =
 [
     "*"+prefix+"website_______Do you to check put our website?*",
@@ -29,7 +30,7 @@ bot.on('message', msg=>
         case 'help':
             const embed = new Discord.MessageEmbed()
             .setTitle("All the commands")
-            .addField("Check out the commands on our website \nhttps://sites.google.com/view/cockparty/chad-the-bot-help?authuser=0 \n some off our commands are",help)
+            .addField("Check out the commands on our website \n"+WebLink+"\n some off our commands are",help)
             .setColor(0X5DADE2)
             msg.channel.send(embed);
             break;
@@ -75,7 +76,7 @@ bot.on('message', msg=>
             break;
         
         case 'website':
-            msg.channel.send("https://sites.google.com/view/cockparty");
+            msg.channel.send(WebLink);
             break;
         
         case 'report':

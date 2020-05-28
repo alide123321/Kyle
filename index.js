@@ -5,7 +5,7 @@ const fetch = require('node-fetch');
 const version = "1.0.2";
 const prefix = '.';
 const auther = "alide123321#9518";
-const WebLink = "https://sites.google.com/view/kool-kitties-klub";
+const WebLink = "https://sites.google.com/view/e-germs";
 function sleep(milliseconds) {
     const date = Date.now();
     let currentDate = null;
@@ -40,7 +40,7 @@ bot.on('message', msg =>
         case 'help':{
             let embed = new Discord.MessageEmbed()
             .setTitle("All the commands")
-            .addField("Check out the commands on our website \nhttps://sites.google.com/view/kool-kitties-klub/chad-the-bot-help\n some off our commands are",help)
+            .addField("Check out the commands on our website \nhttps://sites.google.com/view/e-germs/chad-the-bot-help\n some off our commands are",help)
             .setColor(0X5DADE2)
             msg.channel.send(embed);
             break;}

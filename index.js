@@ -112,7 +112,7 @@ bot.on('message', msg =>
 bot.on('messageDelete', msg =>
 {
     let embed = new Discord.MessageEmbed()
-                .setTitle("A message was deleted here")
+                .setTitle("A message was deleted here.")
                 .addField("Message created at:",msg.createdAt)
                 .setColor(0Xb05c4d)
             msg.channel.send(embed);

@@ -108,4 +108,10 @@ bot.on('message', msg =>
 
     
 })
+
+bot.on('messageDelete', msg =>
+{
+    msg.channel.send("A message was deleted here.");
+})
+
 bot.login(token) // turn bot online

@@ -111,7 +111,7 @@ bot.on('message', msg =>
 
 bot.on('messageDelete', msg =>
 {
-    msg.channel.send("A message was deleted here. \nMessage created at: "+ msg.createdAt);
+    msg.channel.send("A message was deleted here. \nMessage created at: \n"+ msg.createdAt);
 })
 
 bot.login(token) // turn bot online

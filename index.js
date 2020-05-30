@@ -39,9 +39,9 @@ bot.on('message', msg =>
     {
         case 'help':{
             let embed = new Discord.MessageEmbed()
-            .setTitle("All the commands")
-            .addField("Check out the commands on our website \nhttps://sites.google.com/view/e-germs/chad-the-bot-help\n some off our commands are",help)
-            .setColor(0X5DADE2)
+                .setTitle("All the commands")
+                .addField("Check out the commands on our website \nhttps://sites.google.com/view/e-germs/chad-the-bot-help\n some off our commands are",help)
+                .setColor(0X5DADE2)
             msg.channel.send(embed);
             break;}
 
@@ -111,7 +111,11 @@ bot.on('message', msg =>
 
 bot.on('messageDelete', msg =>
 {
-    msg.channel.send("A message was deleted here. \nMessage created at: \n"+ msg.createdAt);
+    let embed = new Discord.MessageEmbed()
+                .setTitle("A message was deleted here")
+                .addField("Message created at:",msg.createdAt)
+                .setColor(0Xb05c4d)
+            msg.channel.send(embed);
 })
 
 bot.login(token) // turn bot online

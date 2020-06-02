@@ -109,7 +109,7 @@ bot.on('message', msg =>
     
 })
 
-bot.on('messageDelete', msg =>
+/*bot.on('messageDelete', msg =>
 {
     let embed = new Discord.MessageEmbed()
                 .setTitle("A message was deleted here.")
@@ -117,5 +117,5 @@ bot.on('messageDelete', msg =>
                 .setColor(0Xb05c4d)
             msg.channel.send(embed);
 })
-
+*/
 bot.login(token) // turn bot online

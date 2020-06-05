@@ -102,7 +102,12 @@ bot.on('message', msg =>
         case 'image':{
             
             break}
-            
+
+
+            default:{
+                msg.channel.send("Sry that is not a command, but it could be \nsend a suggestion at https://forms.gle/98EvJmg7JZ41RDkT9")
+            }
+
         
     }
 

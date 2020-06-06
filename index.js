@@ -4,8 +4,8 @@ const token = "NzEzODc4MTA5NTA5Nzc5NTE2.Xsml-w.Tbs0Ig4yy2Z27UZYF79CRSSPltQ";
 const fetch = require('node-fetch');
 const version = "1.0.2";
 const prefix = '.';
+const helplink = "https://sites.google.com/view/chadthebot/home";
 const auther = "alide123321#9518";
-const WebLink = "https://sites.google.com/view/e-germs";
 function sleep(milliseconds) {
     const date = Date.now();
     let currentDate = null;
@@ -18,8 +18,8 @@ var help =
     "*"+prefix+"website_______Do you to check put our website?*",
     "*"+prefix+"memes_________for the best memes*",
     "*"+prefix+"spam__________will spam whatever you tell it to 5X*",
-    "*"+prefix+"info__________more information about the bot*",
-    "*"+prefix+"Report________to report anything related to this server*"
+    "*"+prefix+"info__________more information about the bot*"
+    
 ]
 
 bot.on('ready', () =>
@@ -40,7 +40,7 @@ bot.on('message', msg =>
         case 'help':{
             let embed = new Discord.MessageEmbed()
                 .setTitle("All the commands")
-                .addField("Check out the commands on our website \nhttps://sites.google.com/view/e-germs/chad-the-bot-help\n some off our commands are",help)
+                .addField("Check out the commands on our website \n"+helplink+"\n some off our commands are",help)
                 .setColor(0X5DADE2)
             msg.channel.send(embed);
             break;}
@@ -92,11 +92,11 @@ bot.on('message', msg =>
             break;}
         
         case 'website':{
-            msg.channel.send(WebLink);
+            msg.channel.send(helplink);
             break;}
         
         case 'report':{
-            msg.channel.send("We handle all of our reports online check out our website \nyou can use the command "+prefix+"website for the link");
+            
             break;}
 
         case 'image':{

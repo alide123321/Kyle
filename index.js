@@ -14,7 +14,7 @@ bot.on('ready', () =>
     console.log("bot is online ");
 })
 
-bot.on('message', msg =>
+bot.on('message', async msg =>
 {
     
     let prefixes = JSON.parse(fs.readFileSync("./prefixes.json","utf8"));

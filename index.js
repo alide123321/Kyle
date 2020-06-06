@@ -114,10 +114,10 @@ bot.on('message', async msg =>
             
                 if(!msg.member.hasPermission("MAnage_GUILD")) return msg.channel.send("you do not have the correct permissions");
                 
-                if(!args[0]) return msg.channel.send("please enter a prefix");
+                if(!args[1]) return msg.channel.send("please enter a prefix");
             
                 prefixes[msg.guild.id] = {
-                    prefix: args[0]
+                    prefix: args[1]
                 }
             
                 fs.writeFile("./prefixes.json",JSON.stringify(prefixes), (err) => {

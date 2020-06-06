@@ -81,13 +81,13 @@ bot.on('message', msg =>
             break;}
 
         case 'clear':{
-            if (msg.member.roles.cache.find(r => r.name === "The Homies")) 
+            if (msg.member.roles.cache.find(r => r.name === "Cleaner")) 
             {
                 if(!args[1]) return msg.reply("Error please define how many messages do you want to delete");
                 msg.channel.bulkDelete(args[1]);
                 break;
             }
-            if (msg.member.roles.cache.find(r => r.name !== "The Homies")) 
+            if (msg.member.roles.cache.find(r => r.name !== "Cleaner")) 
                 msg.channel.send("sorry you dont have the correct role to exacute the command");
             break;}
         
@@ -101,8 +101,10 @@ bot.on('message', msg =>
 
         case 'image':{
             
-            break}
-
+            break;}
+        
+        case '..':
+            break;
 
             default:{
                 msg.channel.send("Sry that is not a command, but it could be \nsend a suggestion here https://forms.gle/98EvJmg7JZ41RDkT9")

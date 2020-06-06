@@ -15,12 +15,6 @@ function sleep(milliseconds) {
   }
 var help; 
 
-bot.on('ready', () =>
-{
-    console.log("bot is online ");
-    console.log("prefix:"+prefix);
-})
-
 bot.on('message', msg =>
 {
     let prefixs = JSON.parse(fs.readFileSync("./prefixs.json","utf8"));
@@ -127,6 +121,12 @@ bot.on('message', msg =>
     }
 
     
+})
+
+bot.on('ready', () =>
+{
+    console.log("bot is online ");
+    console.log("prefix:"+prefix);
 })
 
 /*bot.on('messageDelete', msg =>

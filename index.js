@@ -25,7 +25,7 @@ bot.on('message', async msg =>
     }
     let prefix = prefixes[msg.guild.id].prefix;
 
-    
+    if (msg.author.bot || !msg.content.startsWith(prefix)) return; // Ignore the message if it's from a bot or doesn't start with the prefix.
     
     let args = msg.content.substring(prefix.length).split(" ");
     let text = msg.content;
@@ -34,11 +34,11 @@ bot.on('message', async msg =>
         case 'help':{
             help =
             [
-            "*"+prefix+"website_______Do you to check put our website?*",
-            "*"+prefix+"memes_________for the best memes*",
-            "*"+prefix+"spam__________will spam whatever you tell it to 5X*",
-            "*"+prefix+"info__________more information about the bot*",
-            "*"+prefix+"Report________to report anything related to this server*"
+            "*website_______Do you to check put our website?*",
+            "*memes_________for the best memes*",
+            "*spam__________will spam whatever you tell it to 5X*",
+            "*info__________more information about the bot*",
+            "*Report________to report anything related to this server*"
             ]
             let embed = new Discord.MessageEmbed()
                 .setTitle("All the commands")

@@ -43,6 +43,14 @@ bot.on('message', msg =>
     switch(args[0])
     {
         case 'help':{
+            help =
+            [
+            "*"+prefix+"website_______Do you to check put our website?*",
+            "*"+prefix+"memes_________for the best memes*",
+            "*"+prefix+"spam__________will spam whatever you tell it to 5X*",
+            "*"+prefix+"info__________more information about the bot*",
+            "*"+prefix+"Report________to report anything related to this server*"
+            ]
             let embed = new Discord.MessageEmbed()
                 .setTitle("All the commands")
                 .addField("Check out the commands on our website \n"+helplink+"\n some off our commands are",help)
@@ -130,12 +138,5 @@ bot.on('message', msg =>
             msg.channel.send(embed);
 })
 */
-help =
-[
-    "*"+prefix+"website_______Do you to check put our website?*",
-    "*"+prefix+"memes_________for the best memes*",
-    "*"+prefix+"spam__________will spam whatever you tell it to 5X*",
-    "*"+prefix+"info__________more information about the bot*",
-    "*"+prefix+"Report________to report anything related to this server*"
-]
+
 bot.login(token) // turn bot online

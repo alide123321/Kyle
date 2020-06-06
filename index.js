@@ -110,13 +110,6 @@ bot.on('message', async msg =>
 
         case 'prefix':{
             module.exports.run = async (bot, msg, args) => {
-                let prefixes = JSON.parse(fs.readFileSync("./prefixes.json","utf8"));
-                if(!prefixes[msg.guild.id]) {
-                    prefixes[msg.guild.id] = {
-                        prefix: botconfig.prefix
-                    }
-                }
-                let prefix = prefixes[msg.guild.id].prefix;
             
                 if(!msg.member.hasPermission("MAnage_GUILD")) return msg.channel.send("you do not have the correct permissions");
                 

@@ -103,7 +103,7 @@ bot.on('message', msg =>
             
             break;}
         
-        case '...':
+        case '..':
             break;
 
             default:{

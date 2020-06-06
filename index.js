@@ -2,10 +2,10 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const token = "NzEzODc4MTA5NTA5Nzc5NTE2.Xsml-w.Tbs0Ig4yy2Z27UZYF79CRSSPltQ";
 const fetch = require('node-fetch');
+const fs = require('fs');
 const version = "1.0.2";
-const prefix = '.';
 const auther = "alide123321#9518";
-const WebLink = "https://sites.google.com/view/e-germs";
+const helplink = "https://sites.google.com/view/chadthebot";
 function sleep(milliseconds) {
     const date = Date.now();
     let currentDate = null;
@@ -15,32 +15,44 @@ function sleep(milliseconds) {
   }
 var help =
 [
-    "*"+prefix+"website_______Do you to check put our website?*",
-    "*"+prefix+"memes_________for the best memes*",
-    "*"+prefix+"spam__________will spam whatever you tell it to 5X*",
-    "*"+prefix+"info__________more information about the bot*",
-    "*"+prefix+"Report________to report anything related to this server*"
+    "*"+prefixs+"website_______Do you to check put our website?*",
+    "*"+prefixs+"memes_________for the best memes*",
+    "*"+prefixs+"spam__________will spam whatever you tell it to 5X*",
+    "*"+prefixs+"info__________more information about the bot*",
+    "*"+prefixs+"Report________to report anything related to this server*"
 ]
 
 bot.on('ready', () =>
 {
     console.log("bot is online ");
-    console.log("prefix:"+prefix);
+    console.log("prefixs:"+prefixs);
 })
 
 bot.on('message', msg =>
 {
-    if (msg.author.bot || !msg.content.startsWith(prefix)) return; // Ignore the message if it's from a bot or doesn't start with the prefix.
+    if (msg.author.bot || !msg.content.startsWith(prefixs)) return; // Ignore the message if it's from a bot or doesn't start with the prefixs.
     
-    let args = msg.content.substring(prefix.length).split(" ");
+    let args = msg.content.substring(prefixs.length).split(" ");
     let text = msg.content;
 
+    let prefixs = JSON.parse(fs.readFileSync("./prefixs.json","utf8"));
+
+    if(!prefixs[msg.guild.id])
+    {
+        prefixs[msg.guild.id] =
+        {
+            prefixes: botconfig.prefix
+        }
+    }
+
+    let prefix = prefix[msg.guild.id].prefixs;
+    console.log(prefix);
     switch(args[0])
     {
         case 'help':{
             let embed = new Discord.MessageEmbed()
                 .setTitle("All the commands")
-                .addField("Check out the commands on our website \nhttps://sites.google.com/view/e-germs/chad-the-bot-help\n some off our commands are",help)
+                .addField("Check out the commands on our website \n"+helplink+"\n some off our commands are",help)
                 .setColor(0X5DADE2)
             msg.channel.send(embed);
             break;}
@@ -75,8 +87,8 @@ bot.on('message', msg =>
             if (args[1] !== "version" && args[1] !== "auther")
             {
                 msg.channel.send("What do you want more information about?");
-                msg.channel.send("*"+prefix+"info version*");
-                msg.channel.send("*"+prefix+"info auther*");
+                msg.channel.send("*"+prefixs+"info version*");
+                msg.channel.send("*"+prefixs+"info auther*");
             }
             break;}
 
@@ -96,7 +108,7 @@ bot.on('message', msg =>
             break;}
         
         case 'report':{
-            msg.channel.send("We handle all of our reports online check out our website \nyou can use the command "+prefix+"website for the link");
+            msg.channel.send("We handle all of our reports online check out our website \nyou can use the command "+prefixs+"website for the link");
             break;}
 
         case 'image':{

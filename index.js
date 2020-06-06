@@ -15,24 +15,24 @@ function sleep(milliseconds) {
   }
 var help =
 [
-    "*"+prefixs+"website_______Do you to check put our website?*",
-    "*"+prefixs+"memes_________for the best memes*",
-    "*"+prefixs+"spam__________will spam whatever you tell it to 5X*",
-    "*"+prefixs+"info__________more information about the bot*",
-    "*"+prefixs+"Report________to report anything related to this server*"
+    "*"+prefix+"website_______Do you to check put our website?*",
+    "*"+prefix+"memes_________for the best memes*",
+    "*"+prefix+"spam__________will spam whatever you tell it to 5X*",
+    "*"+prefix+"info__________more information about the bot*",
+    "*"+prefix+"Report________to report anything related to this server*"
 ]
 
 bot.on('ready', () =>
 {
     console.log("bot is online ");
-    console.log("prefixs:"+prefixs);
+    console.log("prefix:"+prefix);
 })
 
 bot.on('message', msg =>
 {
-    if (msg.author.bot || !msg.content.startsWith(prefixs)) return; // Ignore the message if it's from a bot or doesn't start with the prefixs.
+    if (msg.author.bot || !msg.content.startsWith(prefix)) return; // Ignore the message if it's from a bot or doesn't start with the prefix.
     
-    let args = msg.content.substring(prefixs.length).split(" ");
+    let args = msg.content.substring(prefix.length).split(" ");
     let text = msg.content;
 
     let prefixs = JSON.parse(fs.readFileSync("./prefixs.json","utf8"));
@@ -41,11 +41,11 @@ bot.on('message', msg =>
     {
         prefixs[msg.guild.id] =
         {
-            prefixes: botconfig.prefix
+            prefixs: botconfig.prefixs
         }
     }
 
-    let prefix = prefix[msg.guild.id].prefixs;
+    let prefix = prefixs[msg.guild.id].prefixs;
     console.log(prefix);
     switch(args[0])
     {
@@ -87,8 +87,8 @@ bot.on('message', msg =>
             if (args[1] !== "version" && args[1] !== "auther")
             {
                 msg.channel.send("What do you want more information about?");
-                msg.channel.send("*"+prefixs+"info version*");
-                msg.channel.send("*"+prefixs+"info auther*");
+                msg.channel.send("*"+prefix+"info version*");
+                msg.channel.send("*"+prefix+"info auther*");
             }
             break;}
 
@@ -108,7 +108,7 @@ bot.on('message', msg =>
             break;}
         
         case 'report':{
-            msg.channel.send("We handle all of our reports online check out our website \nyou can use the command "+prefixs+"website for the link");
+            msg.channel.send("We handle all of our reports online check out our website \nyou can use the command "+prefix+"website for the link");
             break;}
 
         case 'image':{

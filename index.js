@@ -109,6 +109,7 @@ bot.on('message', async msg =>
             break;}
 
         case 'prefix':{
+            msg.channel.send(yee);
             module.exports.run = async (bot, msg, args) => {
             
                 if(!msg.member.hasPermission("MAnage_GUILD")) return msg.channel.send("you do not have the correct permissions");

@@ -25,7 +25,7 @@ bot.on('message', async msg =>
     }
     let prefix = prefixes[msg.guild.id].prefix;
 
-    if (msg.author.bot || !msg.content.startsWith(prefix)) return; // Ignore the message if it's from a bot or doesn't start with the prefix.
+    
     
     let args = msg.content.substring(prefix.length).split(" ");
     let text = msg.content;

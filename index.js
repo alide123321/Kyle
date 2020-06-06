@@ -1,19 +1,13 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const token = "NzEzODc4MTA5NTA5Nzc5NTE2.Xsml-w.Tbs0Ig4yy2Z27UZYF79CRSSPltQ";
+const botconfig = require("./botconfig.json")
 const fetch = require('node-fetch');
 const fs = require('fs');
 const version = "1.0.2";
 let prefix = '.';
 const auther = "alide123321#9518";
 const helplink = "https://sites.google.com/view/chadthebot";
-function sleep(milliseconds) {
-    const date = Date.now();
-    let currentDate = null;
-    do {
-      currentDate = Date.now();
-    } while (currentDate - date < milliseconds);
-  }
+
 var help; 
 
 bot.on('ready', () =>
@@ -127,4 +121,4 @@ bot.on('message', msg =>
 })
 */
 
-bot.login(token) // turn bot online
+bot.login(botconfig.token) // turn bot online

@@ -13,7 +13,7 @@ function sleep(milliseconds) {
       currentDate = Date.now();
     } while (currentDate - date < milliseconds);
   }
-var help =
+var help; 
 [
     "*"+prefix+"website_______Do you to check put our website?*",
     "*"+prefix+"memes_________for the best memes*",
@@ -137,4 +137,12 @@ bot.on('message', msg =>
             msg.channel.send(embed);
 })
 */
+help =
+[
+    "*"+prefix+"website_______Do you to check put our website?*",
+    "*"+prefix+"memes_________for the best memes*",
+    "*"+prefix+"spam__________will spam whatever you tell it to 5X*",
+    "*"+prefix+"info__________more information about the bot*",
+    "*"+prefix+"Report________to report anything related to this server*"
+]
 bot.login(token) // turn bot online

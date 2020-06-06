@@ -1,51 +1,46 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const botconfig = require("./botconfig.json")
+const token = "NzEzODc4MTA5NTA5Nzc5NTE2.Xsml-w.Tbs0Ig4yy2Z27UZYF79CRSSPltQ";
 const fetch = require('node-fetch');
-const fs = require('fs');
 const version = "1.0.2";
+const prefix = '.';
 const auther = "alide123321#9518";
-const helplink = "https://sites.google.com/view/chadthebot";
-
-var help; 
+const WebLink = "https://sites.google.com/view/e-germs";
+function sleep(milliseconds) {
+    const date = Date.now();
+    let currentDate = null;
+    do {
+      currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
+  }
+var help =
+[
+    "*"+prefix+"website_______Do you to check put our website?*",
+    "*"+prefix+"memes_________for the best memes*",
+    "*"+prefix+"spam__________will spam whatever you tell it to 5X*",
+    "*"+prefix+"info__________more information about the bot*",
+    "*"+prefix+"Report________to report anything related to this server*"
+]
 
 bot.on('ready', () =>
 {
     console.log("bot is online ");
+    console.log("prefix:"+prefix);
 })
 
-bot.on('message', async msg =>
+bot.on('message', msg =>
 {
-    
-    let prefixes = JSON.parse(fs.readFileSync("./prefixes.json","utf8"));
-    if(!prefixes[msg.guild.id]){
-        prefixes[msg.guild.id] = {
-            prefix: botconfig.prefix
-        }
-    }
-    let prefix = prefixes[msg.guild.id].prefix;
-
     if (msg.author.bot || !msg.content.startsWith(prefix)) return; // Ignore the message if it's from a bot or doesn't start with the prefix.
     
     let args = msg.content.substring(prefix.length).split(" ");
     let text = msg.content;
 
-    
-
     switch(args[0])
     {
         case 'help':{
-            help =
-            [
-            "*website_______Do you to check put our website?*",
-            "*memes_________for the best memes*",
-            "*spam__________will spam whatever you tell it to 5X*",
-            "*info__________more information about the bot*",
-            "*Report________to report anything related to this server*"
-            ]
             let embed = new Discord.MessageEmbed()
                 .setTitle("All the commands")
-                .addField("Check out the commands on our website \n"+helplink+"\n some off our commands are",help)
+                .addField("Check out the commands on our website \nhttps://sites.google.com/view/e-germs/chad-the-bot-help\n some off our commands are",help)
                 .setColor(0X5DADE2)
             msg.channel.send(embed);
             break;}
@@ -86,13 +81,13 @@ bot.on('message', async msg =>
             break;}
 
         case 'clear':{
-            if (msg.member.roles.cache.find(r => r.name === "Cleaner")) 
+            if (msg.member.roles.cache.find(r => r.name === "The Homies")) 
             {
                 if(!args[1]) return msg.reply("Error please define how many messages do you want to delete");
                 msg.channel.bulkDelete(args[1]);
                 break;
             }
-            if (msg.member.roles.cache.find(r => r.name !== "Cleaner")) 
+            if (msg.member.roles.cache.find(r => r.name !== "The Homies")) 
                 msg.channel.send("sorry you dont have the correct role to exacute the command");
             break;}
         
@@ -106,38 +101,8 @@ bot.on('message', async msg =>
 
         case 'image':{
             
-            break;}
-
-        case 'prefix':{
-            msg.channel.send("yee");
-            module.exports.run = async (bot, msg, args) => {
-            
-                if(!msg.member.hasPermission("MAnage_GUILD")) return msg.channel.send("you do not have the correct permissions");
-                
-                if(!args[1]) return msg.channel.send("please enter a prefix");
-            
-                prefixes[msg.guild.id] = {
-                    prefix: args[1]
-                }
-            
-                fs.writeFile("./prefixes.json",JSON.stringify(prefixes), (err) => {
-                        if (err) console.log(err)
-                });
-            
-                let embed = new Discord.MessageEmbed()
-                    embed.setColor();
-                    embed.setTitle("prefix Set!");
-                    embed.setDescription('set to ${args[0]}');
-            }
-            
-            module.exports.help = {
-                name: "prefix",
-                aliases: []
-            }
             break}
-        
-        case '..':
-            break;
+
 
             default:{
                 msg.channel.send("Sry that is not a command, but it could be \nsend a suggestion here https://forms.gle/98EvJmg7JZ41RDkT9")
@@ -158,5 +123,4 @@ bot.on('message', async msg =>
             msg.channel.send(embed);
 })
 */
-
-bot.login(botconfig.token) // turn bot online
+bot.login(token) // turn bot online

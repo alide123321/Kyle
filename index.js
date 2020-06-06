@@ -87,7 +87,7 @@ bot.on('message', msg =>
                 msg.channel.bulkDelete(args[1]);
                 break;
             }
-            if (msg.member.roles.cache.find(r => r.name !== "The Homies")) 
+            if (msg.member.roles.cache.find(r => r.name !== "Cleaner")) 
                 msg.channel.send("sorry you dont have the correct role to exacute the command");
             break;}
         

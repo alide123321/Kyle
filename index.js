@@ -4,7 +4,6 @@ const botconfig = require("./botconfig.json")
 const fetch = require('node-fetch');
 const fs = require('fs');
 const version = "1.0.2";
-let prefix = '.';
 const auther = "alide123321#9518";
 const helplink = "https://sites.google.com/view/chadthebot";
 
@@ -17,6 +16,14 @@ bot.on('ready', () =>
 
 bot.on('message', msg =>
 {
+    
+    let prefixes = JSON.parse(fs.readFileSync("./prefixes.json","utf8"));
+    if(!prefixes[msg.guild.id]){
+        prefixes[msg.guild.id] = {
+            prefix: botconfig.prefix
+        }
+    }
+    let prefix = prefixes[msg.guild.id].prefix;
 
     if (msg.author.bot || !msg.content.startsWith(prefix)) return; // Ignore the message if it's from a bot or doesn't start with the prefix.
     

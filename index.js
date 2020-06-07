@@ -97,26 +97,26 @@ bot.on('message', msg =>
         
         case 'report':{
             if(!args[1]) {
-                const reportError = new Discord.MessageEmbed()
+                const embed = new Discord.MessageEmbed()
                 .setColor(0xde3333)
                 .setTitle('404')
                 .setDescription('You are missing some arguments! Check out $help for more information.')
-                msg.channel.send(reportError)
+                msg.channel.send(embed)
             }else {
                 const msgArgs = args.slice(1).join(" ");
                 const channelReports = bot.channels.cache.get('696995570958598164')
 
-                const reportFiledS = new Discord.MessageEmbed()
+                const embed = new Discord.MessageEmbed()
                 .setColor(0X71b3f5)
                 .setTitle('Report status:')
                 .setDescription('Your report has been successfully filed! :upside_down:')
-                msg.channel.send(reportFiledS)
+                msg.channel.send(embed)
 
                 const reportData = new Discord.MessageEmbed()
                 .setColor(0X71b3f5)
                 .setTitle(msg.author.username + '\'s Report:')
                 .setDescription(msgArgs)
-                channelReports.send(reportData)
+                msg.channelreports.send(reportData)
             }
             break;}
 

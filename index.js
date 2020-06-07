@@ -96,8 +96,29 @@ bot.on('message', msg =>
             break;}
         
         case 'report':{
-            let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.name(args[0]));
-            msg.channel.send(rUser);
+            if(!args[1]) {
+                const reportError = new Discord.MessageEmbed()
+                .setColor(0xde3333)
+                .setTitle('404')
+                .setDescription('You are missing some arguments! Check out $help for more information.')
+                message.channel.send(reportError)
+            }else {
+                const msgArgs = args.slice(1).join(" ");
+                const channelReports = bot.channels.cache.get('696995570958598164')
+
+                const reportFiledS = new Discord.MessageEmbed()
+                .setColor(doRandomColor())
+                .setTitle('Report status:')
+                .setDescription('Your report has been successfully filed! :upside_down:')
+                message.channel.send(reportFiledS)
+
+                const reportData = new Discord.MessageEmbed()
+                .setColor(doRandomColor())
+                .setTitle(message.author.username + '\'s Report:')
+                .setDescription(msgArgs)
+                channelReports.send(reportData)
+            }
+            break;
             break;}
 
         case 'image':{

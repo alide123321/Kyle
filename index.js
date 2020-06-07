@@ -96,7 +96,7 @@ bot.on('message', msg =>
             break;}
         
         case 'report':{
-            let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.member.get(args[0]));
+            let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.members.name(args[0]));
             msg.channel.send(rUser);
             break;}
 

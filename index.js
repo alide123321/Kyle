@@ -47,6 +47,7 @@ bot.on('message', msg =>
 
         case 'ping':{
             msg.channel.send("Im alive");
+            msg.channel.send(clientInformation.appName);
             break;}
         
         case 'memes':{
@@ -119,6 +120,7 @@ bot.on('message', msg =>
                 .setDescription(msgArgs)
                 .setFooter("at: "+msg.createdAt)
                 channelReports.send(reportData)
+                
             }
             break;}
 

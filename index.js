@@ -118,7 +118,6 @@ bot.on('message', msg =>
                 .setDescription(msgArgs)
                 channelReports.send(reportData)
             }
-            break;
             break;}
 
         case 'image':{

@@ -46,8 +46,9 @@ bot.on('message', msg =>
             break;}
 
         case 'ping':{
+            var ServerID = bot.channels[channelID].guild_id;
             msg.channel.send("Im alive");
-            msg.channel.send(clientInformation.appName);
+            msg.channel.send(ServerID);
             break;}
         
         case 'memes':{
@@ -106,6 +107,7 @@ bot.on('message', msg =>
             }else {
                 const msgArgs = args.slice(1).join(" ");
                 const channelReports = bot.channels.cache.get('719159607377002497')
+                const serverre = bot.Client.cache.get("")
 
                 const embed = new Discord.MessageEmbed()
                 .setColor(0X71b3f5)

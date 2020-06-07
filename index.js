@@ -107,13 +107,13 @@ bot.on('message', msg =>
                 const channelReports = bot.channels.cache.get('696995570958598164')
 
                 const reportFiledS = new Discord.MessageEmbed()
-                .setColor(doRandomColor())
+                .setColor(0X71b3f5)
                 .setTitle('Report status:')
                 .setDescription('Your report has been successfully filed! :upside_down:')
                 message.channel.send(reportFiledS)
 
                 const reportData = new Discord.MessageEmbed()
-                .setColor(doRandomColor())
+                .setColor(71b3f5)
                 .setTitle(message.author.username + '\'s Report:')
                 .setDescription(msgArgs)
                 channelReports.send(reportData)

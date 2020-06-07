@@ -104,6 +104,7 @@ bot.on('message', msg =>
                 msg.channel.send(embed)
             }else {
                 const msgArgs = args.slice(1).join(" ");
+                msg.channel.send(msg.guild.name);
                 const channelReports = bot.channels.cache.get('696995570958598164')
 
                 const embed = new Discord.MessageEmbed()
@@ -116,7 +117,7 @@ bot.on('message', msg =>
                 .setColor(0X71b3f5)
                 .setTitle(msg.author.username + '\'s Report:')
                 .setDescription(msgArgs)
-                msg.channelreports.send(reportData)
+                msg.channelReports.send(reportData)
             }
             break;}
 

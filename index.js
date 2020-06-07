@@ -47,6 +47,7 @@ bot.on('message', msg =>
 
         case 'ping':{
             var ServerID = bot.channels[channelID].guild_id;
+            
             msg.channel.send("Im alive");
             msg.channel.send(ServerID);
             break;}

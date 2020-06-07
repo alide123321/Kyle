@@ -83,7 +83,9 @@ bot.on('message', msg =>
         case 'clear':{
             if (msg.member.roles.cache.find(r => r.name === "Cleaner")) 
             {
+
                 if(!args[1]) return msg.reply("Error please define how many messages do you want to delete");
+                if(args[1] > 100) return msg.channel.send("you can only delete 100 messages at a time");
                 msg.channel.bulkDelete(args[1]);
                 break;
             }

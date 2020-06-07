@@ -105,7 +105,7 @@ bot.on('message', msg =>
             }else {
                 const msgArgs = args.slice(1).join(" ");
                 msg.channel.send(msg.guild.name);
-                const channelReports = bot.channels.cache.get('696995570958598164')
+                const channelReports = bot.channels.cache.get('719159607377002497')
 
                 const embed = new Discord.MessageEmbed()
                 .setColor(0X71b3f5)

@@ -46,10 +46,7 @@ bot.on('message', msg =>
             break;}
 
         case 'ping':{
-            let ServerID = guild.id;
-
             msg.channel.send("Im alive");
-            msg.channel.send(ServerID);
             break;}
         
         case 'memes':{
@@ -103,26 +100,43 @@ bot.on('message', msg =>
                 const embed = new Discord.MessageEmbed()
                 .setColor(0xde3333)
                 .setTitle('404')
-                .setDescription('You are missing some arguments! Check out $help for more information.')
+                .setDescription('What do you want to report (only administrators will see your report)')
                 msg.channel.send(embed)
             }else {
-                const msgArgs = args.slice(1).join(" ");
-                const channelReports = bot.channels.cache.get('719159607377002497')
-                const serverre = bot.Client.cache.get("")
+                var serverID = msg.guild.id;
+                let msgArgs = args.slice(1).join(" ");
 
-                const embed = new Discord.MessageEmbed()
+                let SEgerms = '701088567971152043'; // Egerms server ID
+                let Egerms = bot.channels.cache.get('719159607377002497'); // Egerms channelReports
+
+                let SWonderland = '599061990828277770'; // Wonderland server ID
+                let Wonderland = bot.channels.cache.get(''); // Wonderland channelReports
+
+                let SSchoolBoys = '669930315170447370'; // server ID
+                let SchoolBoys = bot.channels.cache.get('719163068155691039'); // School boys channelReports
+                
+
+                let embed = new Discord.MessageEmbed()
                 .setColor(0X71b3f5)
                 .setTitle('Report status:')
                 .setDescription('Your report has been successfully filed! :upside_down:')
-                msg.channel.send(embed)
-                msg.channel.send()
+                msg.channel.send(embed);
+                
 
-                const reportData = new Discord.MessageEmbed()
+                let reportData = new Discord.MessageEmbed()
                 .setColor(0X71b3f5)
                 .setTitle(msg.author.username + '\'s Report:')
                 .setDescription(msgArgs)
                 .setFooter("at: "+msg.createdAt)
-                channelReports.send(reportData)
+
+                if(serverID == SEgerms)
+                    Egerms.send(reportData);
+
+                if(serverID === SWonderland)
+                    Wonderland.send(reportData);
+                
+                if(serverID === SSchoolBoys)
+                    SchoolBoys.send(reportData);
                 
             }
             break;}

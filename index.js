@@ -96,11 +96,9 @@ bot.on('message', msg =>
             break;}
         
         case 'report':{
-            let embed = new Discord.MessageEmbed()
-                .setTitle(args[1])
-                .setDescription(args[2])
-                .setFooter(member.name)
-            bot.channels.get('reports').send(embed)
+            let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.member.length(args[0]));
+            msg.channel.send(rUser);
+
             break;}
 
         case 'image':{

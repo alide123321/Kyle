@@ -105,7 +105,6 @@ bot.on('message', msg =>
             }else {
                 const msgArgs = args.slice(1).join(" ");
                 const channelReports = bot.channels.cache.get('719159607377002497')
-                let rc = msg.guild.channels.find('name', "reports")
 
                 const embed = new Discord.MessageEmbed()
                 .setColor(0X71b3f5)
@@ -120,7 +119,6 @@ bot.on('message', msg =>
                 .setDescription(msgArgs)
                 .setFooter("at: "+msg.createdAt)
                 channelReports.send(reportData)
-                rc.send(reportData)
             }
             break;}
 

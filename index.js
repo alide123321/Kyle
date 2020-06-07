@@ -100,7 +100,7 @@ bot.on('message', msg =>
                 .setTitle(args[1])
                 .setDescription(args[2])
                 .setFooter(member.name)
-            bot.channels.get('Reports').send(embed)
+            bot.channels.get('reports').send(embed)
             break;}
 
         case 'image':{

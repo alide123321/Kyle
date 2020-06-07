@@ -113,7 +113,7 @@ bot.on('message', msg =>
                 message.channel.send(reportFiledS)
 
                 const reportData = new Discord.MessageEmbed()
-                .setColor(71b3f5)
+                .setColor(0X71b3f5)
                 .setTitle(message.author.username + '\'s Report:')
                 .setDescription(msgArgs)
                 channelReports.send(reportData)

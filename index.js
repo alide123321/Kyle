@@ -101,7 +101,7 @@ bot.on('message', msg =>
                 .setColor(0xde3333)
                 .setTitle('404')
                 .setDescription('You are missing some arguments! Check out $help for more information.')
-                message.channel.send(reportError)
+                msg.channel.send(reportError)
             }else {
                 const msgArgs = args.slice(1).join(" ");
                 const channelReports = bot.channels.cache.get('696995570958598164')
@@ -110,11 +110,11 @@ bot.on('message', msg =>
                 .setColor(0X71b3f5)
                 .setTitle('Report status:')
                 .setDescription('Your report has been successfully filed! :upside_down:')
-                message.channel.send(reportFiledS)
+                msg.channel.send(reportFiledS)
 
                 const reportData = new Discord.MessageEmbed()
                 .setColor(0X71b3f5)
-                .setTitle(message.author.username + '\'s Report:')
+                .setTitle(msg.author.username + '\'s Report:')
                 .setDescription(msgArgs)
                 channelReports.send(reportData)
             }

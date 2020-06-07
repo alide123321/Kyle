@@ -98,7 +98,6 @@ bot.on('message', msg =>
         case 'report':{
             let rUser = msg.guild.member(msg.mentions.users.first() || msg.guild.member.length(args[0]));
             msg.channel.send(rUser);
-
             break;}
 
         case 'image':{

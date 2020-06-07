@@ -105,18 +105,22 @@ bot.on('message', msg =>
             }else {
                 const msgArgs = args.slice(1).join(" ");
                 const channelReports = bot.channels.cache.get('719159607377002497')
+                let rc = msg.guild.channels.find('name', "reports")
 
                 const embed = new Discord.MessageEmbed()
                 .setColor(0X71b3f5)
                 .setTitle('Report status:')
                 .setDescription('Your report has been successfully filed! :upside_down:')
                 msg.channel.send(embed)
+                msg.channel.send()
 
                 const reportData = new Discord.MessageEmbed()
                 .setColor(0X71b3f5)
                 .setTitle(msg.author.username + '\'s Report:')
                 .setDescription(msgArgs)
+                .setFooter("at: "+msg.createdAt)
                 channelReports.send(reportData)
+                rc.send(reportData)
             }
             break;}
 

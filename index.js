@@ -123,7 +123,10 @@ bot.on('message', msg =>
                 .setColor(0X71b3f5)
                 .setTitle('Report status:')
                 .setDescription('Your report has been successfully filed! :upside_down:')
-                msg.channel.send(embed);
+                if(!serverID === SWonderland)
+                    msg.channel.send(embed);
+                if(!serverID === SWonderland)
+                    msg.channel.send("ask the server admins to add the command to your server");
                 
 
                 let reportData = new Discord.MessageEmbed()

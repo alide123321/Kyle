@@ -180,7 +180,7 @@ bot.on('message', msg =>
 
             server.queue.push(args[1]);
 
-            if(!msg.guild.voice.connection) msg.guild.voice.channel.join().then(function(connection){
+            if(!msg.member.voice.connection) msg.member.voice.channel.join().then(function(connection){
                 play(connection, msg);
             })
 

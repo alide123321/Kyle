@@ -64,7 +64,6 @@ bot.on('message', msg =>
             break;}
 
         case 'spam':{
-            msg.channel.send(text.slice(7,8));
             if(text.slice(7,8) === "@" ){
                 msg.channel.send("no!");
                 break}
@@ -90,8 +89,7 @@ bot.on('message', msg =>
             {
 
                 if(!args[1]) return msg.reply("Error please define how many messages do you want to delete");
-                args[1]++;
-                if(args[1] > 100) return msg.channel.send("you can only delete 99 messages at a time");
+                if(args[1] > 100) return msg.channel.send("you can only delete 100 messages at a time");
                 msg.channel.bulkDelete(args[1]);
                 break;
             }

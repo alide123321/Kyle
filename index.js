@@ -64,7 +64,7 @@ bot.on('message', msg =>
             break;}
 
         case 'spam':{
-            if(text.slice(7,8) === "@" ){
+            if(includes(text) === "@" ){
                 msg.channel.send("no!");
                 break}
             for(var i = 0 ; i !== 5 ; ++i)

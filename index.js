@@ -145,6 +145,7 @@ bot.on('message', msg =>
             break;}
 
         case 'p':{
+
             function play(connection, msg){
                 var server = servers[msg.guild.id];
 
@@ -153,15 +154,15 @@ bot.on('message', msg =>
                 server.queue.shift();
 
                 server.dispatcher.on("end", function(){
-                    if (server.queue[0]){
+                    if(server.queue[0]){
                         play(connection, msg);
-                    }else{
+                    }else {
                         connection.disconnect();
                     }
-                })
+                });
             }
 
-            if(!args[1] || !(text.slice(3,35) == 'https://www.youtube.com/watch?v=')) {
+            if(!args[1] || text.slice(3,35) != 'https://www.youtube.com/watch?v=') {
                 msg.channel.send("I need a *Youtube* link to play");
                 return;
             }
@@ -185,6 +186,35 @@ bot.on('message', msg =>
             })
 
             break;}
+
+            case 's':{
+                var server = servers[msg.guild.id];
+                if(server.dispatcher) server.dispatcher.end();
+                msg.channel.send("skipping the song!");
+            break;}
+
+            case 'stop':{
+                var server = servers[msg.guild.id];
+                if(msg.guild.voice.connection){
+                    for(var i = server.queue.length -1; i >=0; i--){
+                        server.queue.splice(i, 1);
+                    }
+
+                    server.dispatcher.end();
+                    msg.channel.send("ending the queue and disconnecting")
+                    console.log('stoped queue');
+                }
+
+                if(msg.guild.connection) msg.guild.voice.connection.disconnect();
+            break;}
+
+
+
+
+
+
+
+
 
         
         case '..':

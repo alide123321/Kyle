@@ -153,7 +153,7 @@ bot.on('message', msg =>
 
                 server.queue.shift();
 
-                server.dispatcher.on("end", function(){
+                server.dispatcher.on("finish", function(){
                     if(server.queue[0]){
                         play(connection, msg);
                     }else {
@@ -169,7 +169,7 @@ bot.on('message', msg =>
 
 
             if(!msg.member.voice.channel){
-                msg.channel.send("please join a voice channel")
+                msg.channel.send("please join a voice channel");
                 return;
             }
 
@@ -187,26 +187,6 @@ bot.on('message', msg =>
 
             break;}
 
-            case 's':{
-                var server = servers[msg.guild.id];
-                if(server.dispatcher) server.dispatcher.end();
-                msg.channel.send("skipping the song!");
-            break;}
-
-            case 'stop':{
-                var server = servers[msg.guild.id];
-                if(msg.guild.voice.connection){
-                    for(var i = server.queue.length -1; i >=0; i--){
-                        server.queue.splice(i, 1);
-                    }
-
-                    server.dispatcher.end();
-                    msg.channel.send("ending the queue and disconnecting")
-                    console.log('stoped queue');
-                }
-
-                if(msg.guild.connection) msg.guild.voice.connection.disconnect();
-            break;}
 
 
 

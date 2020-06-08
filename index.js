@@ -145,7 +145,6 @@ bot.on('message', msg =>
             break;}
 
         case 'p':{
-
             function play(connection, msg){
                 var server = servers[msg.guild.id];
 
@@ -162,7 +161,7 @@ bot.on('message', msg =>
                 })
             }
 
-            if(!args[1] || text.slice(3,35) == 'https://www.youtube.com/watch?v=') {
+            if(!args[1] || !(text.slice(3,35) == 'https://www.youtube.com/watch?v=')) {
                 msg.channel.send("I need a *Youtube* link to play");
                 return;
             }

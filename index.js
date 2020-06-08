@@ -10,13 +10,7 @@ const version = "1.0.2";
 const prefix = '.';
 const helplink = "https://sites.google.com/view/chadthebot/home";
 const auther = "alide123321#9518";
-function sleep(milliseconds) {
-    const date = Date.now();
-    let currentDate = null;
-    do {
-      currentDate = Date.now();
-    } while (currentDate - date < milliseconds);
-  }
+var servers = {};
 var help =
 [
     "*"+prefix+"website_______Do you to check put our website?*",
@@ -151,11 +145,44 @@ bot.on('message', msg =>
             break;}
 
         case 'p':{
-            if(!args[1]) 
-                {
+
+            function play(connection, msg){
+                var server = servers[msg.guild.id];
+
+                server.dispatcher = connection.play(ytdl(server.queue[0], {filter: "audioonly"}));
+
+                server.queue.shift();
+
+                server.dispatcher.on("end", function(){
+                    if (server.queue[0]){
+                        play(connection, msg);
+                    }else{
+                        connection.disconnect();
+                    }
+                })
+            }
+
+            if(!args[1]) {
                 msg.channel.send("I need a link to play");
                 return;
-                }
+            }
+
+            if(!msg.member.voice.channel){
+                msg.channel.send("please join a voice channel")
+                return;
+            }
+
+            if(!servers[msg.guild.id]) servers[msg.guild.id] = {
+                queue: []
+            }
+
+            var server = servers[msg.guild.id];
+
+            server.queue.push(args[1]);
+
+            if(!msg.guild.voice.connection) msg.guild.voice.channel.join().then(function(connection){
+                play(connection, msg);
+            })
 
             break;}
         
@@ -172,6 +199,15 @@ bot.on('message', msg =>
     
 })
 
+
+function sleep(milliseconds) {
+    const date = Date.now();
+    let currentDate = null;
+    do {
+      currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
+  }
+  
 /*bot.on('messageDelete', msg =>
 {
     let embed = new Discord.MessageEmbed()

@@ -162,10 +162,11 @@ bot.on('message', msg =>
                 })
             }
 
-            if(!args[1]) {
-                msg.channel.send("I need a link to play");
+            if(!args[1] || text.slice(3,35) == 'https://www.youtube.com/watch?v=') {
+                msg.channel.send("I need a *Youtube* link to play");
                 return;
             }
+
 
             if(!msg.member.voice.channel){
                 msg.channel.send("please join a voice channel")
@@ -185,6 +186,7 @@ bot.on('message', msg =>
             })
 
             break;}
+
         
         case '..':
             break;

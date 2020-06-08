@@ -113,7 +113,7 @@ bot.on('message', msg =>
                 let Egerms = bot.channels.cache.get('719159607377002497'); // Egerms channelReports
 
                 let SWonderland = '599061990828277770'; // Wonderland server ID
-                let Wonderland = bot.channels.cache.get(''); // Wonderland channelReports
+                let Wonderland = bot.channels.cache.get('719454080543490058'); // Wonderland channelReports
 
                 let SSchoolBoys = '669930315170447370'; // server ID
                 let SchoolBoys = bot.channels.cache.get('719163068155691039'); // School boys channelReports
@@ -123,10 +123,7 @@ bot.on('message', msg =>
                 .setColor(0X71b3f5)
                 .setTitle('Report status:')
                 .setDescription('Your report has been successfully filed! :upside_down:')
-                if(!serverID === SWonderland)
-                    msg.channel.send(embed);
-                if(!serverID === SWonderland)
-                    msg.channel.send("ask the server admins to add the command to your server");
+                msg.channel.send(embed);
                 
 
                 let reportData = new Discord.MessageEmbed()

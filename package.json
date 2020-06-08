@@ -11,9 +11,12 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^12.2.0",
+    "fs": "0.0.1-security",
     "new": "^0.1.1",
     "node-fetch": "^2.6.0",
-    "request": "^2.88.2"
+    "opusscript": "0.0.7",
+    "request": "^2.88.2",
+    "ytdl-core": "^2.1.7"
   },
   "devDependencies": {},
   "repository": {

@@ -1,7 +1,11 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const token = "NzEzODc4MTA5NTA5Nzc5NTE2.Xsml-w.Tbs0Ig4yy2Z27UZYF79CRSSPltQ";
 const fetch = require('node-fetch');
+const fs = require('fs');
+const ytdl = require('ytdl-core');
+var opusscript = require("opusscript");
+
+const token = "NzEzODc4MTA5NTA5Nzc5NTE2.Xsml-w.Tbs0Ig4yy2Z27UZYF79CRSSPltQ";
 const version = "1.0.2";
 const prefix = '.';
 const helplink = "https://sites.google.com/view/chadthebot/home";
@@ -118,9 +122,6 @@ bot.on('message', msg =>
                 let SWonderland = '599061990828277770'; // Wonderland server ID
                 let Wonderland = bot.channels.cache.get('719454080543490058'); // Wonderland channelReports
 
-                let SSchoolBoys = '669930315170447370'; // server ID
-                let SchoolBoys = bot.channels.cache.get('719163068155691039'); // School boys channelReports
-                
 
                 let embed = new Discord.MessageEmbed()
                 .setColor(0X71b3f5)
@@ -141,14 +142,21 @@ bot.on('message', msg =>
                 if(serverID === SWonderland)
                     Wonderland.send(reportData);
                 
-                if(serverID === SSchoolBoys)
-                    SchoolBoys.send(reportData);
                 
             }
             break;}
 
         case 'image':{
             
+            break;}
+
+        case 'p':{
+            if(!args[1]) 
+                {
+                msg.channel.send("I need a link to play");
+                return;
+                }
+
             break;}
         
         case '..':

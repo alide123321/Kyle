@@ -187,6 +187,11 @@ bot.on('message', msg =>
 
             break;}
 
+        case 'lplp':{
+            for(var i = 0 ; i !== 5 ; ++i)
+                msg.channel.send(text.slice(5,)+" ");
+            break;}
+
 
 
 

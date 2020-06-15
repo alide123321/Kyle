@@ -194,8 +194,6 @@ bot.on('message', msg =>
 
 
 
-
-
         
         case msg.includes("."):
             break;

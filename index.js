@@ -197,7 +197,7 @@ bot.on('message', msg =>
 
 
         
-        case '..':
+        case text.includes("."):
             break;
 
             default:{

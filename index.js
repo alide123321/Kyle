@@ -197,8 +197,6 @@ bot.on('message', msg =>
 
 
         
-        case text.includes("."):
-            break;
 
             default:{
                 msg.channel.send("Sry that is not a command, but it could be \nsend a suggestion here https://forms.gle/98EvJmg7JZ41RDkT9")

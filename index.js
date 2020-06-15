@@ -198,10 +198,6 @@ bot.on('message', msg =>
 
         
 
-            default:{
-                msg.channel.send("Sry that is not a command, but it could be \nsend a suggestion here https://forms.gle/98EvJmg7JZ41RDkT9")
-            }
-
             
     }
 

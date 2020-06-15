@@ -6,19 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified \" && exit 1",
     "start": "node index.js"
+    
   },
   "author": "alide123321#9518",
   "license": "ISC",
   "dependencies": {
     "discord.js": "^12.2.0",
-    "ffmpeg-static": "^4.2.2",
-    "fs": "0.0.1-security",
     "new": "^0.1.1",
     "node-fetch": "^2.6.0",
-    "node-opus": "^0.3.3",
-    "opusscript": "0.0.7",
-    "request": "^2.88.2",
-    "ytdl-core": "^2.1.7"
+    "request": "^2.88.2"
   },
   "devDependencies": {},
   "repository": {

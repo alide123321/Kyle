@@ -144,7 +144,7 @@ bot.on('message', msg =>
             
             break;}
 
-        case 'p':{
+       /* case 'p':{
 
             function play(connection, msg){
                 var server = servers[msg.guild.id];
@@ -186,7 +186,7 @@ bot.on('message', msg =>
             })
 
             break;}
-
+        */
 
 
 

@@ -4,7 +4,6 @@ const fetch = require('node-fetch');
 const fs = require('fs');
 const ytdl = require('ytdl-core');
 var opusscript = require("opusscript");
-
 const token = "NzEzODc4MTA5NTA5Nzc5NTE2.Xsml-w.Tbs0Ig4yy2Z27UZYF79CRSSPltQ";
 const version = "1.0.2";
 const prefix = '.';
@@ -20,20 +19,17 @@ var help =
     "*"+prefix+"Report________to report anything related to this server*"
     
 ]
-
 bot.on('ready', () =>
 {
     console.log("bot is online ");
     console.log("prefix:"+prefix);
 })
-
 bot.on('message', msg =>
 {
     if (msg.author.bot || !msg.content.startsWith(prefix)) return; // Ignore the message if it's from a bot or doesn't start with the prefix.
     
     let args = msg.content.substring(prefix.length).split(" ");
     let text = msg.content;
-
     switch(args[0])
     {
         case 'help':{
@@ -43,11 +39,9 @@ bot.on('message', msg =>
                 .setColor(0X5DADE2)
             msg.channel.send(embed);
             break;}
-
         case 'ping':{
             msg.channel.send("Im alive");
-            break;}
-        
+            break;}       
         case 'memes':{
             fetch('https://meme-api.herokuapp.com/gimme')
                 .then(res => res.json())
@@ -60,7 +54,6 @@ bot.on('message', msg =>
                             msg.channel.send(embed);
                     });
             break;}
-
         case 'spam':{
             if(text.includes("@")){
                 msg.channel.send("no!");
@@ -68,7 +61,6 @@ bot.on('message', msg =>
             for(var i = 0 ; i !== 5 ; ++i)
                 msg.reply(" said: "+text.slice(5,)+" ");
             break;}
-
         case 'info':{
             if (args[1] === "version")
                 msg.channel.send("version: "+version);
@@ -81,11 +73,9 @@ bot.on('message', msg =>
                 msg.channel.send("*"+prefix+"info auther*");
             }
             break;}
-
         case 'clear':{
             if (msg.member.roles.cache.find(r => r.name === "Cleaner")) 
             {
-
                 if(!args[1]) return msg.reply("Error please define how many messages do you want to delete");
                 if(args[1] > 100) return msg.channel.send("you can only delete 100 messages at a time");
                 msg.channel.bulkDelete(args[1]);
@@ -109,50 +99,37 @@ bot.on('message', msg =>
             }else {
                 var serverID = msg.guild.id;
                 let msgArgs = args.slice(1).join(" ");
-
                 let SEgerms = '701088567971152043'; // Egerms server ID
                 let Egerms = bot.channels.cache.get('719159607377002497'); // Egerms channelReports
-
                 let SWonderland = '599061990828277770'; // Wonderland server ID
                 let Wonderland = bot.channels.cache.get('719454080543490058'); // Wonderland channelReports
-
-
                 let embed = new Discord.MessageEmbed()
                 .setColor(0X71b3f5)
                 .setTitle('Report status:')
                 .setDescription('Your report has been successfully filed! :upside_down:')
                 msg.channel.send(embed);
                 
-
                 let reportData = new Discord.MessageEmbed()
                 .setColor(0X71b3f5)
                 .setTitle(msg.author.username + '\'s Report:')
                 .setDescription(msgArgs)
                 .setFooter("at: "+msg.createdAt)
-
                 if(serverID == SEgerms)
                     Egerms.send(reportData);
-
                 if(serverID === SWonderland)
                     Wonderland.send(reportData);
                 
                 
             }
             break;}
-
         case 'image':{
             
             break;}
-
-       /* case 'p':{
-
+        case 'p':{
             function play(connection, msg){
                 var server = servers[msg.guild.id];
-
                 server.dispatcher = connection.play(ytdl(server.queue[0], {filter: "audioonly"}));
-
                 server.queue.shift();
-
                 server.dispatcher.on("finish", function(){
                     if(server.queue[0]){
                         play(connection, msg);
@@ -161,63 +138,52 @@ bot.on('message', msg =>
                     }
                 });
             }
-
             if(!args[1] || text.slice(3,35) != 'https://www.youtube.com/watch?v=') {
                 msg.channel.send("I need a *Youtube* link to play");
                 return;
             }
-
-
             if(!msg.member.voice.channel){
                 msg.channel.send("please join a voice channel");
                 return;
             }
-
             if(!servers[msg.guild.id]) servers[msg.guild.id] = {
                 queue: []
             }
-
             var server = servers[msg.guild.id];
-
             server.queue.push(args[1]);
-
             if(!msg.member.voice.connection) msg.member.voice.channel.join().then(function(connection){
                 play(connection, msg);
             })
-
             break;}
-        */
+
+        case 'lplp':{
+            for(var i = 0 ; i !== 5 ; ++i){
+            msg.channel.send(text.slice(5,)+" ");
+            sleep(2000);
+        }
+        break;}
 
 
+        
+}
 
-
-
-
-
-
-
-            
-    }
-
-    
 })
 
-
 function sleep(milliseconds) {
-    const date = Date.now();
-    let currentDate = null;
-    do {
-      currentDate = Date.now();
-    } while (currentDate - date < milliseconds);
-  }
-  
+const date = Date.now();
+let currentDate = null;
+do {
+  currentDate = Date.now();
+} while (currentDate - date < milliseconds);
+}
+
 /*bot.on('messageDelete', msg =>
 {
-    let embed = new Discord.MessageEmbed()
-                .setTitle("A message was deleted here.")
-                .addField("Message created at:",msg.createdAt)
-                .setColor(0Xb05c4d)
-            msg.channel.send(embed);
+let embed = new Discord.MessageEmbed()
+            .setTitle("A message was deleted here.")
+            .addField("Message created at:",msg.createdAt)
+            .setColor(0Xb05c4d)
+        msg.channel.send(embed);
 })
 */
 bot.login(token) // turn bot online

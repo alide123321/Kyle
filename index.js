@@ -177,10 +177,10 @@ bot.on('message', msg =>
 
 
 
-async function execute(ms, serverQueue) {
+async function execute(msg, serverQueue) {
 	const args = msg.content.split(' ');
 
-	const voiceChannel = msg.member.voiceChannel;
+	const voiceChannel = msg.member.voice.channel;
 	if (!voiceChannel) return msg.channel.send('You need to be in a voice channel to play music!');
 	const permissions = voiceChannel.permissionsFor(msg.client.user);
 	if (!permissions.has('CONNECT') || !permissions.has('SPEAK')) {
@@ -224,13 +224,13 @@ async function execute(ms, serverQueue) {
 
 }
 
-function skip(ms, serverQueue) {
+function skip(msg, serverQueue) {
 	if (!msg.member.voiceChannel) return msg.channel.send('You have to be in a voice channel to stop the music!');
 	if (!serverQueue) return msg.channel.send('There is no song that I could skip!');
 	serverQueue.connection.dispatcher.end();
 }
 
-function stop(ms, serverQueue) {
+function stop(msg, serverQueue) {
 	if (!msg.member.voiceChannel) return msg.channel.send('You have to be in a voice channel to stop the music!');
 	serverQueue.songs = [];
 	serverQueue.connection.dispatcher.end();

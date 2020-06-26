@@ -66,7 +66,7 @@ bot.on('message', msg =>
                 .then(res => res.json())
                 .then(json => 
                     {
-                        let embed = new Discord.msgEmbed()
+                        let embed = new Discord.MessageEmbed()
                             .setTitle(json.title)
                             .setImage(json.url)
                             .setFooter("Link: "+json.postLink+" | Subreddit : "+json.subreddit+"\nfor better memes follow @saudinigga123 on isntagram")
@@ -114,7 +114,7 @@ bot.on('message', msg =>
         
         case 'report':{
             if(!args[1]) {
-                const embed = new Discord.msEmbed()
+                const embed = new Discord.MessageEmbed()
                 .setColor(0xde3333)
                 .setTitle('404')
                 .setDescription('What do you want to report (only administrators will see your report)')
@@ -130,14 +130,14 @@ bot.on('message', msg =>
                 let Wonderland = bot.channels.cache.get('719454080543490058'); // Wonderland channelReports
 
 
-                let embed = new Discord.msEmbed()
+                let embed = new Discord.MessageEmbed()
                 .setColor(0X71b3f5)
                 .setTitle('Report status:')
                 .setDescription('Your report has been successfully filed! :upside_down:')
                 msg.channel.send(embed);
                 
 
-                let reportData = new Discord.msEmbed()
+                let reportData = new Discord.MessageEmbed()
                 .setColor(0X71b3f5)
                 .setTitle(msg.author.username + '\'s Report:')
                 .setDescription(msgArgs)

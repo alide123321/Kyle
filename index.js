@@ -24,23 +24,19 @@ var help =
 
 
 
-client.once('ready', () => {
+bot.once('ready', () => {
     console.log('Ready!');
-   });
-   client.once('reconnecting', () => {
-    console.log('Reconnecting!');
-   });
-   client.once('disconnect', () => {
-    console.log('Disconnect!');
-   });
-
-
-
-bot.on('ready', () =>
-{
-    console.log("bot is online ");
     console.log("prefix:"+prefix);
-})
+});
+
+bot.once('reconnecting', () => {
+	console.log('Reconnecting!');
+});
+
+bot.once('disconnect', () => {
+	console.log('Disconnect!');
+});
+
 
 bot.on('message', msg =>
 {
@@ -49,7 +45,7 @@ bot.on('message', msg =>
     let args = msg.content.substring(prefix.length).split(" ");
     let text = msg.content;
 
-    const serverQueue = queue.get(message.guild.id);
+    const serverQueue = queue.get(msg.guild.id);
 
     switch(args[0])
     {
@@ -70,7 +66,7 @@ bot.on('message', msg =>
                 .then(res => res.json())
                 .then(json => 
                     {
-                        let embed = new Discord.MessageEmbed()
+                        let embed = new Discord.msgEmbed()
                             .setTitle(json.title)
                             .setImage(json.url)
                             .setFooter("Link: "+json.postLink+" | Subreddit : "+json.subreddit+"\nfor better memes follow @saudinigga123 on isntagram")
@@ -103,7 +99,7 @@ bot.on('message', msg =>
             if (msg.member.roles.cache.find(r => r.name === "Cleaner")) 
             {
 
-                if(!args[1]) return msg.reply("Error please define how many messages do you want to delete");
+                if(!args[1]) return msg.reply("Error please define how many msgs do you want to delete");
                 if(args[1] > 100) return msg.channel.send("you can only delete 100 messages at a time");
                 msg.channel.bulkDelete(args[1]);
                 break;
@@ -118,7 +114,7 @@ bot.on('message', msg =>
         
         case 'report':{
             if(!args[1]) {
-                const embed = new Discord.MessageEmbed()
+                const embed = new Discord.msEmbed()
                 .setColor(0xde3333)
                 .setTitle('404')
                 .setDescription('What do you want to report (only administrators will see your report)')
@@ -134,14 +130,14 @@ bot.on('message', msg =>
                 let Wonderland = bot.channels.cache.get('719454080543490058'); // Wonderland channelReports
 
 
-                let embed = new Discord.MessageEmbed()
+                let embed = new Discord.msEmbed()
                 .setColor(0X71b3f5)
                 .setTitle('Report status:')
                 .setDescription('Your report has been successfully filed! :upside_down:')
                 msg.channel.send(embed);
                 
 
-                let reportData = new Discord.MessageEmbed()
+                let reportData = new Discord.msEmbed()
                 .setColor(0X71b3f5)
                 .setTitle(msg.author.username + '\'s Report:')
                 .setDescription(msgArgs)
@@ -162,16 +158,16 @@ bot.on('message', msg =>
             break;}
 
         case 'p':{
-            execute(message, serverQueue);
+            execute(msg, serverQueue);
             break;}
 
             
         case 'Skip':{
-            skip(message, serverQueue);
+            skip(msg, serverQueue);
             break;}
 
         case 'Stop':{
-            stop(message, serverQueue);
+            stop(msg, serverQueue);
             break;}
             
     }
@@ -181,14 +177,14 @@ bot.on('message', msg =>
 
 
 
-async function execute(message, serverQueue) {
-	const args = message.content.split(' ');
+async function execute(ms, serverQueue) {
+	const args = msg.content.split(' ');
 
-	const voiceChannel = message.member.voiceChannel;
-	if (!voiceChannel) return message.channel.send('You need to be in a voice channel to play music!');
-	const permissions = voiceChannel.permissionsFor(message.client.user);
+	const voiceChannel = msg.member.voiceChannel;
+	if (!voiceChannel) return msg.channel.send('You need to be in a voice channel to play music!');
+	const permissions = voiceChannel.permissionsFor(msg.client.user);
 	if (!permissions.has('CONNECT') || !permissions.has('SPEAK')) {
-		return message.channel.send('I need the permissions to join and speak in your voice channel!');
+		return msg.channel.send('I need the permissions to join and speak in your voice channel!');
 	}
 
 	const songInfo = await ytdl.getInfo(args[1]);
@@ -199,7 +195,7 @@ async function execute(message, serverQueue) {
 
 	if (!serverQueue) {
 		const queueContruct = {
-			textChannel: message.channel,
+			textChannel: msg.channel,
 			voiceChannel: voiceChannel,
 			connection: null,
 			songs: [],
@@ -207,35 +203,35 @@ async function execute(message, serverQueue) {
 			playing: true,
 		};
 
-		queue.set(message.guild.id, queueContruct);
+		queue.set(msg.guild.id, queueContruct);
 
 		queueContruct.songs.push(song);
 
 		try {
 			var connection = await voiceChannel.join();
 			queueContruct.connection = connection;
-			play(message.guild, queueContruct.songs[0]);
+			play(msg.guild, queueContruct.songs[0]);
 		} catch (err) {
 			console.log(err);
-			queue.delete(message.guild.id);
-			return message.channel.send(err);
+			queue.delete(msg.guild.id);
+			return msg.channel.send(err);
 		}
 	} else {
 		serverQueue.songs.push(song);
 		console.log(serverQueue.songs);
-		return message.channel.send(`${song.title} has been added to the queue!`);
+		return msg.channel.send(`${song.title} has been added to the queue!`);
 	}
 
 }
 
-function skip(message, serverQueue) {
-	if (!message.member.voiceChannel) return message.channel.send('You have to be in a voice channel to stop the music!');
-	if (!serverQueue) return message.channel.send('There is no song that I could skip!');
+function skip(ms, serverQueue) {
+	if (!msg.member.voiceChannel) return msg.channel.send('You have to be in a voice channel to stop the music!');
+	if (!serverQueue) return msg.channel.send('There is no song that I could skip!');
 	serverQueue.connection.dispatcher.end();
 }
 
-function stop(message, serverQueue) {
-	if (!message.member.voiceChannel) return message.channel.send('You have to be in a voice channel to stop the music!');
+function stop(ms, serverQueue) {
+	if (!msg.member.voiceChannel) return msg.channel.send('You have to be in a voice channel to stop the music!');
 	serverQueue.songs = [];
 	serverQueue.connection.dispatcher.end();
 }

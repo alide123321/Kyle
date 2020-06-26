@@ -6,7 +6,7 @@ const ytdl = require('ytdl-core');
 var opusscript = require("opusscript");
 
 const token = "NzEzODc4MTA5NTA5Nzc5NTE2.Xsml-w.Tbs0Ig4yy2Z27UZYF79CRSSPltQ";
-const version = "1.0.2";
+const version = "1.0.3";
 const prefix = '.';
 const helplink = "https://sites.google.com/view/chadthebot/home";
 const auther = "alide123321#9518";
@@ -187,22 +187,6 @@ bot.on('message', msg =>
 
             break;}
 
-
-
-
-
-
-
-
-
-
-        
-        case '..':
-            break;
-
-            default:{
-                msg.channel.send("Sry that is not a command, but it could be \nsend a suggestion here https://forms.gle/98EvJmg7JZ41RDkT9")
-            }
 
             
     }

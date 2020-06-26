@@ -158,6 +158,7 @@ bot.on('message', msg =>
             break;}
 
         case 'p':{
+            if(!args[1] || text.slice(3,35) != 'https://www.youtube.com/watch?v=') return msg.channel.send("I need a *Youtube* link to play");
             execute(msg, serverQueue);
             break;}
 

@@ -10,7 +10,6 @@ const version = "1.0.4";
 const prefix = '.';
 const helplink = "https://sites.google.com/view/chadthebot/home";
 const auther = "alide123321#9518";
-const serverQueue = queue.get(message.guild.id);
 const queue = new Map();
 var help =
 [
@@ -49,6 +48,8 @@ bot.on('message', msg =>
     
     let args = msg.content.substring(prefix.length).split(" ");
     let text = msg.content;
+
+    const serverQueue = queue.get(message.guild.id);
 
     switch(args[0])
     {

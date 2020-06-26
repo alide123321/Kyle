@@ -6,17 +6,12 @@ const ytdl = require('ytdl-core');
 var opusscript = require("opusscript");
 
 const token = "NzEzODc4MTA5NTA5Nzc5NTE2.Xsml-w.Tbs0Ig4yy2Z27UZYF79CRSSPltQ";
-const version = "1.0.3";
+const version = "1.0.4";
 const prefix = '.';
 const helplink = "https://sites.google.com/view/chadthebot/home";
 const auther = "alide123321#9518";
 const serverQueue = queue.get(message.guild.id);
 const queue = new Map();
-const songInfo = await ytdl.getInfo(args[1]);
-const song = {
-    title: songInfo.title,
-    url: songInfo.video_url,
-};
 var help =
 [
     "*"+prefix+"website_______Do you to check put our website?*",

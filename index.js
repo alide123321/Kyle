@@ -1,3 +1,16 @@
+//keeping bot alive
+
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => res.send('Hello World!'));
+
+app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
+
+
+
+
 const Discord = require("discord.js");
 const bot = new Discord.Client();
 const fetch = require("node-fetch");
@@ -19,6 +32,7 @@ var help = [
   "*" + prefix + "info__________more information about the bot*",
   "*" + prefix + "Report________to report anything related to this server*"
 ];
+
 
 bot.once("ready", () => {
   console.log("Ready!");

@@ -4,10 +4,11 @@ const fetch = require("node-fetch");
 const fs = require("fs");
 const ytdl = require("ytdl-core");
 var opusscript = require("opusscript");
+require('dotenv').config();
 
-const token = "NzEzODc4MTA5NTA5Nzc5NTE2.Xsml-w.Tbs0Ig4yy2Z27UZYF79CRSSPltQ";
+const token = process.env.TOKEN;
+const prefix = '.';
 const version = "1.0.4";
-const prefix = ".";
 const helplink = "https://sites.google.com/view/chadthebot/home";
 const auther = "alide123321#9518";
 const queue = new Map();
@@ -33,6 +34,10 @@ bot.once("disconnect", () => {
 });
 
 bot.on("message", msg => {
+
+
+  
+
   if (msg.author.bot || !msg.content.startsWith(prefix)) return; // Ignore the message if it's from a bot or doesn't start with the prefix.
 
   let args = msg.content.substring(prefix.length).split(" ");
@@ -41,6 +46,7 @@ bot.on("message", msg => {
   const serverQueue = queue.get(msg.guild.id);
 
   switch (args[0]) {
+
     case "help": {
       let embed = new Discord.MessageEmbed()
         .setTitle("All the commands")
@@ -138,8 +144,7 @@ bot.on("message", msg => {
         let embed = new Discord.MessageEmbed()
           .setColor(0x71b3f5)
           .setTitle("Report status:")
-          .setDescription(
-"Your report has been successfully filed! :upside_down:");
+          .setDescription("Your report has been successfully filed! :upside_down:");
         msg.channel.send(embed);
 
         let reportData = new Discord.MessageEmbed()
@@ -152,10 +157,6 @@ bot.on("message", msg => {
 
         if (serverID === SWonderland) Wonderland.send(reportData);
       }
-      break;
-    }
-
-    case "image": {
       break;
     }
 
@@ -175,6 +176,9 @@ bot.on("message", msg => {
       stop(msg, serverQueue);
       break;
     }
+
+
+
   }
 });
 
@@ -275,6 +279,7 @@ function sleep(milliseconds) {
     currentDate = Date.now();
   } while (currentDate - date < milliseconds);
 }
+
 
 /*bot.on('messageDelete', msg =>
 {

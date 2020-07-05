@@ -10,8 +10,8 @@ app.listen(port, () => console.log(`Example app listening at http://localhost:${
 
 
 
-
-const{Client, attachment} Discord = require("discord.js");
+const Discord = require("discord.js");
+const {Client, Attachment} = require("discord.js");
 const bot = new Discord.Client();
 const fetch = require("node-fetch");
 const fs = require("fs");
@@ -177,13 +177,9 @@ bot.on("message", msg => {
 
     case "oof": {
 
-      const attach = new attachment('./images/oof'+Math.floor(Math.random() * 7) + 1+'.jpg')
-
-      let embed = new Discord.MessageEmbed()
-        .setImage(attach)
-        .setColor(0xde3333)
-      
-      msg.channel.send(embed);
+      num= 3;
+      imageNum = Math.floor(Math.random() * (num - 1 + 1)) + 1;
+      msg.channel.send ({files: ["./images/oof" + imageNum + ".jpg"]})
     break;}
 
 

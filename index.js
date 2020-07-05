@@ -1,4 +1,4 @@
-//keeping bot alive
+//keeping bot alive            webserver
 
 const express = require('express');
 const app = express();
@@ -11,7 +11,7 @@ app.listen(port, () => console.log(`Example app listening at http://localhost:${
 
 
 
-const Discord = require("discord.js");
+const{Client, attachment} Discord = require("discord.js");
 const bot = new Discord.Client();
 const fetch = require("node-fetch");
 const fs = require("fs");
@@ -32,6 +32,7 @@ var help = [
   "*" + prefix + "info__________more information about the bot*",
   "*" + prefix + "Report________to report anything related to this server*"
 ];
+
 
 
 bot.once("ready", () => {
@@ -171,8 +172,19 @@ bot.on("message", msg => {
 
         if (serverID === SWonderland) Wonderland.send(reportData);
       }
-      break;
-    }
+      break;}
+
+
+    case "oof": {
+
+      const attach = new attachment('./images/oof'+Math.floor(Math.random() * 7) + 1+'.jpg')
+
+      let embed = new Discord.MessageEmbed()
+        .setImage(attach)
+        .setColor(0xde3333)
+      
+      msg.channel.send(embed);
+    break;}
 
 
   }

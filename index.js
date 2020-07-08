@@ -5,7 +5,7 @@ const app = express();
 const port = 3000;
 
 app.get('/', (req, res) => res.send('Hello World!'));
-
+app.get('/', (req, res) => res.send('Chad the bot'));
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
 
 
@@ -30,7 +30,8 @@ var help = [
   "*" + prefix + "memes_________for the best memes*",
   "*" + prefix + "spam__________will spam whatever you tell it to 5X*",
   "*" + prefix + "info__________more information about the bot*",
-  "*" + prefix + "Report________to report anything related to this server*"
+  "*" + prefix + "Report________to report anything related to this server*",
+  "*" + prefix + "oof___________to show the oof"
 ];
 
 

@@ -1,5 +1,3 @@
-//keeping bot alive            webserver
-
 const express = require('express');
 const app = express();
 const port = 3000;
@@ -58,27 +56,11 @@ bot.on("message", msg => {
 
   let args = msg.content.substring(prefix.length).split(" ");
   let text = msg.content;
+  var serverID = msg.guild.id;
+  let SWonderland = "599061990828277770"; // Wonderland server ID
+  let SEgerms = "701088567971152043"; // Egerms server ID
 
-  if(msg.guild.id === "599061990828277770"){
-    if(message.channel.id === "715457095406714931"){
-    
-      let Wonderland = bot.channels.cache.get("730388529171136522")
-      
-      let sugData = new Discord.MessageEmbed()
-        .setColor(0x008000)
-        .setTitle(msg.author.username + "'s Report:")
-        .setDescription(msgArgs)
-        .setFooter("at: " + msg.createdAt)
-      Wonderland.send(sugData);
-
-      let ok = new Discord.MessageEmbed()
-        .setColor(0x008000)
-        .setTitle("Thank You!\n your message was sent")
-      msg.channel.send(ok);
-
-      msg.channel.bulkDelete(99);
-    }
-  }
+  
 
   switch (args[0]) {
 
@@ -159,39 +141,43 @@ bot.on("message", msg => {
     }
 
     case "report": {
-      if (!args[1]) {
-        const embed = new Discord.MessageEmbed()
+      if(!args[1]) {
+          const embed = new Discord.MessageEmbed()
           .setColor(0xde3333)
-          .setTitle("404")
-          .setDescription(
-            "What do you want to report (only administrators will see your report)"
-          );
-        msg.channel.send(embed);
-      } else {
-        var serverID = msg.guild.id;
-        let msgArgs = args.slice(1).join(" ");
+          .setTitle('404')
+          .setDescription('What do you want to report (only administrators will see your report)')
+          msg.channel.send(embed)
+      }else {
+          var serverID = msg.guild.id;
+          let msgArgs = args.slice(1).join(" ");
 
-        let SEgerms = "701088567971152043"; // Egerms server ID
-        let Egerms = bot.channels.cache.get("719159607377002497"); // Egerms channelReports
+          let SEgerms = '701088567971152043'; // Egerms server ID
+          let Egerms = bot.channels.cache.get('719159607377002497'); // Egerms channelReports
 
-        let SWonderland = "599061990828277770"; // Wonderland server ID
-        let Wonderland = bot.channels.cache.get("719454080543490058"); // Wonderland channelReports
+          let SWonderland = '599061990828277770'; // Wonderland server ID
+          let Wonderland = bot.channels.cache.get('719454080543490058'); // Wonderland channelReports
 
-        let embed = new Discord.MessageEmbed()
-          .setColor(0x71b3f5)
-          .setTitle("Report status:")
-          .setDescription("Your report has been successfully filed! :upside_down:");
-        msg.channel.send(embed);
 
-        let reportData = new Discord.MessageEmbed()
-          .setColor(0x71b3f5)
-          .setTitle(msg.author.username + "'s Report:")
+          let embed = new Discord.MessageEmbed()
+          .setColor(0X71b3f5)
+          .setTitle('Report status:')
+          .setDescription('Your report has been successfully filed! :upside_down:')
+          msg.channel.send(embed);
+          
+
+          let reportData = new Discord.MessageEmbed()
+          .setColor(0X71b3f5)
+          .setTitle(msg.author.username + '\'s Report:')
           .setDescription(msgArgs)
-          .setFooter("at: " + msg.createdAt);
+          .setFooter("at: "+msg.createdAt)
 
-        if (serverID == SEgerms) Egerms.send(reportData);
+          if(serverID == SEgerms)
+              Egerms.send(reportData);
 
-        if (serverID === SWonderland) Wonderland.send(reportData);
+          if(serverID == SWonderland)
+              Wonderland.send(reportData);
+          
+          
       }
       break;}
 
@@ -201,6 +187,30 @@ bot.on("message", msg => {
       num= 3;
       imageNum = Math.floor(Math.random() * (num - 1 + 1)) + 1;
       msg.channel.send ({files: ["./images/oof" + imageNum + ".jpg"]})
+    break;}
+
+    case "suggest": {
+      if (serverID == SWonderland){
+        msg.channel.send("ok");
+        if(msg.channel.id == "715457095406714931"){
+        
+          let Wonderland = bot.channels.cache.get('730388529171136522');
+          
+          let sugData = new Discord.MessageEmbed()
+            .setColor(0x008000)
+            .setTitle(msg.author.username + "'s Report:")
+            .setDescription(args[1])
+            .setFooter("at: " + msg.createdAt)
+          Wonderland.send(sugData);
+    
+          let ok = new Discord.MessageEmbed()
+            .setColor(0x008000)
+            .setTitle("Thank You!\n your message was sent")
+          msg.channel.send(ok);
+          sleep(1000)
+          msg.channel.bulkDelete(99);
+        }
+      }
     break;}
 
 

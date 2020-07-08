@@ -52,15 +52,40 @@ bot.on("message", msg => {
 
   
 
-  if (msg.author.bot || !msg.content.startsWith(prefix)) return; // Ignore the message if it's from a bot or doesn't start with the prefix.
 
   let args = msg.content.substring(prefix.length).split(" ");
   let text = msg.content;
-  var serverID = msg.guild.id;
-  let SWonderland = "599061990828277770"; // Wonderland server ID
-  let SEgerms = "701088567971152043"; // Egerms server ID
 
-  
+  var serverID = msg.guild.id;
+
+  let SWonderland = '599061990828277770'; // Wonderland server ID
+  if (serverID == SWonderland && msg.channel.id == "715457095406714931"){
+
+    if (msg.author.bot) return;
+
+    let msgArgs = args.slice(1).join(" ");
+
+    let Wonderland = bot.channels.cache.get('730388529171136522');
+      
+    let ok = new Discord.MessageEmbed()
+      .setColor(0x008000)
+      .setTitle("Thank You!\n your message was sent")
+    msg.channel.send(ok);
+
+    let sugData = new Discord.MessageEmbed()
+      .setColor(0x008000)
+      .setTitle(msg.author.username + "'s suggestion:")
+      .setDescription(text)
+      .setFooter("at: " + msg.createdAt)
+    Wonderland.send(sugData);
+
+    msg.channel.bulkDelete(99);
+    
+  }
+
+
+
+  if (msg.author.bot || !msg.content.startsWith(prefix)) return; // Ignore the message if it's from a bot or doesn't start with the prefix.
 
   switch (args[0]) {
 
@@ -154,7 +179,6 @@ bot.on("message", msg => {
           let SEgerms = '701088567971152043'; // Egerms server ID
           let Egerms = bot.channels.cache.get('719159607377002497'); // Egerms channelReports
 
-          let SWonderland = '599061990828277770'; // Wonderland server ID
           let Wonderland = bot.channels.cache.get('719454080543490058'); // Wonderland channelReports
 
 
@@ -189,29 +213,6 @@ bot.on("message", msg => {
       msg.channel.send ({files: ["./images/oof" + imageNum + ".jpg"]})
     break;}
 
-    case "suggest": {
-      if (serverID == SWonderland){
-        msg.channel.send("ok");
-        if(msg.channel.id == "715457095406714931"){
-        
-          let Wonderland = bot.channels.cache.get('730388529171136522');
-          
-          let sugData = new Discord.MessageEmbed()
-            .setColor(0x008000)
-            .setTitle(msg.author.username + "'s Report:")
-            .setDescription(args[1])
-            .setFooter("at: " + msg.createdAt)
-          Wonderland.send(sugData);
-    
-          let ok = new Discord.MessageEmbed()
-            .setColor(0x008000)
-            .setTitle("Thank You!\n your message was sent")
-          msg.channel.send(ok);
-          sleep(1000)
-          msg.channel.bulkDelete(99);
-        }
-      }
-    break;}
 
 
   }

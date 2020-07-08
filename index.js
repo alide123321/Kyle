@@ -59,9 +59,29 @@ bot.on("message", msg => {
   let args = msg.content.substring(prefix.length).split(" ");
   let text = msg.content;
 
-  const serverQueue = queue.get(msg.guild.id);
+  if(msg.guild.id === "599061990828277770"){
+    if(message.channel.id === "715457095406714931"){
+    
+      let Wonderland = bot.channels.cache.get("730388529171136522")
+      
+      let sugData = new Discord.MessageEmbed()
+        .setColor(0x008000)
+        .setTitle(msg.author.username + "'s Report:")
+        .setDescription(msgArgs)
+        .setFooter("at: " + msg.createdAt)
+      Wonderland.send(sugData);
+
+      let ok = new Discord.MessageEmbed()
+        .setColor(0x008000)
+        .setTitle("Thank You!\n your message was sent")
+      msg.channel.send(ok);
+
+      msg.channel.bulkDelete(99);
+    }
+  }
 
   switch (args[0]) {
+
 
     case "help": {
       let embed = new Discord.MessageEmbed()

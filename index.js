@@ -57,8 +57,6 @@ bot.on("message", msg => {
 
     if (msg.author.bot) return;
 
-    let msgArgs = args.slice(1).join(" ");
-
     let Wonderland = bot.channels.cache.get('730388529171136522');
       
     let ok = new Discord.MessageEmbed()
@@ -189,8 +187,9 @@ bot.on("message", msg => {
           .setDescription(msgArgs)
           .setFooter("at: "+msg.createdAt)
 
-          if(serverID == SEgerms)
+          if(serverID == SEgerms){
               Egerms.send(reportData);
+          }
 
           if(serverID == SWonderland)
               Wonderland.send(reportData);

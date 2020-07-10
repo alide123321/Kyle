@@ -37,15 +37,9 @@ var help = [
 bot.once("ready", () => {
   console.log("Ready!");
   console.log("prefix:" + prefix);
+  bot.user.setActivity(" "+prefix+"Help");
 });
 
-bot.once("reconnecting", () => {
-  console.log("Reconnecting!");
-});
-
-bot.once("disconnect", () => {
-  console.log("Disconnect!");
-});
 
 bot.on("message", msg => {
 

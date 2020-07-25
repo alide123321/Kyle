@@ -206,6 +206,10 @@ bot.on("message", msg => {
       msg.channel.send ({files: ["./images/oof" + imageNum + ".jpg"]})
     break;}
 
+    case "emillie": {
+      msg.channel.send("https://cdn.discordapp.com/attachments/599061991281131531/736649467045871616/emiliestfu.gif");
+    break;}
+
 
 
   }

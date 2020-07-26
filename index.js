@@ -210,7 +210,9 @@ bot.on("message", msg => {
       msg.channel.send("https://cdn.discordapp.com/attachments/599061991281131531/736649467045871616/emiliestfu.gif");
     break;}
 
-
+    case "okok": {
+      msg.channel.send("https://cdn.discordapp.com/attachments/608295365384339457/737059292930375780/video0.mov");
+    break;}
 
   }
 });

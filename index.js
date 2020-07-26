@@ -29,7 +29,9 @@ var help = [
   "*" + prefix + "spam__________will spam whatever you tell it to 5X*",
   "*" + prefix + "info__________more information about the bot*",
   "*" + prefix + "Report________to report anything related to this server*",
-  "*" + prefix + "oof___________to show the oof"
+  "*" + prefix + "oof___________to show the oof", 
+  "*" + prefix + "emilie________STFU emilie",
+  "*" + prefix + "okok__________PopSmoke's OK OK"
 ];
 
 

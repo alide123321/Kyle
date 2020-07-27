@@ -29,9 +29,11 @@ var help = [
   "*" + prefix + "spam__________will spam whatever you tell it to 5X*",
   "*" + prefix + "info__________more information about the bot*",
   "*" + prefix + "Report________to report anything related to this server*",
-  "*" + prefix + "oof___________to show the oof", 
-  "*" + prefix + "emilie________STFU emilie",
-  "*" + prefix + "okok__________PopSmoke's OK OK"
+  "*" + prefix + "oof___________to show the oof*", 
+  "*" + prefix + "emilie________STFU emilie*",
+  "*" + prefix + "okok__________PopSmoke's OK OK*",
+  "*" + prefix + "Simp__________Simp bucks*",
+  "*" + prefix + "haram_________Haram*"
 ];
 
 
@@ -214,6 +216,14 @@ bot.on("message", msg => {
 
     case "okok": {
       msg.channel.send("https://cdn.discordapp.com/attachments/608295365384339457/737059292930375780/video0.mov");
+    break;}
+
+    case "simp": {
+      msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/737305776468656258/image0.jpg");
+    break;}
+
+    case "haram": {
+      msg.channel.send("https://cdn.discordapp.com/attachments/599061991281131531/737255123121733652/haram.mp4");
     break;}
 
   }

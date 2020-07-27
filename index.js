@@ -227,7 +227,7 @@ bot.on("message", msg => {
       msg.channel.send("https://cdn.discordapp.com/attachments/599061991281131531/737255123121733652/haram.mp4");
     break;}
 
-    case "Our": {
+    case "our": {
       msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/737306931290570802/Our.png");
     break;}
   }

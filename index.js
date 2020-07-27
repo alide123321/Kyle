@@ -34,7 +34,7 @@ var help = [
   "*" + prefix + "okok__________PopSmoke's OK OK*",
   "*" + prefix + "Simp__________Simp bucks*",
   "*" + prefix + "haram_________Haram*",
-  "*" + prefix + "Our___________Our stuff*"
+  "*" + prefix + "our___________Our stuff*"
 ];
 
 

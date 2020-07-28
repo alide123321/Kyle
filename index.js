@@ -19,7 +19,7 @@ require('dotenv').config();
 
 const token = process.env.TOKEN;
 const prefix = '.';
-const version = "1.0.4";
+const version = "1.0.5";
 const helplink = "https://sites.google.com/view/chadthebot/home";
 const auther = "alide123321#9518";
 const queue = new Map();
@@ -199,6 +199,8 @@ bot.on("message", msg => {
           if(serverID == SWonderland)
               Wonderland.send(reportData);
           
+          if(serverID !== SWonderland && serverID !== SEgerms)
+              msg.channel.send("Reporting isnt setup on this server")
           
       }
       break;}

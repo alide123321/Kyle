@@ -34,6 +34,7 @@ var help = [
   "*" + prefix + "okok__________PopSmoke's OK OK*",
   "*" + prefix + "Simp__________Simp bucks*",
   "*" + prefix + "haram_________Haram*",
+  "*" + prefix + "blue__________Scary blue*",
   "*" + prefix + "our___________Our stuff*"
 ];
 
@@ -230,7 +231,11 @@ bot.on("message", msg => {
     break;}
 
     case "our": {
-      msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/737306931290570802/Our.png");
+      msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/737306931290570802/Our.png")
+      break;}
+
+    case "blue": {
+      msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/737791880355381308/blue.jpg");
     break;}
   }
 });

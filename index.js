@@ -52,8 +52,6 @@ bot.once("ready", () => {
 bot.on("message", msg => {
 
 
-  
-
 
   let args = msg.content.substring(prefix.length).split(" ");
   let text = msg.content;
@@ -210,20 +208,7 @@ bot.on("message", msg => {
       var count = 1;
       let mention = msg.mentions.users.first();
 
-      if(!args[1])
-      {
-        msg.channel.send("Who do you want to Dm anonymous?");
-        count++;
-        return;
-      }
-
-
-      if(!args[2])
-      {
-        msg.channel.send("What do you want to send?");
-        count++;
-        return;
-      }
+  
 
       const embed = new Discord.MessageEmbed()
           .setColor(0xFFFF00)

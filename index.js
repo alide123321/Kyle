@@ -202,22 +202,22 @@ bot.on("message", msg => {
     break;}
 
     case "shhdm": {
-      var count = 1;
       let mention = msg.mentions.users.first();
 
-      if(!args[1])
+
+
+      if(!args[1].includes("@"))
       {
         msg.channel.send("Who do you want to Dm anonymous?");
-        count++;
+        return;
+      }
+
+      if(!args[2])
+      {
+        msg.channel.send("What do you want to say?");
         return;
       }
       
-      if(!args[2])
-      {
-        msg.channel.send("What do you want to send?");
-        count++;
-        return;
-      }
 
       const embed = new Discord.MessageEmbed()
           .setColor(0xFFFF00)
@@ -225,7 +225,7 @@ bot.on("message", msg => {
           .setDescription(text.slice(6))
           mention.send(embed)
 
-      msg.channel.bulkDelete(count);
+      msg.channel.bulkDelete(2);
     break;}
 
 

@@ -211,12 +211,6 @@ bot.on("message", msg => {
         msg.channel.send("Who do you want to Dm anonymous?");
         return;
       }
-
-      if(!args[2])
-      {
-        msg.channel.send("What do you want to say?");
-        return;
-      }
       
 
       const embed = new Discord.MessageEmbed()
@@ -225,7 +219,7 @@ bot.on("message", msg => {
           .setDescription(text.slice(6))
           mention.send(embed)
 
-      msg.channel.bulkDelete(2);
+      msg.channel.bulkDelete(1);
     break;}
 
 

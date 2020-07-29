@@ -208,14 +208,14 @@ bot.on("message", msg => {
 
     case "shhdm": {
       var count = 1;
-      if(!(args[0].includes("@")))
+      let mention = msg.mentions.users.first();
+      if(mentions == null)
       {
         msg.channel.send("Who do you want to Dm anonymous?");
         count++;
         return;
       }
 
-      mention = msg.mentions.users.first(); 
 
       if(!args[1])
       {
@@ -228,7 +228,7 @@ bot.on("message", msg => {
           .setColor(0xFFFF00)
           .setTitle("Anonymous Message")
           .setDescription(text.slice(6))
-      mention.send(embed)
+          mention.send(embed)
 
       msg.channel.bulkDelete(count);
       count = 1;

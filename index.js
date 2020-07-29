@@ -29,6 +29,7 @@ var help = [
   "*" + prefix + "spam__________will spam whatever you tell it to 5X*",
   "*" + prefix + "info__________more information about the bot*",
   "*" + prefix + "Report________to report anything related to this server*",
+  "*" + prefix + "shhdm<@><msg>_Send a anonymous message to someone*",
   "*" + prefix + "oof___________to show the oof*", 
   "*" + prefix + "emilie________STFU emilie*",
   "*" + prefix + "okok__________PopSmoke's OK OK*",
@@ -156,13 +157,11 @@ bot.on("message", msg => {
         msg.channel.send(
           "sorry you dont have the correct role to exacute the command"
         );
-      break;
-    }
+    break;}
 
     case "website": {
       msg.channel.send(helplink);
-      break;
-    }
+    break;}
 
     case "report": {
       if(!args[1]) {
@@ -205,7 +204,35 @@ bot.on("message", msg => {
               msg.channel.send("Reporting isnt setup on this server")
           
       }
-      break;}
+    break;}
+
+    case "shhdm": {
+      var count = 1;
+      if(!(args[0].includes("@")))
+      {
+        msg.channel.send("Who do you want to Dm anonymous?");
+        count++;
+        return;
+      }
+
+      mention = msg.mentions.users.first(); 
+
+      if(!args[1])
+      {
+        msg.channel.send("What do you want to send?");
+        count++;
+        return;
+      }
+
+      const embed = new Discord.MessageEmbed()
+          .setColor(0xFFFF00)
+          .setTitle("Anonymous Message")
+          .setDescription(text.slice(6))
+      mention.send(embed)
+
+      msg.channel.bulkDelete(count);
+      count = 1;
+    break;}
 
 
     case "oof": {

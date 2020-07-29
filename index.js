@@ -205,6 +205,11 @@ bot.on("message", msg => {
       let mention = msg.mentions.users.first();
 
 
+      if(text.includes("@here") ||text.includes("@everyone"))
+      {
+        msg.channel.send("NO!");
+        return;
+      }
 
       if(!args[1].includes("@"))
       {

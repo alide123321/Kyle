@@ -56,7 +56,7 @@ bot.on("message", msg => {
   let args = msg.content.substring(prefix.length).split(" ");
   let text = msg.content;
 
-  var serverID = msg.guild.id;
+  let serverID = msg.guild.id;
 
   let SWonderland = '599061990828277770'; // Wonderland server ID
   if (serverID == SWonderland && msg.channel.id == "715457095406714931"){
@@ -169,7 +169,6 @@ bot.on("message", msg => {
           .setDescription('What do you want to report (only administrators will see your report)')
           msg.channel.send(embed)
       }else {
-          var serverID = msg.guild.id;
           let msgArgs = args.slice(1).join(" ");
 
           let SEgerms = '701088567971152043'; // Egerms server ID

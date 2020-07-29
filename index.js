@@ -209,7 +209,8 @@ bot.on("message", msg => {
     case "shhdm": {
       var count = 1;
       let mention = msg.mentions.users.first();
-      if(mentions == null)
+
+      if(!args[1])
       {
         msg.channel.send("Who do you want to Dm anonymous?");
         count++;
@@ -217,7 +218,7 @@ bot.on("message", msg => {
       }
 
 
-      if(!args[1])
+      if(!args[2])
       {
         msg.channel.send("What do you want to send?");
         count++;

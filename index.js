@@ -214,6 +214,12 @@ bot.on("message", msg => {
         return;
       }
 
+      if(!args[1])
+      {
+        msg.channel.send("Who do you want to Dm anonymous?");
+        return;
+      }
+
       if(!args[1].includes("@"))
       {
         msg.channel.send("Who do you want to Dm anonymous?");
@@ -264,6 +270,16 @@ bot.on("message", msg => {
 
     case "woo": {
       msg.channel.send("https://cdn.discordapp.com/attachments/737775095828709508/738086389358264391/woo.gif");
+
+      var VC = message.member.voiceChannel;
+        if (!VC)
+            return message.reply("MESSAGE IF NOT IN A VOICE CHANNEL")
+    VC.join()
+        .then(connection => {
+            const dispatcher = connection.playFile("./sounds/woo.mp3");
+            dispatcher.on("end", end => {VC.leave()});
+        })
+        .catch(console.error);
     break;}
 
     case "smh":{

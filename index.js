@@ -276,7 +276,7 @@ bot.on("message", msg => {
             return;
     VC.join()
         .then(connection => {
-            const dispatcher = connection.playFile("./sounds/woo.mp3");
+            const dispatcher = connection.playFile("C:\Users\alide\Desktop\Discord bot\discordbot\sounds\woo.mp3");
             dispatcher.on("end", end => {VC.leave()});
         })
         .catch(console.error);

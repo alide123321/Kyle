@@ -271,7 +271,7 @@ bot.on("message", msg => {
     case "woo": {
       msg.channel.send("https://cdn.discordapp.com/attachments/737775095828709508/738086389358264391/woo.gif");
 
-      var VC = message.member.voiceChannel;
+      var VC = msg.member.voiceChannel;
         if (!VC)
             return;
     VC.join()

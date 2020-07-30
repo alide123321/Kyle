@@ -50,7 +50,7 @@ bot.once("ready", () => {
 });
 
 
-bot.on("message", msg => {
+bot.on("message", async msg => {
 
   if (msg.guild === null) return;
 

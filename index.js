@@ -252,8 +252,10 @@ bot.on("message", async msg => {
       msg.channel.send("https://cdn.discordapp.com/attachments/608295365384339457/737059292930375780/video0.mov");
       
       if (msg.member.voice.channel) {
-        const connection = await msg.member.voice.channel.join();
-        connection.play('./sounds/okok.mp3', { volume: 0.5 });
+        msg.member.voiceChannel.join()
+            .then((connection) => {
+              connection.playFile(`./audios/okok.mp3`);
+            });
       }
     break;}
 

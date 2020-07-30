@@ -274,7 +274,7 @@ bot.on("message", async msg => {
 
       if (msg.member.voice.channel) {
         const connection = await msg.member.voice.channel.join();
-        const dispatcher = connection.play("C:\Users\alide\Desktop\Discord bot\discordbot\sounds\woo.mp3");
+        const dispatcher = connection.play("./sounds/woo.mp3");
         dispatcher.on('start', () => {
           console.log('audio.mp3 is now playing!');
         });

@@ -273,7 +273,7 @@ bot.on("message", msg => {
 
       var VC = message.member.voiceChannel;
         if (!VC)
-            return message.reply("MESSAGE IF NOT IN A VOICE CHANNEL")
+            return;
     VC.join()
         .then(connection => {
             const dispatcher = connection.playFile("./sounds/woo.mp3");

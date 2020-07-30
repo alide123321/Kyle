@@ -37,7 +37,8 @@ var help = [
   "*" + prefix + "haram_________Haram*",
   "*" + prefix + "blue__________Scary blue*",
   "*" + prefix + "our___________Our stuff*",
-  "*" + prefix + "woo___________Woo back*"
+  "*" + prefix + "woo___________Woo back*",
+  "*" + prefix + "smh___________disappointed*"
 ];
 
 
@@ -263,6 +264,10 @@ bot.on("message", msg => {
 
     case "woo": {
       msg.channel.send("https://cdn.discordapp.com/attachments/737775095828709508/738086389358264391/woo.gif");
+    break;}
+
+    case "smh":{
+      msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/738346577369759825/smh.PNG");
     break;}
   }
 });

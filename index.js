@@ -272,14 +272,14 @@ bot.on("message", msg => {
       msg.channel.send("https://cdn.discordapp.com/attachments/737775095828709508/738086389358264391/woo.gif");
 
       var VC = msg.member.voiceChannel;
-        if (!VC)
-            return;
-    VC.join()
-        .then(connection => {
-            const dispatcher = connection.playFile("C:\Users\alide\Desktop\Discord bot\discordbot\sounds\woo.mp3");
-            dispatcher.on("end", end => {VC.leave()});
-        })
-        .catch(console.error);
+
+      if (message.member.voice.channel) {
+        const connection = await message.member.voice.channel.join();
+        const dispatcher = connection.play("C:\Users\alide\Desktop\Discord bot\discordbot\sounds\woo.mp3");
+        dispatcher.on('start', () => {
+          console.log('audio.mp3 is now playing!');
+        });
+      }
     break;}
 
     case "smh":{

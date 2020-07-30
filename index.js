@@ -250,6 +250,11 @@ bot.on("message", async msg => {
 
     case "okok": {
       msg.channel.send("https://cdn.discordapp.com/attachments/608295365384339457/737059292930375780/video0.mov");
+      
+      if (msg.member.voice.channel) {
+        const connection = await msg.member.voice.channel.join();
+        connection.play('./sounds/okok.mp3', { volume: 0.5 });
+      }
     break;}
 
     case "simp": {
@@ -270,15 +275,6 @@ bot.on("message", async msg => {
 
     case "woo": {
       msg.channel.send("https://cdn.discordapp.com/attachments/737775095828709508/738086389358264391/woo.gif");
-
-
-      if (msg.member.voice.channel) {
-        const connection = await msg.member.voice.channel.join();
-        const dispatcher = connection.play("C:\Users\alide\Desktop\Discord bot\discordbot\sounds\woo.mp3");
-        dispatcher.on('start', () => {
-          console.log('audio.mp3 is now playing!');
-        });
-      }
     break;}
 
     case "smh":{

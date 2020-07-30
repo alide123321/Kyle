@@ -17,6 +17,9 @@ const ytdl = require("ytdl-core");
 var opusscript = require("opusscript");
 require('dotenv').config();
 
+
+
+
 const token = process.env.TOKEN;
 const prefix = '.';
 const version = "1.0.5";
@@ -83,8 +86,6 @@ bot.on("message", async msg => {
     msg.channel.bulkDelete(99);
     
   }
-
-
 
   switch (args[0]) {
 
@@ -251,13 +252,14 @@ bot.on("message", async msg => {
     case "okok": {
       msg.channel.send("https://cdn.discordapp.com/attachments/608295365384339457/737059292930375780/video0.mov");
       
-      if (msg.member.voice.channel) {
-        const connection = await message.member.voice.channel.join();
-        const dispatcher = connection.play('./sounds/okok.mp3');
-
-        dispatcher.on('finish', () => {
-          console.log('Finished playing!');
-        });
+      var VC = msg.member.voice.channel;
+        if (VC){
+          VC.join()
+            .then(connection => {
+          const dispatcher = connection.play('okok.mp3');
+          dispatcher.on("end", end => {VC.leave()});
+        })
+        .catch(console.error);
       }
     break;}
 

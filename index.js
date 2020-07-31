@@ -254,12 +254,11 @@ bot.on("message", async msg => {
       
       var VC = msg.member.voice.channel;
         if (VC){
-          VC.join()
-            .then(connection => {
-          const dispatcher = connection.play('okok.mp3');
-          dispatcher.on("end", end => {VC.leave()});
-        })
-        .catch(console.error);
+          let stream = fs.createReadStream("https://cdn.discordapp.com/attachments/608295365384339457/737059292930375780/video0.mov");
+          ytdl.arbitraryStream(stream, {
+          fmt: "mp3",
+          encoderArgs: ["bass=g=5"]
+        }).pipe(fs.createWriteStream("./okok.mp3"))
       }
     break;}
 

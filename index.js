@@ -253,7 +253,7 @@ bot.on("message", async msg => {
     case "okok": {
 
       if (talkedRecently.has(msg.author.id)) {
-        msg.channel.send("Cooldown 20 sec");
+        msg.channel.send("Cooldown 120 sec");
         msg.delete();
         return;
       }
@@ -261,7 +261,7 @@ bot.on("message", async msg => {
       talkedRecently.add(msg.author.id);
       setTimeout(() => {
         talkedRecently.delete(msg.author.id);
-      }, 20000);
+      }, 120000);
 
       msg.channel.send("https://cdn.discordapp.com/attachments/608295365384339457/737059292930375780/video0.mov");
       
@@ -302,8 +302,10 @@ bot.on("message", async msg => {
 
     case "hamood":{
       
+      if(msg.author.id === "723144931153281104") return;
+
       if (talkedRecently.has(msg.author.id)) {
-        msg.channel.send("Cooldown 20 sec");
+        msg.channel.send("Cooldown 120 sec");
         msg.delete();
         return;
       }
@@ -311,7 +313,7 @@ bot.on("message", async msg => {
       talkedRecently.add(msg.author.id);
       setTimeout(() => {
         talkedRecently.delete(msg.author.id);
-      }, 20000);
+      }, 120000);
 
       msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/738867948495568976/Hamood_habibi.mp4");
 

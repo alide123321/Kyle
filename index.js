@@ -258,7 +258,6 @@ bot.on("message", async msg => {
           dispatcher.on("end", end => {VC.leave()});
         })
         .catch(console.error);
-        VC.leave()
       }
     break;}
 

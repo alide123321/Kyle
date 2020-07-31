@@ -261,7 +261,7 @@ bot.on("message", async msg => {
         var voiceChannel = message.member.voiceChannel;
         voiceChannel.join().then(connection => {
             console.log("joined channel");
-            const dispatcher = connection.playFile('./okok.mp3');
+            const dispatcher = connection.play('./okok.mp3');
             dispatcher.on("end", end => {
                 console.log("left channel");
                 voiceChannel.leave();

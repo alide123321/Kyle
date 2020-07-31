@@ -25,7 +25,6 @@ const prefix = '.';
 const version = "1.0.5";
 const helplink = "https://sites.google.com/view/chadthebot/home";
 const auther = "alide123321#9518";
-const queue = new Map();
 var help = [
   "*" + prefix + "website_______Do you to check put our website?*",
   "*" + prefix + "memes_________for the best memes*",
@@ -252,13 +251,23 @@ bot.on("message", async msg => {
     case "okok": {
       msg.channel.send("https://cdn.discordapp.com/attachments/608295365384339457/737059292930375780/video0.mov");
       
+      var isReady;
+
       var VC = msg.member.voice.channel;
         if (VC){
-          let stream = fs.createReadStream("https://cdn.discordapp.com/attachments/608295365384339457/737059292930375780/video0.mov");
-          ytdl.arbitraryStream(stream, {
-          fmt: "mp3",
-          encoderArgs: ["bass=g=5"]
-        }).pipe(fs.createWriteStream("./okok.mp3"))
+          ytdl(url)
+            .pipe(fs.createWriteStream('./okok.mp3'));
+
+        var voiceChannel = message.member.voiceChannel;
+        voiceChannel.join().then(connection => {
+            console.log("joined channel");
+            const dispatcher = connection.playFile('./okok.mp3');
+            dispatcher.on("end", end => {
+                console.log("left channel");
+                voiceChannel.leave();
+            });
+        }).catch(err => console.log(err));
+        isReady = true
       }
     break;}
 

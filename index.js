@@ -254,7 +254,7 @@ bot.on("message", async msg => {
         if (VC){
           VC.join()
             .then(connection => {
-          const dispatcher = connection.play('okok.mp3');
+          const dispatcher = connection.play('./sounds/okok.mp3');
           dispatcher.on("end", end => {VC.leave()});
         })
         .catch(console.error);
@@ -283,6 +283,19 @@ bot.on("message", async msg => {
 
     case "smh":{
       msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/738346577369759825/smh.PNG");
+    break;}
+
+    case "hamood":{
+      msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/738867948495568976/Hamood_habibi.mp4");
+      var VC = msg.member.voice.channel;
+        if (VC){
+          VC.join()
+            .then(connection => {
+          const dispatcher = connection.play('./sounds/hamood.mp3');
+          dispatcher.on("end", end => {VC.leave()});
+        })
+        .catch(console.error);
+      }
     break;}
   }
 });

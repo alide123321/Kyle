@@ -308,4 +308,4 @@ function sleep(milliseconds) {
             msg.channel.send(embed);
 })
 */
-bot.login("NzEzODc4MTA5NTA5Nzc5NTE2.XwXGPw.sBea1yfZyhlLHGj0CzImX7V4Vjs"); // turn bot online
+bot.login("NzEzODc4MTA5NTA5Nzc5NTE2.XsmgzA.cfnc84TIW_KWXnyOyNVpDeuADJ0"); // turn bot online

@@ -43,19 +43,7 @@ var help = [
   "*" + prefix + "hamood________Arab*"
 ];
 
-if (talkedRecently.has(msg.author.id)) {
-  msg.channel.send("Wait 1 minute before getting typing this again. - " + msg.author);
-  } else {
 
-  // the user can type the command ... your command code goes here :)
-
-  // Adds the user to the set so that they can't talk for a minute
-  talkedRecently.add(msg.author.id);
-  setTimeout(() => {
-  // Removes the user from the set after a minute
-  talkedRecently.delete(msg.author.id);
-  }, 60000);
-}
 
 bot.once("ready", () => {
   console.log("Ready!");
@@ -65,6 +53,17 @@ bot.once("ready", () => {
 
 
 bot.on("message", async msg => {
+
+  if (talkedRecently.has(msg.author.id)) {
+    msg.channel.send("Cooldown 20 sec");
+    msg.delete();
+    return;
+  }
+
+  talkedRecently.add(msg.author.id);
+  setTimeout(() => {
+    talkedRecently.delete(msg.author.id);
+  }, 20000);
 
   if (msg.guild === null) return;
 

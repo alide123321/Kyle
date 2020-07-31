@@ -39,7 +39,8 @@ var help = [
   "*" + prefix + "blue__________Scary blue*",
   "*" + prefix + "our___________Our stuff*",
   "*" + prefix + "woo___________Woo back*",
-  "*" + prefix + "smh___________disappointed*"
+  "*" + prefix + "smh___________disappointed*",
+  "*" + prefix + "hamood________Arab*"
 ];
 
 

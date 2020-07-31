@@ -12,8 +12,6 @@ const Discord = require("discord.js");
 const {Client, Attachment} = require("discord.js");
 const bot = new Discord.Client();
 const fetch = require("node-fetch");
-const fs = require("fs");
-const ytdl = require("ytdl-core");
 var opusscript = require("opusscript");
 require('dotenv').config();
 

@@ -252,6 +252,8 @@ bot.on("message", async msg => {
 
     case "okok": {
 
+      if(msg.author.id === "723144931153281104") return;
+
       if (talkedRecently.has(msg.author.id)) {
         msg.channel.send("Cooldown 120 sec");
         msg.delete();

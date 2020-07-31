@@ -54,16 +54,7 @@ bot.once("ready", () => {
 
 bot.on("message", async msg => {
 
-  if (talkedRecently.has(msg.author.id)) {
-    msg.channel.send("Cooldown 20 sec");
-    msg.delete();
-    return;
-  }
-
-  talkedRecently.add(msg.author.id);
-  setTimeout(() => {
-    talkedRecently.delete(msg.author.id);
-  }, 20000);
+  
 
   if (msg.guild === null) return;
 
@@ -260,6 +251,18 @@ bot.on("message", async msg => {
     break;}
 
     case "okok": {
+
+      if (talkedRecently.has(msg.author.id)) {
+        msg.channel.send("Cooldown 20 sec");
+        msg.delete();
+        return;
+      }
+    
+      talkedRecently.add(msg.author.id);
+      setTimeout(() => {
+        talkedRecently.delete(msg.author.id);
+      }, 20000);
+
       msg.channel.send("https://cdn.discordapp.com/attachments/608295365384339457/737059292930375780/video0.mov");
       
       var VC = msg.member.voice.channel;
@@ -298,7 +301,20 @@ bot.on("message", async msg => {
     break;}
 
     case "hamood":{
+      
+      if (talkedRecently.has(msg.author.id)) {
+        msg.channel.send("Cooldown 20 sec");
+        msg.delete();
+        return;
+      }
+    
+      talkedRecently.add(msg.author.id);
+      setTimeout(() => {
+        talkedRecently.delete(msg.author.id);
+      }, 20000);
+
       msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/738867948495568976/Hamood_habibi.mp4");
+
       var VC = msg.member.voice.channel;
         if (VC){
           VC.join()

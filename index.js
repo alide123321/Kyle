@@ -257,9 +257,8 @@ bot.on("message", async msg => {
           VC.join()
             .then(connection => {
           const dispatcher = connection.play('okok.mp3');
-          
+          dispatcher.on("end", end => {VC.leave()});
         })
-        dispatcher.on()
         .catch(console.error);
       }
     break;}

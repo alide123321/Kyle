@@ -75,16 +75,18 @@ bot.on("message", async msg => {
 
       case "report":{
 
+        let sender = msg.author.id;
+
         if(!args[1]) {
           const embed = new Discord.MessageEmbed()
           .setColor(0xde3333)
           .setTitle('404')
           .setDescription('What do you want to report (only administrators will see your report)')
-          msg.channel.send(embed)
+          sendersend(embed)
         }else {
           let msgArgs = args.slice(1).join(" ");
       
-          let sender = msg.author.id;
+          
           let Wonderland = bot.channels.cache.get('719454080543490058'); // Wonderland channelReports
         
         

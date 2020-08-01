@@ -152,12 +152,14 @@ bot.on("message", async msg => {
         .addFields(
           {name: "Check out the commands on our website", value: helplink}, 
           {name: "**Meme commands**", value: prefix+"memehelp", inline: true},
-          {name: "**Meme commands**", value: prefix+"memehelp", inline: true}
+          {name: "**Meme commands**", value: prefix+"modhelp", inline: true}
         )
         .setImage('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
       msg.channel.send(helpem);
 
-
+      break;}
+    
+    case "memehelp":{
       let memehelp = new Discord.MessageEmbed()
       .setColor('#0099ff')
       .setTitle("Meme commands")
@@ -169,20 +171,21 @@ bot.on("message", async msg => {
       )
       .setImage('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
     msg.channel.send(memehelp);
+    break;}
 
-    let modhelp = new Discord.MessageEmbed()
-    .setColor('#0099ff')
-    .setTitle("Meme commands")
-    .setURL(helplink)
-    .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
-    .addFields(
-      {name: "Check out the commands on our website", value: helplink}, 
-      {name: "**Moderatorcommands**", value: modhelp}
+    case "modhelp":{
+      let modhelp = new Discord.MessageEmbed()
+        .setColor('#0099ff')
+        .setTitle("Meme commands")
+        .setURL(helplink)
+        .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
+        .addFields(
+          {name: "Check out the commands on our website", value: helplink}, 
+          {name: "**Moderatorcommands**", value: modhelp}
     )
-    .setImage('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
-  msg.channel.send(modhelp);
-
-      break;}
+        .setImage('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
+    msg.channel.send(modhelp);
+    break;}
 
     case "ping": {
       msg.channel.send("Im alive");

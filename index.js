@@ -24,23 +24,29 @@ const version = "1.0.5";
 const helplink = "https://sites.google.com/view/kyle-bot/home";
 const auther = "alide123321#9518";
 const queue = new Map();
-var help = [
-  "*" + prefix + "website_______Do you to check put our website?*",
-  "*" + prefix + "memes_________for the best memes*",
-  "*" + prefix + "spam__________will spam whatever you tell it to 5X*",
-  "*" + prefix + "info__________more information about the bot*",
-  "*" + prefix + "Report________to report anything related to this server DM me*",
-  "*" + prefix + "shhdm<@><msg>_Send a anonymous message to someone*",
-  "*" + prefix + "oof___________to show the oof*", 
-  "*" + prefix + "emilie________STFU emilie*",
-  "*" + prefix + "okok__________PopSmoke's OK OK*",
-  "*" + prefix + "Simp__________Simp bucks*",
-  "*" + prefix + "haram_________Haram*",
-  "*" + prefix + "blue__________Scary blue*",
-  "*" + prefix + "our___________Our stuff*",
-  "*" + prefix + "woo___________Woo back*",
-  "*" + prefix + "smh___________disappointed*",
-  "*" + prefix + "hamood________Arab*"
+var funhelp = [
+  "**" + prefix + "memes_________for the best memes**",
+  "**" + prefix + "spam__________will spam whatever you tell it to 5X**",
+  "**" + prefix + "shhdm<@><msg>_Send a anonymous message to someone**",
+  "**" + prefix + "oof___________to show the oof**", 
+  "**" + prefix + "emilie________STFU emilie**",
+  "**" + prefix + "okok__________PopSmoke's OK OK**",
+  "**" + prefix + "Simp__________Simp bucks**",
+  "**" + prefix + "haram_________Haram**",
+  "**" + prefix + "blue__________Scary blue**",
+  "**" + prefix + "our___________Our stuff**",
+  "**" + prefix + "woo___________Woo back**",
+  "**" + prefix + "smh___________disappointed**",
+  "**" + prefix + "hamood________Arab**"
+];
+
+var modhelp = [
+  "**" + prefix + "help__________will bring up this page**",
+  "**" + prefix + "website_______Do you to check put our website?**",
+  "**" + prefix + "ping__________will tell you if the bot is online**",
+  "**" + prefix + "clear <#>_____clears the messages above it by #**", 
+  "**" + prefix + "info__________more information about the bot**",
+  "**" + prefix + "Report________to report anything related to this server DM me**"
 ];
 
 
@@ -70,7 +76,7 @@ bot.on("message", async msg => {
 
 
 
-  if (msg.guild === null) 
+  if (msg.guild === null) {
     switch (args[0]) {
 
       case "report":{
@@ -109,7 +115,7 @@ bot.on("message", async msg => {
         }
       break;}
 
-    }
+    }}
 
     if (msg.guild === null) return;
 
@@ -129,12 +135,6 @@ bot.on("message", async msg => {
       .setTitle("Thank You!\n your message was sent")
     msg.channel.send(ok);
 
-    let sugData = new Discord.MessageEmbed()
-      .setColor(0x008000)
-      .setTitle(msg.author.username + "'s suggestion:")
-      .setDescription(text)
-      .setFooter("at: " + msg.createdAt)
-    Wonderland.send(sugData);
 
     msg.channel.bulkDelete(99);
     
@@ -144,18 +144,45 @@ bot.on("message", async msg => {
 
 
     case "help": {
-      let embed = new Discord.MessageEmbed()
+      let helpem = new Discord.MessageEmbed()
+        .setColor('#0099ff')
         .setTitle("All the commands")
-        .addField(
-          "Check out the commands on our website \n" +
-            helplink +
-            "\n some off our commands are",
-          help
+        .setURL(helplink)
+        .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
+        .addFields(
+          {name: "Check out the commands on our website", value: helplink}, 
+          {name: "**Meme commands**", value: prefix+"memehelp", inline: true},
+          {name: "**Meme commands**", value: prefix+"memehelp", inline: true}
+        .setImage('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
         )
-        .setColor(0x5dade2);
-      msg.channel.send(embed);
-      break;
-    }
+      msg.channel.send(helpem);
+
+
+      let memehelp = new Discord.MessageEmbed()
+      .setColor('#0099ff')
+      .setTitle("Meme commands")
+      .setURL(helplink)
+      .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
+      .addFields(
+        {name: "Check out the commands on our website", value: helplink}, 
+        {name: "**Meme commands**", value: funhelp}
+      .setImage('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
+      )
+    msg.channel.send(memehelp);
+
+    let modhelp = new Discord.MessageEmbed()
+    .setColor('#0099ff')
+    .setTitle("Meme commands")
+    .setURL(helplink)
+    .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
+    .addFields(
+      {name: "Check out the commands on our website", value: helplink}, 
+      {name: "**Moderatorcommands**", value: modhelp}
+    .setImage('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
+    )
+  msg.channel.send(modhelp);
+
+      break;}
 
     case "ping": {
       msg.channel.send("Im alive");

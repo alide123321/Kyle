@@ -166,8 +166,8 @@ bot.on("message", async msg => {
       .addFields(
         {name: "Check out the commands on our website", value: helplink}, 
         {name: "**Meme commands**", value: funhelp}
-      .setImage('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
       )
+      .setImage('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
     msg.channel.send(memehelp);
 
     let modhelp = new Discord.MessageEmbed()
@@ -178,8 +178,8 @@ bot.on("message", async msg => {
     .addFields(
       {name: "Check out the commands on our website", value: helplink}, 
       {name: "**Moderatorcommands**", value: modhelp}
-    .setImage('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
     )
+    .setImage('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
   msg.channel.send(modhelp);
 
       break;}

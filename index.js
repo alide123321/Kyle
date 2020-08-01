@@ -21,7 +21,7 @@ const talkedRecently = new Set();
 const token = process.env.TOKEN;
 const prefix = '.';
 const version = "1.0.5";
-const helplink = "https://sites.google.com/view/chadthebot/home";
+const helplink = "https://sites.google.com/view/kyle-bot/home";
 const auther = "alide123321#9518";
 const queue = new Map();
 var help = [
@@ -56,12 +56,71 @@ bot.on("message", async msg => {
 
   
 
-  if (msg.guild === null) return;
+  
 
   if (msg.author.bot || !msg.content.startsWith(prefix)) return; // Ignore the message if it's from a bot or doesn't start with the prefix.
 
   let args = msg.content.substring(prefix.length).split(" ");
   let text = msg.content;
+
+
+
+
+
+
+
+
+  if (msg.guild === null) 
+    switch (args[0]) {
+
+      case "report":{
+
+        if(!args[1]) {
+          const embed = new Discord.MessageEmbed()
+          .setColor(0xde3333)
+          .setTitle('404')
+          .setDescription('What do you want to report (only administrators will see your report)')
+          msg.channel.send(embed)
+        }else {
+          let msgArgs = args.slice(1).join(" ");
+      
+          let sender = msg.author.id;
+          let Wonderland = bot.channels.cache.get('719454080543490058'); // Wonderland channelReports
+        
+        
+          let embed = new Discord.MessageEmbed()
+          .setColor(0X71b3f5)
+          .setTitle('Report status:')
+          .setDescription('Your report has been successfully filed! :upside_down:')
+          sender.send(embed);
+          
+        
+          let reportData = new Discord.MessageEmbed()
+          .setColor(0X71b3f5)
+          .setTitle(msg.author.username + '\'s Report:')
+          .setDescription(msgArgs)
+          .setFooter("at: "+msg.createdAt)
+        
+          
+        
+          if(serverID == SWonderland)
+              Wonderland.send(reportData);
+          
+          if(serverID !== SWonderland)
+              msg.channel.send("Reporting isnt setup on this server")
+          
+        }
+      break;}
+
+    }
+
+    if (msg.guild === null) return;
+
+
+
+
+
+
 
   let serverID = msg.guild.id;
 
@@ -165,45 +224,7 @@ bot.on("message", async msg => {
     break;}
 
     case "report": {
-      if(!args[1]) {
-          const embed = new Discord.MessageEmbed()
-          .setColor(0xde3333)
-          .setTitle('404')
-          .setDescription('What do you want to report (only administrators will see your report)')
-          msg.channel.send(embed)
-      }else {
-          let msgArgs = args.slice(1).join(" ");
-
-          let SEgerms = '701088567971152043'; // Egerms server ID
-          let Egerms = bot.channels.cache.get('719159607377002497'); // Egerms channelReports
-
-          let Wonderland = bot.channels.cache.get('719454080543490058'); // Wonderland channelReports
-
-
-          let embed = new Discord.MessageEmbed()
-          .setColor(0X71b3f5)
-          .setTitle('Report status:')
-          .setDescription('Your report has been successfully filed! :upside_down:')
-          msg.channel.send(embed);
-          
-
-          let reportData = new Discord.MessageEmbed()
-          .setColor(0X71b3f5)
-          .setTitle(msg.author.username + '\'s Report:')
-          .setDescription(msgArgs)
-          .setFooter("at: "+msg.createdAt)
-
-          if(serverID == SEgerms){
-              Egerms.send(reportData);
-          }
-
-          if(serverID == SWonderland)
-              Wonderland.send(reportData);
-          
-          if(serverID !== SWonderland && serverID !== SEgerms)
-              msg.channel.send("Reporting isnt setup on this server")
-          
-      }
+      msg.channel.send("Please DM me to report");
     break;}
 
     case "shhdm": {

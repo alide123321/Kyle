@@ -40,7 +40,7 @@ var funhelp = [
   "**" + prefix + "hamood________Arab**"
 ];
 
-var modhelp = [
+var modshelp = [
   "**" + prefix + "help__________will bring up this page**",
   "**" + prefix + "website_______Do you to check put our website?**",
   "**" + prefix + "ping__________will tell you if the bot is online**",
@@ -181,7 +181,7 @@ bot.on("message", async msg => {
         .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
         .addFields(
           {name: "Check out the commands on our website", value: helplink}, 
-          {name: "**Moderatorcommands**", value: modhelp}
+          {name: "**Moderatorcommands**", value: modshelp}
     )
         .setImage('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
     msg.channel.send(modhelp);

@@ -29,7 +29,7 @@ var help = [
   "*" + prefix + "memes_________for the best memes*",
   "*" + prefix + "spam__________will spam whatever you tell it to 5X*",
   "*" + prefix + "info__________more information about the bot*",
-  "*" + prefix + "Report________to report anything related to this server*",
+  "*" + prefix + "Report________to report anything related to this server DM me*",
   "*" + prefix + "shhdm<@><msg>_Send a anonymous message to someone*",
   "*" + prefix + "oof___________to show the oof*", 
   "*" + prefix + "emilie________STFU emilie*",

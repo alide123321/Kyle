@@ -17,6 +17,13 @@ require('dotenv').config();
 
 const talkedRecently = new Set();
 
+const moment = require("moment");
+const Console = console;
+let options = {
+    total: "channel id",
+    users: "channel id",
+    bots: "channel id"
+};
 
 const token = process.env.TOKEN;
 const prefix = '.';
@@ -52,6 +59,23 @@ var modshelp = [
 
 
 bot.once("ready", () => {
+
+  if (bot.guilds.size < 1) {
+    Console.log("The bot is not in any guild.");
+    process.exit(0);
+    return;
+} //Shutdowns, if bot is not in any guild
+const text = `
+______________________________
+Ready since: ${moment(Date.now()).format("dddd, MMMM do YYYY, HH:mm:ss")}
+Server: ${bot.guilds.first().name}
+Total server members: ${bot.guilds.first().memberCount}
+Credits: https://github.com/dpprdev/statsbot/
+______________________________
+`; //The text that displays to console, when bot is ready.
+Console.log(text);
+
+
   console.log("Ready!");
   console.log("prefix:" + prefix);
   bot.user.setActivity(" "+prefix+"Help");
@@ -378,6 +402,30 @@ bot.on("message", async msg => {
   }
 });
 
+bot.on("guildMemberAdd", (member) => {
+  //All choices are optional here. Bot wont work if the channel ID's are wrong. How to properly get ID's read in README.md 
+  try {
+      member.guild.channels.get("715444945602740244").setName(`Total Members: ${member.guild.memberCount}`); // You can change this text, but still keep ${guild.memberCount}, as it defines total members.
+      member.guild.channels.get("715444948568244305").setName(`Users: ${member.guild.members.filter((m) => !m.user.bot).size}`); // This text is also changeable, still keep the code in ${}
+      member.guild.channels.get("715444951332290591").setName(`Bots: ${member.guild.members.filter((m) => m.user.bot).size}`); // This text is also changeable, still keep the code in ${}
+  
+  }
+  catch (e) {
+  Console.log(e);
+  }
+});
+bot.on("guildMemberRemove", (member) => {
+  //All choices are optional here. Bot wont work if the channel ID's are wrong. How to properly get ID's read in README.md 
+  try {
+      member.guild.channels.get("715444945602740244").setName(`Total Members: ${member.guild.memberCount}`); // You can change this text, but still keep ${guild.memberCount}, as it defines total members.
+      member.guild.channels.get("715444948568244305").setName(`Users: ${member.guild.members.filter((m) => !m.user.bot).size}`); // This text is also changeable, still keep the code in ${}'s
+      member.guild.channels.get("715444951332290591").setName(`Bots: ${member.members.filter((m) => m.user.bot).size}`); // This text is also changeable, still keep the code in ${}'s
+  
+  }
+  catch (e) {
+  Console.log(e);
+  }
+});
 
 function sleep(milliseconds) {
   const date = Date.now();

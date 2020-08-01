@@ -82,7 +82,7 @@ bot.on("message", async msg => {
           .setColor(0xde3333)
           .setTitle('404')
           .setDescription('What do you want to report (only administrators will see your report)')
-          sendersend(embed)
+          sender.send(embed)
         }else {
           let msgArgs = args.slice(1).join(" ");
       

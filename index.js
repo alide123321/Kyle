@@ -63,7 +63,7 @@ bot.on("message", async msg => {
   let args = msg.content.substring(prefix.length).split(" ");
   let text = msg.content;
 
-
+  
 
 
 
@@ -75,7 +75,7 @@ bot.on("message", async msg => {
 
       case "report":{
 
-        let sender = msg.author.id;
+        let sender = msg.author;
 
         if(!args[1]) {
           const embed = new Discord.MessageEmbed()
@@ -104,12 +104,7 @@ bot.on("message", async msg => {
           .setFooter("at: "+msg.createdAt)
         
           
-        
-          if(serverID == SWonderland)
               Wonderland.send(reportData);
-          
-          if(serverID !== SWonderland)
-              msg.channel.send("Reporting isnt setup on this server")
           
         }
       break;}
@@ -119,12 +114,8 @@ bot.on("message", async msg => {
     if (msg.guild === null) return;
 
 
+    let serverID = msg.guild.id;
 
-
-
-
-
-  let serverID = msg.guild.id;
 
   let SWonderland = '599061990828277770'; // Wonderland server ID
   if (serverID == SWonderland && msg.channel.id == "715457095406714931"){

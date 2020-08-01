@@ -156,7 +156,7 @@ bot.on("message", async msg => {
       }
       if (msg.member.roles.cache.find(r => r.name !== "Cleaner"))
         msg.channel.send(
-          "sorry you dont have the correct role to exacute the command"
+          "sorry you dont have the correct role to use the command"
         );
     break;}
 
@@ -256,6 +256,7 @@ bot.on("message", async msg => {
 
       if (talkedRecently.has(msg.author.id)) {
         msg.channel.send("Cooldown 120 sec");
+        sleep(1000)
         msg.delete();
         return;
       }
@@ -308,6 +309,7 @@ bot.on("message", async msg => {
 
       if (talkedRecently.has(msg.author.id)) {
         msg.channel.send("Cooldown 120 sec");
+        sleep(1000)
         msg.delete();
         return;
       }

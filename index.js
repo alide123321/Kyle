@@ -326,7 +326,7 @@ bot.on("message", async msg => {
         if (VC){
           VC.join()
             .then(connection => {
-          const dispatcher = connection.play('./sounds/okok.mp3');
+          const dispatcher = connection.play('./sounds/okok.mp3', { volume: 0.5 });
           dispatcher.on("end", end => {VC.leave()});
         })
         .catch(console.error);
@@ -379,7 +379,7 @@ bot.on("message", async msg => {
         if (VC){
           VC.join()
             .then(connection => {
-          const dispatcher = connection.play('./sounds/hamood.mp3');
+          const dispatcher = connection.play('./sounds/hamood.mp3', { volume: 0.5 });
           dispatcher.on("end", end => {VC.leave()});
         })
         .catch(console.error);

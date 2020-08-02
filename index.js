@@ -153,7 +153,6 @@ bot.on("message", async msg => {
 
   switch (args[0]) {
 
-
     case "help": {
       let helpem = new Discord.MessageEmbed()
         .setColor('#0099ff')

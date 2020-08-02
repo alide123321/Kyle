@@ -285,7 +285,7 @@ bot.on("message", async msg => {
       
 
       const embed = new Discord.MessageEmbed()
-          .setColor(0xFFFF00)
+          .setColor(0xb33076)
           .setTitle("Anonymous Message")
           .setDescription(text.slice(6))
           mention.send(embed)

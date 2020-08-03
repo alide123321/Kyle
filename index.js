@@ -236,7 +236,7 @@ bot.on("message", async msg => {
     }
 
     case "clear": {
-      if (msg.member.roles.cache.find(r => r.name === "Cleaner")) {
+      if (msg.member.hasPermission('ADMINISTRATOR')) {
         if (!args[1])
           return msg.reply(
             "Error please define how many msgs do you want to delete"

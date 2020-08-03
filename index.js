@@ -53,7 +53,8 @@ var modshelp = [
   "**" + prefix + "ping__________will tell you if the bot is online**",
   "**" + prefix + "clear <#>_____clears the messages above it by #**", 
   "**" + prefix + "info__________more information about the bot**",
-  "**" + prefix + "Report________to report anything related to this server DM me**"
+  "**" + prefix + "Report________to report anything related to this server DM me**",
+  "**" + prefix + "announce_____Description> will send a announcement to the announcements chat**"
 ];
 
 
@@ -292,6 +293,27 @@ bot.on("message", async msg => {
       msg.channel.bulkDelete(1);
     break;}
 
+    case "announce": {
+      if (!(msg.member.hasPermission('ADMINISTRATOR'))) {
+        msg.channel.send("dumb dumb ur not a admin");
+        return;
+      }
+      if (!(args[1])){ 
+        msg.channel.send("What do you want to announce?"); 
+        return;}
+
+        let chat = bot.channels.cache.get('707451011471507466');
+
+      let embed = new Discord.MessageEmbed()
+      .setColor('#0099ff')
+      .setTitle("**Announcement**")
+      .setURL("https://discord.gg/gBQc5cm")
+      .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
+      .setDescription(text.slice(10 + " "))
+      
+      chat.send(embed);
+    break;}
+
 
     case "oof": {
 
@@ -390,21 +412,17 @@ bot.on("message", async msg => {
 
 function serverstats(member){
   sleep(2000)
-  console.log("starting serverstats");
   member.guild.channels.cache.get("715444945602740244").setName(`Total Members: ${member.guild.memberCount}`); 
   member.guild.channels.cache.get("715444951332290591").setName(`Bots: ${member.guild.members.cache.filter(m => m.user.bot).size}`); 
   member.guild.channels.cache.get("715444948568244305").setName(`Users: ${member.guild.members.cache.filter(m => !m.user.bot).size}`); 
-  console.log("finished serverstats");
 }
 
 function sleep(milliseconds) {
-  console.log("starting sleep");
   const date = Date.now();
   let currentDate = null;
   do {
     currentDate = Date.now();
   } while (currentDate - date < milliseconds);
-  console.log("finished sleep");
 }
 
 

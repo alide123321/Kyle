@@ -44,7 +44,9 @@ var funhelp = [
   "**" + prefix + "our___________Our stuff**",
   "**" + prefix + "woo___________Woo back**",
   "**" + prefix + "smh___________disappointed**",
-  "**" + prefix + "hamood________Arab**"
+  "**" + prefix + "hamood________Arab**",
+  "**" + prefix + "kith__________gimme kith**",
+  "**" + prefix + "wtf___________wtf?**"
 ];
 
 var modshelp = [
@@ -406,6 +408,14 @@ bot.on("message", async msg => {
         })
         .catch(console.error);
       }
+    break;}
+
+    case "kith":{
+      msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/739689711898984468/image0.jpg");
+    break;}
+
+    case "wtf":{
+      msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/739689656467062914/image0.jpg");
     break;}
   }
 });

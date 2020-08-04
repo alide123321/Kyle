@@ -413,6 +413,33 @@ bot.on("message", async msg => {
     case "wtf":{
       msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/739689656467062914/image0.jpg");
     break;}
+
+    case "itis":{
+      
+      if (talkedRecently.has(msg.author.id)) {
+        msg.channel.send("Cooldown 120 sec");
+        sleep(1000)
+        msg.delete();
+        return;
+      }
+    
+      talkedRecently.add(msg.author.id);
+      setTimeout(() => {
+        talkedRecently.delete(msg.author.id);
+      }, 120000);
+
+      msg.channel.send("https://cdn.discordapp.com/attachments/608207237667749908/740063663502786670/video0.mov");
+
+      var VC = msg.member.voice.channel;
+        if (VC){
+          VC.join()
+            .then(connection => {
+          const dispatcher = connection.play('./sounds/itis.mp3', { volume: 0.5 });
+          dispatcher.on("end", end => {VC.leave()});
+        })
+        .catch(console.error);
+      }
+    break;}
   }
 });
 

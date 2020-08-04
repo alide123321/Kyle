@@ -46,7 +46,8 @@ var funhelp = [
   "**" + prefix + "smh___________disappointed**",
   "**" + prefix + "hamood________Arab**",
   "**" + prefix + "kith__________gimme kith**",
-  "**" + prefix + "wtf___________wtf?**"
+  "**" + prefix + "wtf___________wtf?**",
+  "**" + prefix + "itis__________IT IS WHAT IT ISSS**"
 ];
 
 var modshelp = [

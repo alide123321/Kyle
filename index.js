@@ -323,7 +323,7 @@ bot.on("message", async msg => {
             .setURL("https://discord.gg/hpcxUFy")
             .setDescription("```"+disc+"```")
             .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
-          msg.channel.send(announce);
+          chat.send(announce);
           
         })
         

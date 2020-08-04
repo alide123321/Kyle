@@ -57,7 +57,7 @@ var modshelp = [
   "**" + prefix + "clear <#>_____clears the messages above it by #**", 
   "**" + prefix + "info__________more information about the bot**",
   "**" + prefix + "Report________to report anything related to this server DM me**",
-  "**" + prefix + "announce_____Description> will send a announcement to the announcements chat**"
+  "**" + prefix + "announce <title>_after that the bot will ask for the description**"
 ];
 
 
@@ -297,24 +297,37 @@ bot.on("message", async msg => {
     break;}
 
     case "announce": {
+      let chat = bot.channels.cache.get('707451011471507466');
+
       if (!(msg.member.hasPermission('ADMINISTRATOR'))) {
         msg.channel.send("dumb dumb ur not a admin");
         return;
       }
-      if (!(args[1])){ 
-        msg.channel.send("What do you want to announce?"); 
-        return;}
 
-        let chat = bot.channels.cache.get('707451011471507466');
+      if(!(args[1])){
+        msg.channel.send("you didnt enter the title try again");
+        return;
+      }
 
-      let embed = new Discord.MessageEmbed()
-      .setColor('#0099ff')
-      .setTitle("**Announcement**")
-      .setURL("https://discord.gg/gBQc5cm")
-      .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
-      .setDescription(text.slice(10 + " "))
-      
-      chat.send(embed);
+      let title = text.slice(9);
+
+      msg.channel.send("What do you want the discription to be? you have 60 seconds to type it"); 
+      let disc = " ";      
+      msg.channel.awaitMessages(m => m.author.id == msg.author.id,
+        {max: 1 , time: 60000}).then(collected => {
+          disc = collected.first().content;
+
+          let announce = new Discord.MessageEmbed()
+            .setColor('#0099ff')
+            .setTitle("**"+title+"**")
+            .setURL("https://discord.gg/hpcxUFy")
+            .setDescription("```"+disc+"```")
+            .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
+          msg.channel.send(announce);
+          
+        })
+        
+
     break;}
 
 

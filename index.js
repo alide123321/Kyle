@@ -220,13 +220,12 @@ bot.on("message", async msg => {
     }
 
     case "spam": {
-      if (text.includes("@")) {
+      if (text.includes("@") && msg.author.id !== "698051518754062387") {
         msg.channel.send("no!");
         break;
       }
       for (var i = 0; i !== 5; ++i) msg.reply(" said: " + text.slice(5) + " ");
-      break;
-    }
+      break;}
 
     case "info": {
       if (args[1] === "version") msg.channel.send("version: " + version);
@@ -236,8 +235,7 @@ bot.on("message", async msg => {
         msg.channel.send("*" + prefix + "info version*");
         msg.channel.send("*" + prefix + "info auther*");
       }
-      break;
-    }
+      break;}
 
     case "clear": {
       if (msg.member.hasPermission('ADMINISTRATOR')) {

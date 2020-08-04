@@ -319,7 +319,7 @@ bot.on("message", async msg => {
             .setColor('#0099ff')
             .setTitle("**"+title+"**")
             .setURL("https://discord.gg/hpcxUFy")
-            .setDescription("```"+disc+"```")
+            .setDescription(disc)
             .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
           chat.send(announce);
           

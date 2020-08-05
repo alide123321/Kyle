@@ -403,7 +403,7 @@ bot.on("message", async msg => {
         if (VC){
           VC.join()
             .then(connection => {
-          const dispatcher = connection.play('./sounds/woo.mp3', { volume: 0.5 });
+          const dispatcher = connection.play('./sounds/woo.mp3', { volume: 0.25 });
           dispatcher.on("end", end => {VC.leave()});
         })
         .catch(console.error);

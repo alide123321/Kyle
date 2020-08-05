@@ -452,6 +452,33 @@ bot.on("message", async msg => {
         .catch(console.error);
       }
     break;}
+
+    case "stop":{
+      
+      if (talkedRecently.has(msg.author.id)) {
+        msg.channel.send("Cooldown 120 sec");
+        sleep(1000)
+        msg.delete();
+        return;
+      }
+    
+      talkedRecently.add(msg.author.id);
+      setTimeout(() => {
+        talkedRecently.delete(msg.author.id);
+      }, 120000);
+
+      msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/740483382173237299/JoeBuddenstopmeme.mp4");
+
+      var VC = msg.member.voice.channel;
+        if (VC){
+          VC.join()
+            .then(connection => {
+          const dispatcher = connection.play('./sounds/stop.mp3', { volume: 0.5 });
+          dispatcher.on("end", end => {VC.leave()});
+        })
+        .catch(console.error);
+      }
+    break;}
   }
 });
 

@@ -27,7 +27,7 @@ let options = {
 
 const token = process.env.TOKEN;
 const prefix = '.';
-const version = "1.0.7";
+const version = "1.0.9";
 const helplink = "https://sites.google.com/view/kyle-bot/home";
 const auther = "alide123321#9518";
 const queue = new Map();
@@ -418,25 +418,6 @@ bot.on("message", async msg => {
 
     break;}
 
-    case "react": {
-      let react = new Discord.MessageEmbed()
-        .setColor('#0099ff')
-        .setTitle("**React to get your role**")
-        .setURL("https://discord.gg/e5Pucbh")
-        .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
-        .addFields(
-          {name: "**Events**", value: "Movie night: <:movie_night:740837473965572196>\nGame night: <:game_night:740895921969299516>", inline: true},
-          {name: "**Platforms**", value: "PC: <:pc:740896282603683903>\nPS: <:ps:740822774712500285>\nXbox: <:xbox:740823180825985066>", inline: true}
-        )
-        let chan = bot.channels.cache.get('740809935247507566')
-        chan.send(react).then(sentEmbed => {
-          sentEmbed.react('740837473965572196')
-          sentEmbed.react('740895921969299516')
-          sentEmbed.react('740896282603683903')
-          sentEmbed.react('740822774712500285')
-          sentEmbed.react('740823180825985066')
-        })
-      break;}
 
 
     case "oof": {
@@ -685,6 +666,28 @@ function sleep(milliseconds) {
     currentDate = Date.now();
   } while (currentDate - date < milliseconds);
 }
+
+/*
+case "react": {
+      let react = new Discord.MessageEmbed()
+        .setColor('#0099ff')
+        .setTitle("**React to get your role**")
+        .setURL("https://discord.gg/e5Pucbh")
+        .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
+        .addFields(
+          {name: "**Events**", value: "Movie night: <:movie_night:740837473965572196>\nGame night: <:game_night:740895921969299516>", inline: true},
+          {name: "**Platforms**", value: "PC: <:pc:740896282603683903>\nPS: <:ps:740822774712500285>\nXbox: <:xbox:740823180825985066>", inline: true}
+        )
+        let chan = bot.channels.cache.get('740809935247507566')
+        chan.send(react).then(sentEmbed => {
+          sentEmbed.react('740837473965572196')
+          sentEmbed.react('740895921969299516')
+          sentEmbed.react('740896282603683903')
+          sentEmbed.react('740822774712500285')
+          sentEmbed.react('740823180825985066')
+        })
+      break;}
+*/
 
 
 /*bot.on('messageDelete', msg =>

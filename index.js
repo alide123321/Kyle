@@ -72,7 +72,7 @@ bot.once("ready", () => {
   console.log("Ready!");
   console.log("prefix:" + prefix);
   console.log("version:" + version);
-  bot.user.setActivity(" Please use my command"+prefix+"Help");
+  bot.user.setActivity(" use "+prefix+"Help");
 });
 
 
@@ -539,7 +539,7 @@ bot.on("message", async msg => {
         if (VC){
           VC.join()
             .then(connection => {
-          const dispatcher = connection.play('./sounds/cough.mp3', { volume: 0.5 });
+          const dispatcher = connection.play('./sounds/cough.mp3', { volume: 0.7 });
           dispatcher.on("end", end => {VC.leave()});
         })
         .catch(console.error);
@@ -566,7 +566,7 @@ bot.on("message", async msg => {
         if (VC){
           VC.join()
             .then(connection => {
-          const dispatcher = connection.play('./sounds/Kanye.mp3', { volume: 0.5 });
+          const dispatcher = connection.play('./sounds/Kanye.mp3', { volume: 0.7 });
           dispatcher.on("end", end => {VC.leave()});
         })
         .catch(console.error);

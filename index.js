@@ -10,7 +10,7 @@ app.listen(port, () => console.log(`Example app listening at http://localhost:${
 
 const Discord = require("discord.js");
 const {Client, Attachment} = require("discord.js");
-const bot = new Discord.Client();
+const bot = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"]});
 const fetch = require("node-fetch");
 var opusscript = require("opusscript");
 require('dotenv').config();
@@ -45,7 +45,6 @@ var funhelp = [
   "**" + prefix + "kith__________gimme kith**",
   "**" + prefix + "wtf___________wtf?**"
 ];
-
 var modshelp = [
   "**" + prefix + "help__________will bring up this page**",
   "**" + prefix + "website_______Do you to check put our website?**",
@@ -55,7 +54,6 @@ var modshelp = [
   "**" + prefix + "Report________to report anything related to this server DM me**",
   "**" + prefix + "announce <title>_after that the bot will ask for the description**"
 ];
-
 var VChelp = [
   "**" + prefix + "okok__________PopSmoke's OK OK**",
   "**" + prefix + "woo___________Woo back**",
@@ -83,6 +81,81 @@ bot.on("guildMemberAdd", (member) => {
 bot.on("guildMemberRemove", (member) => {
   serverstats(member)
 });
+
+
+
+bot.on('messageReactionAdd', async (reaction, user) => {
+  if(!user || user.bot || !reaction.message.channel.guild) 
+    return;
+    
+    if(reaction.message.channel.id === "740809935247507566"){
+      if(reaction.emoji.name === 'movie_night')
+        await reaction.message.guild.members.cache.get(user.id).roles.add("740828341069676594")
+
+      if(reaction.emoji.name === 'game_night')
+        await reaction.message.guild.members.cache.get(user.id).roles.add("740828344794349658")
+
+      if(reaction.emoji.name === 'pc')
+        await reaction.message.guild.members.cache.get(user.id).roles.add("740828981179318343")
+        
+      if(reaction.emoji.name === 'ps')
+        await reaction.message.guild.members.cache.get(user.id).roles.add("740828983071080470")
+
+      if(reaction.emoji.name === 'xbox')
+        await reaction.message.guild.members.cache.get(user.id).roles.add("740828984660590672")
+    }
+    
+})
+
+bot.on('messageReactionRemove', async (reaction, user) => {
+  if(!user || user.bot || !reaction.message.channel.guild) 
+    return;
+    
+    if(reaction.message.channel.id === "740809935247507566"){
+      if(reaction.emoji.name === 'movie_night')
+        await reaction.message.guild.members.cache.get(user.id).roles.remove("740828341069676594")
+
+      if(reaction.emoji.name === 'game_night')
+        await reaction.message.guild.members.cache.get(user.id).roles.remove("740828344794349658")
+
+      if(reaction.emoji.name === 'pc')
+        await reaction.message.guild.members.cache.get(user.id).roles.remove("740828981179318343")
+        
+      if(reaction.emoji.name === 'ps')
+        await reaction.message.guild.members.cache.get(user.id).roles.remove("740828983071080470")
+
+      if(reaction.emoji.name === 'xbox')
+        await reaction.message.guild.members.cache.get(user.id).roles.remove("740828984660590672")
+    }
+    
+})
+
+
+
+
+
+
+var temporary = []
+
+/*bot.on('voiceStateUpdate', async (oldState, newState,) => {
+
+
+  if (newState.channelID === '740752659820314676') {
+      newState.guild.channels.create(newState.member.user.username + "'s private room ", {
+          type: 'voice',
+          parent: '707452089453903943'
+      }).then(vc => {
+        newState.setChannel(vc);
+      });
+
+      newState.guild.channels.create(newState.member.user.username + "'s wating room ", {
+        type: 'voice',
+        parent: '707452089453903943'
+      });
+
+  }
+});*/
+
 
 bot.on("message", async msg => {
 
@@ -345,6 +418,26 @@ bot.on("message", async msg => {
 
     break;}
 
+    case "react": {
+      let react = new Discord.MessageEmbed()
+        .setColor('#0099ff')
+        .setTitle("**React to get your role**")
+        .setURL("https://discord.gg/e5Pucbh")
+        .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
+        .addFields(
+          {name: "**Events**", value: "Movie night: <:movie_night:740837473965572196>\nGame night: <:game_night:740895921969299516>", inline: true},
+          {name: "**Platforms**", value: "PC: <:pc:740896282603683903>\nPS: <:ps:740822774712500285>\nXbox: <:xbox:740823180825985066>", inline: true}
+        )
+        let chan = bot.channels.cache.get('740809935247507566')
+        chan.send(react).then(sentEmbed => {
+          sentEmbed.react('740837473965572196')
+          sentEmbed.react('740895921969299516')
+          sentEmbed.react('740896282603683903')
+          sentEmbed.react('740822774712500285')
+          sentEmbed.react('740823180825985066')
+        })
+      break;}
+
 
     case "oof": {
 
@@ -575,6 +668,8 @@ bot.on("message", async msg => {
     
   }
 });
+
+
 
 function serverstats(member){
   sleep(2000)

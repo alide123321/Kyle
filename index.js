@@ -27,7 +27,7 @@ let options = {
 
 const token = process.env.TOKEN;
 const prefix = '.';
-const version = "1.0.5";
+const version = "1.0.7";
 const helplink = "https://sites.google.com/view/kyle-bot/home";
 const auther = "alide123321#9518";
 const queue = new Map();
@@ -37,18 +37,13 @@ var funhelp = [
   "**" + prefix + "shhdm<@><msg>_Send a anonymous message to someone**",
   "**" + prefix + "oof___________to show the oof**", 
   "**" + prefix + "emilie________STFU emilie**",
-  "**" + prefix + "okok__________PopSmoke's OK OK**",
   "**" + prefix + "Simp__________Simp bucks**",
   "**" + prefix + "haram_________Haram**",
   "**" + prefix + "blue__________Scary blue**",
   "**" + prefix + "our___________Our stuff**",
-  "**" + prefix + "woo___________Woo back**",
   "**" + prefix + "smh___________disappointed**",
-  "**" + prefix + "hamood________Arab**",
   "**" + prefix + "kith__________gimme kith**",
-  "**" + prefix + "wtf___________wtf?**",
-  "**" + prefix + "itis__________IT IS WHAT IT ISSS**",
-  "**" + prefix + "stop__________just stop**"
+  "**" + prefix + "wtf___________wtf?**"
 ];
 
 var modshelp = [
@@ -61,12 +56,23 @@ var modshelp = [
   "**" + prefix + "announce <title>_after that the bot will ask for the description**"
 ];
 
+var VChelp = [
+  "**" + prefix + "okok__________PopSmoke's OK OK**",
+  "**" + prefix + "woo___________Woo back**",
+  "**" + prefix + "hamood________Arab**", 
+  "**" + prefix + "itis__________IT IS WHAT IT ISSS**",
+  "**" + prefix + "stop__________just stop**",
+  "**" + prefix + "cough_________Weed cough**",
+  "**" + prefix + "kanye_________shut the fuck up!**"
+];
+
 
 
 bot.once("ready", () => {
   console.log("Ready!");
   console.log("prefix:" + prefix);
-  bot.user.setActivity(" "+prefix+"Help");
+  console.log("version:" + version);
+  bot.user.setActivity(" Please use my command"+prefix+"Help");
 });
 
 
@@ -80,16 +86,11 @@ bot.on("guildMemberRemove", (member) => {
 
 bot.on("message", async msg => {
 
-  
-
-  
 
   if (msg.author.bot || !msg.content.startsWith(prefix)) return; // Ignore the message if it's from a bot or doesn't start with the prefix.
 
   let args = msg.content.substring(prefix.length).split(" ");
   let text = msg.content;
-
-
 
 
   if (msg.guild === null) {
@@ -167,7 +168,8 @@ bot.on("message", async msg => {
         .addFields(
           {name: "Check out the commands on our website", value: helplink}, 
           {name: "**Meme commands**", value: prefix+"memehelp", inline: true},
-          {name: "**Meme commands**", value: prefix+"modhelp", inline: true}
+          {name: "**Meme commands**", value: prefix+"modhelp", inline: true},
+          {name: "**VC commands**", value: prefix+"vchelp", inline: true}
         )
         .setImage('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
       msg.channel.send(helpem);
@@ -177,7 +179,7 @@ bot.on("message", async msg => {
     case "memehelp":{
       let memehelp = new Discord.MessageEmbed()
       .setColor('#0099ff')
-      .setTitle("Meme commands")
+      .setTitle("**Meme commands**")
       .setURL(helplink)
       .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
       .addFields(
@@ -191,12 +193,26 @@ bot.on("message", async msg => {
     case "modhelp":{
       let modhelp = new Discord.MessageEmbed()
         .setColor('#0099ff')
-        .setTitle("mod commands")
+        .setTitle("**Mod commands**")
         .setURL(helplink)
         .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
         .addFields(
           {name: "Check out the commands on our website", value: helplink}, 
           {name: "**Moderatorcommands**", value: modshelp}
+    )
+        .setImage('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
+    msg.channel.send(modhelp);
+    break;}
+
+    case "vchelp":{
+      let modhelp = new Discord.MessageEmbed()
+        .setColor('#0099ff')
+        .setTitle("**VC commands**")
+        .setURL(helplink)
+        .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
+        .addFields(
+          {name: "Check out the commands on our website", value: helplink}, 
+          {name: "**VCcommands**", value: VChelp}
     )
         .setImage('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
     msg.channel.send(modhelp);
@@ -502,6 +518,61 @@ bot.on("message", async msg => {
         .catch(console.error);
       }
     break;}
+
+    case "cough":{
+      
+      if (talkedRecently.has(msg.author.id)) {
+        msg.channel.send("Cooldown 120 sec");
+        sleep(1000)
+        msg.delete();
+        return;
+      }
+    
+      talkedRecently.add(msg.author.id);
+      setTimeout(() => {
+        talkedRecently.delete(msg.author.id);
+      }, 120000);
+
+      msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/740721964531974244/videoplayback.mp4");
+
+      var VC = msg.member.voice.channel;
+        if (VC){
+          VC.join()
+            .then(connection => {
+          const dispatcher = connection.play('./sounds/cough.mp3', { volume: 0.5 });
+          dispatcher.on("end", end => {VC.leave()});
+        })
+        .catch(console.error);
+      }
+    break;}
+
+    case "kanye":{
+      
+      if (talkedRecently.has(msg.author.id)) {
+        msg.channel.send("Cooldown 120 sec");
+        sleep(1000)
+        msg.delete();
+        return;
+      }
+    
+      talkedRecently.add(msg.author.id);
+      setTimeout(() => {
+        talkedRecently.delete(msg.author.id);
+      }, 120000);
+
+      msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/740725168904601670/videoplayback_1_online-video-cutter.com.mp4");
+
+      var VC = msg.member.voice.channel;
+        if (VC){
+          VC.join()
+            .then(connection => {
+          const dispatcher = connection.play('./sounds/Kanye.mp3', { volume: 0.5 });
+          dispatcher.on("end", end => {VC.leave()});
+        })
+        .catch(console.error);
+      }
+    break;}
+    
   }
 });
 

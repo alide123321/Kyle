@@ -73,6 +73,12 @@ bot.once("ready", () => {
   bot.user.setActivity(" use "+prefix+"Help");
 });
 
+bot.on('guildMemberAdd', member => {
+  //member.user.username
+  var role= member.guild.roles.cache.find(role => role.name === "[0+] Noobs");
+  member.roles.add(role);
+  member.guild.channels.cache.get('716939268504813578').send("Welcome to Midnight, <@" + member.user.id + ">! To get started, visit <#709238410732240906> and go on to <#716212510398873651>.. Enjoy your stay! <:goodnight:716209532233318472> <:cheemspray:716217215275237427>"); 
+});
 
 bot.on("guildMemberAdd", (member) => {
   serverstats(member)

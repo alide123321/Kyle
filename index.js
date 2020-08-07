@@ -74,10 +74,7 @@ bot.once("ready", () => {
 });
 
 bot.on('guildMemberAdd', member => {
-  //member.user.username
-  var role= member.guild.roles.cache.find(role => role.name === "[0+] Noobs");
-  member.roles.add(role);
-  member.guild.channels.cache.get('716939268504813578').send("Welcome to Midnight, <@" + member.user.id + ">! To get started, visit <#709238410732240906> and go on to <#716212510398873651>.. Enjoy your stay! <:goodnight:716209532233318472> <:cheemspray:716217215275237427>"); 
+  member.guild.channels.cache.get('716939268504813578').send("Welcome to Midnight, <@" + member.user.id + ">! To get started, visit <#709238410732240906> and go on to <#716212510398873651>. Enjoy your stay! <:goodnight:716209532233318472> <:cheemspray:716217215275237427>"); 
 });
 
 bot.on("guildMemberAdd", (member) => {
@@ -93,6 +90,11 @@ bot.on("guildMemberRemove", (member) => {
 bot.on('messageReactionAdd', async (reaction, user) => {
   if(!user || user.bot || !reaction.message.channel.guild) 
     return;
+
+    if(reaction.message.channel.id === "709238410732240906"){
+      if(reaction.emoji.name === 'white_check_mark')
+        await reaction.message.guild.members.cache.get(user.id).roles.add("716092067243098174")
+    }
     
     if(reaction.message.channel.id === "740809935247507566"){
       if(reaction.emoji.name === 'movie_night')
@@ -151,12 +153,16 @@ var temporary = []
           type: 'voice',
           parent: '707452089453903943'
       }).then(vc => {
+        vc.overwritePermissions(message.author.id, { JOIN_CHANNEL : true});
+        vc.overwritePermissions(everyoneRole, { JOIN_CHANNEL : false});
         newState.setChannel(vc);
       });
 
       newState.guild.channels.create(newState.member.user.username + "'s wating room ", {
         type: 'voice',
         parent: '707452089453903943'
+      }).then(vc => {
+        vc.overwritePermissions(everyoneRole, { S});
       });
 
   }
@@ -299,8 +305,7 @@ bot.on("message", async msg => {
 
     case "ping": {
       msg.channel.send("Im alive");
-      break;
-    }
+      break;}
 
     case "memes": {
       fetch("https://meme-api.herokuapp.com/gimme")
@@ -312,8 +317,7 @@ bot.on("message", async msg => {
             .setFooter("Link: " + json.postLink + " | Subreddit : " + json.subreddit +"\nfor better memes follow @saudinigga123 on isntagram");
           msg.channel.send(embed);
         });
-      break;
-    }
+      break;}
 
     case "spam": {
       if (text.includes("@") && msg.author.id !== "698051518754062387") {

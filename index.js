@@ -178,7 +178,27 @@ bot.on("message", async msg => {
 
 
   if (msg.guild === null) {
+
+    var dmhelp = [
+      "**" + prefix + "help__________will bring up this page**",
+      "**" + prefix + "report________to report someone in the Midnight server**"
+    ];
+
     switch (args[0]) {
+
+      case "help":{
+        let sender = msg.author;
+
+        let dmhelp = new Discord.MessageEmbed()
+          .setColor(0X0099ff)
+          .setTitle("All the commands")
+          .setURL("https://discord.gg/gBQc5cm")
+          .setDescription(dmhelp)
+          .setFooter("loser")
+        
+        sender.send(dmhelp);
+          
+      break;}
 
       case "report":{
 
@@ -214,6 +234,11 @@ bot.on("message", async msg => {
               Wonderland.send(reportData);
           
         }
+      break;}
+
+      default:{
+        let sender = msg.author;
+        sender.send("LOL stupid thats not a command try .help")
       break;}
 
     }}
@@ -461,7 +486,6 @@ bot.on("message", async msg => {
 
 
     case "oof": {
-
       num= 3;
       imageNum = Math.floor(Math.random() * (num - 1 + 1)) + 1;
       msg.channel.send ({files: ["./images/oof" + imageNum + ".jpg"]})
@@ -474,7 +498,7 @@ bot.on("message", async msg => {
     case "okok": {
 
       if (talkedRecently.has(msg.author.id)) {
-        msg.channel.send("Cooldown 120 sec");
+        msg.channel.send("Cooldown 60 sec");
         sleep(1000)
         msg.delete();
         return;
@@ -483,7 +507,7 @@ bot.on("message", async msg => {
       talkedRecently.add(msg.author.id);
       setTimeout(() => {
         talkedRecently.delete(msg.author.id);
-      }, 120000);
+      }, 60000);
 
       msg.channel.send("https://cdn.discordapp.com/attachments/608295365384339457/737059292930375780/video0.mov");
       
@@ -516,7 +540,7 @@ bot.on("message", async msg => {
 
     case "woo": {
       if (talkedRecently.has(msg.author.id)) {
-        msg.channel.send("Cooldown 120 sec");
+        msg.channel.send("Cooldown 60 sec");
         sleep(1000)
         msg.delete();
         return;
@@ -525,7 +549,7 @@ bot.on("message", async msg => {
       talkedRecently.add(msg.author.id);
       setTimeout(() => {
         talkedRecently.delete(msg.author.id);
-      }, 120000);
+      }, 60000);
 
       msg.channel.send("https://cdn.discordapp.com/attachments/737775095828709508/738086389358264391/woo.gif");
 
@@ -547,7 +571,7 @@ bot.on("message", async msg => {
     case "hamood":{
       
       if (talkedRecently.has(msg.author.id)) {
-        msg.channel.send("Cooldown 120 sec");
+        msg.channel.send("Cooldown 60 sec");
         sleep(1000)
         msg.delete();
         return;
@@ -556,7 +580,7 @@ bot.on("message", async msg => {
       talkedRecently.add(msg.author.id);
       setTimeout(() => {
         talkedRecently.delete(msg.author.id);
-      }, 120000);
+      }, 60000);
 
       msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/738867948495568976/Hamood_habibi.mp4");
 
@@ -582,7 +606,7 @@ bot.on("message", async msg => {
     case "itis":{
       
       if (talkedRecently.has(msg.author.id)) {
-        msg.channel.send("Cooldown 120 sec");
+        msg.channel.send("Cooldown 60 sec");
         sleep(1000)
         msg.delete();
         return;
@@ -591,7 +615,7 @@ bot.on("message", async msg => {
       talkedRecently.add(msg.author.id);
       setTimeout(() => {
         talkedRecently.delete(msg.author.id);
-      }, 120000);
+      }, 60000);
 
       msg.channel.send("https://cdn.discordapp.com/attachments/608207237667749908/740063663502786670/video0.mov");
 
@@ -609,7 +633,7 @@ bot.on("message", async msg => {
     case "stop":{
       
       if (talkedRecently.has(msg.author.id)) {
-        msg.channel.send("Cooldown 120 sec");
+        msg.channel.send("Cooldown 60 sec");
         sleep(1000)
         msg.delete();
         return;
@@ -618,7 +642,7 @@ bot.on("message", async msg => {
       talkedRecently.add(msg.author.id);
       setTimeout(() => {
         talkedRecently.delete(msg.author.id);
-      }, 120000);
+      }, 60000);
 
       msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/740483382173237299/JoeBuddenstopmeme.mp4");
 
@@ -636,7 +660,7 @@ bot.on("message", async msg => {
     case "cough":{
       
       if (talkedRecently.has(msg.author.id)) {
-        msg.channel.send("Cooldown 120 sec");
+        msg.channel.send("Cooldown 60 sec");
         sleep(1000)
         msg.delete();
         return;
@@ -645,7 +669,7 @@ bot.on("message", async msg => {
       talkedRecently.add(msg.author.id);
       setTimeout(() => {
         talkedRecently.delete(msg.author.id);
-      }, 120000);
+      }, 60000);
 
       msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/740721964531974244/videoplayback.mp4");
 
@@ -663,7 +687,7 @@ bot.on("message", async msg => {
     case "kanye":{
       
       if (talkedRecently.has(msg.author.id)) {
-        msg.channel.send("Cooldown 120 sec");
+        msg.channel.send("Cooldown 60 sec");
         sleep(1000)
         msg.delete();
         return;
@@ -672,7 +696,7 @@ bot.on("message", async msg => {
       talkedRecently.add(msg.author.id);
       setTimeout(() => {
         talkedRecently.delete(msg.author.id);
-      }, 120000);
+      }, 60000);
 
       msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/740725168904601670/videoplayback_1_online-video-cutter.com.mp4");
 

@@ -439,22 +439,22 @@ bot.on("message", async msg => {
       }
 
       if(!(args[1])){
-        msg.channel.send("the format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight");
+        msg.channel.send("the format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight  1 ");
         return;
       }
 
       if(!(args[2])){
-        msg.channel.send("the format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight");
+        msg.channel.send("the format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight   2");
         return;
       }
 
       if(isNaN(args[1])){
-        msg.channel.send("the format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight");
+        msg.channel.send("the format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight  3");
         return;
       }
     
-      if(args[1] !== "0" || args[1] !== "1" || args[1] !== "2" || args[1] !== "3"){
-        msg.channel.send("the format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight");
+      if(args[1] !== "0" && args[1] !== "1" && args[1] !== "2" && args[1] !== "3"){
+        msg.channel.send("the format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight  4");
         return;
       }
 

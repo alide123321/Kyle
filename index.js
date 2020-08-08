@@ -204,14 +204,14 @@ bot.on("message", async msg => {
     switch (args[0]) {
 
       case "help":{
-        let dmhelp = new Discord.MessageEmbed()
+        let help = new Discord.MessageEmbed()
           .setColor(0X0099ff)
           .setTitle("All the commands")
           .setURL("https://discord.gg/gBQc5cm")
           .setDescription(dmhelp)
           .setFooter("loser")
         
-        sender.send(dmhelp);
+        sender.send(help);
           
       break;}
 

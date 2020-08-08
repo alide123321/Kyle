@@ -186,11 +186,6 @@ bot.on("message", async msg => {
 
   if (msg.guild === null) {
 
-
-    
-    let sender = msg.author;
-    console.log(text.charAt(0));
-
     if (text.charAt(0) !== "."){
       sender.send("LOL stupid thats not a command try .help")
     }

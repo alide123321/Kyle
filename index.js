@@ -170,6 +170,13 @@ var temporary = []
 
 bot.on("message", async msg => {
 
+  if (msg.author.bot) return;
+
+  if (msg.guild === null) 
+    if (msg.content.charAt(0) !== ".")
+      msg.author.send("LOL stupid thats not a command try .help")
+    
+  
 
   if (msg.author.bot || !msg.content.startsWith(prefix)) return; // Ignore the message if it's from a bot or doesn't start with the prefix.
 
@@ -179,6 +186,16 @@ bot.on("message", async msg => {
 
   if (msg.guild === null) {
 
+
+    
+    let sender = msg.author;
+    console.log(text.charAt(0));
+
+    if (text.charAt(0) !== "."){
+      sender.send("LOL stupid thats not a command try .help")
+    }
+
+
     var dmhelp = [
       "**" + prefix + "help__________will bring up this page**",
       "**" + prefix + "report________to report someone in the Midnight server**"
@@ -187,8 +204,6 @@ bot.on("message", async msg => {
     switch (args[0]) {
 
       case "help":{
-        let sender = msg.author;
-
         let dmhelp = new Discord.MessageEmbed()
           .setColor(0X0099ff)
           .setTitle("All the commands")
@@ -237,14 +252,12 @@ bot.on("message", async msg => {
       break;}
 
       default:{
-        let sender = msg.author;
         sender.send("LOL stupid thats not a command try .help")
       break;}
 
     }}
 
     if (msg.guild === null) return;
-
 
     let serverID = msg.guild.id;
 

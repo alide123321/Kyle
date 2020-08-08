@@ -43,7 +43,8 @@ var funhelp = [
   "**" + prefix + "our___________Our stuff**",
   "**" + prefix + "smh___________disappointed**",
   "**" + prefix + "kith__________gimme kith**",
-  "**" + prefix + "wtf___________wtf?**"
+  "**" + prefix + "wtf___________wtf?**",
+  "**" + prefix + "bruh__________that face**"
 ];
 var modshelp = [
   "**" + prefix + "help__________will bring up this page**",
@@ -720,6 +721,10 @@ bot.on("message", async msg => {
         })
         .catch(console.error);
       }
+    break;}
+
+    case "bruh": {
+      msg.channel.send("https://cdn.discordapp.com/attachments/700670516570095677/741569349873303572/image0.jpg")
     break;}
     
   }

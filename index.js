@@ -118,6 +118,10 @@ bot.on('messageReactionAdd', async (reaction, user) => {
 bot.on('messageReactionRemove', async (reaction, user) => {
   if(!user || user.bot || !reaction.message.channel.guild) 
     return;
+
+    if(reaction.message.channel.id === "709238410732240906")
+        await reaction.message.guild.members.cache.get(user.id).roles.remove("716092067243098174")
+
     
     if(reaction.message.channel.id === "740809935247507566"){
       if(reaction.emoji.name === 'movie_night')

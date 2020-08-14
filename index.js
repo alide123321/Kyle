@@ -62,7 +62,8 @@ var VChelp = [
   "**" + prefix + "itis__________IT IS WHAT IT ISSS**",
   "**" + prefix + "stop__________just stop**",
   "**" + prefix + "cough_________Weed cough**",
-  "**" + prefix + "kanye_________shut the fuck up!**"
+  "**" + prefix + "kanye_________shut the fuck up!**",
+  "**" + prefix + "mad___________HOES MAD!!!**"
 ];
 
 
@@ -729,6 +730,33 @@ bot.on("message", async msg => {
 
     case "bruh": {
       msg.channel.send("https://cdn.discordapp.com/attachments/700670516570095677/741569349873303572/image0.jpg")
+    break;}
+
+    case "mad":{
+      
+      if (talkedRecently.has(msg.author.id)) {
+        msg.channel.send("Cooldown 60 sec");
+        sleep(1000)
+        msg.delete();
+        return;
+      }
+    
+      talkedRecently.add(msg.author.id);
+      setTimeout(() => {
+        talkedRecently.delete(msg.author.id);
+      }, 60000);
+
+      msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/743726550213460068/HOES_MAD_FULL_VIDEO.mp4");
+
+      var VC = msg.member.voice.channel;
+        if (VC){
+          VC.join()
+            .then(connection => {
+          const dispatcher = connection.play('./sounds/mad.mp3', { volume: 0.7 });
+          dispatcher.on("end", end => {VC.leave()});
+        })
+        .catch(console.error);
+      }
     break;}
     
   }

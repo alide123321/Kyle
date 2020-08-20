@@ -17,6 +17,7 @@ require('dotenv').config();
 
 const talkedRecently = new Set();
 
+
 const moment = require("moment");
 const Console = console;
 let options = {
@@ -514,7 +515,7 @@ bot.on("message", async msg => {
 
     case "okok": {
 
-      if (talkedRecently.has(msg.author.id)) {
+      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
         msg.channel.send("Cooldown 60 sec");
         sleep(1000)
         msg.delete();
@@ -532,8 +533,8 @@ bot.on("message", async msg => {
         if (VC){
           VC.join()
             .then(connection => {
-          const dispatcher = connection.play('./sounds/okok.mp3', { volume: 0.5 });
-          dispatcher.on("end", end => {VC.leave()});
+          let dispatcher = connection.play('./sounds/okok.mp3', { volume: 0.5 });
+          dispatcher.on("finish", end => {VC.leave();});
         })
         .catch(console.error);
       }
@@ -556,7 +557,7 @@ bot.on("message", async msg => {
     break;}
 
     case "woo": {
-      if (talkedRecently.has(msg.author.id)) {
+      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
         msg.channel.send("Cooldown 60 sec");
         sleep(1000)
         msg.delete();
@@ -575,7 +576,7 @@ bot.on("message", async msg => {
           VC.join()
             .then(connection => {
           const dispatcher = connection.play('./sounds/woo.mp3', { volume: 0.25 });
-          dispatcher.on("end", end => {VC.leave()});
+          dispatcher.on("finish", end => {VC.leave();});
         })
         .catch(console.error);
       }
@@ -587,7 +588,7 @@ bot.on("message", async msg => {
 
     case "hamood":{
       
-      if (talkedRecently.has(msg.author.id)) {
+      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
         msg.channel.send("Cooldown 60 sec");
         sleep(1000)
         msg.delete();
@@ -606,7 +607,7 @@ bot.on("message", async msg => {
           VC.join()
             .then(connection => {
           const dispatcher = connection.play('./sounds/hamood.mp3', { volume: 0.5 });
-          dispatcher.on("end", end => {VC.leave()});
+          dispatcher.on("finish", end => {VC.leave();});
         })
         .catch(console.error);
       }
@@ -622,7 +623,7 @@ bot.on("message", async msg => {
 
     case "itis":{
       
-      if (talkedRecently.has(msg.author.id)) {
+      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
         msg.channel.send("Cooldown 60 sec");
         sleep(1000)
         msg.delete();
@@ -641,7 +642,7 @@ bot.on("message", async msg => {
           VC.join()
             .then(connection => {
           const dispatcher = connection.play('./sounds/itis.mp3', { volume: 0.5 });
-          dispatcher.on("end", end => {VC.leave()});
+          dispatcher.on("finish", end => {VC.leave();});
         })
         .catch(console.error);
       }
@@ -649,7 +650,7 @@ bot.on("message", async msg => {
 
     case "stop":{
       
-      if (talkedRecently.has(msg.author.id)) {
+      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
         msg.channel.send("Cooldown 60 sec");
         sleep(1000)
         msg.delete();
@@ -668,7 +669,7 @@ bot.on("message", async msg => {
           VC.join()
             .then(connection => {
           const dispatcher = connection.play('./sounds/stop.mp3', { volume: 0.5 });
-          dispatcher.on("end", end => {VC.leave()});
+          dispatcher.on("finish", end => {VC.leave();});
         })
         .catch(console.error);
       }
@@ -676,7 +677,7 @@ bot.on("message", async msg => {
 
     case "cough":{
       
-      if (talkedRecently.has(msg.author.id)) {
+      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
         msg.channel.send("Cooldown 60 sec");
         sleep(1000)
         msg.delete();
@@ -695,7 +696,7 @@ bot.on("message", async msg => {
           VC.join()
             .then(connection => {
           const dispatcher = connection.play('./sounds/cough.mp3', { volume: 0.7 });
-          dispatcher.on("end", end => {VC.leave()});
+          dispatcher.on("finish", end => {VC.leave();});
         })
         .catch(console.error);
       }
@@ -703,7 +704,7 @@ bot.on("message", async msg => {
 
     case "kanye":{
       
-      if (talkedRecently.has(msg.author.id)) {
+      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
         msg.channel.send("Cooldown 60 sec");
         sleep(1000)
         msg.delete();
@@ -722,7 +723,7 @@ bot.on("message", async msg => {
           VC.join()
             .then(connection => {
           const dispatcher = connection.play('./sounds/Kanye.mp3', { volume: 0.7 });
-          dispatcher.on("end", end => {VC.leave()});
+          dispatcher.on("finish", end => {VC.leave();});
         })
         .catch(console.error);
       }
@@ -734,7 +735,7 @@ bot.on("message", async msg => {
 
     case "mad":{
       
-      if (talkedRecently.has(msg.author.id)) {
+      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
         msg.channel.send("Cooldown 60 sec");
         sleep(1000)
         msg.delete();
@@ -753,7 +754,7 @@ bot.on("message", async msg => {
           VC.join()
             .then(connection => {
           const dispatcher = connection.play('./sounds/mad.mp3', { volume: 0.35 });
-          dispatcher.on("end", end => {VC.leave()});
+          dispatcher.on("finish", end => {VC.leave();});
         })
         .catch(console.error);
       }
@@ -778,6 +779,8 @@ function sleep(milliseconds) {
     currentDate = Date.now();
   } while (currentDate - date < milliseconds);
 }
+
+
 
 /*
 case "react": {

@@ -760,6 +760,32 @@ bot.on("message", async msg => {
       }
     break;}
     
+    case "gay":{
+      
+      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
+        msg.channel.send("Cooldown 60 sec");
+        sleep(1000)
+        msg.delete();
+        return;
+      }
+    
+      talkedRecently.add(msg.author.id);
+      setTimeout(() => {
+        talkedRecently.delete(msg.author.id);
+      }, 60000);
+
+      msg.channel.send("https://cdn.discordapp.com/attachments/608207237667749908/746398464220463216/video0.mp4");
+
+      var VC = msg.member.voice.channel;
+        if (VC){
+          VC.join()
+            .then(connection => {
+          const dispatcher = connection.play('./sounds/gay.mp3', { volume: 0.5 });
+          dispatcher.on("finish", end => {VC.leave();});
+        })
+        .catch(console.error);
+      }
+    break;}
   }
 });
 

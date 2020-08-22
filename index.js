@@ -64,7 +64,8 @@ var VChelp = [
   "**" + prefix + "stop__________just stop**",
   "**" + prefix + "cough_________Weed cough**",
   "**" + prefix + "kanye_________shut the fuck up!**",
-  "**" + prefix + "mad___________HOES MAD!!!**"
+  "**" + prefix + "mad___________HOES MAD!!!**",
+  "**" + prefix + "gay___________HES GAY!!!**"
 ];
 
 

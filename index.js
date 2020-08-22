@@ -154,7 +154,7 @@ var temporaryw = [] // private vc waitting room
 bot.on('voiceStateUpdate', async (oldState, newState,) => {
 
   if (newState.channelID === '746447827055673434') {
-      newState.guild.channels.create(newState.member.user.username + "'s private room ", {
+      newState.guild.channels.create(newState.member.user.username + " [private room] ", {
 
         type: 'voice',
         parent: '707452089453903943',
@@ -180,7 +180,7 @@ bot.on('voiceStateUpdate', async (oldState, newState,) => {
         temporary.push(vc);
       });
 
-      newState.guild.channels.create(newState.member.user.username + "'s wating room ", {
+      newState.guild.channels.create(newState.member.user.username + " [wating room] ", {
 
         type: 'voice',
         parent: '707452089453903943'

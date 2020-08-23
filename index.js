@@ -179,7 +179,7 @@ bot.on('voiceStateUpdate', async (oldState, newState,) => {
         temporary.push(vc);
       });
 
-      newState.guild.channels.create(newState.member.user.username + " [wating room] ", {
+      newState.guild.channels.create(newState.member.user.username + " [waiting room] ", {
 
         type: 'voice',
         parent: '707452089453903943'

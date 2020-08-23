@@ -331,6 +331,7 @@ bot.on("message", async msg => {
     let Wonderland = bot.channels.cache.get('730388529171136522')
     if (Wonderland === msg.channel.id)
       msg.channel.bulkDelete(2);
+
   }
 
   switch (args[0]) {
@@ -412,6 +413,19 @@ bot.on("message", async msg => {
       break;}
 
     case "spam": {
+
+      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
+        msg.channel.send("Cooldown 120 sec");
+        sleep(1000)
+        msg.delete();
+        return;
+      }
+    
+      talkedRecently.add(msg.author.id);
+      setTimeout(() => {
+        talkedRecently.delete(msg.author.id);
+      }, 120000);
+
       if (text.includes("@") && msg.author.id !== "698051518754062387") {
         msg.channel.send("no!");
         break;

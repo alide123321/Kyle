@@ -354,8 +354,9 @@ bot.on("message", async msg => {
         .addFields(
           {name: "Check out the commands on our website", value: helplink}, 
           {name: "**Meme commands**", value: prefix+"memehelp", inline: true},
-          {name: "**Meme commands**", value: prefix+"modhelp", inline: true},
-          {name: "**VC commands**", value: prefix+"vchelp", inline: true}
+          {name: "**VC commands**", value: prefix+"vchelp", inline: true},
+          {name: "**Mod commands**", value: prefix+"modhelp", inline: true}
+          
         )
         .setImage('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
       msg.channel.send(helpem);

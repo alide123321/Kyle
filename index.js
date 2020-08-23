@@ -78,12 +78,10 @@ bot.once("ready", () => {
 });
 
 bot.on('guildMemberAdd', member => {
-  member.guild.channels.cache.get('599061991281131531').send("Welcome to Midnight, <@" + member.user.id + ">! To get started, visit <#709238410732240906> and react then go on to <#716212510398873651>. Enjoy your stay! <:goodnight:716209532233318472> <:cheemspray:716217215275237427>"); 
+  member.guild.channels.cache.get('599061991281131531').send("Welcome to Wonderland, <@" + member.user.id + ">! To get started, visit <#709238410732240906> and react then go on to <#716212510398873651>. Enjoy your stay! <:goodnight:716209532233318472> <:cheemspray:716217215275237427>"); 
+  serverstats(member);
 });
 
-bot.on("guildMemberAdd", (member) => {
-  serverstats(member)
-});
 
 bot.on("guildMemberRemove", (member) => {
   serverstats(member)

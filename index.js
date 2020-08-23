@@ -328,19 +328,9 @@ bot.on("message", async msg => {
 
   let SWonderland = '599061990828277770'; // Wonderland server ID
   if (serverID == SWonderland && msg.channel.id == "715457095406714931"){
-
-    if (msg.author.bot) return;
-
-    let Wonderland = bot.channels.cache.get('730388529171136522');
-      
-    let ok = new Discord.MessageEmbed()
-      .setColor(0x008000)
-      .setTitle("Thank You!\n your message was sent")
-    msg.channel.send(ok);
-
-
-    msg.channel.bulkDelete(99);
-    
+    let Wonderland = bot.channels.cache.get('730388529171136522')
+    if (Wonderland === msg.channel.id)
+      msg.channel.bulkDelete(2);
   }
 
   switch (args[0]) {

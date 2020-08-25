@@ -364,7 +364,6 @@ bot.on("message", async msg => {
         {name: "Check out the commands on our website", value: helplink}, 
         {name: "**Meme commands**", value: funhelp}
       )
-      .setImage('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
     msg.channel.send(memehelp);
     break;}
 
@@ -392,7 +391,6 @@ bot.on("message", async msg => {
           {name: "Check out the commands on our website", value: helplink}, 
           {name: "**VCcommands**", value: VChelp}
     )
-        .setImage('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
     msg.channel.send(modhelp);
     break;}
 

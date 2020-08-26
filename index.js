@@ -64,6 +64,7 @@ var VChelp = [
   "**" + prefix + "stop__________just stop**",
   "**" + prefix + "cough_________Weed cough**",
   "**" + prefix + "kanye_________shut the fuck up!**",
+  "**" + prefix + "rock__________Shut up bitch!**",
   "**" + prefix + "mad___________HOES MAD!!!**",
   "**" + prefix + "gay___________HES GAY!!!**",
   "**" + prefix + "sad___________it's actually changes by x**"
@@ -785,6 +786,33 @@ bot.on("message", async msg => {
           VC.join()
             .then(connection => {
           const dispatcher = connection.play('./sounds/Kanye.mp3', { volume: 0.7 });
+          dispatcher.on("finish", end => {VC.leave();});
+        })
+        .catch(console.error);
+      }
+    break;}
+
+    case "rock":{
+      
+      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
+        msg.channel.send("Cooldown 60 sec");
+        sleep(1000)
+        msg.delete();
+        return;
+      }
+    
+      talkedRecently.add(msg.author.id);
+      setTimeout(() => {
+        talkedRecently.delete(msg.author.id);
+      }, 60000);
+
+      msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/748035445140619264/rock.mp4");
+
+      var VC = msg.member.voice.channel;
+        if (VC){
+          VC.join()
+            .then(connection => {
+          const dispatcher = connection.play('./sounds/rock.mp3', { volume: 0.7 });
           dispatcher.on("finish", end => {VC.leave();});
         })
         .catch(console.error);

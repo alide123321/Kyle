@@ -67,7 +67,8 @@ var VChelp = [
   "**" + prefix + "rock__________Shut up bitch!**",
   "**" + prefix + "mad___________HOES MAD!!!**",
   "**" + prefix + "gay___________HES GAY!!!**",
-  "**" + prefix + "sad___________it's actually changes by x**"
+  "**" + prefix + "sad___________it's actually changes by x**",
+  "**" + prefix + "smoothie______im about to try my smoothie**"
 ];
 
 
@@ -812,7 +813,7 @@ bot.on("message", async msg => {
         if (VC){
           VC.join()
             .then(connection => {
-          const dispatcher = connection.play('./sounds/rock.mp3', { volume: 0.7 });
+          const dispatcher = connection.play('./sounds/rock.mp3', { volume: 0.6 });
           dispatcher.on("finish", end => {VC.leave();});
         })
         .catch(console.error);

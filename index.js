@@ -956,5 +956,5 @@ case "react": {
                 .setColor(0Xb05c4d)
             msg.channel.send(embed);
 })
-*/
-bot.login("NzEzODc4MTA5NTA5Nzc5NTE2.XsmgzA.cfnc84TIW_KWXnyOyNVpDeuADJ0"); // turn bot online
+*/token
+bot.login(token); // turn bot online

@@ -262,7 +262,7 @@ bot.on("message", async msg => {
 
     var dmhelp = [
       "**" + prefix + "help__________will bring up this page**",
-      "**" + prefix + "report________to report someone in the Midnight server**"
+      "**" + prefix + "report________to report someone/something in the Wonderland server**"
     ];
 
     switch (args[0]) {
@@ -274,7 +274,7 @@ bot.on("message", async msg => {
           .setURL("https://discord.gg/gBQc5cm")
           .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
           .setDescription(dmhelp)
-          .setFooter("loser")
+          .setFooter("I have diffrent commands if use me inside a server")
         
         sender.send(help);
           
@@ -929,6 +929,33 @@ bot.on("message", async msg => {
           VC.join()
             .then(connection => {
           const dispatcher = connection.play('./sounds/smoothie.mp3', { volume: 0.7 });
+          dispatcher.on("finish", end => {VC.leave();});
+        })
+        .catch(console.error);
+      }
+    break;}
+
+    case "itsme":{
+      
+      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
+        msg.channel.send("Cooldown 60 sec");
+        sleep(1000)
+        msg.delete();
+        return;
+      }
+    
+      talkedRecently.add(msg.author.id);
+      setTimeout(() => {
+        talkedRecently.delete(msg.author.id);
+      }, 60000);
+
+      msg.channel.send("https://cdn.discordapp.com/attachments/599061991281131531/749542094783381624/Its_me_Im_niggas.mp4");
+
+      var VC = msg.member.voice.channel;
+        if (VC){
+          VC.join()
+            .then(connection => {
+          const dispatcher = connection.play('./sounds/itsme.mp3', { volume: 0.7 });
           dispatcher.on("finish", end => {VC.leave();});
         })
         .catch(console.error);

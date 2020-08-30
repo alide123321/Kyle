@@ -44,7 +44,8 @@ var funhelp = [
   "**" + prefix + "smh___________disappointed**",
   "**" + prefix + "kith__________gimme kith**",
   "**" + prefix + "wtf___________wtf?**",
-  "**" + prefix + "bruh__________that face**"
+  "**" + prefix + "bruh__________that face**",
+  "**" + prefix + "pardon________PARDON.**"
 ];
 var modshelp = [
   "**" + prefix + "help__________will bring up this page**",
@@ -144,7 +145,6 @@ bot.on('messageReactionRemove', async (reaction, user) => {
     }
     
 })
-
 
 
 
@@ -563,7 +563,7 @@ bot.on("message", async msg => {
         
 
     break;}
-
+    
 
 
     case "oof": {
@@ -574,6 +574,10 @@ bot.on("message", async msg => {
 
     case "emilie": {
       msg.channel.send("https://cdn.discordapp.com/attachments/599061991281131531/736649467045871616/emiliestfu.gif");
+    break;}
+
+    case "pardon": {
+      msg.channel.send("https://cdn.discordapp.com/attachments/608207237667749908/749520307575980092/image0.jpg");
     break;}
 
     case "okok": {

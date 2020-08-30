@@ -378,8 +378,7 @@ bot.on("message", async msg => {
         .addFields(
           {name: "Check out the commands on our website", value: helplink}, 
           {name: "**Moderatorcommands**", value: modshelp}
-    )
-        .setImage('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
+        )
     msg.channel.send(modhelp);
     break;}
 
@@ -427,7 +426,7 @@ bot.on("message", async msg => {
       }, 120000);
 
       if (text.includes("@") && msg.author.id !== "698051518754062387") {
-        msg.channel.send("no!");
+        msg.channel.send("No.");
         break;
       }
       for (var i = 0; i !== 5; ++i) msg.reply(" said: " + text.slice(5) + " ");

@@ -68,7 +68,8 @@ var VChelp = [
   "**" + prefix + "mad___________HOES MAD!!!**",
   "**" + prefix + "gay___________HES GAY!!!**",
   "**" + prefix + "sad___________it's actually changes by x**",
-  "**" + prefix + "smoothie______im about to try my smoothie**"
+  "**" + prefix + "smoothie______im about to try my smoothie**",
+  "**" + prefix + "itsme_________its me im **"
 ];
 
 

@@ -538,8 +538,7 @@ bot.on("message", async msg => {
           {name: "**VC commands**", value: prefix+"vchelp", inline: true},
           {name: "**Mod commands**", value: prefix+"modhelp", inline: true},
           {name: "**balance commands**", value: prefix+"balhelp", inline: true},
-          
-        )
+          )
         .setImage('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
       msg.channel.send(helpem);
 

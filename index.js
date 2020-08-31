@@ -31,6 +31,23 @@ const version = "1.1.0";
 const helplink = "https://sites.google.com/view/kyle-bot/home";
 const auther = "alide123321#9518";
 const queue = new Map();
+const Fs = require('fs');
+
+var balhelp = [
+  "**" + prefix + "newbal________use this command first**",
+  "**" + prefix + "daily_________adds 10 coins everyday**",
+  "**" + prefix + "pay___________pay someone**",
+  "**" + prefix + "bal___________to check your balance **"
+]
+var modshelp = [
+  "**" + prefix + "help__________will bring up this page**",
+  "**" + prefix + "website_______Do you to check put our website?**",
+  "**" + prefix + "ping__________will tell you if the bot is online**",
+  "**" + prefix + "clear <#>_____clears the messages above it by #**", 
+  "**" + prefix + "info__________more information about the bot**",
+  "**" + prefix + "Report________to report anything related to this server DM me**",
+  "**" + prefix + "announce <#><title>_after that the bot will ask for the description**"
+];
 var funhelp = [
   "**" + prefix + "memes_________for the best memes**",
   "**" + prefix + "spam__________will spam whatever you tell it to 5X**",
@@ -47,15 +64,6 @@ var funhelp = [
   "**" + prefix + "bruh__________that face**",
   "**" + prefix + "pardon________PARDON.**"
 ];
-var modshelp = [
-  "**" + prefix + "help__________will bring up this page**",
-  "**" + prefix + "website_______Do you to check put our website?**",
-  "**" + prefix + "ping__________will tell you if the bot is online**",
-  "**" + prefix + "clear <#>_____clears the messages above it by #**", 
-  "**" + prefix + "info__________more information about the bot**",
-  "**" + prefix + "Report________to report anything related to this server DM me**",
-  "**" + prefix + "announce <#><title>_after that the bot will ask for the description**"
-];
 var VChelp = [
   "**" + prefix + "okok__________PopSmoke's OK OK**",
   "**" + prefix + "woo___________Woo back**",
@@ -71,6 +79,7 @@ var VChelp = [
   "**" + prefix + "smoothie______im about to try my smoothie**",
   "**" + prefix + "itsme_________its me im **"
 ];
+
 
 
 
@@ -342,6 +351,181 @@ bot.on("message", async msg => {
 
   switch (args[0]) {
 
+    //----- start of economy -----//
+    case "newbal": {
+      var UserJSON = JSON.parse(Fs.readFileSync("./DB/users.json"));
+
+      if (UserJSON[msg.author.id]) {
+        let WarningEmbed = new Discord.MessageEmbed();
+        WarningEmbed.setTitle("**ERROR**");
+        WarningEmbed.setColor(0XFF0000);
+        WarningEmbed.setDescription("You are already in the system");
+        msg.channel.send(WarningEmbed);
+        return;
+    }
+
+      UserJSON[msg.author.id] = {
+        bal : 100,
+        lastclaim : 0,
+        lastwork: 0,
+        workers: 0,
+      }
+      Fs.writeFileSync("./DB/users.json", JSON.stringify(UserJSON));
+
+      let SuccessEmbed = new Discord.MessageEmbed();
+      SuccessEmbed.setTitle("**SUCCESS**");
+      SuccessEmbed.setColor(0X32CD32);
+      SuccessEmbed.setDescription("You have joined the economy!")
+      msg.channel.send(SuccessEmbed);
+      break;}
+
+    case "daily": {
+      let UserJSON = JSON.parse(Fs.readFileSync("./DB/users.json"));
+
+      if (!UserJSON[msg.author.id]) {
+        let ErrorEmbed = new Discord.MessageEmbed();
+          ErrorEmbed.setTitle("**ERROR**");
+          ErrorEmbed.setColor(0XFF0000);
+          ErrorEmbed.setDescription("You are not in the system try .newbal");
+          msg.channel.send(ErrorEmbed);
+        return;}
+
+      if (Math.floor(new Date().getTime() - UserJSON[msg.author.id].lastclaim) / (1000 * 60 * 60 * 24) < 1) {
+        let WarningEmbed = new Discord.MessageEmbed()
+        WarningEmbed.setTitle("**ERROR**");
+        WarningEmbed.setColor(0XFF0000);
+        WarningEmbed.setDescription("You have claimed today already");
+
+        msg.channel.send(WarningEmbed);
+        return;}
+
+      UserJSON[msg.author.id].bal += 10;
+      UserJSON[msg.author.id].lastclaim = new Date().getTime();
+      Fs.writeFileSync("./DB/users.json", JSON.stringify(UserJSON));
+      let SuccessEmbed = new Discord.MessageEmbed();
+      SuccessEmbed.setTitle("**SUCCESS**");
+      SuccessEmbed.setColor(0X32CD32);
+      SuccessEmbed.setDescription("You have claimed your daily reward of 10 coins!");
+      msg.channel.send(SuccessEmbed);
+
+      break;}
+
+    case "pay": {
+      let UserJSON = JSON.parse(Fs.readFileSync("./DB/users.json"));
+      let Money = args[1];
+
+      if (!Money) {
+        let ErrorEmbed = new Discord.MessageEmbed();
+        ErrorEmbed.setTitle("**ERROR**");
+        ErrorEmbed.setColor(0XFF0000);
+        ErrorEmbed.setDescription("Please specify an amount to give .pay <#> <@>");
+        msg.channel.send(ErrorEmbed);
+      return;}
+
+      if (!UserJSON[msg.author.id]) {
+      let ErrorEmbed = new Discord.MessageEmbed();
+        ErrorEmbed.setTitle("**ERROR**");
+        ErrorEmbed.setColor(0XFF0000);
+        ErrorEmbed.setDescription("You are not in the system try .newbal");
+        msg.channel.send(ErrorEmbed);
+      return;}
+
+      if (isNaN(Money)) {
+        let ErrorEmbed = new Discord.MessageEmbed();
+        ErrorEmbed.setTitle("**ERROR**");
+        ErrorEmbed.setColor(0XFF0000);
+        ErrorEmbed.setDescription("Please specify a number .pay <#> <@>");
+        msg.channel.send(ErrorEmbed);
+      return;}
+
+      if (UserJSON[msg.author.id].bal < Money) {
+        let ErrorEmbed = new Discord.MessageEmbed();
+        ErrorEmbed.setTitle("**ERROR**");
+        ErrorEmbed.setColor(0XFF0000);
+        ErrorEmbed.setDescription("You do not have enough money");
+        msg.channel.send(ErrorEmbed);
+      return;}
+
+      if (Money.indexOf(".") != -1 || Money.indexOf("-") != -1 || Money == 0) {
+        let ErrorEmbed = new Discord.MessageEmbed();
+        ErrorEmbed.setTitle("**ERROR**");
+        ErrorEmbed.setColor(0XFF0000);
+        ErrorEmbed.setDescription("Please specify an integer value greater than 0 .pay <#> <@>");
+        msg.channel.send(ErrorEmbed);
+      return;}
+
+      let Mentioned = msg.mentions.members.first();
+        if (!Mentioned) {
+          let ErrorEmbed = new Discord.MessageEmbed();
+          ErrorEmbed.setTitle("**ERROR**");
+          ErrorEmbed.setColor(0XFF0000);
+          ErrorEmbed.setDescription("Please mention a user .pay <#> <@>");
+          msg.channel.send(ErrorEmbed);
+        return;}
+
+      if (!UserJSON[Mentioned.id]) {
+        let ErrorEmbed = new Discord.MessageEmbed();
+        ErrorEmbed.setTitle("**ERROR**");
+        ErrorEmbed.setColor(0XFF0000);
+        ErrorEmbed.setDescription("That pearson isnt in the system tell them to use the .newbal command.");
+        msg.channel.send(ErrorEmbed);
+      return;}
+
+      UserJSON[msg.author.id].bal -= parseInt(Money);
+      UserJSON[Mentioned.id].bal += parseInt(Money);
+
+      Fs.writeFileSync("./DB/users.json", JSON.stringify(UserJSON));
+
+      let SuccessEmbed = new Discord.MessageEmbed();
+      SuccessEmbed.setTitle("**SUCCESS**");
+      SuccessEmbed.setColor(0X32CD32);
+      SuccessEmbed.setDescription("You have given " + Money + " discord coins to " + Mentioned.user.username);
+      msg.channel.send(SuccessEmbed);
+      break;}
+
+    case "bal": {
+      let UserJSON = JSON.parse(Fs.readFileSync("./DB/users.json"));
+
+      if (!UserJSON[msg.author.id]) {
+        let ErrorEmbed = new Discord.MessageEmbed();
+        ErrorEmbed.setTitle("**ERROR**");
+        ErrorEmbed.setColor(0XFF0000);
+        ErrorEmbed.setDescription("You are not in the system try .newbal");
+        msg.channel.send(ErrorEmbed);
+      return;}
+
+      let mentioned = msg.mentions.members.first();
+        if (mentioned) {
+          if (!UserJSON[mentioned.id]) {
+            let ErrorEmbed = new Discord.MessageEmbed();
+            ErrorEmbed.setTitle("**ERROR**");
+            ErrorEmbed.setColor(0XFF0000);
+            ErrorEmbed.setDescription("That pearson isnt in the system tell them to use the .newbal command.");
+            msg.channel.send(ErrorEmbed);
+          return;}
+
+          let SuccessEmbed = new Discord.MessageEmbed();
+          SuccessEmbed.setTitle("**SUCCESS**");
+          SuccessEmbed.setColor(0X32CD32);
+          SuccessEmbed.addField("Balance", UserJSON[mentioned.id].bal);
+          msg.channel.send(SuccessEmbed);
+        return;
+        } else {
+          let SuccessEmbed = new Discord.MessageEmbed();
+          SuccessEmbed.setTitle("**SUCCESS**");
+          SuccessEmbed.setColor(0X32CD32);
+          SuccessEmbed.addField("Balance", UserJSON[msg.author.id].bal);
+          msg.channel.send(SuccessEmbed);
+        }
+      break;}
+
+    //----- end of economy -----//
+
+
+
+
+
+    //----- start of mod -----//
     case "help": {
       let helpem = new Discord.MessageEmbed()
         .setColor('#0099ff')
@@ -352,7 +536,8 @@ bot.on("message", async msg => {
           {name: "Check out the commands on our website", value: helplink}, 
           {name: "**Meme commands**", value: prefix+"memehelp", inline: true},
           {name: "**VC commands**", value: prefix+"vchelp", inline: true},
-          {name: "**Mod commands**", value: prefix+"modhelp", inline: true}
+          {name: "**Mod commands**", value: prefix+"modhelp", inline: true},
+          {name: "**balance commands**", value: prefix+"balhelp", inline: true},
           
         )
         .setImage('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
@@ -399,10 +584,117 @@ bot.on("message", async msg => {
     msg.channel.send(modhelp);
     break;}
 
+    case "balhelp":{
+      let ballhelp = new Discord.MessageEmbed()
+        .setColor('#0099ff')
+        .setTitle("**BalCommands**")
+        .setURL(helplink)
+        .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
+        .addFields(
+          {name: "Check out the commands on our website", value: helplink}, 
+          {name: "**BalCommands**", value: balhelp}
+    )
+    msg.channel.send(ballhelp);
+    break;}
+
     case "ping": {
       msg.channel.send("Im alive");
       break;}
 
+    case "info": {
+      if (args[1] === "version") msg.channel.send("version: " + version);
+      if (args[1] === "auther") msg.channel.send("auther: " + auther);
+      if (args[1] !== "version" && args[1] !== "auther") {
+        msg.channel.send("What do you want more information about?");
+        msg.channel.send("*" + prefix + "info version*");
+        msg.channel.send("*" + prefix + "info auther*");
+      }
+      break;}
+
+    case "website": {
+      msg.channel.send(helplink);
+      break;}
+
+    case "clear": {
+      if (msg.member.hasPermission('ADMINISTRATOR')) {
+        if (!args[1])
+          return msg.reply("Error please define how many msgs do you want to delete");
+        if (args[1] > 100)
+          return msg.channel.send("you can only delete 100 messages at a time");
+        msg.channel.bulkDelete(args[1]);
+        break;
+      }
+      if (msg.member.roles.cache.find(r => r.name !== "Cleaner"))
+        msg.channel.send("sorry you dont have the correct role to use the command");
+      break;}
+
+    case "report": {
+      msg.channel.send("Please DM me to report");
+      break;}
+
+    case "announce": {
+      let chat = bot.channels.cache.get('707451011471507466');
+
+      if (!(msg.member.hasPermission('ADMINISTRATOR'))) {
+        msg.channel.send("dumb dumb ur not a admin");
+      return;}
+  
+      if(!(args[1])){
+        msg.channel.send("the format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight  1 ");
+      return;}
+  
+      if(!(args[2])){
+        msg.channel.send("the format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight   2");
+      return;}
+  
+      if(isNaN(args[1])){
+        msg.channel.send("the format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight  3");
+      return;}
+      
+      if(args[1] !== "0" && args[1] !== "1" && args[1] !== "2" && args[1] !== "3"){
+        msg.channel.send("the format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight  4");
+      return;}
+  
+  
+      let mention = " ";
+      if(args[1] === "0")
+        mention = "no one";
+      if(args[1] === "1")
+        mention = "@everyone";
+      if(args[1] === "2")
+        mention = "<@&740828344794349658>";
+      if(args[1] === "3")
+        mention = "<@&740828341069676594>";
+        
+  
+      let title = text.slice(12);
+  
+      msg.channel.send("What do you want the discription to be? you have 60 seconds to type it"); 
+      let disc = " ";      
+      msg.channel.awaitMessages(m => m.author.id == msg.author.id,
+        {max: 1 , time: 60000}).then(collected => {
+          disc = collected.first().content;
+  
+          let announce = new Discord.MessageEmbed()
+            .setColor('#0099ff')
+            .setTitle("**"+title+"**")
+            .setURL("https://discord.gg/hpcxUFy")
+            .setDescription(disc)
+            .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
+  
+          if(!(mention === "no one"))
+            chat.send("||"+mention+"||");
+          chat.send(announce);
+          chat.send({files: ["./bar.gif"]});
+        })
+      break;}
+    //----- end of mod -----//
+
+
+
+
+
+    //----- start of memes -----//
     case "memes": {
       fetch("https://meme-api.herokuapp.com/gimme")
         .then(res => res.json())
@@ -436,41 +728,6 @@ bot.on("message", async msg => {
       for (var i = 0; i !== 5; ++i) msg.reply(" said: " + text.slice(5) + " ");
       break;}
 
-    case "info": {
-      if (args[1] === "version") msg.channel.send("version: " + version);
-      if (args[1] === "auther") msg.channel.send("auther: " + auther);
-      if (args[1] !== "version" && args[1] !== "auther") {
-        msg.channel.send("What do you want more information about?");
-        msg.channel.send("*" + prefix + "info version*");
-        msg.channel.send("*" + prefix + "info auther*");
-      }
-      break;}
-
-    case "clear": {
-      if (msg.member.hasPermission('ADMINISTRATOR')) {
-        if (!args[1])
-          return msg.reply(
-            "Error please define how many msgs do you want to delete"
-          );
-        if (args[1] > 100)
-          return msg.channel.send("you can only delete 100 messages at a time");
-        msg.channel.bulkDelete(args[1]);
-        break;
-      }
-      if (msg.member.roles.cache.find(r => r.name !== "Cleaner"))
-        msg.channel.send(
-          "sorry you dont have the correct role to use the command"
-        );
-    break;}
-
-    case "website": {
-      msg.channel.send(helplink);
-    break;}
-
-    case "report": {
-      msg.channel.send("Please DM me to report");
-    break;}
-
     case "shhdm": {
       let mention = msg.mentions.users.first();
 
@@ -501,89 +758,60 @@ bot.on("message", async msg => {
           mention.send(embed)
 
       msg.channel.bulkDelete(1);
-    break;}
-
-    case "announce": {
-      let chat = bot.channels.cache.get('707451011471507466');
-
-      if (!(msg.member.hasPermission('ADMINISTRATOR'))) {
-        msg.channel.send("dumb dumb ur not a admin");
-        return;
-      }
-
-      if(!(args[1])){
-        msg.channel.send("the format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight  1 ");
-        return;
-      }
-
-      if(!(args[2])){
-        msg.channel.send("the format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight   2");
-        return;
-      }
-
-      if(isNaN(args[1])){
-        msg.channel.send("the format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight  3");
-        return;
-      }
-    
-      if(args[1] !== "0" && args[1] !== "1" && args[1] !== "2" && args[1] !== "3"){
-        msg.channel.send("the format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight  4");
-        return;
-      }
-
-
-      let mention = " ";
-      if(args[1] === "0")
-        mention = "no one";
-      if(args[1] === "1")
-        mention = "@everyone";
-      if(args[1] === "2")
-        mention = "<@&740828344794349658>";
-      if(args[1] === "3")
-        mention = "<@&740828341069676594>";
-      
-
-      let title = text.slice(12);
-
-      msg.channel.send("What do you want the discription to be? you have 60 seconds to type it"); 
-      let disc = " ";      
-      msg.channel.awaitMessages(m => m.author.id == msg.author.id,
-        {max: 1 , time: 60000}).then(collected => {
-          disc = collected.first().content;
-
-          let announce = new Discord.MessageEmbed()
-            .setColor('#0099ff')
-            .setTitle("**"+title+"**")
-            .setURL("https://discord.gg/hpcxUFy")
-            .setDescription(disc)
-            .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
-
-          if(!(mention === "no one"))
-            chat.send("||"+mention+"||");
-          chat.send(announce);
-          chat.send({files: ["./bar.gif"]});
-          
-        })
-        
-
-    break;}
-    
-
+      break;}
 
     case "oof": {
       num = 7;
       imageNum = Math.floor(Math.random() * num) + 1;
       msg.channel.send ({files: ["./images/oof" + imageNum + ".jpg"]})
-    break;}
+      break;}
 
     case "emilie": {
       msg.channel.send("https://cdn.discordapp.com/attachments/599061991281131531/736649467045871616/emiliestfu.gif");
-    break;}
+      break;}
+    
+    case "simp": {
+      msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/737305776468656258/image0.jpg");
+      break;}
 
     case "pardon": {
       msg.channel.send("https://cdn.discordapp.com/attachments/608207237667749908/749520307575980092/image0.jpg");
-    break;}
+      break;}
 
+    case "haram": {
+      msg.channel.send("https://cdn.discordapp.com/attachments/599061991281131531/737255123121733652/haram.mp4");
+      break;}
+
+    case "blue": {
+      msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/737791880355381308/blue.jpg");
+      break;}
+
+    case "our": {
+      msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/737306931290570802/Our.png")
+      break;}
+
+    case "smh":{
+        msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/738346577369759825/smh.PNG");
+      break;}
+
+    case "kith":{
+        msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/739689711898984468/image0.jpg");
+      break;}
+
+    case "wtf":{
+        msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/739689656467062914/image0.jpg");
+      break;}
+
+    case "bruh": {
+        msg.channel.send("https://cdn.discordapp.com/attachments/700670516570095677/741569349873303572/image0.jpg")
+      break;}
+    //----- end of memes -----//
+
+
+
+
+
+    //----- start of vc -----//
     case "okok": {
 
       if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
@@ -609,22 +837,6 @@ bot.on("message", async msg => {
         })
         .catch(console.error);
       }
-    break;}
-
-    case "simp": {
-      msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/737305776468656258/image0.jpg");
-    break;}
-
-    case "haram": {
-      msg.channel.send("https://cdn.discordapp.com/attachments/599061991281131531/737255123121733652/haram.mp4");
-    break;}
-
-    case "our": {
-      msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/737306931290570802/Our.png")
-      break;}
-
-    case "blue": {
-      msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/737791880355381308/blue.jpg");
     break;}
 
     case "woo": {
@@ -653,10 +865,6 @@ bot.on("message", async msg => {
       }
     break;}
 
-    case "smh":{
-      msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/738346577369759825/smh.PNG");
-    break;}
-
     case "hamood":{
       
       if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
@@ -682,14 +890,6 @@ bot.on("message", async msg => {
         })
         .catch(console.error);
       }
-    break;}
-
-    case "kith":{
-      msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/739689711898984468/image0.jpg");
-    break;}
-
-    case "wtf":{
-      msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/739689656467062914/image0.jpg");
     break;}
 
     case "itis":{
@@ -827,10 +1027,6 @@ bot.on("message", async msg => {
       }
     break;}
 
-    case "bruh": {
-      msg.channel.send("https://cdn.discordapp.com/attachments/700670516570095677/741569349873303572/image0.jpg")
-    break;}
-
     case "mad":{
       
       if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
@@ -965,6 +1161,7 @@ bot.on("message", async msg => {
         .catch(console.error);
       }
     break;}
+    //----- end of vc -----//
   }
 });
 

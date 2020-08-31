@@ -15,7 +15,7 @@
     "express": "^4.17.1",
     "ffmpeg": "0.0.4",
     "ffmpeg-static": "^4.2.7",
-    "firebase": "^7.17.1",
+    "firebase": "^7.19.1",
     "firebase-admin": "^8.13.0",
     "moment": "^2.27.0",
     "new": "^0.1.1",

@@ -567,8 +567,8 @@ bot.on("message", async msg => {
 
 
     case "oof": {
-      num= 3;
-      imageNum = Math.floor(Math.random() * (num - 1 + 1)) + 1;
+      num = 7;
+      imageNum = Math.floor(Math.random() * num) + 1;
       msg.channel.send ({files: ["./images/oof" + imageNum + ".jpg"]})
     break;}
 

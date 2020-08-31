@@ -54,7 +54,7 @@ var modshelp = [
   "**" + prefix + "clear <#>_____clears the messages above it by #**", 
   "**" + prefix + "info__________more information about the bot**",
   "**" + prefix + "Report________to report anything related to this server DM me**",
-  "**" + prefix + "announce <title>_after that the bot will ask for the description**"
+  "**" + prefix + "announce <#><title>_after that the bot will ask for the description**"
 ];
 var VChelp = [
   "**" + prefix + "okok__________PopSmoke's OK OK**",

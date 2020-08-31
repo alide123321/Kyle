@@ -353,7 +353,7 @@ bot.on("message", async msg => {
 
     //----- start of economy -----//
     case "newbal": {
-      var UserJSON = JSON.parse(Fs.readFileSync("./DB/users.json"));
+      var UserJSON = JSON.parse(Fs.readFileSync("./DataBase/users.json"));
 
       if (UserJSON[msg.author.id]) {
         let WarningEmbed = new Discord.MessageEmbed();
@@ -370,7 +370,7 @@ bot.on("message", async msg => {
         lastwork: 0,
         workers: 0,
       }
-      Fs.writeFileSync("./DB/users.json", JSON.stringify(UserJSON));
+      Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
 
       let SuccessEmbed = new Discord.MessageEmbed();
       SuccessEmbed.setTitle("**SUCCESS**");
@@ -380,7 +380,7 @@ bot.on("message", async msg => {
       break;}
 
     case "daily": {
-      let UserJSON = JSON.parse(Fs.readFileSync("./DB/users.json"));
+      let UserJSON = JSON.parse(Fs.readFileSync("./DataBase/users.json"));
 
       if (!UserJSON[msg.author.id]) {
         let ErrorEmbed = new Discord.MessageEmbed();
@@ -401,7 +401,7 @@ bot.on("message", async msg => {
 
       UserJSON[msg.author.id].bal += 10;
       UserJSON[msg.author.id].lastclaim = new Date().getTime();
-      Fs.writeFileSync("./DB/users.json", JSON.stringify(UserJSON));
+      Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
       let SuccessEmbed = new Discord.MessageEmbed();
       SuccessEmbed.setTitle("**SUCCESS**");
       SuccessEmbed.setColor(0X32CD32);
@@ -411,7 +411,7 @@ bot.on("message", async msg => {
       break;}
 
     case "pay": {
-      let UserJSON = JSON.parse(Fs.readFileSync("./DB/users.json"));
+      let UserJSON = JSON.parse(Fs.readFileSync("./DataBase/users.json"));
       let Money = args[1];
 
       if (!Money) {
@@ -474,7 +474,7 @@ bot.on("message", async msg => {
       UserJSON[msg.author.id].bal -= parseInt(Money);
       UserJSON[Mentioned.id].bal += parseInt(Money);
 
-      Fs.writeFileSync("./DB/users.json", JSON.stringify(UserJSON));
+      Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
 
       let SuccessEmbed = new Discord.MessageEmbed();
       SuccessEmbed.setTitle("**SUCCESS**");
@@ -484,7 +484,7 @@ bot.on("message", async msg => {
       break;}
 
     case "bal": {
-      let UserJSON = JSON.parse(Fs.readFileSync("./DB/users.json"));
+      let UserJSON = JSON.parse(Fs.readFileSync("./DataBase/users.json"));
 
       if (!UserJSON[msg.author.id]) {
         let ErrorEmbed = new Discord.MessageEmbed();

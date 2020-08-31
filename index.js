@@ -561,7 +561,7 @@ bot.on("message", async msg => {
           
         })
         
-        
+
     break;}
     
 

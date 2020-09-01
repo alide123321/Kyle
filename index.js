@@ -33,11 +33,14 @@ const auther = "alide123321#9518";
 const queue = new Map();
 const Fs = require('fs');
 
-var balhelp = [
+var moneyhelp = [
   "**" + prefix + "newbal________use this command first**",
   "**" + prefix + "daily_________adds 10 coins everyday**",
   "**" + prefix + "pay___________pay someone**",
   "**" + prefix + "bal___________to check your balance **"
+]
+var gamblhelp = [
+  "**" + prefix + "flip__________a fifty fifty chance of winning**"
 ]
 var modshelp = [
   "**" + prefix + "help__________will bring up this page**",
@@ -355,10 +358,10 @@ bot.on("message", async msg => {
       var UserJSON = JSON.parse(Fs.readFileSync("./DataBase/users.json"));
 
       if (UserJSON[msg.author.id]) {
-        let WarningEmbed = new Discord.MessageEmbed();
-        WarningEmbed.setTitle("**ERROR**");
-        WarningEmbed.setColor(0XFF0000);
-        WarningEmbed.setDescription("You are already in the system");
+        let WarningEmbed = new Discord.MessageEmbed()
+          .setTitle("**ERROR**")
+          .setColor(0XFF0000)
+          .setDescription("You are already in the system")
         msg.channel.send(WarningEmbed);
         return;}
 
@@ -370,10 +373,10 @@ bot.on("message", async msg => {
       }
       Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
 
-      let SuccessEmbed = new Discord.MessageEmbed();
-      SuccessEmbed.setTitle("**SUCCESS**");
-      SuccessEmbed.setColor(0X32CD32);
-      SuccessEmbed.setDescription("You have joined the economy!")
+      let SuccessEmbed = new Discord.MessageEmbed()
+        .setTitle("**SUCCESS**")
+        .setColor(0X32CD32)
+        .setDescription("You have joined the economy!")
       msg.channel.send(SuccessEmbed);
       break;}
 
@@ -381,29 +384,28 @@ bot.on("message", async msg => {
       let UserJSON = JSON.parse(Fs.readFileSync("./DataBase/users.json"));
 
       if (!UserJSON[msg.author.id]) {
-        let ErrorEmbed = new Discord.MessageEmbed();
-          ErrorEmbed.setTitle("**ERROR**");
-          ErrorEmbed.setColor(0XFF0000);
-          ErrorEmbed.setDescription("You are not in the system try .newbal");
+        let ErrorEmbed = new Discord.MessageEmbed()
+          .setTitle("**ERROR**")
+          .setColor(0XFF0000)
+          .setDescription("You are not in the system try .newbal")
           msg.channel.send(ErrorEmbed);
         return;}
 
       if (Math.floor(new Date().getTime() - UserJSON[msg.author.id].lastclaim) / (1000 * 60 * 60 * 24) < 1) {
         let WarningEmbed = new Discord.MessageEmbed()
-        WarningEmbed.setTitle("**ERROR**");
-        WarningEmbed.setColor(0XFF0000);
-        WarningEmbed.setDescription("You have claimed today already");
-
+          .setTitle("**ERROR**")
+          .setColor(0XFF0000)
+          .setDescription("You have claimed today already")
         msg.channel.send(WarningEmbed);
         return;}
 
       UserJSON[msg.author.id].bal += 10;
       UserJSON[msg.author.id].lastclaim = new Date().getTime();
       Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
-      let SuccessEmbed = new Discord.MessageEmbed();
-      SuccessEmbed.setTitle("**SUCCESS**");
-      SuccessEmbed.setColor(0X32CD32);
-      SuccessEmbed.setDescription("You have claimed your daily reward of 10 coins!");
+      let SuccessEmbed = new Discord.MessageEmbed()
+        .setTitle("**SUCCESS**")
+        .setColor(0X32CD32)
+        .setDescription("You have claimed your daily reward of 10 coins!")
       msg.channel.send(SuccessEmbed);
 
       break;}
@@ -413,59 +415,59 @@ bot.on("message", async msg => {
       let Money = args[1];
 
       if (!Money) {
-        let ErrorEmbed = new Discord.MessageEmbed();
-        ErrorEmbed.setTitle("**ERROR**");
-        ErrorEmbed.setColor(0XFF0000);
-        ErrorEmbed.setDescription("Please specify an amount to give .pay <#> <@>");
+        let ErrorEmbed = new Discord.MessageEmbed()
+          .setTitle("**ERROR**")
+          .setColor(0XFF0000)
+          .setDescription("Please specify an amount to give .pay <#> <@>")
         msg.channel.send(ErrorEmbed);
       return;}
 
       if (!UserJSON[msg.author.id]) {
-      let ErrorEmbed = new Discord.MessageEmbed();
-        ErrorEmbed.setTitle("**ERROR**");
-        ErrorEmbed.setColor(0XFF0000);
-        ErrorEmbed.setDescription("You are not in the system try .newbal");
+      let ErrorEmbed = new Discord.MessageEmbed()
+        .setTitle("**ERROR**")
+        .setColor(0XFF0000)
+        .setDescription("You are not in the system try .newbal")
         msg.channel.send(ErrorEmbed);
       return;}
 
       if (isNaN(Money)) {
-        let ErrorEmbed = new Discord.MessageEmbed();
-        ErrorEmbed.setTitle("**ERROR**");
-        ErrorEmbed.setColor(0XFF0000);
-        ErrorEmbed.setDescription("Please specify a number .pay <#> <@>");
+        let ErrorEmbed = new Discord.MessageEmbed()
+          .setTitle("**ERROR**")
+          .setColor(0XFF0000)
+          .setDescription("Please specify a number .pay <#> <@>")
         msg.channel.send(ErrorEmbed);
       return;}
 
       if (UserJSON[msg.author.id].bal < Money) {
-        let ErrorEmbed = new Discord.MessageEmbed();
-        ErrorEmbed.setTitle("**ERROR**");
-        ErrorEmbed.setColor(0XFF0000);
-        ErrorEmbed.setDescription("You do not have enough money");
+        let ErrorEmbed = new Discord.MessageEmbed()
+          .setTitle("**ERROR**")
+          .setColor(0XFF0000)
+          .setDescription("You do not have enough money")
         msg.channel.send(ErrorEmbed);
       return;}
 
       if (Money.indexOf(".") != -1 || Money.indexOf("-") != -1 || Money == 0) {
-        let ErrorEmbed = new Discord.MessageEmbed();
-        ErrorEmbed.setTitle("**ERROR**");
-        ErrorEmbed.setColor(0XFF0000);
-        ErrorEmbed.setDescription("Please specify an integer value greater than 0 .pay <#> <@>");
+        let ErrorEmbed = new Discord.MessageEmbed()
+          .setTitle("**ERROR**")
+          .setColor(0XFF0000)
+          .setDescription("Please specify an integer value greater than 0 .pay <#> <@>")
         msg.channel.send(ErrorEmbed);
       return;}
 
       let Mentioned = msg.mentions.members.first();
         if (!Mentioned) {
-          let ErrorEmbed = new Discord.MessageEmbed();
-          ErrorEmbed.setTitle("**ERROR**");
-          ErrorEmbed.setColor(0XFF0000);
-          ErrorEmbed.setDescription("Please mention a user .pay <#> <@>");
+          let ErrorEmbed = new Discord.MessageEmbed()
+            .setTitle("**ERROR**")
+            .setColor(0XFF0000)
+            .setDescription("Please mention a user .pay <#> <@>")
           msg.channel.send(ErrorEmbed);
         return;}
 
       if (!UserJSON[Mentioned.id]) {
-        let ErrorEmbed = new Discord.MessageEmbed();
-        ErrorEmbed.setTitle("**ERROR**");
-        ErrorEmbed.setColor(0XFF0000);
-        ErrorEmbed.setDescription("That pearson isnt in the system tell them to use the .newbal command.");
+        let ErrorEmbed = new Discord.MessageEmbed()
+          .setTitle("**ERROR**")
+          .setColor(0XFF0000)
+          .setDescription("That pearson isnt in the system tell them to use the .newbal command.")
         msg.channel.send(ErrorEmbed);
       return;}
 
@@ -474,10 +476,10 @@ bot.on("message", async msg => {
 
       Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
 
-      let SuccessEmbed = new Discord.MessageEmbed();
-      SuccessEmbed.setTitle("**SUCCESS**");
-      SuccessEmbed.setColor(0X32CD32);
-      SuccessEmbed.setDescription("You have given " + Money + " discord coins to " + Mentioned.user.username);
+      let SuccessEmbed = new Discord.MessageEmbed()
+        .setTitle("**SUCCESS**")
+        .setColor(0X32CD32)
+        .setDescription("You have given " + Money + " discord coins to " + Mentioned.user.username)
       msg.channel.send(SuccessEmbed);
       break;}
 
@@ -485,34 +487,34 @@ bot.on("message", async msg => {
       let UserJSON = JSON.parse(Fs.readFileSync("./DataBase/users.json"));
 
       if (!UserJSON[msg.author.id]) {
-        let ErrorEmbed = new Discord.MessageEmbed();
-        ErrorEmbed.setTitle("**ERROR**");
-        ErrorEmbed.setColor(0XFF0000);
-        ErrorEmbed.setDescription("You are not in the system try .newbal");
+        let ErrorEmbed = new Discord.MessageEmbed()
+          .setTitle("**ERROR**")
+          .setColor(0XFF0000)
+          .setDescription("You are not in the system try .newbal")
         msg.channel.send(ErrorEmbed);
       return;}
 
       let mentioned = msg.mentions.members.first();
         if (mentioned) {
           if (!UserJSON[mentioned.id]) {
-            let ErrorEmbed = new Discord.MessageEmbed();
-            ErrorEmbed.setTitle("**ERROR**");
-            ErrorEmbed.setColor(0XFF0000);
-            ErrorEmbed.setDescription("That pearson isnt in the system tell them to use the .newbal command.");
+            let ErrorEmbed = new Discord.MessageEmbed()
+              .setTitle("**ERROR**")
+              .setColor(0XFF0000)
+              .setDescription("That pearson isnt in the system tell them to use the .newbal command.")
             msg.channel.send(ErrorEmbed);
           return;}
 
-          let SuccessEmbed = new Discord.MessageEmbed();
-          SuccessEmbed.setTitle("**SUCCESS**");
-          SuccessEmbed.setColor(0X32CD32);
-          SuccessEmbed.addField("Balance", UserJSON[mentioned.id].bal);
+          let SuccessEmbed = new Discord.MessageEmbed()
+            .setTitle("**SUCCESS**")
+            .setColor(0X32CD32)
+            .addField("Balance", UserJSON[mentioned.id].bal)
           msg.channel.send(SuccessEmbed);
         return;
         } else {
-          let SuccessEmbed = new Discord.MessageEmbed();
-          SuccessEmbed.setTitle("**SUCCESS**");
-          SuccessEmbed.setColor(0X32CD32);
-          SuccessEmbed.addField("Balance", UserJSON[msg.author.id].bal);
+          let SuccessEmbed = new Discord.MessageEmbed()
+            .setTitle("**SUCCESS**")
+            .setColor(0X32CD32)
+            .addField("Balance", UserJSON[msg.author.id].bal)
           msg.channel.send(SuccessEmbed);
         }
       break;}
@@ -520,6 +522,75 @@ bot.on("message", async msg => {
     //----- end of economy -----//
 
 
+
+
+
+    //----- start of gambling -----//
+
+    case "flip": {
+      let UserJSON = JSON.parse(Fs.readFileSync("./DataBase/users.json"));
+      let bet = args[1];
+
+      rand = Math.floor(Math.random() * 2 - 1) + 1;
+      console.log(rand)
+
+      if (!UserJSON[msg.author.id]) {
+        let ErrorEmbed = new Discord.MessageEmbed()
+          .setTitle("**ERROR**")
+          .setColor(0XFF0000)
+          .setDescription("You are not in the system try .newbal")
+        msg.channel.send(ErrorEmbed);
+      return;}
+
+      if(!args[1] && isNaN(bet)){
+        let ErrorEmbed = new Discord.MessageEmbed()
+          .setTitle("**ERROR**")
+          .setColor(0XFF0000)
+          .setDescription("how much do you want to bet")
+        msg.channel.send(ErrorEmbed);
+      return;}
+
+      if(bet <= 0){
+        let ErrorEmbed = new Discord.MessageEmbed()
+          .setTitle("**ERROR**")
+          .setColor(0XFF0000)
+          .setDescription("you have to bet more than 0")
+        msg.channel.send(ErrorEmbed);
+      return;}
+
+      if (UserJSON[msg.author.id].bal < bet) {
+        let ErrorEmbed = new Discord.MessageEmbed();
+        ErrorEmbed.setTitle("**ERROR**");
+        ErrorEmbed.setColor(0XFF0000);
+        ErrorEmbed.setDescription("You do not have enough money");
+        msg.channel.send(ErrorEmbed);
+      return;}
+
+    if(rand === 0){
+      UserJSON[msg.author.id].bal -= parseInt(bet);
+      Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+      let SuccessEmbed = new Discord.MessageEmbed()
+        .setTitle("**LOSS**")
+        .setColor(0XFF0000)
+        .setDescription("You lost"+ bet +":(")
+      msg.channel.send(SuccessEmbed);
+    }
+
+    if(rand === 1){
+      UserJSON[msg.author.id].bal += parseInt(bet);
+      Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+      let SuccessEmbed = new Discord.MessageEmbed()
+        .setTitle("**WIN**")
+        .setColor(0X32CD32)
+        .setDescription("You won "+ bet +":)")
+      msg.channel.send(SuccessEmbed);
+    }
+
+      break;}
+
+    //----- end of gambling -----//
+
+    
 
 
 
@@ -531,11 +602,12 @@ bot.on("message", async msg => {
         .setURL(helplink)
         .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
         .addFields(
-          {name: "Check out the commands on our website", value: helplink}, 
+          {name: "Check out the commands on our website", value: helplink, inline: true}, 
           {name: "**Meme commands**", value: prefix+"memehelp", inline: true},
           {name: "**VC commands**", value: prefix+"vchelp", inline: true},
           {name: "**Mod commands**", value: prefix+"modhelp", inline: true},
-          {name: "**balance commands**", value: prefix+"balhelp", inline: true},
+          {name: "**balance commands**", value: prefix+"moneyhelp", inline: true},
+          {name: "**Gambling commands**", value: prefix+"gambhelp", inline: true},
           )
         .setImage('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
       msg.channel.send(helpem);
@@ -581,18 +653,33 @@ bot.on("message", async msg => {
     msg.channel.send(modhelp);
     break;}
 
-    case "balhelp":{
-      let ballhelp = new Discord.MessageEmbed()
+    case "moneyhelp":{
+      let balhelp = new Discord.MessageEmbed()
         .setColor('#0099ff')
         .setTitle("**BalCommands**")
         .setURL(helplink)
         .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
         .addFields(
           {name: "Check out the commands on our website", value: helplink}, 
-          {name: "**BalCommands**", value: balhelp}
+          {name: "**Money Commands**", value: moneyhelp}
+    )
+    msg.channel.send(balhelp);
+    break;}
+
+    case "gambhelp":{
+      let ballhelp = new Discord.MessageEmbed()
+        .setColor('#0099ff')
+        .setTitle("**GambCommands**")
+        .setURL(helplink)
+        .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
+        .addFields(
+          {name: "Check out the commands on our website", value: helplink}, 
+          {name: "**Gambling Commands**", value: gamblhelp}
     )
     msg.channel.send(ballhelp);
     break;}
+
+    
 
     case "ping": {
       msg.channel.send("Im alive");
@@ -750,7 +837,7 @@ bot.on("message", async msg => {
       break;}
 
     case "oof": {
-      imageNum = Math.floor(Math.random() * 7) + 1;
+      imageNum = Math.floor(Math.random() * 8) + 1;
       msg.channel.send ({files: ["./images/oof" + imageNum + ".jpg"]})
       break;}
 

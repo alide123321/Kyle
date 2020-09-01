@@ -760,8 +760,7 @@ bot.on("message", async msg => {
       break;}
 
     case "oof": {
-      num = 7;
-      imageNum = Math.floor(Math.random() * num) + 1;
+      imageNum = Math.floor(Math.random() * 7) + 1;
       msg.channel.send ({files: ["./images/oof" + imageNum + ".jpg"]})
       break;}
 

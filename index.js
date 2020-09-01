@@ -241,9 +241,7 @@ if(temporary.length > 0) {
 
       temporary.splice(i, 1);
       temporaryw.splice(i, 1);
-      return;
-      
-      }
+      return;}
     }
   }
 });
@@ -254,7 +252,7 @@ bot.on("message", async msg => {
   if (msg.author.bot) return;
 
   if (msg.guild === null) 
-    if (msg.content.charAt(0) !== ".")
+    if (msg.content.charAt(0) !== prefix)
       msg.author.send("LOL stupid thats not a command try .help")
     
   
@@ -361,8 +359,7 @@ bot.on("message", async msg => {
         WarningEmbed.setColor(0XFF0000);
         WarningEmbed.setDescription("You are already in the system");
         msg.channel.send(WarningEmbed);
-        return;
-    }
+        return;}
 
       UserJSON[msg.author.id] = {
         bal : 100,
@@ -712,8 +709,7 @@ bot.on("message", async msg => {
         msg.channel.send("Cooldown 120 sec");
         sleep(1000)
         msg.delete();
-        return;
-      }
+      return;}
     
       talkedRecently.add(msg.author.id);
       setTimeout(() => {
@@ -731,24 +727,17 @@ bot.on("message", async msg => {
       let mention = msg.mentions.users.first();
 
 
-      if(text.includes("@here") ||text.includes("@everyone"))
-      {
+      if(text.includes("@here") ||text.includes("@everyone")){
         msg.channel.send("NO!");
-        return;
-      }
+      return;}
 
-      if(!args[1])
-      {
+      if(!args[1]){
         msg.channel.send("Who do you want to Dm anonymous?");
-        return;
-      }
+      return;}
 
-      if(!args[1].includes("@"))
-      {
+      if(!args[1].includes("@")){
         msg.channel.send("Who do you want to Dm anonymous?");
-        return;
-      }
-      
+      return;}
 
       const embed = new Discord.MessageEmbed()
           .setColor(0xb33076)
@@ -816,8 +805,7 @@ bot.on("message", async msg => {
         msg.channel.send("Cooldown 60 sec");
         sleep(1000)
         msg.delete();
-        return;
-      }
+      return;}
     
       talkedRecently.add(msg.author.id);
       setTimeout(() => {
@@ -842,8 +830,7 @@ bot.on("message", async msg => {
         msg.channel.send("Cooldown 60 sec");
         sleep(1000)
         msg.delete();
-        return;
-      }
+      return;}
     
       talkedRecently.add(msg.author.id);
       setTimeout(() => {
@@ -869,8 +856,7 @@ bot.on("message", async msg => {
         msg.channel.send("Cooldown 60 sec");
         sleep(1000)
         msg.delete();
-        return;
-      }
+      return;}
     
       talkedRecently.add(msg.author.id);
       setTimeout(() => {
@@ -896,8 +882,7 @@ bot.on("message", async msg => {
         msg.channel.send("Cooldown 60 sec");
         sleep(1000)
         msg.delete();
-        return;
-      }
+      return;}
     
       talkedRecently.add(msg.author.id);
       setTimeout(() => {
@@ -923,8 +908,7 @@ bot.on("message", async msg => {
         msg.channel.send("Cooldown 60 sec");
         sleep(1000)
         msg.delete();
-        return;
-      }
+      return;}
     
       talkedRecently.add(msg.author.id);
       setTimeout(() => {
@@ -950,8 +934,7 @@ bot.on("message", async msg => {
         msg.channel.send("Cooldown 60 sec");
         sleep(1000)
         msg.delete();
-        return;
-      }
+      return;}
     
       talkedRecently.add(msg.author.id);
       setTimeout(() => {
@@ -977,8 +960,7 @@ bot.on("message", async msg => {
         msg.channel.send("Cooldown 60 sec");
         sleep(1000)
         msg.delete();
-        return;
-      }
+      return;}
     
       talkedRecently.add(msg.author.id);
       setTimeout(() => {
@@ -1004,8 +986,7 @@ bot.on("message", async msg => {
         msg.channel.send("Cooldown 60 sec");
         sleep(1000)
         msg.delete();
-        return;
-      }
+      return;}
     
       talkedRecently.add(msg.author.id);
       setTimeout(() => {
@@ -1031,8 +1012,7 @@ bot.on("message", async msg => {
         msg.channel.send("Cooldown 60 sec");
         sleep(1000)
         msg.delete();
-        return;
-      }
+      return;}
     
       talkedRecently.add(msg.author.id);
       setTimeout(() => {
@@ -1058,8 +1038,7 @@ bot.on("message", async msg => {
         msg.channel.send("Cooldown 60 sec");
         sleep(1000)
         msg.delete();
-        return;
-      }
+      return;}
     
       talkedRecently.add(msg.author.id);
       setTimeout(() => {
@@ -1085,8 +1064,7 @@ bot.on("message", async msg => {
         msg.channel.send("Cooldown 60 sec");
         sleep(1000)
         msg.delete();
-        return;
-      }
+      return;}
     
       talkedRecently.add(msg.author.id);
       setTimeout(() => {
@@ -1112,8 +1090,7 @@ bot.on("message", async msg => {
         msg.channel.send("Cooldown 60 sec");
         sleep(1000)
         msg.delete();
-        return;
-      }
+      return;}
     
       talkedRecently.add(msg.author.id);
       setTimeout(() => {
@@ -1139,8 +1116,7 @@ bot.on("message", async msg => {
         msg.channel.send("Cooldown 60 sec");
         sleep(1000)
         msg.delete();
-        return;
-      }
+      return;}
     
       talkedRecently.add(msg.author.id);
       setTimeout(() => {

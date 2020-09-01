@@ -532,7 +532,6 @@ bot.on("message", async msg => {
       let bet = args[1];
 
       rand = Math.floor(Math.random() * 2 - 1) + 1;
-      console.log(rand)
 
       if (!UserJSON[msg.author.id]) {
         let ErrorEmbed = new Discord.MessageEmbed()
@@ -679,7 +678,7 @@ bot.on("message", async msg => {
     msg.channel.send(ballhelp);
     break;}
 
-    
+
 
     case "ping": {
       msg.channel.send("Im alive");

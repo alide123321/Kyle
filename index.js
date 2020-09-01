@@ -77,7 +77,8 @@ var VChelp = [
   "**" + prefix + "gay___________HES GAY!!!**",
   "**" + prefix + "sad___________it's actually changes by x**",
   "**" + prefix + "smoothie______im about to try my smoothie**",
-  "**" + prefix + "itsme_________its me im **"
+  "**" + prefix + "itsme_________its me im**",
+  "**" + prefix + "unwise________ming dynasty pussy**"
 ];
 
 
@@ -1130,6 +1131,32 @@ bot.on("message", async msg => {
           VC.join()
             .then(connection => {
           const dispatcher = connection.play('./sounds/itsme.mp3', { volume: 0.7 });
+          dispatcher.on("finish", end => {VC.leave();});
+        })
+        .catch(console.error);
+      }
+    break;}
+
+    case "unwise":{
+      
+      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
+        msg.channel.send("Cooldown 60 sec");
+        sleep(1000)
+        msg.delete();
+      return;}
+    
+      talkedRecently.add(msg.author.id);
+      setTimeout(() => {
+        talkedRecently.delete(msg.author.id);
+      }, 60000);
+
+      msg.channel.send("https://cdn.discordapp.com/attachments/608207237667749908/750270119954874397/video0.mp4");
+
+      var VC = msg.member.voice.channel;
+        if (VC){
+          VC.join()
+            .then(connection => {
+          const dispatcher = connection.play('./sounds/unwise.mp3', { volume: 0.5 });
           dispatcher.on("finish", end => {VC.leave();});
         })
         .catch(console.error);

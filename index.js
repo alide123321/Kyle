@@ -82,7 +82,8 @@ var VChelp = [
   "**" + prefix + "sad___________it's actually changes by x**",
   "**" + prefix + "smoothie______im about to try my smoothie**",
   "**" + prefix + "itsme_________its me im**",
-  "**" + prefix + "unwise________ming dynasty pussy**"
+  "**" + prefix + "unwise________ming dynasty pussy**",
+  "**" + prefix + "shampoo_______HAHA shampoo**"
 ];
 
 
@@ -400,13 +401,13 @@ bot.on("message", async msg => {
         msg.channel.send(WarningEmbed);
         return;}
 
-      UserJSON[msg.author.id].bal += 10;
+      UserJSON[msg.author.id].bal += 50;
       UserJSON[msg.author.id].lastclaim = new Date().getTime();
       Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
       let SuccessEmbed = new Discord.MessageEmbed()
         .setTitle("**SUCCESS**")
         .setColor(0X32CD32)
-        .setDescription("You have claimed your daily reward of 10 coins!")
+        .setDescription("You have claimed your daily reward of 50 coins!")
       msg.channel.send(SuccessEmbed);
 
       break;}
@@ -1331,30 +1332,30 @@ bot.on("message", async msg => {
       }
     break;}
     
-  case "unwise":{
+    case "shampoo":{
       
-    if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
-      msg.channel.send("Cooldown 60 sec");
-      sleep(1000)
-      msg.delete();
-    return;}
+      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
+        msg.channel.send("Cooldown 60 sec");
+       sleep(1000)
+        msg.delete();
+     return;}
     
-    talkedRecently.add(msg.author.id);
-    setTimeout(() => {
-      talkedRecently.delete(msg.author.id);
-    }, 60000);
+      talkedRecently.add(msg.author.id);
+      setTimeout(() => {
+        talkedRecently.delete(msg.author.id);
+      }, 60000);
 
-    msg.channel.send("https://cdn.discordapp.com/attachments/608207237667749908/750757207284645908/video0.mp4");
+      msg.channel.send("https://cdn.discordapp.com/attachments/608207237667749908/750757207284645908/video0.mp4");
 
-    var VC = msg.member.voice.channel;
-      if (VC){
-        VC.join()
-          .then(connection => {
-        const dispatcher = connection.play('./sounds/sbampoo.mp3', { volume: 1.2 });
-        dispatcher.on("finish", end => {VC.leave();});
-      })
-      .catch(console.error);
-    }
+      var VC = msg.member.voice.channel;
+        if (VC){
+          VC.join()
+            .then(connection => {
+          const dispatcher = connection.play('./sounds/shampoo.mp3', { volume: 1.2 });
+          dispatcher.on("finish", end => {VC.leave();});
+        })
+        .catch(console.error);
+      }
     break;}
     //----- end of vc -----//
   }

@@ -27,7 +27,7 @@ let options = {
 
 const token = process.env.TOKEN;
 const prefix = '.';
-const version = "1.1.0";
+const version = "1.5.0";
 const helplink = "https://sites.google.com/view/kyle-bot/home";
 const auther = "alide123321#9518";
 const queue = new Map();

@@ -643,7 +643,7 @@ bot.on("message", async msg => {
         msg.channel.send(ErrorEmbed);
       return;}
 
-      if(dice === rand){
+      if(dice == rand){
         let winmoney = bet * 3;
 
         UserJSON[msg.author.id].bal += parseInt(winmoney);

@@ -610,6 +610,14 @@ bot.on("message", async msg => {
           .setDescription("what number are you betting on \n.dice <1/2/3/4/5/6> <Bet>")
         msg.channel.send(ErrorEmbed);
       return;}
+
+      if(dice > 6 || dice < 1){
+        let ErrorEmbed = new Discord.MessageEmbed()
+          .setTitle("**ERROR**")
+          .setColor(0XFF0000)
+          .setDescription("what number are you betting on \n.dice <1/2/3/4/5/6> <Bet>")
+        msg.channel.send(ErrorEmbed);
+      return;}
   
       if(!args[2] || isNaN(bet)){
           let ErrorEmbed = new Discord.MessageEmbed()

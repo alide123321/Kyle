@@ -40,7 +40,8 @@ var moneyhelp = [
   "**" + prefix + "bal___________to check your balance **"
 ]
 var gamblhelp = [
-  "**" + prefix + "flip__________a fifty fifty chance of winning**"
+  "**" + prefix + "flip__________A fifty fifty chance of winning**",
+  "**" + prefix + "dice__________Roll a dice if you get it right you get 3X your bet but if you lose then you lose your bet**"
 ]
 var modshelp = [
   "**" + prefix + "help__________will bring up this page**",
@@ -541,7 +542,7 @@ bot.on("message", async msg => {
         msg.channel.send(ErrorEmbed);
       return;}
 
-      if(!args[1] && isNaN(bet)){
+      if(!args[1] || isNaN(bet)){
         let ErrorEmbed = new Discord.MessageEmbed()
           .setTitle("**ERROR**")
           .setColor(0XFF0000)
@@ -558,10 +559,10 @@ bot.on("message", async msg => {
       return;}
 
       if (UserJSON[msg.author.id].bal < bet) {
-        let ErrorEmbed = new Discord.MessageEmbed();
-        ErrorEmbed.setTitle("**ERROR**");
-        ErrorEmbed.setColor(0XFF0000);
-        ErrorEmbed.setDescription("You do not have enough money");
+        let ErrorEmbed = new Discord.MessageEmbed()
+          .setTitle("**ERROR**")
+          .setColor(0XFF0000)
+          .setDescription("You do not have enough money")
         msg.channel.send(ErrorEmbed);
       return;}
 
@@ -585,6 +586,79 @@ bot.on("message", async msg => {
       msg.channel.send(SuccessEmbed);
     }
 
+      break;}
+
+    case "dice": {
+      let UserJSON = JSON.parse(Fs.readFileSync("./DataBase/users.json"));
+      let dice = args[1];
+      let bet = args[2];
+
+      rand = Math.floor(Math.random() * 6 ) + 1;
+
+      if (!UserJSON[msg.author.id]) {
+          let ErrorEmbed = new Discord.MessageEmbed()
+            .setTitle("**ERROR**")
+            .setColor(0XFF0000)
+            .setDescription("You are not in the system try .newbal")
+          msg.channel.send(ErrorEmbed);
+      return;}
+
+      if(!args[1] || isNaN(dice)){
+        let ErrorEmbed = new Discord.MessageEmbed()
+          .setTitle("**ERROR**")
+          .setColor(0XFF0000)
+          .setDescription("what number are you betting on \n.dice <1/2/3/4/5/6> <Bet>")
+        msg.channel.send(ErrorEmbed);
+      return;}
+  
+      if(!args[2] || isNaN(bet)){
+          let ErrorEmbed = new Discord.MessageEmbed()
+            .setTitle("**ERROR**")
+            .setColor(0XFF0000)
+            .setDescription("how much do you want to bet .dice <1/2/3/4/5/6> <Bet>")
+          msg.channel.send(ErrorEmbed);
+      return;}
+  
+      if(bet <= 0){
+          let ErrorEmbed = new Discord.MessageEmbed()
+            .setTitle("**ERROR**")
+            .setColor(0XFF0000)
+            .setDescription("you have to bet more than 0")
+          msg.channel.send(ErrorEmbed);
+      return;}
+  
+      if(UserJSON[msg.author.id].bal < bet) {
+        let ErrorEmbed = new Discord.MessageEmbed()
+          .setTitle("**ERROR**")
+          .setColor(0XFF0000)
+          .setDescription("You do not have enough money")
+        msg.channel.send(ErrorEmbed);
+      return;}
+
+      if(dice === rand){
+        let winmoney = bet * 3;
+
+        UserJSON[msg.author.id].bal += parseInt(winmoney);
+        Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+        let SuccessEmbed = new Discord.MessageEmbed()
+          .setTitle("**WIN**")
+          .setColor(0X32CD32)
+          .setDescription("You won "+ winmoney +":)")
+        msg.channel.send(SuccessEmbed);
+      return;}
+
+      if(dice !== rand){
+
+        UserJSON[msg.author.id].bal -= parseInt(bet);
+        Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+        let SuccessEmbed = new Discord.MessageEmbed()
+          .setTitle("**LOSS**")
+          .setColor(0XFF0000)
+          .setDescription("You lost"+ bet +":(\n The dice is: "+rand)
+        msg.channel.send(SuccessEmbed);
+      return;}
+
+          
       break;}
 
     //----- end of gambling -----//

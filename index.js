@@ -768,11 +768,11 @@ bot.on("message", async msg => {
 
     case "info": {
       if (args[1] === "version") msg.channel.send("version: " + version);
-      if (args[1] === "auther") msg.channel.send("auther: " + auther);
-      if (args[1] !== "version" && args[1] !== "auther") {
+      if (args[1] === "author") msg.channel.send("author: " + auther);
+      if (args[1] !== "version" && args[1] !== "author") {
         msg.channel.send("What do you want more information about?");
         msg.channel.send("*" + prefix + "info version*");
-        msg.channel.send("*" + prefix + "info auther*");
+        msg.channel.send("*" + prefix + "info author*");
       }
       break;}
 

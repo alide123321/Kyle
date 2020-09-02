@@ -590,7 +590,7 @@ bot.on("message", async msg => {
 
     case "dice": {
       let UserJSON = JSON.parse(Fs.readFileSync("./DataBase/users.json"));
-      let dice = args[1];
+      var guess = args[1];
       let bet = args[2];
 
       rand = Math.floor(Math.random() * 6 ) + 1;
@@ -643,7 +643,7 @@ bot.on("message", async msg => {
         msg.channel.send(ErrorEmbed);
       return;}
 
-      if(dice === rand){
+      if(guess === rand){
         let winmoney = bet * 3;
 
         UserJSON[msg.author.id].bal += parseInt(winmoney);
@@ -655,14 +655,14 @@ bot.on("message", async msg => {
         msg.channel.send(SuccessEmbed);
       return;}
 
-      if(dice !== rand){
+      if(guess !== rand){
 
         UserJSON[msg.author.id].bal -= parseInt(bet);
         Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
         let SuccessEmbed = new Discord.MessageEmbed()
           .setTitle("**LOSS**")
           .setColor(0XFF0000)
-          .setDescription("You lost"+ bet +":(\n The dice is: "+rand)
+          .setDescription("You lost"+ bet +" :(\n The dice is: "+rand)
         msg.channel.send(SuccessEmbed);
       return;}
 

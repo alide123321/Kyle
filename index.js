@@ -590,7 +590,7 @@ bot.on("message", async msg => {
 
     case "dice": {
       let UserJSON = JSON.parse(Fs.readFileSync("./DataBase/users.json"));
-      var guess = args[1];
+      var dice = args[1];
       let bet = args[2];
 
       rand = Math.floor(Math.random() * 6 ) + 1;
@@ -643,7 +643,7 @@ bot.on("message", async msg => {
         msg.channel.send(ErrorEmbed);
       return;}
 
-      if(guess === rand){
+      if(dice === rand){
         let winmoney = bet * 3;
 
         UserJSON[msg.author.id].bal += parseInt(winmoney);
@@ -655,7 +655,7 @@ bot.on("message", async msg => {
         msg.channel.send(SuccessEmbed);
       return;}
 
-      if(guess !== rand){
+      if(dice !== rand){
 
         UserJSON[msg.author.id].bal -= parseInt(bet);
         Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));

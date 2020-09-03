@@ -1352,7 +1352,9 @@ bot.on("message", async msg => {
           VC.join()
             .then(connection => {
           const dispatcher = connection.play('./sounds/shampoo.mp3', { volume: 1.2 });
-          dispatcher.on("finish", end => {VC.leave();});
+          dispatcher.on("finish", end => {
+            sleep(1000);
+            VC.leave();});
         })
         .catch(console.error);
       }

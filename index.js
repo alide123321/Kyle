@@ -551,11 +551,11 @@ bot.on("message", async msg => {
         msg.channel.send(ErrorEmbed);
       return;}
 
-      if(bet <= 0){
+      if(bet < 0){
         let ErrorEmbed = new Discord.MessageEmbed()
           .setTitle("**ERROR**")
           .setColor(0XFF0000)
-          .setDescription("you have to bet more than 0")
+          .setDescription("you have to bet more than or equal to 0")
         msg.channel.send(ErrorEmbed);
       return;}
 
@@ -628,11 +628,11 @@ bot.on("message", async msg => {
           msg.channel.send(ErrorEmbed);
       return;}
   
-      if(bet <= 0){
+      if(bet < 0){
           let ErrorEmbed = new Discord.MessageEmbed()
             .setTitle("**ERROR**")
             .setColor(0XFF0000)
-            .setDescription("you have to bet more than 0")
+            .setDescription("you have to bet more than or equal to 0")
           msg.channel.send(ErrorEmbed);
       return;}
   

@@ -88,7 +88,8 @@ var VChelp = [
   "**" + prefix + "smoothie______im about to try my smoothie**",
   "**" + prefix + "itsme_________its me im**",
   "**" + prefix + "unwise________ming dynasty pussy**",
-  "**" + prefix + "shampoo_______HAHA shampoo**"
+  "**" + prefix + "shampoo_______HAHA shampoo**",
+  "**" + prefix + "notme_________Who the fuck wanna listen to that**"
 ];
 
 
@@ -1478,7 +1479,7 @@ bot.on("message", async msg => {
         if (VC){
           VC.join()
             .then(connection => {
-          const dispatcher = connection.play('./sounds/notme.mp3', { volume: 1.2 });
+          const dispatcher = connection.play('./sounds/notme.mp3', { volume: 0.7 });
           dispatcher.on("finish", end => {
             sleep(1000);
             VC.leave();});

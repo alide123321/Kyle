@@ -530,6 +530,7 @@ bot.on("message", async msg => {
       var allusers = (await msg.guild.members.fetch()).keyArray("id")
       var usersplaying = []
       var usersplayingmoney = []
+      var send = []
 
       for(let i = 0; i <= allusers.length ;++i){
         if (UserJSON[allusers[i]]) {
@@ -538,22 +539,29 @@ bot.on("message", async msg => {
       }
       
       for(let i = 0; i < usersplaying.length ;++i){
-        usersplayingmoney.push(UserJSON[usersplaying[i]].bal,usersplaying[i])
+        usersplayingmoney.push(UserJSON[usersplaying[i]].bal)
       }
 
-      usersplayingmoney.sort();
+      usersplayingmoney.sort((a,b)=>a-b);
+      usersplayingmoney.reverse();
 
-      for(let i = 0; i < usersplayingmoney.length ;++i){
-        if(i % 2 != 0) {
-          let mention = ((await msg.guild.members.fetch(usersplayingmoney[i])).displayName)
-          usersplayingmoney[i] = (mention)
+      var removed = usersplayingmoney.splice(0,5);
+      usersplayingmoney = removed
+
+
+      for(var i = 0 ; i < 5 ; ++i){
+        for(var n = 0 ; n < usersplaying.length ; ++n){
+          if(usersplayingmoney[i] === UserJSON[usersplaying[n]].bal){
+            send.push((await msg.guild.members.fetch(usersplaying[n])).displayName+"--"+usersplayingmoney[i])
+          }
         }
       }
+      
 
       let topbaly = new Discord.MessageEmbed()
         .setTitle("**TOP BALANCE**")
         .setColor('#0099ff')
-        .setDescription(usersplayingmoney)
+        .setDescription(send)
       msg.channel.send(topbaly);
       break;}
 

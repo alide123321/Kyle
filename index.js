@@ -891,6 +891,10 @@ bot.on("message", async msg => {
     case "whois": {
       let Mentioned = msg.mentions.members.first();
       let UserJSON = JSON.parse(Fs.readFileSync("./DataBase/users.json"));
+
+      if (!(msg.member.hasPermission('ADMINISTRATOR'))) {
+        msg.channel.send("dumb dumb ur not a admin");
+      return;}
       
       if (!Mentioned) {
         let ErrorEmbed = new Discord.MessageEmbed()

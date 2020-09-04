@@ -66,7 +66,8 @@ var funhelp = [
   "**" + prefix + "kith__________gimme kith**",
   "**" + prefix + "wtf___________wtf?**",
   "**" + prefix + "bruh__________that face**",
-  "**" + prefix + "pardon________PARDON.**"
+  "**" + prefix + "pardon________PARDON.**",
+  "**" + prefix + "halal_________absolutely halal**"
 ];
 var VChelp = [
   "**" + prefix + "okok__________PopSmoke's OK OK**",
@@ -961,6 +962,10 @@ bot.on("message", async msg => {
 
     case "bruh": {
         msg.channel.send("https://cdn.discordapp.com/attachments/700670516570095677/741569349873303572/image0.jpg")
+      break;}
+
+    case "halal": {
+      msg.channel.send("https://cdn.discordapp.com/attachments/599061991281131531/751296527103950918/image0.png")
       break;}
     //----- end of memes -----//
 

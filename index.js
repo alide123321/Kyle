@@ -377,7 +377,7 @@ bot.on("message", async msg => {
       Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
 
       let SuccessEmbed = new Discord.MessageEmbed()
-        .setTitle("**SUCCESS**")
+        .setTitle("**WELCOME**")
         .setColor(0X32CD32)
         .setDescription("You have joined the economy!")
       msg.channel.send(SuccessEmbed);
@@ -396,7 +396,7 @@ bot.on("message", async msg => {
 
       if (Math.floor(new Date().getTime() - UserJSON[msg.author.id].lastclaim) / (1000 * 60 * 60 * 24) < 1) {
         let WarningEmbed = new Discord.MessageEmbed()
-          .setTitle("**ERROR**")
+          .setTitle("**Daily**")
           .setColor(0XFF0000)
           .setDescription("You have claimed today already")
         msg.channel.send(WarningEmbed);
@@ -482,7 +482,7 @@ bot.on("message", async msg => {
       let SuccessEmbed = new Discord.MessageEmbed()
         .setTitle("**SUCCESS**")
         .setColor(0X32CD32)
-        .setDescription("You have given " + Money + " discord coins to " + Mentioned.user.username)
+        .setDescription("You have given $" + Money + " discord coins to " + Mentioned.user.username)
       msg.channel.send(SuccessEmbed);
       break;}
 
@@ -574,7 +574,7 @@ bot.on("message", async msg => {
       let SuccessEmbed = new Discord.MessageEmbed()
         .setTitle("**LOSS**")
         .setColor(0XFF0000)
-        .setDescription("You lost"+ bet +":(")
+        .setDescription("You lost: "+ bet +" :(")
       msg.channel.send(SuccessEmbed);
     }
 
@@ -584,7 +584,7 @@ bot.on("message", async msg => {
       let SuccessEmbed = new Discord.MessageEmbed()
         .setTitle("**WIN**")
         .setColor(0X32CD32)
-        .setDescription("You won "+ bet +":)")
+        .setDescription("You won: "+ bet +" :)")
       msg.channel.send(SuccessEmbed);
     }
 
@@ -653,7 +653,7 @@ bot.on("message", async msg => {
         let SuccessEmbed = new Discord.MessageEmbed()
           .setTitle("**WIN**")
           .setColor(0X32CD32)
-          .setDescription("You won "+ winmoney +":)")
+          .setDescription("You won: "+ winmoney +" :)")
         msg.channel.send(SuccessEmbed);
       return;}
 
@@ -664,7 +664,7 @@ bot.on("message", async msg => {
         let SuccessEmbed = new Discord.MessageEmbed()
           .setTitle("**LOSS**")
           .setColor(0XFF0000)
-          .setDescription("You lost"+ bet +" :(\n The dice is: "+rand)
+          .setDescription("You lost: "+ bet +" :(\n The dice was: "+rand)
         msg.channel.send(SuccessEmbed);
       return;}
 

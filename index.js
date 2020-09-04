@@ -550,8 +550,11 @@ bot.on("message", async msg => {
         }
       }
 
-      msg.channel.send("**TOP BALANCE**");
-      msg.channel.send(usersplayingmoney);
+      let topbaly = new Discord.MessageEmbed()
+        .setTitle("**TOP BALANCE**")
+        .setColor('#0099ff')
+        .setDescription(usersplayingmoney)
+      msg.channel.send(topbaly);
       break;}
 
     //----- end of economy -----//

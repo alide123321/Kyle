@@ -32,12 +32,15 @@ const helplink = "https://sites.google.com/view/kyle-bot/home";
 const auther = "alide123321#9518";
 const queue = new Map();
 const Fs = require('fs');
+const { userInfo } = require('os');
+const { ALL } = require('dns');
 
 var moneyhelp = [
   "**" + prefix + "newbal________use this command first**",
   "**" + prefix + "daily_________adds 10 coins everyday**",
   "**" + prefix + "pay___________pay someone**",
-  "**" + prefix + "bal___________to check your balance **"
+  "**" + prefix + "bal___________to check your balance**",
+  "**" + prefix + "topbal________Check who the richest person in server is**"
 ]
 var gamblhelp = [
   "**" + prefix + "flip__________A fifty fifty chance of winning**",
@@ -49,8 +52,9 @@ var modshelp = [
   "**" + prefix + "ping__________will tell you if the bot is online**",
   "**" + prefix + "clear <#>_____clears the messages above it by #**", 
   "**" + prefix + "info__________more information about the bot**",
-  "**" + prefix + "Report________to report anything related to this server DM me**",
-  "**" + prefix + "announce <#><title>_after that the bot will ask for the description**"
+  "**" + prefix + "report________to report anything related to this server DM me**",
+  "**" + prefix + "announce <#><title>_after that the bot will ask for the description**",
+  "**" + prefix + "whois<@>______Find information about a user**",
 ];
 var funhelp = [
   "**" + prefix + "memes_________for the best memes**",
@@ -371,8 +375,6 @@ bot.on("message", async msg => {
       UserJSON[msg.author.id] = {
         bal : 100,
         lastclaim : 0,
-        lastwork: 0,
-        workers: 0,
       }
       Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
 
@@ -520,6 +522,36 @@ bot.on("message", async msg => {
             .addField("Balance", UserJSON[msg.author.id].bal)
           msg.channel.send(SuccessEmbed);
         }
+      break;}
+
+    case "topbal": {
+      let UserJSON = JSON.parse(Fs.readFileSync("./DataBase/users.json"));
+
+      var allusers = (await msg.guild.members.fetch()).keyArray("id")
+      var usersplaying = []
+      var usersplayingmoney = []
+
+      for(let i = 0; i <= allusers.length ;++i){
+        if (UserJSON[allusers[i]]) {
+          usersplaying.push(allusers[i])
+          }
+      }
+      
+      for(let i = 0; i < usersplaying.length ;++i){
+        usersplayingmoney.push(UserJSON[usersplaying[i]].bal,usersplaying[i])
+      }
+
+      usersplayingmoney.sort();
+
+      for(let i = 0; i < usersplayingmoney.length ;++i){
+        if(i % 2 != 0) {
+          let mention = ((await msg.guild.members.fetch(usersplayingmoney[i])).displayName)
+          usersplayingmoney[i] = (mention)
+        }
+      }
+
+      msg.channel.send("**TOP BALANCE**");
+      msg.channel.send(usersplayingmoney);
       break;}
 
     //----- end of economy -----//
@@ -854,6 +886,53 @@ bot.on("message", async msg => {
           chat.send(announce);
           chat.send({files: ["./bar.gif"]});
         })
+      break;}
+
+    case "whois": {
+      let Mentioned = msg.mentions.members.first();
+      let UserJSON = JSON.parse(Fs.readFileSync("./DataBase/users.json"));
+      
+      if (!Mentioned) {
+        let ErrorEmbed = new Discord.MessageEmbed()
+          .setTitle("**ERROR**")
+          .setColor(0XFF0000)
+          .setDescription("Please mention a user")
+        msg.channel.send(ErrorEmbed);
+      return;}
+
+      if (!UserJSON[msg.author.id]) {
+        let whois = new Discord.MessageEmbed()
+        .setColor('#0099ff')
+        .setTitle("**"+Mentioned.user.username+"'s info**")
+        .addFields(
+          {name: "User ID: ", value: (await msg.guild.members.fetch(Mentioned.id)).id, inline: true},
+          {name: "Joined at: ", value: (await msg.guild.members.fetch(Mentioned.id)).joinedAt, inline: true},
+          {name: "Nickname: ", value: (await msg.guild.members.fetch(Mentioned.id)).nickname, inline: true},
+          {name: "Username: ", value: (await msg.guild.members.fetch(Mentioned.id)).user.username, inline: true},
+          {name: "Last message: ", value: (await msg.guild.members.fetch(Mentioned.id)).lastMessage.content, inline: true},
+          {name: "Last message in channel: ", value: "<#"+(await msg.guild.members.fetch(Mentioned.id)).lastMessageChannelID+">", inline: true},
+          {name: "Money: ", value: "$"+UserJSON[Mentioned.id].bal, inline: true},
+          )
+        .setImage(Mentioned.user.avatarURL)
+        msg.channel.send(whois);
+        return;}
+
+      if (UserJSON[msg.author.id]) {
+        let whois = new Discord.MessageEmbed()
+        .setColor('#0099ff')
+        .setTitle("**"+Mentioned.user.username+"'s info**")
+        .addFields(
+          {name: "User ID: ", value: (await msg.guild.members.fetch(Mentioned.id)).id, inline: true},
+          {name: "Joined at: ", value: (await msg.guild.members.fetch(Mentioned.id)).joinedAt, inline: true},
+          {name: "Nickname: ", value: (await msg.guild.members.fetch(Mentioned.id)).nickname, inline: true},
+          {name: "Username: ", value: (await msg.guild.members.fetch(Mentioned.id)).user.username, inline: true},
+          {name: "Last message: ", value: (await msg.guild.members.fetch(Mentioned.id)).lastMessage.content, inline: true},
+          {name: "Last message in channel: ", value: "<#"+(await msg.guild.members.fetch(Mentioned.id)).lastMessageChannelID+">", inline: true},
+          {name: "Money: ", value: "$"+UserJSON[Mentioned.id].bal, inline: true},
+          )
+        .setImage(Mentioned.user.avatarURL)
+        msg.channel.send(whois);
+        return;}
       break;}
     //----- end of mod -----//
 

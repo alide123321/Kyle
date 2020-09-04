@@ -1458,6 +1458,34 @@ bot.on("message", async msg => {
         .catch(console.error);
       }
     break;}
+
+    case "notme":{
+      
+      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
+        msg.channel.send("Cooldown 60 sec");
+       sleep(1000)
+        msg.delete();
+     return;}
+    
+      talkedRecently.add(msg.author.id);
+      setTimeout(() => {
+        talkedRecently.delete(msg.author.id);
+      }, 60000);
+
+      msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/751540044476710982/not_me.mp4");
+
+      var VC = msg.member.voice.channel;
+        if (VC){
+          VC.join()
+            .then(connection => {
+          const dispatcher = connection.play('./sounds/notme.mp3', { volume: 1.2 });
+          dispatcher.on("finish", end => {
+            sleep(1000);
+            VC.leave();});
+        })
+        .catch(console.error);
+      }
+    break;}
     //----- end of vc -----//
   }
 });

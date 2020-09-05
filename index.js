@@ -1677,456 +1677,134 @@ bot.on("message", async msg => {
 
     //----- start of vc -----//
     case "okok": {
-
-      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
-        msg.channel.send("Cooldown 60 sec");
-        sleep(1000)
-        msg.delete();
-      return;}
-    
-      talkedRecently.add(msg.author.id);
-      setTimeout(() => {
-        talkedRecently.delete(msg.author.id);
-      }, 60000);
-
       msg.channel.send("https://cdn.discordapp.com/attachments/608295365384339457/737059292930375780/video0.mov");
-      
       var VC = msg.member.voice.channel;
-        if (VC){
-          VC.join()
-            .then(connection => {
-          let dispatcher = connection.play('./sounds/okok.mp3', { volume: 0.5 });
-          dispatcher.on("finish", end => {VC.leave();});
-        })
-        .catch(console.error);
-      }
+      vc("okok",.5,VC,msg.author.id)
     break;}
 
     case "woo": {
-      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
-        msg.channel.send("Cooldown 60 sec");
-        sleep(1000)
-        msg.delete();
-      return;}
-    
-      talkedRecently.add(msg.author.id);
-      setTimeout(() => {
-        talkedRecently.delete(msg.author.id);
-      }, 60000);
-
       msg.channel.send("https://cdn.discordapp.com/attachments/737775095828709508/738086389358264391/woo.gif");
-
       var VC = msg.member.voice.channel;
-        if (VC){
-          VC.join()
-            .then(connection => {
-          const dispatcher = connection.play('./sounds/woo.mp3', { volume: 0.25 });
-          dispatcher.on("finish", end => {VC.leave();});
-        })
-        .catch(console.error);
-      }
+      vc("woo",.25,VC,msg.author.id)
     break;}
 
     case "hamood":{
-      
-      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
-        msg.channel.send("Cooldown 60 sec");
-        sleep(1000)
-        msg.delete();
-      return;}
-    
-      talkedRecently.add(msg.author.id);
-      setTimeout(() => {
-        talkedRecently.delete(msg.author.id);
-      }, 60000);
-
       msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/738867948495568976/Hamood_habibi.mp4");
-
       var VC = msg.member.voice.channel;
-        if (VC){
-          VC.join()
-            .then(connection => {
-          const dispatcher = connection.play('./sounds/hamood.mp3', { volume: 0.5 });
-          dispatcher.on("finish", end => {VC.leave();});
-        })
-        .catch(console.error);
-      }
+      vc("hamood",.5,VC,msg.author.id)
     break;}
 
     case "itis":{
-      
-      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
-        msg.channel.send("Cooldown 60 sec");
-        sleep(1000)
-        msg.delete();
-      return;}
-    
-      talkedRecently.add(msg.author.id);
-      setTimeout(() => {
-        talkedRecently.delete(msg.author.id);
-      }, 60000);
-
       msg.channel.send("https://cdn.discordapp.com/attachments/608207237667749908/740063663502786670/video0.mov");
-
       var VC = msg.member.voice.channel;
-        if (VC){
-          VC.join()
-            .then(connection => {
-          const dispatcher = connection.play('./sounds/itis.mp3', { volume: 0.5 });
-          dispatcher.on("finish", end => {VC.leave();});
-        })
-        .catch(console.error);
-      }
+      vc("itis",.5,VC,msg.author.id)
     break;}
 
     case "stop":{
-      
-      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
-        msg.channel.send("Cooldown 60 sec");
-        sleep(1000)
-        msg.delete();
-      return;}
-    
-      talkedRecently.add(msg.author.id);
-      setTimeout(() => {
-        talkedRecently.delete(msg.author.id);
-      }, 60000);
-
       msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/740483382173237299/JoeBuddenstopmeme.mp4");
-
       var VC = msg.member.voice.channel;
-        if (VC){
-          VC.join()
-            .then(connection => {
-          const dispatcher = connection.play('./sounds/stop.mp3', { volume: 0.5 });
-          dispatcher.on("finish", end => {VC.leave();});
-        })
-        .catch(console.error);
-      }
+      vc("stop",.5,VC,msg.author.id)
     break;}
 
     case "cough":{
-      
-      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
-        msg.channel.send("Cooldown 60 sec");
-        sleep(1000)
-        msg.delete();
-      return;}
-    
-      talkedRecently.add(msg.author.id);
-      setTimeout(() => {
-        talkedRecently.delete(msg.author.id);
-      }, 60000);
-
       msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/740721964531974244/videoplayback.mp4");
-
       var VC = msg.member.voice.channel;
-        if (VC){
-          VC.join()
-            .then(connection => {
-          const dispatcher = connection.play('./sounds/cough.mp3', { volume: 0.7 });
-          dispatcher.on("finish", end => {VC.leave();});
-        })
-        .catch(console.error);
-      }
+      vc("cough",.7,VC,msg.author.id)
     break;}
 
     case "kanye":{
-      
-      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
-        msg.channel.send("Cooldown 60 sec");
-        sleep(1000)
-        msg.delete();
-      return;}
-    
-      talkedRecently.add(msg.author.id);
-      setTimeout(() => {
-        talkedRecently.delete(msg.author.id);
-      }, 60000);
-
       msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/740725168904601670/videoplayback_1_online-video-cutter.com.mp4");
-
       var VC = msg.member.voice.channel;
-        if (VC){
-          VC.join()
-            .then(connection => {
-          const dispatcher = connection.play('./sounds/Kanye.mp3', { volume: 0.7 });
-          dispatcher.on("finish", end => {VC.leave();});
-        })
-        .catch(console.error);
-      }
+      vc("kanye",.7,VC,msg.author.id)
     break;}
 
     case "rock":{
-      
-      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
-        msg.channel.send("Cooldown 60 sec");
-        sleep(1000)
-        msg.delete();
-      return;}
-    
-      talkedRecently.add(msg.author.id);
-      setTimeout(() => {
-        talkedRecently.delete(msg.author.id);
-      }, 60000);
-
       msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/748035445140619264/rock.mp4");
-
       var VC = msg.member.voice.channel;
-        if (VC){
-          VC.join()
-            .then(connection => {
-          const dispatcher = connection.play('./sounds/rock.mp3', { volume: 0.6 });
-          dispatcher.on("finish", end => {VC.leave();});
-        })
-        .catch(console.error);
-      }
+      vc("rock",.6,VC,msg.author.id)
     break;}
 
     case "mad":{
-      
-      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
-        msg.channel.send("Cooldown 60 sec");
-        sleep(1000)
-        msg.delete();
-      return;}
-    
-      talkedRecently.add(msg.author.id);
-      setTimeout(() => {
-        talkedRecently.delete(msg.author.id);
-      }, 60000);
-
       msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/743726550213460068/HOES_MAD_FULL_VIDEO.mp4");
-
       var VC = msg.member.voice.channel;
-        if (VC){
-          VC.join()
-            .then(connection => {
-          const dispatcher = connection.play('./sounds/mad.mp3', { volume: 0.35 });
-          dispatcher.on("finish", end => {VC.leave();});
-        })
-        .catch(console.error);
-      }
+      vc("mad",.35,VC,msg.author.id)
     break;}
     
     case "gay":{
-      
-      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
-        msg.channel.send("Cooldown 60 sec");
-        sleep(1000)
-        msg.delete();
-      return;}
-    
-      talkedRecently.add(msg.author.id);
-      setTimeout(() => {
-        talkedRecently.delete(msg.author.id);
-      }, 60000);
-
       msg.channel.send("https://cdn.discordapp.com/attachments/608207237667749908/746398464220463216/video0.mp4");
-
       var VC = msg.member.voice.channel;
-        if (VC){
-          VC.join()
-            .then(connection => {
-          const dispatcher = connection.play('./sounds/gay.mp3', { volume: 0.5 });
-          dispatcher.on("finish", end => {VC.leave();});
-        })
-        .catch(console.error);
-      }
+      vc("gay",.5,VC,msg.author.id)
     break;}
 
     case "sad":{
-      
-      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
-        msg.channel.send("Cooldown 60 sec");
-        sleep(1000)
-        msg.delete();
-      return;}
-    
-      talkedRecently.add(msg.author.id);
-      setTimeout(() => {
-        talkedRecently.delete(msg.author.id);
-      }, 60000);
-
       msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/746467065577078915/video0.mp4");
-
       var VC = msg.member.voice.channel;
-        if (VC){
-          VC.join()
-            .then(connection => {
-          const dispatcher = connection.play('./sounds/sad.mp3', { volume: 0.7 });
-          dispatcher.on("finish", end => {VC.leave();});
-        })
-        .catch(console.error);
-      }
+      vc("sad",.7,VC,msg.author.id)
     break;}
 
     case "smoothie":{
-      
-      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
-        msg.channel.send("Cooldown 60 sec");
-        sleep(1000)
-        msg.delete();
-      return;}
-    
-      talkedRecently.add(msg.author.id);
-      setTimeout(() => {
-        talkedRecently.delete(msg.author.id);
-      }, 60000);
-
       msg.channel.send("https://cdn.discordapp.com/attachments/608207237667749908/748466554097631291/Im_about_to_try_my_smoothie.mp4");
-
       var VC = msg.member.voice.channel;
-        if (VC){
-          VC.join()
-            .then(connection => {
-          const dispatcher = connection.play('./sounds/smoothie.mp3', { volume: 0.7 });
-          dispatcher.on("finish", end => {VC.leave();});
-        })
-        .catch(console.error);
-      }
+      vc("smoothie",.7,VC,msg.author.id)
     break;}
 
     case "itsme":{
-      
-      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
-        msg.channel.send("Cooldown 60 sec");
-        sleep(1000)
-        msg.delete();
-      return;}
-    
-      talkedRecently.add(msg.author.id);
-      setTimeout(() => {
-        talkedRecently.delete(msg.author.id);
-      }, 60000);
-
       msg.channel.send("https://cdn.discordapp.com/attachments/599061991281131531/749542094783381624/Its_me_Im_niggas.mp4");
-
       var VC = msg.member.voice.channel;
-        if (VC){
-          VC.join()
-            .then(connection => {
-          const dispatcher = connection.play('./sounds/itsme.mp3', { volume: 0.7 });
-          dispatcher.on("finish", end => {VC.leave();});
-        })
-        .catch(console.error);
-      }
+      vc("itsme",.7,VC,msg.author.id)
     break;}
 
     case "unwise":{
-      
-      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
-        msg.channel.send("Cooldown 60 sec");
-        sleep(1000)
-        msg.delete();
-      return;}
-    
-      talkedRecently.add(msg.author.id);
-      setTimeout(() => {
-        talkedRecently.delete(msg.author.id);
-      }, 60000);
-
       msg.channel.send("https://cdn.discordapp.com/attachments/608207237667749908/750270119954874397/video0.mp4");
-
       var VC = msg.member.voice.channel;
-        if (VC){
-          VC.join()
-            .then(connection => {
-          const dispatcher = connection.play('./sounds/unwise.mp3', { volume: 0.5 });
-          dispatcher.on("finish", end => {VC.leave();});
-        })
-        .catch(console.error);
-      }
+      vc("unwise",.5,VC,msg.author.id)
     break;}
     
     case "shampoo":{
-      
-      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
-        msg.channel.send("Cooldown 60 sec");
-       sleep(1000)
-        msg.delete();
-     return;}
-    
-      talkedRecently.add(msg.author.id);
-      setTimeout(() => {
-        talkedRecently.delete(msg.author.id);
-      }, 60000);
-
       msg.channel.send("https://cdn.discordapp.com/attachments/608207237667749908/750757207284645908/video0.mp4");
-
       var VC = msg.member.voice.channel;
-        if (VC){
-          VC.join()
-            .then(connection => {
-          const dispatcher = connection.play('./sounds/shampoo.mp3', { volume: 1.2 });
-          dispatcher.on("finish", end => {
-            sleep(1000);
-            VC.leave();});
-        })
-        .catch(console.error);
-      }
+      vc("shampoo",1.2,VC,msg.author.id)
     break;}
 
     case "notme":{
-      
-      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
-        msg.channel.send("Cooldown 60 sec");
-       sleep(1000)
-        msg.delete();
-     return;}
-    
-      talkedRecently.add(msg.author.id);
-      setTimeout(() => {
-        talkedRecently.delete(msg.author.id);
-      }, 60000);
-
       msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/751540044476710982/not_me.mp4");
-
       var VC = msg.member.voice.channel;
-        if (VC){
-          VC.join()
-            .then(connection => {
-          const dispatcher = connection.play('./sounds/notme.mp3', { volume: 0.7 });
-          dispatcher.on("finish", end => {
-            sleep(1000);
-            VC.leave();});
-        })
-        .catch(console.error);
-      }
+      vc("notme",.7,VC,msg.author.id)
     break;}
 
     case "graduate":{
-      
-      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
-        msg.channel.send("Cooldown 60 sec");
-       sleep(1000)
-        msg.delete();
-     return;}
-    
-      talkedRecently.add(msg.author.id);
-      setTimeout(() => {
-        talkedRecently.delete(msg.author.id);
-      }, 60000);
-
       msg.channel.send("https://cdn.discordapp.com/attachments/739448495634645002/751762869716254721/videoplayback.mp4");
-
       var VC = msg.member.voice.channel;
-        if (VC){
-          VC.join()
-            .then(connection => {
-          const dispatcher = connection.play('./sounds/graduate.mp3', { volume: 0.5 });
-          dispatcher.on("finish", end => {
-            sleep(1000);
-            VC.leave();});
-        })
-        .catch(console.error);
-      }
+      vc("graduate",.5,VC,msg.author.id)
     break;}
     //----- end of vc -----//
   }
 });
 
+function vc (sound,vol,VC,auther){
+  if (talkedRecently.has(auther) && auther !== '698051518754062387') {
+    msg.channel.send("Cooldown 60 sec");
+   sleep(1000)
+    msg.delete();
+ return;}
 
+  talkedRecently.add(auther);
+  setTimeout(() => {
+    talkedRecently.delete(auther);
+  }, 60000);
+
+  
+  if (VC){
+    VC.join()
+      .then(connection => {
+    const dispatcher = connection.play('./sounds/'+sound+'.mp3', { volume: vol });
+    dispatcher.on("finish", end => {
+      sleep(1000);
+      VC.leave();});
+  })
+  .catch(console.error);
+}
+}
 
 function serverstats(member){
   sleep(2000)

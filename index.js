@@ -90,7 +90,8 @@ var VChelp = [
   "**" + prefix + "itsme_________its me im**",
   "**" + prefix + "unwise________ming dynasty pussy**",
   "**" + prefix + "shampoo_______HAHA shampoo**",
-  "**" + prefix + "notme_________Who the fuck wanna listen to that**"
+  "**" + prefix + "notme_________Who the fuck wanna listen to that**",
+  "**" + prefix + "graduate______you think u can graduate**"
 ];
 
 
@@ -2073,6 +2074,34 @@ bot.on("message", async msg => {
           VC.join()
             .then(connection => {
           const dispatcher = connection.play('./sounds/notme.mp3', { volume: 0.7 });
+          dispatcher.on("finish", end => {
+            sleep(1000);
+            VC.leave();});
+        })
+        .catch(console.error);
+      }
+    break;}
+
+    case "graduate":{
+      
+      if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
+        msg.channel.send("Cooldown 60 sec");
+       sleep(1000)
+        msg.delete();
+     return;}
+    
+      talkedRecently.add(msg.author.id);
+      setTimeout(() => {
+        talkedRecently.delete(msg.author.id);
+      }, 60000);
+
+      msg.channel.send("https://cdn.discordapp.com/attachments/739448495634645002/751762869716254721/videoplayback.mp4");
+
+      var VC = msg.member.voice.channel;
+        if (VC){
+          VC.join()
+            .then(connection => {
+          const dispatcher = connection.play('./sounds/graduate.mp3', { volume: 0.5 });
           dispatcher.on("finish", end => {
             sleep(1000);
             VC.leave();});

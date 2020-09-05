@@ -802,10 +802,10 @@ bot.on("message", async msg => {
           UserJSON[msg.author.id].bal -= parseInt(bet);
           Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
           let cards = new Discord.MessageEmbed()
-            .setTitle("**Black Jack\n You Buseted**")
+            .setTitle("**Black Jack\n You Busted**")
             .setThumbnail(msg.author.avatarURL())
             .setColor(0X0099ff)
-            .setDescription("**YOU LOST :(** You Buseted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+UserJSON[msg.author.id].bal+" <:chip:751730576918315048> ")
+            .setDescription("**YOU LOST :(** You Busted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+UserJSON[msg.author.id].bal+" <:chip:751730576918315048> ")
           msg.channel.send(cards);
         return;}
         
@@ -842,10 +842,10 @@ bot.on("message", async msg => {
             UserJSON[msg.author.id].bal -= parseInt(bet);
             Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
             let cards = new Discord.MessageEmbed()
-              .setTitle("**Black Jack\n You Buseted**")
+              .setTitle("**Black Jack\n You Busted**")
               .setThumbnail(msg.author.avatarURL())
               .setColor(0X0099ff)
-              .setDescription("**YOU LOST :(** You Buseted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+UserJSON[msg.author.id].bal+" <:chip:751730576918315048> ")
+              .setDescription("**YOU LOST :(** You Busted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+UserJSON[msg.author.id].bal+" <:chip:751730576918315048> ")
             msg.channel.send(cards);
           return;}
 
@@ -874,10 +874,10 @@ bot.on("message", async msg => {
           UserJSON[msg.author.id].bal -= parseInt(bet);
           Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
           let cards = new Discord.MessageEmbed()
-            .setTitle("**Black Jack\n You Buseted**")
+            .setTitle("**Black Jack\n You Busted**")
             .setThumbnail(msg.author.avatarURL())
             .setColor(0X0099ff)
-            .setDescription("**YOU LOST :(** You Buseted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+UserJSON[msg.author.id].bal+" <:chip:751730576918315048> ")
+            .setDescription("**YOU LOST :(** You Busted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+UserJSON[msg.author.id].bal+" <:chip:751730576918315048> ")
           msg.channel.send(cards);
           return;}
 
@@ -914,10 +914,10 @@ bot.on("message", async msg => {
             UserJSON[msg.author.id].bal -= parseInt(bet);
             Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
             let cards = new Discord.MessageEmbed()
-              .setTitle("**Black Jack\n You Buseted**")
+              .setTitle("**Black Jack\n You Busted**")
               .setThumbnail(msg.author.avatarURL())
               .setColor(0X0099ff)
-              .setDescription("**YOU LOST :(** You Buseted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+UserJSON[msg.author.id].bal+" <:chip:751730576918315048> ")
+              .setDescription("**YOU LOST :(** You Busted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+UserJSON[msg.author.id].bal+" <:chip:751730576918315048> ")
             msg.channel.send(cards);
             return;}
 //___________________________________________________
@@ -944,10 +944,10 @@ bot.on("message", async msg => {
           UserJSON[msg.author.id].bal -= parseInt(bet);
           Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
           let cards = new Discord.MessageEmbed()
-            .setTitle("**Black Jack\n You Buseted**")
+            .setTitle("**Black Jack\n You Busted**")
             .setThumbnail(msg.author.avatarURL())
             .setColor(0X0099ff)
-            .setDescription("**YOU LOST :(** You Buseted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+UserJSON[msg.author.id].bal+" <:chip:751730576918315048> ")
+            .setDescription("**YOU LOST :(** You Busted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+UserJSON[msg.author.id].bal+" <:chip:751730576918315048> ")
           msg.channel.send(cards);
           return;}
 
@@ -989,10 +989,10 @@ bot.on("message", async msg => {
             UserJSON[msg.author.id].bal -= parseInt(bet);
             Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
             let cards = new Discord.MessageEmbed()
-              .setTitle("**Black Jack\n You Buseted**")
+              .setTitle("**Black Jack\n You Busted**")
               .setThumbnail(msg.author.avatarURL())
               .setColor(0X0099ff)
-              .setDescription("**YOU LOST :(** You Buseted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+UserJSON[msg.author.id].bal+" <:chip:751730576918315048> ")
+              .setDescription("**YOU LOST :(** You Busted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+UserJSON[msg.author.id].bal+" <:chip:751730576918315048> ")
             msg.channel.send(cards);
             return;}
 

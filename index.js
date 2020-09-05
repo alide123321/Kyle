@@ -1665,7 +1665,7 @@ bot.on("message", async msg => {
       if(mentioned !== null){
         mentioned.send("**"+msg.author.username+" Says Good Night**")
         mentioned.send("https://cdn.discordapp.com/attachments/599061991281131531/751735078203293726/118375543_164947441915565_6934644620562947858_n.mp4")
-        msg.channel.send("Sent "+mentioned+" a Good Night msg");
+        msg.channel.send("Sent "+mentioned.user.username+" a Good Night msg");
       }
 
       break;}

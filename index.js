@@ -1609,13 +1609,16 @@ bot.on("message", async msg => {
       break;}
 
     case "info": {
-      if (args[1] === "version") msg.channel.send("version: " + version);
-      if (args[1] === "author") msg.channel.send("author: " + auther);
-      if (args[1] !== "version" && args[1] !== "author") {
-        msg.channel.send("What do you want more information about?");
-        msg.channel.send("*" + prefix + "info version*");
-        msg.channel.send("*" + prefix + "info author*");
-      }
+      let info = new Discord.MessageEmbed()
+        .setColor('#0099ff')
+        .setTitle("**Meme commands**")
+        .setURL(helplink)
+        .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
+        .addFields(
+          {name: "version: ", value: version}, 
+          {name: "author: ", value: auther}
+        )
+      msg.channel.send(info);
       break;}
 
     case "website": {

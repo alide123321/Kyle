@@ -543,6 +543,7 @@ bot.on("message", async msg => {
           let SuccessEmbed = new Discord.MessageEmbed()
             .setTitle("**YOUR BALANCE**")
             .setColor(0X32CD32)
+            .setThumbnail(msg.author.avatarURL())
             .addField("Balance", UserJSON[msg.author.id].bal)
           msg.channel.send(SuccessEmbed);
         }

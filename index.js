@@ -376,6 +376,7 @@ bot.on("message", async msg => {
         let WarningEmbed = new Discord.MessageEmbed()
           .setTitle("**ERROR**")
           .setColor(0XFF0000)
+          .setThumbnail(msg.author.avatarURL())
           .setDescription("You are already in the system")
         msg.channel.send(WarningEmbed);
         return;}
@@ -389,6 +390,7 @@ bot.on("message", async msg => {
       let SuccessEmbed = new Discord.MessageEmbed()
         .setTitle("**WELCOME**")
         .setColor(0X32CD32)
+        .setThumbnail(msg.author.avatarURL())
         .setDescription("You have joined the economy!")
       msg.channel.send(SuccessEmbed);
       break;}
@@ -400,6 +402,7 @@ bot.on("message", async msg => {
         let ErrorEmbed = new Discord.MessageEmbed()
           .setTitle("**ERROR**")
           .setColor(0XFF0000)
+          .setThumbnail(msg.author.avatarURL())
           .setDescription("You are not in the system try .newbal")
           msg.channel.send(ErrorEmbed);
         return;}
@@ -408,6 +411,7 @@ bot.on("message", async msg => {
         let WarningEmbed = new Discord.MessageEmbed()
           .setTitle("**Daily**")
           .setColor(0XFF0000)
+          .setThumbnail(msg.author.avatarURL())
           .setDescription("You have claimed today already")
         msg.channel.send(WarningEmbed);
         return;}
@@ -418,6 +422,7 @@ bot.on("message", async msg => {
       let SuccessEmbed = new Discord.MessageEmbed()
         .setTitle("**SUCCESS**")
         .setColor(0X32CD32)
+        .setThumbnail(msg.author.avatarURL())
         .setDescription("You have claimed your daily reward of 50 coins!")
       msg.channel.send(SuccessEmbed);
 
@@ -431,6 +436,7 @@ bot.on("message", async msg => {
         let ErrorEmbed = new Discord.MessageEmbed()
           .setTitle("**ERROR**")
           .setColor(0XFF0000)
+          .setThumbnail(msg.author.avatarURL())
           .setDescription("Please specify an amount to give .pay <#> <@>")
         msg.channel.send(ErrorEmbed);
       return;}
@@ -439,6 +445,7 @@ bot.on("message", async msg => {
       let ErrorEmbed = new Discord.MessageEmbed()
         .setTitle("**ERROR**")
         .setColor(0XFF0000)
+        .setThumbnail(msg.author.avatarURL())
         .setDescription("You are not in the system try .newbal")
         msg.channel.send(ErrorEmbed);
       return;}
@@ -447,6 +454,7 @@ bot.on("message", async msg => {
         let ErrorEmbed = new Discord.MessageEmbed()
           .setTitle("**ERROR**")
           .setColor(0XFF0000)
+          .setThumbnail(msg.author.avatarURL())
           .setDescription("Please specify a number .pay <#> <@>")
         msg.channel.send(ErrorEmbed);
       return;}
@@ -455,6 +463,7 @@ bot.on("message", async msg => {
         let ErrorEmbed = new Discord.MessageEmbed()
           .setTitle("**ERROR**")
           .setColor(0XFF0000)
+          .setThumbnail(msg.author.avatarURL())
           .setDescription("You do not have enough money")
         msg.channel.send(ErrorEmbed);
       return;}
@@ -463,6 +472,7 @@ bot.on("message", async msg => {
         let ErrorEmbed = new Discord.MessageEmbed()
           .setTitle("**ERROR**")
           .setColor(0XFF0000)
+          .setThumbnail(msg.author.avatarURL())
           .setDescription("Please specify an integer value greater than 0 .pay <#> <@>")
         msg.channel.send(ErrorEmbed);
       return;}
@@ -472,6 +482,7 @@ bot.on("message", async msg => {
           let ErrorEmbed = new Discord.MessageEmbed()
             .setTitle("**ERROR**")
             .setColor(0XFF0000)
+            .setThumbnail(msg.author.avatarURL())
             .setDescription("Please mention a user .pay <#> <@>")
           msg.channel.send(ErrorEmbed);
         return;}
@@ -480,6 +491,7 @@ bot.on("message", async msg => {
         let ErrorEmbed = new Discord.MessageEmbed()
           .setTitle("**ERROR**")
           .setColor(0XFF0000)
+          .setThumbnail(msg.author.avatarURL())
           .setDescription("That pearson isnt in the system tell them to use the .newbal command.")
         msg.channel.send(ErrorEmbed);
       return;}
@@ -492,6 +504,7 @@ bot.on("message", async msg => {
       let SuccessEmbed = new Discord.MessageEmbed()
         .setTitle("**SUCCESS**")
         .setColor(0X32CD32)
+        .setThumbnail(Mentioned.user.avatarURL())
         .setDescription("You have given $" + Money + " discord coins to " + Mentioned.user.username)
       msg.channel.send(SuccessEmbed);
       break;}
@@ -503,6 +516,7 @@ bot.on("message", async msg => {
         let ErrorEmbed = new Discord.MessageEmbed()
           .setTitle("**ERROR**")
           .setColor(0XFF0000)
+          .setThumbnail(msg.author.avatarURL())
           .setDescription("You are not in the system try .newbal")
         msg.channel.send(ErrorEmbed);
       return;}
@@ -513,6 +527,7 @@ bot.on("message", async msg => {
             let ErrorEmbed = new Discord.MessageEmbed()
               .setTitle("**ERROR**")
               .setColor(0XFF0000)
+              .setThumbnail(msg.author.avatarURL())
               .setDescription("That pearson isnt in the system tell them to use the .newbal command.")
             msg.channel.send(ErrorEmbed);
           return;}
@@ -520,6 +535,7 @@ bot.on("message", async msg => {
           let SuccessEmbed = new Discord.MessageEmbed()
             .setTitle("**"+mentioned.user.username+"'S BALANCE**")
             .setColor(0X32CD32)
+            .setThumbnail(mentioned.user.avatarURL())
             .addField("Balance", UserJSON[mentioned.id].bal)
           msg.channel.send(SuccessEmbed);
         return;
@@ -592,6 +608,7 @@ bot.on("message", async msg => {
         let ErrorEmbed = new Discord.MessageEmbed()
           .setTitle("**ERROR**")
           .setColor(0XFF0000)
+          .setThumbnail(msg.author.avatarURL())
           .setDescription("You are not in the system try .newbal")
         msg.channel.send(ErrorEmbed);
       return;}
@@ -600,6 +617,7 @@ bot.on("message", async msg => {
         let ErrorEmbed = new Discord.MessageEmbed()
           .setTitle("**ERROR**")
           .setColor(0XFF0000)
+          .setThumbnail(msg.author.avatarURL())
           .setDescription("how much do you want to bet")
         msg.channel.send(ErrorEmbed);
       return;}
@@ -608,6 +626,7 @@ bot.on("message", async msg => {
         let ErrorEmbed = new Discord.MessageEmbed()
           .setTitle("**ERROR**")
           .setColor(0XFF0000)
+          .setThumbnail(msg.author.avatarURL())
           .setDescription("you have to bet more than or equal to 0")
         msg.channel.send(ErrorEmbed);
       return;}
@@ -616,6 +635,7 @@ bot.on("message", async msg => {
         let ErrorEmbed = new Discord.MessageEmbed()
           .setTitle("**ERROR**")
           .setColor(0XFF0000)
+          .setThumbnail(msg.author.avatarURL())
           .setDescription("You do not have enough money")
         msg.channel.send(ErrorEmbed);
       return;}
@@ -626,6 +646,7 @@ bot.on("message", async msg => {
       let SuccessEmbed = new Discord.MessageEmbed()
         .setTitle("**LOSS**")
         .setColor(0XFF0000)
+        .setThumbnail(msg.author.avatarURL())
         .setDescription("You lost: "+ bet +" :(")
       msg.channel.send(SuccessEmbed);
     }
@@ -636,6 +657,7 @@ bot.on("message", async msg => {
       let SuccessEmbed = new Discord.MessageEmbed()
         .setTitle("**WIN**")
         .setColor(0X32CD32)
+        .setThumbnail(msg.author.avatarURL())
         .setDescription("You won: "+ bet +" :)")
       msg.channel.send(SuccessEmbed);
     }
@@ -653,6 +675,7 @@ bot.on("message", async msg => {
           let ErrorEmbed = new Discord.MessageEmbed()
             .setTitle("**ERROR**")
             .setColor(0XFF0000)
+            .setThumbnail(msg.author.avatarURL())
             .setDescription("You are not in the system try .newbal")
           msg.channel.send(ErrorEmbed);
       return;}
@@ -661,6 +684,7 @@ bot.on("message", async msg => {
         let ErrorEmbed = new Discord.MessageEmbed()
           .setTitle("**ERROR**")
           .setColor(0XFF0000)
+          .setThumbnail(msg.author.avatarURL())
           .setDescription("what number are you betting on \n.dice <1/2/3/4/5/6> <Bet>")
         msg.channel.send(ErrorEmbed);
       return;}
@@ -669,6 +693,7 @@ bot.on("message", async msg => {
         let ErrorEmbed = new Discord.MessageEmbed()
           .setTitle("**ERROR**")
           .setColor(0XFF0000)
+          .setThumbnail(msg.author.avatarURL())
           .setDescription("what number are you betting on \n.dice <1/2/3/4/5/6> <Bet>")
         msg.channel.send(ErrorEmbed);
       return;}
@@ -677,6 +702,7 @@ bot.on("message", async msg => {
           let ErrorEmbed = new Discord.MessageEmbed()
             .setTitle("**ERROR**")
             .setColor(0XFF0000)
+            .setThumbnail(msg.author.avatarURL())
             .setDescription("how much do you want to bet .dice <1/2/3/4/5/6> <Bet>")
           msg.channel.send(ErrorEmbed);
       return;}
@@ -685,6 +711,7 @@ bot.on("message", async msg => {
           let ErrorEmbed = new Discord.MessageEmbed()
             .setTitle("**ERROR**")
             .setColor(0XFF0000)
+            .setThumbnail(msg.author.avatarURL())
             .setDescription("you have to bet more than or equal to 0")
           msg.channel.send(ErrorEmbed);
       return;}
@@ -693,6 +720,7 @@ bot.on("message", async msg => {
         let ErrorEmbed = new Discord.MessageEmbed()
           .setTitle("**ERROR**")
           .setColor(0XFF0000)
+          .setThumbnail(msg.author.avatarURL())
           .setDescription("You do not have enough money")
         msg.channel.send(ErrorEmbed);
       return;}
@@ -705,6 +733,7 @@ bot.on("message", async msg => {
         let SuccessEmbed = new Discord.MessageEmbed()
           .setTitle("**WIN**")
           .setColor(0X32CD32)
+          .setThumbnail(msg.author.avatarURL())
           .setDescription("You won: "+ winmoney +" :)")
         msg.channel.send(SuccessEmbed);
       return;}
@@ -716,6 +745,7 @@ bot.on("message", async msg => {
         let SuccessEmbed = new Discord.MessageEmbed()
           .setTitle("**LOSS**")
           .setColor(0XFF0000)
+          .setThumbnail(msg.author.avatarURL())
           .setDescription("You lost: "+ bet +" :(\n The dice was: "+rand)
         msg.channel.send(SuccessEmbed);
       return;}

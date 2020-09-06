@@ -1051,7 +1051,7 @@ bot.on("message", async msg => {
           return;}
 
           if(dcardtotal === 21){
-            UserJSON[msg.author.id].bal += parseInt(bet);
+            UserJSON[msg.author.id].bal -= parseInt(bet);
             Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
             let cards = new Discord.MessageEmbed()
               .setTitle("**Black Jack**")
@@ -1155,7 +1155,7 @@ bot.on("message", async msg => {
           return;}
 
           if(dcardtotal === 21){
-            UserJSON[msg.author.id].bal += parseInt(bet);
+            UserJSON[msg.author.id].bal -= parseInt(bet);
             Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
             let cards = new Discord.MessageEmbed()
               .setTitle("**Black Jack**")
@@ -1259,7 +1259,7 @@ bot.on("message", async msg => {
           return;}
 
           if(dcardtotal === 21){
-            UserJSON[msg.author.id].bal += parseInt(bet);
+            UserJSON[msg.author.id].bal -= parseInt(bet);
             Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
             let cards = new Discord.MessageEmbed()
               .setTitle("**Black Jack**")

@@ -1611,7 +1611,7 @@ bot.on("message", async msg => {
     case "info": {
       let info = new Discord.MessageEmbed()
         .setColor('#0099ff')
-        .setTitle("**Meme commands**")
+        .setTitle("**Help commands**")
         .setURL(helplink)
         .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
         .addFields(

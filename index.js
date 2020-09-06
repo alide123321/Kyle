@@ -93,7 +93,8 @@ var VChelp = [
   "**" + prefix + "unwise________ming dynasty pussy**",
   "**" + prefix + "shampoo_______HAHA shampoo**",
   "**" + prefix + "notme_________Who the fuck wanna listen to that**",
-  "**" + prefix + "graduate______you think u can graduate**"
+  "**" + prefix + "graduate______you think u can graduate**",
+  "**" + prefix + "egg___________Egg man**"
 ];
 
 
@@ -1779,6 +1780,12 @@ bot.on("message", async msg => {
       msg.channel.send("https://cdn.discordapp.com/attachments/739448495634645002/751762869716254721/videoplayback.mp4");
       var VC = msg.member.voice.channel;
       vc("graduate",.5,VC,msg.author.id,msg.channel)
+    break;}
+
+    case "egg":{
+      msg.channel.send("https://cdn.discordapp.com/attachments/752042865349230662/752123240226357268/EggMan_Sings_Yi_Jian_Mei_Synced_Up.mp4");
+      var VC = msg.member.voice.channel;
+      vc("egg",.7,VC,msg.author.id,msg.channel)
     break;}
     //----- end of vc -----//
   }

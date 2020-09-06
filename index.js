@@ -1355,8 +1355,17 @@ bot.on("message", async msg => {
           .setDescription("You do not have enough money")
         msg.channel.send(ErrorEmbed);
       return;}
+      
+      if(!args[1]){
+        let ErrorEmbed = new Discord.MessageEmbed()
+          .setTitle("**ERROR**")
+          .setColor(0XFF0000)
+          .setThumbnail(msg.author.avatarURL())
+          .setDescription("What do you want \n0-Rock\n1-Paper\n2-scissors")
+        msg.channel.send(ErrorEmbed);
+      return;}
 
-      if(!args[1] || args[1] !== 0 || args[1] !== 1 || args[1] !== 2){
+      if(args[1] !== 0 && args[1] !== 1 && args[1] !== 2){
         let ErrorEmbed = new Discord.MessageEmbed()
           .setTitle("**ERROR**")
           .setColor(0XFF0000)

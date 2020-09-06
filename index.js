@@ -1317,7 +1317,6 @@ bot.on("message", async msg => {
     case "rps": {
       let UserJSON = JSON.parse(Fs.readFileSync("./DataBase/users.json"));
       let bet = args[2];
-      let player = args[1];
       drand = Math.floor(Math.random() * 3 - 1) + 1;
 
       if (!UserJSON[msg.author.id]) {
@@ -1355,7 +1354,7 @@ bot.on("message", async msg => {
           .setDescription("You do not have enough money")
         msg.channel.send(ErrorEmbed);
       return;}
-      
+
       if(!args[1]){
         let ErrorEmbed = new Discord.MessageEmbed()
           .setTitle("**ERROR**")
@@ -1365,7 +1364,8 @@ bot.on("message", async msg => {
         msg.channel.send(ErrorEmbed);
       return;}
 
-      if(args[1] !== 0 && args[1] !== 1 && args[1] !== 2){
+      let player = args[1];
+      if(player != 0 && player != 1 && player != 2){
         let ErrorEmbed = new Discord.MessageEmbed()
           .setTitle("**ERROR**")
           .setColor(0XFF0000)
@@ -1379,7 +1379,8 @@ bot.on("message", async msg => {
       // 1 = paper 
       // 2 = sis
 
-    if(player === 0){
+    if(player == 0){
+      console.log("3.5")
       if(drand === 0){ //if u get rock and dealer gets rock
         let SuccessEmbed = new Discord.MessageEmbed()
           .setTitle("**ew**")
@@ -1410,9 +1411,9 @@ bot.on("message", async msg => {
           .setDescription("You Win: "+ bet + "\nBot got: " + dealer)
         msg.channel.send(SuccessEmbed);
       }
-    }
+    return;}
 
-    if(player === 1){
+    if(player == 1){
       if(drand === 1){ //if u get paper and dealer gets paper
         let SuccessEmbed = new Discord.MessageEmbed()
           .setTitle("**ew**")
@@ -1443,9 +1444,9 @@ bot.on("message", async msg => {
           .setDescription("You Win: "+ bet + "\nBot got: "+ dealer)
         msg.channel.send(SuccessEmbed);
       }
-    }
+    return;}
 
-    if(player === 2){
+    if(player == 2){
       if(drand === 2){ //if u get sis and dealer gets sis
         let SuccessEmbed = new Discord.MessageEmbed()
           .setTitle("**ew**")
@@ -1476,8 +1477,8 @@ bot.on("message", async msg => {
           .setDescription("You Win: "+ bet + "\nBot got: "+ dealer)
         msg.channel.send(SuccessEmbed);
       }
-    }
-  
+    return;}
+
       break;}
 
     //----- end of gambling -----//

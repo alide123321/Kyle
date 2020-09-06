@@ -46,6 +46,7 @@ var gamblhelp = [
   "**" + prefix + "flip__________A fifty fifty chance of winning**",
   "**" + prefix + "dice__________Roll a dice if you get it right you get 3X your bet but if you lose then you lose your bet**",
   "**" + prefix + "bj____________Play Black Jack**",
+  "**" + prefix + "rps___________Play Rock Paper scissors**"
 ]
 var modshelp = [
   "**" + prefix + "help__________will bring up this page**",
@@ -1315,9 +1316,8 @@ bot.on("message", async msg => {
 
     case "rps": {
       let UserJSON = JSON.parse(Fs.readFileSync("./DataBase/users.json"));
-      let bet = args[1];
-
-      rand = Math.floor(Math.random() * 3 - 1) + 1;
+      let bet = args[2];
+      let player = args[1];
       drand = Math.floor(Math.random() * 3 - 1) + 1;
 
       if (!UserJSON[msg.author.id]) {
@@ -1329,7 +1329,7 @@ bot.on("message", async msg => {
         msg.channel.send(ErrorEmbed);
       return;}
 
-      if(!args[1] || isNaN(bet)){
+      if(!args[2] || isNaN(bet)){
         let ErrorEmbed = new Discord.MessageEmbed()
           .setTitle("**ERROR**")
           .setColor(0XFF0000)
@@ -1356,14 +1356,21 @@ bot.on("message", async msg => {
         msg.channel.send(ErrorEmbed);
       return;}
 
+      if(!args[1] || args[1] !== 0 || args[1] !== 1 || args[1] !== 2){
+        let ErrorEmbed = new Discord.MessageEmbed()
+          .setTitle("**ERROR**")
+          .setColor(0XFF0000)
+          .setThumbnail(msg.author.avatarURL())
+          .setDescription("What do you want \n0-Rock\n1-Paper\n2-scissors")
+        msg.channel.send(ErrorEmbed);
+      return;}
 
 
       // 0 = rock 
       // 1 = paper 
       // 2 = sis
 
-    if(rand === 0){
-      var player = "rock";
+    if(player === 0){
       if(drand === 0){ //if u get rock and dealer gets rock
         let SuccessEmbed = new Discord.MessageEmbed()
           .setTitle("**ew**")
@@ -1380,7 +1387,7 @@ bot.on("message", async msg => {
           .setTitle("**LOSS**")
           .setColor(0XFF0000)
           .setThumbnail(msg.author.avatarURL())
-          .setDescription("You lost: "+ bet +" :(\nYou got: "+ player +"\nBot got: "+ dealer)
+          .setDescription("You lost: "+ bet +" :(\nBot got: "+ dealer)
         msg.channel.send(SuccessEmbed);
       }
       if(drand === 2){ //if u get rock and dealer gets sis
@@ -1391,13 +1398,12 @@ bot.on("message", async msg => {
           .setTitle("**Win**")
           .setColor(0X32CD32)
           .setThumbnail(msg.author.avatarURL())
-          .setDescription("You Win: "+ bet + "\nYou got: "+ player +"\nBot got: " + dealer)
+          .setDescription("You Win: "+ bet + "\nBot got: " + dealer)
         msg.channel.send(SuccessEmbed);
       }
     }
 
-    if(rand === 1){
-      var player = "paper";
+    if(player === 1){
       if(drand === 1){ //if u get paper and dealer gets paper
         let SuccessEmbed = new Discord.MessageEmbed()
           .setTitle("**ew**")
@@ -1414,7 +1420,7 @@ bot.on("message", async msg => {
           .setTitle("**LOSS**")
           .setColor(0XFF0000)
           .setThumbnail(msg.author.avatarURL())
-          .setDescription("You lost: "+ bet +" :(\nYou got: "+ player +"\nBot got: "+ dealer)
+          .setDescription("You lost: "+ bet +" :(\nBot got: "+ dealer)
         msg.channel.send(SuccessEmbed);
       }
       if(drand === 0){ //if u get paper and dealer gets rock
@@ -1425,13 +1431,12 @@ bot.on("message", async msg => {
           .setTitle("**Win**")
           .setColor(0X32CD32)
           .setThumbnail(msg.author.avatarURL())
-          .setDescription("You Win: "+ bet + "\nYou got: "+ player +"\nBot got: "+ dealer)
+          .setDescription("You Win: "+ bet + "\nBot got: "+ dealer)
         msg.channel.send(SuccessEmbed);
       }
     }
 
-    if(rand === 2){
-      var player = "scissors";
+    if(player === 2){
       if(drand === 2){ //if u get sis and dealer gets sis
         let SuccessEmbed = new Discord.MessageEmbed()
           .setTitle("**ew**")
@@ -1448,7 +1453,7 @@ bot.on("message", async msg => {
           .setTitle("**LOSS**")
           .setColor(0XFF0000)
           .setThumbnail(msg.author.avatarURL())
-          .setDescription("You lost: "+ bet +" :(\nYou got: "+ player +"\nBot got: "+ dealer)
+          .setDescription("You lost: "+ bet +" :(\nBot got: "+ dealer)
         msg.channel.send(SuccessEmbed);
       }
       if(drand === 1){ //if u get sis and dealer gets paper
@@ -1459,7 +1464,7 @@ bot.on("message", async msg => {
           .setTitle("**Win**")
           .setColor(0X32CD32)
           .setThumbnail(msg.author.avatarURL())
-          .setDescription("You Win: "+ bet + "\nYou got: "+ player +"\nBot got: "+ dealer)
+          .setDescription("You Win: "+ bet + "\nBot got: "+ dealer)
         msg.channel.send(SuccessEmbed);
       }
     }

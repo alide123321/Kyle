@@ -1057,7 +1057,7 @@ bot.on("message", async msg => {
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
               .setColor(0X0099ff)
-              .setDescription("**YOU LOST :(** Dealer got a Black Jack\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You WON: "+bet+" <:chip:751730576918315048> \n You now have: "+UserJSON[msg.author.id].bal+" <:chip:751730576918315048> ")
+              .setDescription("**YOU LOST :(** Dealer got a Black Jack\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+UserJSON[msg.author.id].bal+" <:chip:751730576918315048> ")
             msg.channel.send(cards);
           return;}
 
@@ -1161,7 +1161,7 @@ bot.on("message", async msg => {
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
               .setColor(0X0099ff)
-              .setDescription("**YOU LOST :(** Dealer got a Black Jack\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You WON: "+bet+" <:chip:751730576918315048> \n You now have: "+UserJSON[msg.author.id].bal+" <:chip:751730576918315048> ")
+              .setDescription("**YOU LOST :(** Dealer got a Black Jack\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+UserJSON[msg.author.id].bal+" <:chip:751730576918315048> ")
             msg.channel.send(cards);
           return;}
 
@@ -1265,7 +1265,7 @@ bot.on("message", async msg => {
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
               .setColor(0X0099ff)
-              .setDescription("**YOU LOST :(** Dealer got a Black Jack\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You WON: "+bet+" <:chip:751730576918315048> \n You now have: "+UserJSON[msg.author.id].bal+" <:chip:751730576918315048> ")
+              .setDescription("**YOU LOST :(** Dealer got a Black Jack\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+UserJSON[msg.author.id].bal+" <:chip:751730576918315048> ")
             msg.channel.send(cards);
           return;}
 

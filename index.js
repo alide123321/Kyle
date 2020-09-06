@@ -73,7 +73,8 @@ var funhelp = [
   "**" + prefix + "bruh__________that face**",
   "**" + prefix + "pardon________PARDON.**",
   "**" + prefix + "halal_________absolutely halal**",
-  "**" + prefix + "gn<@>_________Say GN to anyone better if u @ them**"
+  "**" + prefix + "gn<@>_________Say GN to anyone better if u @ them**",
+  "**" + prefix + "frog__________Frog someone**"
 ];
 var VChelp = [
   "**" + prefix + "okok__________PopSmoke's OK OK**",
@@ -1668,6 +1669,10 @@ bot.on("message", async msg => {
         msg.channel.send("Sent "+mentioned.user.username+" a Good Night msg");
       }
 
+      break;}
+
+    case "frog": {
+      msg.channel.send("https://tenor.com/view/h%c3%a2m-frog-toad-frog-l%e1%ba%afc-wiggle-gif-14557565")
       break;}
     //----- end of memes -----//
 

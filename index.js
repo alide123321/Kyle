@@ -558,6 +558,7 @@ bot.on("message", async msg => {
         for(var n = 0 ; n < usersplaying.length ; ++n){
           if(usersplayingmoney[i] === UserJSON[usersplaying[n]].bal){
             send.push((await msg.guild.members.fetch(usersplaying[n])).displayName+"--"+usersplayingmoney[i])
+            usersplaying.splice(n, 1);
           }
         }
       }

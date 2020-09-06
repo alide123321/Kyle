@@ -972,9 +972,6 @@ bot.on("message", async msg => {
             cardtotal += c5;
 
             if(cardtotal <= 21){
-
-              pcards.push(c5)
-              cardtotal += c5;
               
               bet *= 5
               UserJSON[msg.author.id].bal += parseInt(bet);

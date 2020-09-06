@@ -1313,6 +1313,159 @@ bot.on("message", async msg => {
       
     break;}
 
+    case "rps": {
+      let UserJSON = JSON.parse(Fs.readFileSync("./DataBase/users.json"));
+      let bet = args[1];
+
+      rand = Math.floor(Math.random() * 3 - 1) + 1;
+      drand = Math.floor(Math.random() * 3 - 1) + 1;
+
+      if (!UserJSON[msg.author.id]) {
+        let ErrorEmbed = new Discord.MessageEmbed()
+          .setTitle("**ERROR**")
+          .setColor(0XFF0000)
+          .setThumbnail(msg.author.avatarURL())
+          .setDescription("You are not in the system try .newbal")
+        msg.channel.send(ErrorEmbed);
+      return;}
+
+      if(!args[1] || isNaN(bet)){
+        let ErrorEmbed = new Discord.MessageEmbed()
+          .setTitle("**ERROR**")
+          .setColor(0XFF0000)
+          .setThumbnail(msg.author.avatarURL())
+          .setDescription("how much do you want to bet")
+        msg.channel.send(ErrorEmbed);
+      return;}
+
+      if(bet < 0){
+        let ErrorEmbed = new Discord.MessageEmbed()
+          .setTitle("**ERROR**")
+          .setColor(0XFF0000)
+          .setThumbnail(msg.author.avatarURL())
+          .setDescription("you have to bet more than or equal to 0")
+        msg.channel.send(ErrorEmbed);
+      return;}
+
+      if (UserJSON[msg.author.id].bal < bet) {
+        let ErrorEmbed = new Discord.MessageEmbed()
+          .setTitle("**ERROR**")
+          .setColor(0XFF0000)
+          .setThumbnail(msg.author.avatarURL())
+          .setDescription("You do not have enough money")
+        msg.channel.send(ErrorEmbed);
+      return;}
+
+
+
+      // 0 = rock 
+      // 1 = paper 
+      // 2 = sis
+
+    if(rand === 0){
+      var player = "rock";
+      if(drand === 0){ //if u get rock and dealer gets rock
+        let SuccessEmbed = new Discord.MessageEmbed()
+          .setTitle("**ew**")
+          .setColor(0XFFA500)
+          .setThumbnail(msg.author.avatarURL())
+          .setDescription("You both got rock")
+        msg.channel.send(SuccessEmbed);
+      }
+      if(drand === 1){ //if u get rock and dealer gets paper
+        var dealer = "paper";
+        UserJSON[msg.author.id].bal -= parseInt(bet);
+        Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+        let SuccessEmbed = new Discord.MessageEmbed()
+          .setTitle("**LOSS**")
+          .setColor(0XFF0000)
+          .setThumbnail(msg.author.avatarURL())
+          .setDescription("You lost: "+ bet +" :(\nYou got: "+ player +"\nBot got: "+ dealer)
+        msg.channel.send(SuccessEmbed);
+      }
+      if(drand === 2){ //if u get rock and dealer gets sis
+        var dealer = "scissors";
+        UserJSON[msg.author.id].bal += parseInt(bet);
+        Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+        let SuccessEmbed = new Discord.MessageEmbed()
+          .setTitle("**Win**")
+          .setColor(0X32CD32)
+          .setThumbnail(msg.author.avatarURL())
+          .setDescription("You Win: "+ bet + "\nYou got: "+ player +"\nBot got: " + dealer)
+        msg.channel.send(SuccessEmbed);
+      }
+    }
+
+    if(rand === 1){
+      var player = "paper";
+      if(drand === 1){ //if u get paper and dealer gets paper
+        let SuccessEmbed = new Discord.MessageEmbed()
+          .setTitle("**ew**")
+          .setColor(0XFFA500)
+          .setThumbnail(msg.author.avatarURL())
+          .setDescription("You both got paper")
+        msg.channel.send(SuccessEmbed);
+      }
+      if(drand === 2){ //if u get paper and dealer gets sis
+        var dealer = "scissors";
+        UserJSON[msg.author.id].bal -= parseInt(bet);
+        Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+        let SuccessEmbed = new Discord.MessageEmbed()
+          .setTitle("**LOSS**")
+          .setColor(0XFF0000)
+          .setThumbnail(msg.author.avatarURL())
+          .setDescription("You lost: "+ bet +" :(\nYou got: "+ player +"\nBot got: "+ dealer)
+        msg.channel.send(SuccessEmbed);
+      }
+      if(drand === 0){ //if u get paper and dealer gets rock
+        var dealer = "rock";
+        UserJSON[msg.author.id].bal += parseInt(bet);
+        Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+        let SuccessEmbed = new Discord.MessageEmbed()
+          .setTitle("**Win**")
+          .setColor(0X32CD32)
+          .setThumbnail(msg.author.avatarURL())
+          .setDescription("You Win: "+ bet + "\nYou got: "+ player +"\nBot got: "+ dealer)
+        msg.channel.send(SuccessEmbed);
+      }
+    }
+
+    if(rand === 2){
+      var player = "scissors";
+      if(drand === 2){ //if u get sis and dealer gets sis
+        let SuccessEmbed = new Discord.MessageEmbed()
+          .setTitle("**ew**")
+          .setColor(0XFFA500)
+          .setThumbnail(msg.author.avatarURL())
+          .setDescription("You both got scissors")
+        msg.channel.send(SuccessEmbed);
+      }
+      if(drand === 0){ //if u get sis and dealer gets rock
+        var dealer = "rock";
+        UserJSON[msg.author.id].bal -= parseInt(bet);
+        Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+        let SuccessEmbed = new Discord.MessageEmbed()
+          .setTitle("**LOSS**")
+          .setColor(0XFF0000)
+          .setThumbnail(msg.author.avatarURL())
+          .setDescription("You lost: "+ bet +" :(\nYou got: "+ player +"\nBot got: "+ dealer)
+        msg.channel.send(SuccessEmbed);
+      }
+      if(drand === 1){ //if u get sis and dealer gets paper
+        var dealer = "paper";
+        UserJSON[msg.author.id].bal += parseInt(bet);
+        Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+        let SuccessEmbed = new Discord.MessageEmbed()
+          .setTitle("**Win**")
+          .setColor(0X32CD32)
+          .setThumbnail(msg.author.avatarURL())
+          .setDescription("You Win: "+ bet + "\nYou got: "+ player +"\nBot got: "+ dealer)
+        msg.channel.send(SuccessEmbed);
+      }
+    }
+  
+      break;}
+
     //----- end of gambling -----//
 
     

@@ -1679,113 +1679,114 @@ bot.on("message", async msg => {
     case "okok": {
       msg.channel.send("https://cdn.discordapp.com/attachments/608295365384339457/737059292930375780/video0.mov");
       var VC = msg.member.voice.channel;
-      vc("okok",.5,VC,msg.author.id)
+      vc("okok",.5,VC,msg.author.id,msg.channel)
     break;}
 
     case "woo": {
       msg.channel.send("https://cdn.discordapp.com/attachments/737775095828709508/738086389358264391/woo.gif");
       var VC = msg.member.voice.channel;
-      vc("woo",.25,VC,msg.author.id)
+      vc("woo",.25,VC,msg.author.id,msg.channel)
     break;}
 
     case "hamood":{
       msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/738867948495568976/Hamood_habibi.mp4");
       var VC = msg.member.voice.channel;
-      vc("hamood",.5,VC,msg.author.id)
+      vc("hamood",.5,VC,msg.author.id,msg.channel)
     break;}
 
     case "itis":{
       msg.channel.send("https://cdn.discordapp.com/attachments/608207237667749908/740063663502786670/video0.mov");
       var VC = msg.member.voice.channel;
-      vc("itis",.5,VC,msg.author.id)
+      vc("itis",.5,VC,msg.author.id,msg.channel)
     break;}
 
     case "stop":{
       msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/740483382173237299/JoeBuddenstopmeme.mp4");
       var VC = msg.member.voice.channel;
-      vc("stop",.5,VC,msg.author.id)
+      vc("stop",.5,VC,msg.author.id,msg.channel)
     break;}
 
     case "cough":{
       msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/740721964531974244/videoplayback.mp4");
       var VC = msg.member.voice.channel;
-      vc("cough",.7,VC,msg.author.id)
+      vc("cough",.7,VC,msg.author.id,msg.channel)
     break;}
 
     case "kanye":{
       msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/740725168904601670/videoplayback_1_online-video-cutter.com.mp4");
       var VC = msg.member.voice.channel;
-      vc("kanye",.7,VC,msg.author.id)
+      vc("kanye",.7,VC,msg.author.id,msg.channel)
     break;}
 
     case "rock":{
       msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/748035445140619264/rock.mp4");
       var VC = msg.member.voice.channel;
-      vc("rock",.6,VC,msg.author.id)
+      vc("rock",.6,VC,msg.author.id,msg.channel)
     break;}
 
     case "mad":{
       msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/743726550213460068/HOES_MAD_FULL_VIDEO.mp4");
       var VC = msg.member.voice.channel;
-      vc("mad",.35,VC,msg.author.id)
+      vc("mad",.35,VC,msg.author.id,msg.channel)
     break;}
     
     case "gay":{
       msg.channel.send("https://cdn.discordapp.com/attachments/608207237667749908/746398464220463216/video0.mp4");
       var VC = msg.member.voice.channel;
-      vc("gay",.5,VC,msg.author.id)
+      vc("gay",.5,VC,msg.author.id,msg.channel)
     break;}
 
     case "sad":{
       msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/746467065577078915/video0.mp4");
       var VC = msg.member.voice.channel;
-      vc("sad",.7,VC,msg.author.id)
+      vc("sad",.7,VC,msg.author.id,msg.channel)
     break;}
 
     case "smoothie":{
       msg.channel.send("https://cdn.discordapp.com/attachments/608207237667749908/748466554097631291/Im_about_to_try_my_smoothie.mp4");
       var VC = msg.member.voice.channel;
-      vc("smoothie",.7,VC,msg.author.id)
+      vc("smoothie",.7,VC,msg.author.id,msg.channel)
     break;}
 
     case "itsme":{
       msg.channel.send("https://cdn.discordapp.com/attachments/599061991281131531/749542094783381624/Its_me_Im_niggas.mp4");
       var VC = msg.member.voice.channel;
-      vc("itsme",.7,VC,msg.author.id)
+      vc("itsme",.7,VC,msg.author.id,msg.channel)
     break;}
 
     case "unwise":{
       msg.channel.send("https://cdn.discordapp.com/attachments/608207237667749908/750270119954874397/video0.mp4");
       var VC = msg.member.voice.channel;
-      vc("unwise",.5,VC,msg.author.id)
+      vc("unwise",.5,VC,msg.author.id,msg.channel)
     break;}
     
     case "shampoo":{
       msg.channel.send("https://cdn.discordapp.com/attachments/608207237667749908/750757207284645908/video0.mp4");
       var VC = msg.member.voice.channel;
-      vc("shampoo",1.2,VC,msg.author.id)
+      vc("shampoo",1.2,VC,msg.author.id,msg.channel,bot.channels.cache.get(msg.channel.id))
     break;}
 
     case "notme":{
       msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/751540044476710982/not_me.mp4");
       var VC = msg.member.voice.channel;
-      vc("notme",.7,VC,msg.author.id)
+      vc("notme",.7,VC,msg.author.id,msg.channel,bot.channels.cache.get(msg.channel.id))
     break;}
 
     case "graduate":{
       msg.channel.send("https://cdn.discordapp.com/attachments/739448495634645002/751762869716254721/videoplayback.mp4");
       var VC = msg.member.voice.channel;
-      vc("graduate",.5,VC,msg.author.id)
+      vc("graduate",.5,VC,msg.author.id,bot.channels.cache.get(msg.channel.id))
     break;}
     //----- end of vc -----//
   }
 });
 
-function vc (sound,vol,VC,auther){
+function vc (sound,vol,VC,auther,chan){
   if (talkedRecently.has(auther) && auther !== '698051518754062387') {
-    msg.channel.send("Cooldown 60 sec");
-   sleep(1000)
-    msg.delete();
+    chan.send("Cooldown 60 sec")
+    .then(msg => {
+      msg.delete({ timeout: 10000 })
+    })
  return;}
 
   talkedRecently.add(auther);

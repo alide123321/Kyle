@@ -1763,19 +1763,19 @@ bot.on("message", async msg => {
     case "shampoo":{
       msg.channel.send("https://cdn.discordapp.com/attachments/608207237667749908/750757207284645908/video0.mp4");
       var VC = msg.member.voice.channel;
-      vc("shampoo",1.2,VC,msg.author.id,msg.channel,bot.channels.cache.get(msg.channel.id))
+      vc("shampoo",1.2,VC,msg.author.id,msg.channel)
     break;}
 
     case "notme":{
       msg.channel.send("https://cdn.discordapp.com/attachments/707451317626470455/751540044476710982/not_me.mp4");
       var VC = msg.member.voice.channel;
-      vc("notme",.7,VC,msg.author.id,msg.channel,bot.channels.cache.get(msg.channel.id))
+      vc("notme",.7,VC,msg.author.id,msg.channel)
     break;}
 
     case "graduate":{
       msg.channel.send("https://cdn.discordapp.com/attachments/739448495634645002/751762869716254721/videoplayback.mp4");
       var VC = msg.member.voice.channel;
-      vc("graduate",.5,VC,msg.author.id,bot.channels.cache.get(msg.channel.id))
+      vc("graduate",.5,VC,msg.author.id,msg.channel)
     break;}
     //----- end of vc -----//
   }

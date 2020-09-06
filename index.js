@@ -1410,7 +1410,6 @@ bot.on("message", async msg => {
       // 2 = sis
 
     if(player == 0){
-      console.log("3.5")
       if(drand === 0){ //if u get rock and dealer gets rock
         let SuccessEmbed = new Discord.MessageEmbed()
           .setTitle("**ew**")

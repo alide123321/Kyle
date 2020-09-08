@@ -127,7 +127,6 @@ bot.once("ready", () => {
   console.log("prefix:" + prefix);
   console.log("version:" + version);
   bot.user.setActivity(" DM me "+prefix+"Help");
-  console.log(bot.commands);
 });
 
 bot.on('guildMemberAdd', member => {

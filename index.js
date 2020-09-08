@@ -14,7 +14,7 @@ require('dotenv').config();
 
 
 
-
+const sleep = require('./functions/sleep.js').sleep;
 const moment = require("moment");
 const Console = console;
 let options = {

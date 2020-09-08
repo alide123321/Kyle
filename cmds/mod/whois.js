@@ -1,7 +1,10 @@
 module.exports.run = async (bot, msg, args) => {
+  const Discord = require("discord.js");
     let Mentioned = msg.mentions.members.first();
+    const Fs = require("fs");
       let UserJSON = JSON.parse(Fs.readFileSync("./DataBase/users.json"));
-
+      
+      
       if (!(msg.member.hasPermission('ADMINISTRATOR'))) {
         msg.channel.send("dumb dumb ur not a admin");
       return;}

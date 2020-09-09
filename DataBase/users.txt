@@ -1,0 +1,4 @@
+//to use the bot change this file to a .json and delete this line
+{
+
+}

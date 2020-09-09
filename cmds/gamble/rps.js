@@ -83,7 +83,7 @@ module.exports.run = async (bot, msg, args) => {
           .setTitle("**LOSS**")
           .setColor(0XFF0000)
           .setThumbnail(msg.author.avatarURL())
-          .setDescription("You lost: "+ bet +" :(\nBot got: "+ dealer)
+          .setDescription("You lost: "+ bet +" <:chip:751730576918315048> :(\nBot got: "+ dealer)
         msg.channel.send(SuccessEmbed);
       }
       if(drand === 2){ //if u get rock and dealer gets sis
@@ -94,7 +94,7 @@ module.exports.run = async (bot, msg, args) => {
           .setTitle("**Win**")
           .setColor(0X32CD32)
           .setThumbnail(msg.author.avatarURL())
-          .setDescription("You Win: "+ bet + "\nBot got: " + dealer)
+          .setDescription("You Win: "+ bet + "<:chip:751730576918315048>\nBot got: " + dealer)
         msg.channel.send(SuccessEmbed);
       }
     return;}
@@ -116,7 +116,7 @@ module.exports.run = async (bot, msg, args) => {
           .setTitle("**LOSS**")
           .setColor(0XFF0000)
           .setThumbnail(msg.author.avatarURL())
-          .setDescription("You lost: "+ bet +" :(\nBot got: "+ dealer)
+          .setDescription("You lost: "+ bet +" <:chip:751730576918315048> :(\nBot got: "+ dealer)
         msg.channel.send(SuccessEmbed);
       }
       if(drand === 0){ //if u get paper and dealer gets rock
@@ -127,7 +127,7 @@ module.exports.run = async (bot, msg, args) => {
           .setTitle("**Win**")
           .setColor(0X32CD32)
           .setThumbnail(msg.author.avatarURL())
-          .setDescription("You Win: "+ bet + "\nBot got: "+ dealer)
+          .setDescription("You Win: "+ bet + "<:chip:751730576918315048> \nBot got: "+ dealer)
         msg.channel.send(SuccessEmbed);
       }
     return;}
@@ -149,7 +149,7 @@ module.exports.run = async (bot, msg, args) => {
           .setTitle("**LOSS**")
           .setColor(0XFF0000)
           .setThumbnail(msg.author.avatarURL())
-          .setDescription("You lost: "+ bet +" :(\nBot got: "+ dealer)
+          .setDescription("You lost: "+ bet +" <:chip:751730576918315048> :(\nBot got: "+ dealer)
         msg.channel.send(SuccessEmbed);
       }
       if(drand === 1){ //if u get sis and dealer gets paper
@@ -160,7 +160,7 @@ module.exports.run = async (bot, msg, args) => {
           .setTitle("**Win**")
           .setColor(0X32CD32)
           .setThumbnail(msg.author.avatarURL())
-          .setDescription("You Win: "+ bet + "\nBot got: "+ dealer)
+          .setDescription("You Win: "+ bet + " <:chip:751730576918315048>\nBot got: "+ dealer)
         msg.channel.send(SuccessEmbed);
       }
     return;}

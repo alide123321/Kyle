@@ -71,7 +71,7 @@ module.exports.run = async (bot, msg, args) => {
         .setTitle("**WIN**")
         .setColor(0X32CD32)
         .setThumbnail(msg.author.avatarURL())
-        .setDescription("You won: "+ winmoney +" :)")
+        .setDescription("You won: "+ winmoney +" :) <:chip:751730576918315048>")
       msg.channel.send(SuccessEmbed);
     return;}
 
@@ -83,7 +83,7 @@ module.exports.run = async (bot, msg, args) => {
         .setTitle("**LOSS**")
         .setColor(0XFF0000)
         .setThumbnail(msg.author.avatarURL())
-        .setDescription("You lost: "+ bet +" :(\n The dice was: "+rand)
+        .setDescription("You lost: "+ bet +" <:chip:751730576918315048> :(\n The dice was: "+rand)
       msg.channel.send(SuccessEmbed);
     return;}
 

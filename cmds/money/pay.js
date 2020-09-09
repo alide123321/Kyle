@@ -78,7 +78,7 @@ module.exports.run = async (bot, msg, args) => {
         .setTitle("**SUCCESS**")
         .setColor(0X32CD32)
         .setThumbnail(Mentioned.user.avatarURL())
-        .setDescription("You have given $" + Money + " discord coins to " + Mentioned.user.username)
+        .setDescription("You have given $" + Money + "<:chip:751730576918315048> to " + Mentioned.user.username)
       msg.channel.send(SuccessEmbed);
 }
 

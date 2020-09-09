@@ -8,15 +8,11 @@ app.listen(port, () => console.log(`Example app listening at http://localhost:${
 const Discord = require("discord.js");
 const {Client, Attachment} = require("discord.js");
 const bot = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"]});
-const fetch = require("node-fetch");
-var opusscript = require("opusscript");
 require('dotenv').config();
 
 
 
 const sleep = require('./functions/sleep.js').sleep;
-const moment = require("moment");
-const Console = console;
 let options = {
     total: "channel id",
     users: "channel id",
@@ -26,12 +22,7 @@ let options = {
 const token = process.env.TOKEN;
 const prefix = '.';
 const version = "1.5.0";
-const helplink = "https://sites.google.com/view/kyle-bot/home";
-const auther = "alide123321#9518";
-const queue = new Map();
 const Fs = require("fs");
-const { userInfo } = require('os');
-const { ALL } = require('dns');
 
 
 

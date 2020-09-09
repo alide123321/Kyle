@@ -22,7 +22,8 @@ module.exports.run = async (bot, msg, args) => {
         "**" + prefix + "shampoo_______HAHA shampoo**",
         "**" + prefix + "notme_________Who the fuck wanna listen to that**",
         "**" + prefix + "graduate______you think u can graduate**",
-        "**" + prefix + "egg___________Egg man**"
+        "**" + prefix + "egg___________Egg man**",
+        "**" + prefix + "wayup_________Started from the bottom now we way up**"
     ];
 
     let modhelp = new Discord.MessageEmbed()

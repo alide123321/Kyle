@@ -19,7 +19,7 @@ module.exports.run = async (bot, msg, args) => {
     return;}
 
 
-    vcmuted.add(auther);
+    vcmuted.add(Mentioned);
 }
 
 module.exports.help = {

@@ -39,7 +39,7 @@ module.exports.run = async (bot, msg, args) => {
       return;}
 
 
-      var a = 11;
+      var a = 10;
       var card = [2, 3, 4, 5, 6, 7, 8, 9, 10, a];
       var c1 = card[Math.floor(Math.random()*card.length)];
       var c2 = card[Math.floor(Math.random()*card.length)];
@@ -107,6 +107,8 @@ module.exports.run = async (bot, msg, args) => {
         const reaction = collected.first();
   
         if (reaction.emoji.name === '👍') {
+
+          a = 11;
 
           pcards.push(c3)
           cardtotal += c3;

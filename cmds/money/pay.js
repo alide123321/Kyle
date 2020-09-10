@@ -2,7 +2,6 @@ module.exports.run = async (bot, msg, args) => {
     const Discord = require("discord.js");
     const Fs = require("fs");
     
-    let Mentioned = msg.mentions.members.first();
     let UserJSON = JSON.parse(Fs.readFileSync("./DataBase/users.json"));
     let Money = args[1];
 
@@ -51,6 +50,7 @@ module.exports.run = async (bot, msg, args) => {
         msg.channel.send(ErrorEmbed);
       return;}
 
+      let Mentioned = msg.mentions.members.first();
         if (!Mentioned) {
           let ErrorEmbed = new Discord.MessageEmbed()
             .setTitle("**ERROR**")

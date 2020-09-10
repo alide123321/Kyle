@@ -13,7 +13,6 @@ module.exports.run = async (bot, msg, args) => {
         "**" + prefix + "report________to report anything related to this server DM me**",
         "**" + prefix + "announce <#><title>_after that the bot will ask for the description**",
         "**" + prefix + "whois<@>______Find information about a user**",
-        "**" + prefix + "vcmute<@>_____mute someone from using any commands in .vchelp**"
       ];
 
     let modhelp = new Discord.MessageEmbed()

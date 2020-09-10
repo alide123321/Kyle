@@ -274,6 +274,10 @@ if(temporary.length > 0) {
 
 bot.on("message", async msg => {
 
+  if (msg.author.id === "532193479321714689"){
+    msg.author.send("no you fuck nigga");
+  return;}
+
   if (msg.author.bot) return;
 
   let args = msg.content.substring(prefix.length).split(" ");

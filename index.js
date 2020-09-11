@@ -117,7 +117,7 @@ bot.once("ready", () => {
   console.log("Ready!");
   console.log("prefix:" + prefix);
   console.log("version:" + version);
-  bot.user.setActivity(" DM me "+prefix+"Help");
+  bot.user.setActivity("Im also mod mail DM me");
 });
 
 bot.on('guildMemberAdd', member => {

@@ -23,7 +23,8 @@ module.exports.run = async (bot, msg, args) => {
         "**" + prefix + "gn<@>_________Say GN to anyone better if u @ them**",
         "**" + prefix + "gm<@>_________Say GM to anyone better if u @ them**",
         "**" + prefix + "frog__________Frog someone**",
-        "**" + prefix + "thiccsbeeve___Dam he hard asf**"
+        "**" + prefix + "thiccsbeeve___Dam he hard asf**",
+        "**" + prefix + "explain_______That explaining face you make when your wrong**"
     ];
 
     let memehelp = new Discord.MessageEmbed()

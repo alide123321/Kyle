@@ -379,6 +379,9 @@ module.exports.run = async (bot, msg, args) => {
         }
         })
         .catch(collected => {
+          bet /= 2;
+          UserJSON[msg.author.id].bal += parseInt(bet);
+          Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
           msg.reply('You didn\'t do anything, so now the game\'s over.');
         return;});
         });
@@ -483,6 +486,9 @@ module.exports.run = async (bot, msg, args) => {
         }
         })
         .catch(collected => {
+          bet /= 2;
+          UserJSON[msg.author.id].bal += parseInt(bet);
+          Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
           msg.reply('You didn\'t do anything, so now the game\'s over.');
         return;});
         });
@@ -587,6 +593,9 @@ module.exports.run = async (bot, msg, args) => {
         }
         })
         .catch(collected => {
+          bet /= 2;
+          UserJSON[msg.author.id].bal += parseInt(bet);
+          Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
           msg.reply('You didn\'t do anything, so now the game\'s over.');
         return;});
       });

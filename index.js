@@ -26,7 +26,7 @@ const Fs = require("fs");
 
 
 
-
+var numofcommands = 0;
 bot.commands = new Discord.Collection();
 Fs.readdir("./cmds/mod/", (err,files) => {
   if(err) console.error(err);
@@ -41,6 +41,7 @@ Fs.readdir("./cmds/mod/", (err,files) => {
     let props = require(`./cmds/mod/${f}`);
     console.log(`${i+1}: ${f} loaded in mod!`)
     bot.commands.set(props.help.name, props);
+    numofcommands++;
   });
 });
 
@@ -57,6 +58,7 @@ Fs.readdir("./cmds/vc/", (err,files) => {
     let props = require(`./cmds/vc/${f}`);
     console.log(`${i+1}: ${f} loaded in vc!`)
     bot.commands.set(props.help.name, props);
+    numofcommands++;
   });
 });
 
@@ -89,6 +91,7 @@ Fs.readdir("./cmds/money/", (err,files) => {
     let props = require(`./cmds/money/${f}`);
     console.log(`${i+1}: ${f} loaded in money!`)
     bot.commands.set(props.help.name, props);
+    numofcommands++;
   });
 });
 
@@ -105,6 +108,7 @@ Fs.readdir("./cmds/memes/", (err,files) => {
     let props = require(`./cmds/memes/${f}`);
     console.log(`${i+1}: ${f} loaded in memes!`)
     bot.commands.set(props.help.name, props);
+    numofcommands++;
   });
 });
 
@@ -117,6 +121,7 @@ bot.once("ready", () => {
   console.log("Ready!");
   console.log("prefix:" + prefix);
   console.log("version:" + version);
+  console.log("Number of Commands:" + numofcommands);
   bot.user.setActivity("Im also mod mail DM me");
 });
 
@@ -416,5 +421,5 @@ case "react": {
                 .setColor(0Xb05c4d)
             msg.channel.send(embed);
 })
-*/token
+*/
 bot.login(token); // turn bot online

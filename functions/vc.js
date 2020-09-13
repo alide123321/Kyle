@@ -4,7 +4,7 @@ function vc (sound,vol,VC,auther,chan){
     if (talkedRecently.has(auther) && auther !== '698051518754062387') {
       chan.send("Cooldown 60 sec")
       .then(msg => {
-        msg.delete({ timeout: 10000 })
+        msg.delete({ timeout: 5000 })
       })
    return;}
   

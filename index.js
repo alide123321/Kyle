@@ -28,6 +28,57 @@ const Fs = require("fs");
 
 var numofcommands = 0;
 bot.commands = new Discord.Collection();
+Fs.readdir("./cmds/gamble/", (err,files) => {
+  if(err) console.error(err);
+
+  let jsfiles = files.filter(f => f.split(".").pop() === "js");
+  if(jsfiles.length <= 0 ){
+    console.log("No commands to load in gamble!");
+    return;
+  }
+
+  jsfiles.forEach((f,i) => {
+    let props = require(`./cmds/gamble/${f}`);
+    console.log(`${i+1}: ${f} loaded in gamble!`)
+    bot.commands.set(props.help.name, props);
+    numofcommands++;
+  });
+});
+
+Fs.readdir("./cmds/help/", (err,files) => {
+  if(err) console.error(err);
+
+  let jsfiles = files.filter(f => f.split(".").pop() === "js");
+  if(jsfiles.length <= 0 ){
+    console.log("No commands to load in help!");
+    return;
+  }
+
+  jsfiles.forEach((f,i) => {
+    let props = require(`./cmds/help/${f}`);
+    console.log(`${i+1}: ${f} loaded in help!`)
+    bot.commands.set(props.help.name, props);
+    numofcommands++;
+  });
+});
+
+Fs.readdir("./cmds/memes/", (err,files) => {
+  if(err) console.error(err);
+
+  let jsfiles = files.filter(f => f.split(".").pop() === "js");
+  if(jsfiles.length <= 0 ){
+    console.log("No commands to load in memes!");
+    return;
+  }
+
+  jsfiles.forEach((f,i) => {
+    let props = require(`./cmds/memes/${f}`);
+    console.log(`${i+1}: ${f} loaded in memes!`)
+    bot.commands.set(props.help.name, props);
+    numofcommands++;
+  });
+});
+
 Fs.readdir("./cmds/mod/", (err,files) => {
   if(err) console.error(err);
 
@@ -40,6 +91,40 @@ Fs.readdir("./cmds/mod/", (err,files) => {
   jsfiles.forEach((f,i) => {
     let props = require(`./cmds/mod/${f}`);
     console.log(`${i+1}: ${f} loaded in mod!`)
+    bot.commands.set(props.help.name, props);
+    numofcommands++;
+  });
+});
+
+Fs.readdir("./cmds/money/", (err,files) => {
+  if(err) console.error(err);
+
+  let jsfiles = files.filter(f => f.split(".").pop() === "js");
+  if(jsfiles.length <= 0 ){
+    console.log("No commands to load in money!");
+    return;
+  }
+
+  jsfiles.forEach((f,i) => {
+    let props = require(`./cmds/money/${f}`);
+    console.log(`${i+1}: ${f} loaded in money!`)
+    bot.commands.set(props.help.name, props);
+    numofcommands++;
+  });
+});
+
+Fs.readdir("./cmds/music/", (err,files) => {
+  if(err) console.error(err);
+
+  let jsfiles = files.filter(f => f.split(".").pop() === "js");
+  if(jsfiles.length <= 0 ){
+    console.log("No commands to load in music!");
+    return;
+  }
+
+  jsfiles.forEach((f,i) => {
+    let props = require(`./cmds/music/${f}`);
+    console.log(`${i+1}: ${f} loaded in music!`)
     bot.commands.set(props.help.name, props);
     numofcommands++;
   });
@@ -62,55 +147,8 @@ Fs.readdir("./cmds/vc/", (err,files) => {
   });
 });
 
-Fs.readdir("./cmds/gamble/", (err,files) => {
-  if(err) console.error(err);
 
-  let jsfiles = files.filter(f => f.split(".").pop() === "js");
-  if(jsfiles.length <= 0 ){
-    console.log("No commands to load in gamble!");
-    return;
-  }
 
-  jsfiles.forEach((f,i) => {
-    let props = require(`./cmds/gamble/${f}`);
-    console.log(`${i+1}: ${f} loaded in gamble!`)
-    bot.commands.set(props.help.name, props);
-  });
-});
-
-Fs.readdir("./cmds/money/", (err,files) => {
-  if(err) console.error(err);
-
-  let jsfiles = files.filter(f => f.split(".").pop() === "js");
-  if(jsfiles.length <= 0 ){
-    console.log("No commands to load in money!");
-    return;
-  }
-
-  jsfiles.forEach((f,i) => {
-    let props = require(`./cmds/money/${f}`);
-    console.log(`${i+1}: ${f} loaded in money!`)
-    bot.commands.set(props.help.name, props);
-    numofcommands++;
-  });
-});
-
-Fs.readdir("./cmds/memes/", (err,files) => {
-  if(err) console.error(err);
-
-  let jsfiles = files.filter(f => f.split(".").pop() === "js");
-  if(jsfiles.length <= 0 ){
-    console.log("No commands to load in memes!");
-    return;
-  }
-
-  jsfiles.forEach((f,i) => {
-    let props = require(`./cmds/memes/${f}`);
-    console.log(`${i+1}: ${f} loaded in memes!`)
-    bot.commands.set(props.help.name, props);
-    numofcommands++;
-  });
-});
 
 
 

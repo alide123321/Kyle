@@ -1,8 +1,7 @@
 module.exports.run = async (bot, msg, args) => {
     const Discord = require("discord.js");
-    const Fs = require("fs");
     
-    let UserJSON = JSON.parse(Fs.readFileSync("./DataBase/users.json"));
+
       let bet = args[1];
 
       let rand = Math.floor(Math.random() * 2 - 1) + 1;
@@ -44,8 +43,7 @@ module.exports.run = async (bot, msg, args) => {
       return;}
 
     if(rand === 0){
-      UserJSON[msg.author.id].bal -= parseInt(bet);
-      Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+      economy.subtract(`${author}.bal`, bet)
       let SuccessEmbed = new Discord.MessageEmbed()
         .setTitle("**LOSS**")
         .setColor(0XFF0000)
@@ -55,8 +53,7 @@ module.exports.run = async (bot, msg, args) => {
     }
 
     if(rand === 1){
-      UserJSON[msg.author.id].bal += parseInt(bet);
-      Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+      economy.add(`${author}.bal`, bet)
       let SuccessEmbed = new Discord.MessageEmbed()
         .setTitle("**WIN**")
         .setColor(0X32CD32)

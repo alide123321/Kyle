@@ -1,8 +1,7 @@
 module.exports.run = async (bot, msg, args) => {
     const Discord = require("discord.js");
-    const Fs = require("fs");
+
     
-    let UserJSON = JSON.parse(Fs.readFileSync("./DataBase/users.json"));
       let bet = args[2];
       let drand = Math.floor(Math.random() * 3 - 1) + 1;
 
@@ -77,8 +76,7 @@ module.exports.run = async (bot, msg, args) => {
       }
       if(drand === 1){ //if u get rock and dealer gets paper
         var dealer = "paper";
-        UserJSON[msg.author.id].bal -= parseInt(bet);
-        Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+        economy.subtract(`${author}.bal`, bet)
         let SuccessEmbed = new Discord.MessageEmbed()
           .setTitle("**LOSS**")
           .setColor(0XFF0000)
@@ -88,8 +86,7 @@ module.exports.run = async (bot, msg, args) => {
       }
       if(drand === 2){ //if u get rock and dealer gets sis
         var dealer = "scissors";
-        UserJSON[msg.author.id].bal += parseInt(bet);
-        Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+        economy.add(`${author}.bal`, bet)
         let SuccessEmbed = new Discord.MessageEmbed()
           .setTitle("**Win**")
           .setColor(0X32CD32)
@@ -110,8 +107,7 @@ module.exports.run = async (bot, msg, args) => {
       }
       if(drand === 2){ //if u get paper and dealer gets sis
         var dealer = "scissors";
-        UserJSON[msg.author.id].bal -= parseInt(bet);
-        Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+        economy.subtract(`${author}.bal`, bet)
         let SuccessEmbed = new Discord.MessageEmbed()
           .setTitle("**LOSS**")
           .setColor(0XFF0000)
@@ -121,8 +117,7 @@ module.exports.run = async (bot, msg, args) => {
       }
       if(drand === 0){ //if u get paper and dealer gets rock
         var dealer = "rock";
-        UserJSON[msg.author.id].bal += parseInt(bet);
-        Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+        economy.add(`${author}.bal`, bet)
         let SuccessEmbed = new Discord.MessageEmbed()
           .setTitle("**Win**")
           .setColor(0X32CD32)
@@ -143,8 +138,7 @@ module.exports.run = async (bot, msg, args) => {
       }
       if(drand === 0){ //if u get sis and dealer gets rock
         var dealer = "rock";
-        UserJSON[msg.author.id].bal -= parseInt(bet);
-        Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+        economy.subtract(`${author}.bal`, bet)
         let SuccessEmbed = new Discord.MessageEmbed()
           .setTitle("**LOSS**")
           .setColor(0XFF0000)
@@ -154,8 +148,7 @@ module.exports.run = async (bot, msg, args) => {
       }
       if(drand === 1){ //if u get sis and dealer gets paper
         var dealer = "paper";
-        UserJSON[msg.author.id].bal += parseInt(bet);
-        Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+        economy.add(`${author}.bal`, bet)
         let SuccessEmbed = new Discord.MessageEmbed()
           .setTitle("**Win**")
           .setColor(0X32CD32)

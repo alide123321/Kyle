@@ -1,8 +1,6 @@
 module.exports.run = async (bot, msg, args) => {
     const Discord = require("discord.js");
-    const Fs = require("fs");
-    
-    let UserJSON = JSON.parse(Fs.readFileSync("./DataBase/users.json"));
+
     var dice = args[1];
     let bet = args[2];
 
@@ -63,22 +61,20 @@ module.exports.run = async (bot, msg, args) => {
     return;}
 
     if(dice == rand){
-      let winmoney = bet * 3;
+      bet *= 3;
 
-      UserJSON[msg.author.id].bal += parseInt(winmoney);
-      Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+      economy.add(`${author}.bal`, bet)
       let SuccessEmbed = new Discord.MessageEmbed()
         .setTitle("**WIN**")
         .setColor(0X32CD32)
         .setThumbnail(msg.author.avatarURL())
-        .setDescription("You won: "+ winmoney +" :) <:chip:751730576918315048>")
+        .setDescription("You won: "+ bet +" :) <:chip:751730576918315048>")
       msg.channel.send(SuccessEmbed);
     return;}
 
     if(dice !== rand){
 
-      UserJSON[msg.author.id].bal -= parseInt(bet);
-      Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+      economy.subtract(`${author}.bal`, bet)
       let SuccessEmbed = new Discord.MessageEmbed()
         .setTitle("**LOSS**")
         .setColor(0XFF0000)

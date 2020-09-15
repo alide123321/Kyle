@@ -1,10 +1,10 @@
 module.exports.run = async (bot, msg, args) => {
-    const Discord = require("discord.js");
-    const prefix = '.';
+  const Discord = require("discord.js");
+  const prefix = '.';
     
-    const helplink = "https://sites.google.com/view/kyle-bot/home";
+  const helplink = "https://sites.google.com/view/kyle-bot/home";
 
-    let helpem = new Discord.MessageEmbed()
+  let helpem = new Discord.MessageEmbed()
     .setColor('#0099ff')
     .setTitle("All the commands")
     .setURL(helplink)
@@ -16,7 +16,7 @@ module.exports.run = async (bot, msg, args) => {
       {name: "**Mod commands**", value: prefix+"modhelp", inline: true},
       {name: "**balance commands**", value: prefix+"moneyhelp", inline: true},
       {name: "**Gambling commands**", value: prefix+"gambhelp", inline: true},
-      )
+    )
     .setImage('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
   msg.channel.send(helpem);
 }

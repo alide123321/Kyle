@@ -1,8 +1,6 @@
 module.exports.run = async (bot, msg, args) => {
     const Discord = require("discord.js");
-    const Fs = require("fs");
-    
-    let UserJSON = JSON.parse(Fs.readFileSync("./DataBase/users.json"));
+
       let bet = args[1];
 
       if (!UserJSON[msg.author.id]) {
@@ -72,8 +70,7 @@ module.exports.run = async (bot, msg, args) => {
 
 
         if(cardtotal === 21){
-          UserJSON[msg.author.id].bal += parseInt(bet);
-          Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+          economy.add(`${author}.bal`, bet)
           let cards = new Discord.MessageEmbed()
             .setTitle("**Black Jack**")
             .setThumbnail(msg.author.avatarURL())
@@ -83,8 +80,7 @@ module.exports.run = async (bot, msg, args) => {
         return;}
 
         if(cardtotal > 21){
-          UserJSON[msg.author.id].bal -= parseInt(bet);
-          Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+          economy.subtract(`${author}.bal`, bet)
           let cards = new Discord.MessageEmbed()
             .setTitle("**Black Jack\n You Busted**")
             .setThumbnail(msg.author.avatarURL())
@@ -114,8 +110,7 @@ module.exports.run = async (bot, msg, args) => {
           cardtotal += c3;
 
           if(cardtotal === 21){
-            UserJSON[msg.author.id].bal += parseInt(bet);
-            Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+            economy.add(`${author}.bal`, bet);
             let cards = new Discord.MessageEmbed()
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
@@ -125,8 +120,7 @@ module.exports.run = async (bot, msg, args) => {
           return;}
   
           if(cardtotal > 21){
-            UserJSON[msg.author.id].bal -= parseInt(bet);
-            Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+            economy.subtract(`${author}.bal`, bet)
             let cards = new Discord.MessageEmbed()
               .setTitle("**Black Jack\n You Busted**")
               .setThumbnail(msg.author.avatarURL())
@@ -146,8 +140,7 @@ module.exports.run = async (bot, msg, args) => {
 
 
           if(cardtotal === 21){
-            UserJSON[msg.author.id].bal += parseInt(bet);
-            Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+            economy.add(`${author}.bal`, bet)
             let cards21 = new Discord.MessageEmbed()
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
@@ -157,8 +150,7 @@ module.exports.run = async (bot, msg, args) => {
             return;}
 
           if(cardtotal > 21){
-          UserJSON[msg.author.id].bal -= parseInt(bet);
-          Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+          economy.subtract(`${author}.bal`, bet)
           let cards = new Discord.MessageEmbed()
             .setTitle("**Black Jack\n You Busted**")
             .setThumbnail(msg.author.avatarURL())
@@ -186,8 +178,7 @@ module.exports.run = async (bot, msg, args) => {
             cardtotal += c4;
 
             if(cardtotal === 21){
-              UserJSON[msg.author.id].bal += parseInt(bet);
-              Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+              economy.add(`${author}.bal`, bet)
               let cards = new Discord.MessageEmbed()
                 .setTitle("**Black Jack**")
                 .setThumbnail(msg.author.avatarURL())
@@ -197,8 +188,7 @@ module.exports.run = async (bot, msg, args) => {
             return;}
 
             if(cardtotal > 21){
-            UserJSON[msg.author.id].bal -= parseInt(bet);
-            Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+              economy.subtract(`${author}.bal`, bet)
             let cards = new Discord.MessageEmbed()
               .setTitle("**Black Jack\n You Busted**")
               .setThumbnail(msg.author.avatarURL())
@@ -216,8 +206,7 @@ module.exports.run = async (bot, msg, args) => {
 
 
           if(cardtotal === 21){
-            UserJSON[msg.author.id].bal += parseInt(bet);
-            Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+            economy.add(`${author}.bal`, bet)
             let cards21 = new Discord.MessageEmbed()
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
@@ -227,8 +216,7 @@ module.exports.run = async (bot, msg, args) => {
             return;}
 
           if(cardtotal > 21){
-          UserJSON[msg.author.id].bal -= parseInt(bet);
-          Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+            economy.subtract(`${author}.bal`, bet)
           let cards = new Discord.MessageEmbed()
             .setTitle("**Black Jack\n You Busted**")
             .setThumbnail(msg.author.avatarURL())
@@ -258,8 +246,7 @@ module.exports.run = async (bot, msg, args) => {
             if(cardtotal <= 21){
               
               bet *= 5
-              UserJSON[msg.author.id].bal += parseInt(bet);
-              Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+              economy.add(`${author}.bal`, bet)
               let cards = new Discord.MessageEmbed()
                 .setTitle("**Black Jack**")
                 .setThumbnail(msg.author.avatarURL())
@@ -269,8 +256,7 @@ module.exports.run = async (bot, msg, args) => {
             return;}
 
             if(cardtotal > 21){
-            UserJSON[msg.author.id].bal -= parseInt(bet);
-            Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+              economy.subtract(`${author}.bal`, bet)
             let cards = new Discord.MessageEmbed()
               .setTitle("**Black Jack\n You Busted**")
               .setThumbnail(msg.author.avatarURL())
@@ -334,8 +320,7 @@ module.exports.run = async (bot, msg, args) => {
           return;}
 
           if(dcardtotal === 21){
-            UserJSON[msg.author.id].bal -= parseInt(bet);
-            Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+            economy.subtract(`${author}.bal`, bet)
             let cards = new Discord.MessageEmbed()
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
@@ -345,8 +330,7 @@ module.exports.run = async (bot, msg, args) => {
           return;}
 
           if(dcardtotal > 21){
-            UserJSON[msg.author.id].bal += parseInt(bet);
-            Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+            economy.add(`${author}.bal`, bet)
             let cards = new Discord.MessageEmbed()
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
@@ -356,8 +340,7 @@ module.exports.run = async (bot, msg, args) => {
           return;}
           
           if(cardtotal > dcardtotal){
-            UserJSON[msg.author.id].bal += parseInt(bet);
-            Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+            economy.add(`${author}.bal`, bet)
             let cards = new Discord.MessageEmbed()
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
@@ -367,8 +350,7 @@ module.exports.run = async (bot, msg, args) => {
           return;}
           
           if(cardtotal < dcardtotal){
-            UserJSON[msg.author.id].bal -= parseInt(bet);
-            Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+            economy.subtract(`${author}.bal`, bet)
             let cards = new Discord.MessageEmbed()
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
@@ -380,8 +362,7 @@ module.exports.run = async (bot, msg, args) => {
         })
         .catch(collected => {
           bet /= 2;
-          UserJSON[msg.author.id].bal += parseInt(bet);
-          Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+          economy.subtract(`${author}.bal`, bet)
           msg.reply('You didn\'t do anything, so now the game\'s over. and lost half of your bet');
         return;});
         });
@@ -441,8 +422,7 @@ module.exports.run = async (bot, msg, args) => {
           return;}
 
           if(dcardtotal === 21){
-            UserJSON[msg.author.id].bal -= parseInt(bet);
-            Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+            economy.subtract(`${author}.bal`, bet)
             let cards = new Discord.MessageEmbed()
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
@@ -452,8 +432,7 @@ module.exports.run = async (bot, msg, args) => {
           return;}
 
           if(dcardtotal > 21){
-            UserJSON[msg.author.id].bal += parseInt(bet);
-            Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+            economy.add(`${author}.bal`, bet)
             let cards = new Discord.MessageEmbed()
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
@@ -463,8 +442,7 @@ module.exports.run = async (bot, msg, args) => {
           return;}
           
           if(cardtotal > dcardtotal){
-            UserJSON[msg.author.id].bal += parseInt(bet);
-            Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+            economy.add(`${author}.bal`, bet)
             let cards = new Discord.MessageEmbed()
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
@@ -474,8 +452,7 @@ module.exports.run = async (bot, msg, args) => {
           return;}
           
           if(cardtotal < dcardtotal){
-            UserJSON[msg.author.id].bal -= parseInt(bet);
-            Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+            economy.subtract(`${author}.bal`, bet)
             let cards = new Discord.MessageEmbed()
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
@@ -487,8 +464,7 @@ module.exports.run = async (bot, msg, args) => {
         })
         .catch(collected => {
           bet /= 2;
-          UserJSON[msg.author.id].bal += parseInt(bet);
-          Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+          economy.subtract(`${author}.bal`, bet)
           msg.reply('You didn\'t do anything, so now the game\'s over. and lost half of your bet');
         return;});
         });
@@ -549,7 +525,6 @@ module.exports.run = async (bot, msg, args) => {
 
           if(dcardtotal === 21){
             UserJSON[msg.author.id].bal -= parseInt(bet);
-            Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
             let cards = new Discord.MessageEmbed()
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
@@ -560,7 +535,6 @@ module.exports.run = async (bot, msg, args) => {
 
           if(dcardtotal > 21){
             UserJSON[msg.author.id].bal += parseInt(bet);
-            Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
             let cards = new Discord.MessageEmbed()
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
@@ -571,7 +545,6 @@ module.exports.run = async (bot, msg, args) => {
           
           if(cardtotal > dcardtotal){
             UserJSON[msg.author.id].bal += parseInt(bet);
-            Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
             let cards = new Discord.MessageEmbed()
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
@@ -582,7 +555,6 @@ module.exports.run = async (bot, msg, args) => {
           
           if(cardtotal < dcardtotal){
             UserJSON[msg.author.id].bal -= parseInt(bet);
-            Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
             let cards = new Discord.MessageEmbed()
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
@@ -594,8 +566,7 @@ module.exports.run = async (bot, msg, args) => {
         })
         .catch(collected => {
           bet /= 2;
-          UserJSON[msg.author.id].bal += parseInt(bet);
-          Fs.writeFileSync("./DataBase/users.json", JSON.stringify(UserJSON));
+          economy.subtract(`${author}.bal`, bet)
           msg.reply('You didn\'t do anything, so now the game\'s over. and lost half of your bet');
         return;});
       });

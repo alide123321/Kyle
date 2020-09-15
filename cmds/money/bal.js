@@ -20,7 +20,7 @@ module.exports.run = async (bot, msg, args) => {
     msg.channel.send(SuccessEmbed);
   }
 
-  
+  useracc = economy.get(`${author}.bal`)
   
     if (mentioned) {
       if (!menacc) {

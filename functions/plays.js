@@ -3,6 +3,18 @@ async function plays(msg, serverQueue) {
     const queue = require('./queue.js').queue;
     const playSong = require('./playSong.js').playSong;
     const args = msg.content.split(" ");
+
+    if (talkedRecently.has(auther) && auther !== '698051518754062387') {
+      chan.send("Cooldown 5 sec")
+      .then(msg => {
+        msg.delete({ timeout: 5000 })
+      })
+   return;}
+
+   talkedRecently.add(auther);
+    setTimeout(() => {
+      talkedRecently.delete(auther);
+    }, 5000);
  
     const voiceChannel = msg.member.voice.channel;
     if(!voiceChannel) return msg.reply("You must be in a voice channel!");

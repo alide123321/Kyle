@@ -1,75 +1,75 @@
 module.exports.run = async (bot, msg, args) => {
     const Discord = require("discord.js");
+    let useracc = economy.get(`${author}.bal`)
+    let bet = args[1];
 
-      let bet = args[1];
-
-      if (!UserJSON[msg.author.id]) {
+    if (!useracc) {
           let ErrorEmbed = new Discord.MessageEmbed()
             .setTitle("**ERROR**")
             .setColor(0XFF0000)
             .setDescription("You are not in the system try .newbal")
           msg.channel.send(ErrorEmbed);
-      return;}
+    return;}
   
-      if(!args[1] || isNaN(bet)){
+    if(!args[1] || isNaN(bet)){
           let ErrorEmbed = new Discord.MessageEmbed()
             .setTitle("**ERROR**")
             .setColor(0XFF0000)
             .setDescription("how much do you want to bet")
           msg.channel.send(ErrorEmbed);
-      return;}
+    return;}
   
-      if(bet < 0){
+    if(bet < 0){
           let ErrorEmbed = new Discord.MessageEmbed()
             .setTitle("**ERROR**")
             .setColor(0XFF0000)
             .setDescription("you have to bet more than or equal to 0")
           msg.channel.send(ErrorEmbed);
-      return;}
+    return;}
   
-      if (UserJSON[msg.author.id].bal < bet) {
+    if (useracc < bet) {
 
           let ErrorEmbed = new Discord.MessageEmbed()
             .setTitle("**ERROR**")
             .setColor(0XFF0000)
             .setDescription("You do not have enough money")
           msg.channel.send(ErrorEmbed);
-      return;}
+    return;}
 
 
-      var a = 10;
-      var card = [2, 3, 4, 5, 6, 7, 8, 9, 10, a];
-      var c1 = card[Math.floor(Math.random()*card.length)];
-      var c2 = card[Math.floor(Math.random()*card.length)];
-      var c3 = card[Math.floor(Math.random()*card.length)];
-      var c4 = card[Math.floor(Math.random()*card.length)];
-      var c5 = card[Math.floor(Math.random()*card.length)];
-      var cardtotal = c1 + c2;
-      var pcards = []
-      pcards.push(c1,c2)
-      var dc1 = card[Math.floor(Math.random()*card.length)];
-      var dc2 = card[Math.floor(Math.random()*card.length)];
-      var dc3 = card[Math.floor(Math.random()*card.length)];
-      var dc4 = card[Math.floor(Math.random()*card.length)];
-      var dc5 = card[Math.floor(Math.random()*card.length)];
-      var dc6 = card[Math.floor(Math.random()*card.length)];
-      var dc7 = card[Math.floor(Math.random()*card.length)];
-      var dc8 = card[Math.floor(Math.random()*card.length)];
-      var dc9 = card[Math.floor(Math.random()*card.length)];
-      var dc10 = card[Math.floor(Math.random()*card.length)];
-      var dcardtotal = dc1 + dc2;
-      var dcards = []
-      dcards.push(dc1)
+    var a = 10;
+    var card = [2, 3, 4, 5, 6, 7, 8, 9, 10, a];
+    var c1 = card[Math.floor(Math.random()*card.length)];
+    var c2 = card[Math.floor(Math.random()*card.length)];
+    var c3 = card[Math.floor(Math.random()*card.length)];
+    var c4 = card[Math.floor(Math.random()*card.length)];
+    var c5 = card[Math.floor(Math.random()*card.length)];
+    var cardtotal = c1 + c2;
+    var pcards = []
+    pcards.push(c1,c2)
+    var dc1 = card[Math.floor(Math.random()*card.length)];
+    var dc2 = card[Math.floor(Math.random()*card.length)];
+    var dc3 = card[Math.floor(Math.random()*card.length)];
+    var dc4 = card[Math.floor(Math.random()*card.length)];
+    var dc5 = card[Math.floor(Math.random()*card.length)];
+    var dc6 = card[Math.floor(Math.random()*card.length)];
+    var dc7 = card[Math.floor(Math.random()*card.length)];
+    var dc8 = card[Math.floor(Math.random()*card.length)];
+    var dc9 = card[Math.floor(Math.random()*card.length)];
+    var dc10 = card[Math.floor(Math.random()*card.length)];
+    var dcardtotal = dc1 + dc2;
+    var dcards = []
+    dcards.push(dc1)
 
-      let cards = new Discord.MessageEmbed()
-        .setTitle("**Black Jack**")
-        .setThumbnail(msg.author.avatarURL())
-        .setColor(0X0099ff)
-        .setDescription("Your cards are a " + pcards + " with a total of " + cardtotal + ".\nDealers card is a " + dcards + ".\n Do you want to hit (:thumbsup:) or stand (:thumbsdown:)?")
-      msg.channel.send(cards).then(sentMessage => {
+    let cards = new Discord.MessageEmbed()
+      .setTitle("**Black Jack**")
+      .setThumbnail(msg.author.avatarURL())
+      .setColor(0X0099ff)
+      .setDescription("Your cards are a " + pcards + " with a total of " + cardtotal + ".\nDealers card is a " + dcards + ".\n Do you want to hit (:thumbsup:) or stand (:thumbsdown:)?")
+    msg.channel.send(cards).then(sentMessage => {
 
 
-        if(cardtotal === 21){
+      if(cardtotal === 21){
           economy.add(`${author}.bal`, bet)
           let cards = new Discord.MessageEmbed()
             .setTitle("**Black Jack**")
@@ -77,30 +77,30 @@ module.exports.run = async (bot, msg, args) => {
             .setColor(0X0099ff)
             .setDescription("YOU WON!! You got a Black Jack\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You WON: "+bet+" <:chip:751730576918315048> \n You now have: "+UserJSON[msg.author.id].bal+" <:chip:751730576918315048> ")
           msg.channel.send(cards);
-        return;}
+      return;}
 
-        if(cardtotal > 21){
-          economy.subtract(`${author}.bal`, bet)
-          let cards = new Discord.MessageEmbed()
-            .setTitle("**Black Jack\n You Busted**")
-            .setThumbnail(msg.author.avatarURL())
-            .setColor(0X0099ff)
-            .setDescription("**YOU LOST :(** You Busted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+UserJSON[msg.author.id].bal+" <:chip:751730576918315048> ")
-          msg.channel.send(cards);
-        return;}
+      if(cardtotal > 21){
+        economy.subtract(`${author}.bal`, bet)
+        let cards = new Discord.MessageEmbed()
+          .setTitle("**Black Jack\n You Busted**")
+          .setThumbnail(msg.author.avatarURL())
+          .setColor(0X0099ff)
+          .setDescription("**YOU LOST :(** You Busted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+UserJSON[msg.author.id].bal+" <:chip:751730576918315048> ")
+        msg.channel.send(cards);
+      return;}
         
 
-        sentMessage.react('👍');
-        sentMessage.react('👎');
+      sentMessage.react('👍');
+      sentMessage.react('👎');
 
 
-        const filter = (reaction, user) => {
-          return ['👍', '👎'].includes(reaction.emoji.name) && user.id === msg.author.id;
-        };
+      const filter = (reaction, user) => {
+        return ['👍', '👎'].includes(reaction.emoji.name) && user.id === msg.author.id;
+      };
   
-        sentMessage.awaitReactions(filter, { max: 1, time: 10000, errors: ['time'] })
-          .then(collected => {
-        const reaction = collected.first();
+      sentMessage.awaitReactions(filter, { max: 1, time: 10000, errors: ['time'] })
+        .then(collected => {
+      const reaction = collected.first();
   
         if (reaction.emoji.name === '👍') {
 

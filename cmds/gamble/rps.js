@@ -1,11 +1,11 @@
 module.exports.run = async (bot, msg, args) => {
     const Discord = require("discord.js");
-
+    let useracc = economy.get(`${author}.bal`)
     
       let bet = args[2];
       let drand = Math.floor(Math.random() * 3 - 1) + 1;
 
-      if (!UserJSON[msg.author.id]) {
+      if (!useracc) {
         let ErrorEmbed = new Discord.MessageEmbed()
           .setTitle("**ERROR**")
           .setColor(0XFF0000)
@@ -32,7 +32,7 @@ module.exports.run = async (bot, msg, args) => {
         msg.channel.send(ErrorEmbed);
       return;}
 
-      if (UserJSON[msg.author.id].bal < bet) {
+      if (useracc < bet) {
         let ErrorEmbed = new Discord.MessageEmbed()
           .setTitle("**ERROR**")
           .setColor(0XFF0000)

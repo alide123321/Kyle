@@ -1,5 +1,8 @@
 module.exports.run = async (bot, msg, args) => {
     const Discord = require("discord.js");
+    const db = require('quick.db');
+    var economy = new db.table('economy')
+    let author = msg.author.id
     let useracc = economy.get(`${author}.bal`)
 
     var dice = args[1];

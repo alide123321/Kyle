@@ -4,8 +4,9 @@ module.exports.run = async (bot, msg, args) => {
     var economy = new db.table('economy')
     let author = msg.author.id
     let useracc = economy.get(`${author}.bal`)
-    let authmoney = economy.get(`${author}.bal`, bet)
     let bet = args[1];
+    let authmoney = economy.get(`${author}.bal`, bet)
+    
 
     if (!useracc) {
           let ErrorEmbed = new Discord.MessageEmbed()

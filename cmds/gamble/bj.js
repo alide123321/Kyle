@@ -363,11 +363,11 @@ module.exports.run = async (bot, msg, args) => {
           return;}
         }
         })
-        /*.catch(collected => {
+        .catch(collected => {
           bet /= 2;
           economy.subtract(`${author}.bal`, bet)
           msg.reply('You didn\'t do anything, so now the game\'s over. and lost half of your bet');
-        return;}); test */
+        return;});
         });
 
 
@@ -465,11 +465,11 @@ module.exports.run = async (bot, msg, args) => {
           return;}
         }
         })
-        /*.catch(collected => {
+        .catch(collected => {
           bet /= 2;
           economy.subtract(`${author}.bal`, bet)
           msg.reply('You didn\'t do anything, so now the game\'s over. and lost half of your bet');
-        return;});test */
+        return;});
         });
 
 //________________________________________________________________________          
@@ -567,11 +567,11 @@ module.exports.run = async (bot, msg, args) => {
           return;}
         return;}
         })
-        /*.catch(collected => {
+        .catch(collected => {
           bet /= 2;
           economy.subtract(`${author}.bal`, bet)
           msg.reply('You didn\'t do anything, so now the game\'s over. and lost half of your bet');
-        return;});test */
+        return;});
       });
 }
 

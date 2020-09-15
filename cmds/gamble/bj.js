@@ -5,7 +5,7 @@ module.exports.run = async (bot, msg, args) => {
     let author = msg.author.id
     let useracc = economy.get(`${author}.bal`)
     let bet = args[1];
-    let authmoney = economy.get(`${author}.bal`, bet)
+    
     
 
     if (!useracc) {
@@ -80,7 +80,7 @@ module.exports.run = async (bot, msg, args) => {
             .setTitle("**Black Jack**")
             .setThumbnail(msg.author.avatarURL())
             .setColor(0X0099ff)
-            .setDescription("YOU WON!! You got a Black Jack\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You WON: "+bet+" <:chip:751730576918315048> \n You now have: "+authmoney+" <:chip:751730576918315048> ")
+            .setDescription("YOU WON!! You got a Black Jack\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You WON: "+bet+" <:chip:751730576918315048> \n You now have: "+economy.get(`${author}.bal`)+" <:chip:751730576918315048> ")
           msg.channel.send(cards);
       return;}
 
@@ -90,7 +90,7 @@ module.exports.run = async (bot, msg, args) => {
           .setTitle("**Black Jack\n You Busted**")
           .setThumbnail(msg.author.avatarURL())
           .setColor(0X0099ff)
-          .setDescription("**YOU LOST :(** You Busted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+authmoney+" <:chip:751730576918315048> ")
+          .setDescription("**YOU LOST :(** You Busted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+economy.get(`${author}.bal`)+" <:chip:751730576918315048> ")
         msg.channel.send(cards);
       return;}
         
@@ -120,7 +120,7 @@ module.exports.run = async (bot, msg, args) => {
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
               .setColor(0X0099ff)
-              .setDescription("YOU WON!! You got a Black Jack\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You WON: "+bet+" <:chip:751730576918315048> \n You now have: "+authmoney+" <:chip:751730576918315048> ")
+              .setDescription("YOU WON!! You got a Black Jack\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You WON: "+bet+" <:chip:751730576918315048> \n You now have: "+economy.get(`${author}.bal`)+" <:chip:751730576918315048> ")
             msg.channel.send(cards);
           return;}
   
@@ -130,7 +130,7 @@ module.exports.run = async (bot, msg, args) => {
               .setTitle("**Black Jack\n You Busted**")
               .setThumbnail(msg.author.avatarURL())
               .setColor(0X0099ff)
-              .setDescription("**YOU LOST :(** You Busted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+authmoney+" <:chip:751730576918315048> ")
+              .setDescription("**YOU LOST :(** You Busted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+economy.get(`${author}.bal`)+" <:chip:751730576918315048> ")
             msg.channel.send(cards);
           return;}
 
@@ -150,7 +150,7 @@ module.exports.run = async (bot, msg, args) => {
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
               .setColor(0X0099ff)
-              .setDescription("YOU WON!! You got a Black Jack\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You WON: "+bet+" <:chip:751730576918315048> \n You now have: "+authmoney+" <:chip:751730576918315048> ")
+              .setDescription("YOU WON!! You got a Black Jack\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You WON: "+bet+" <:chip:751730576918315048> \n You now have: "+economy.get(`${author}.bal`)+" <:chip:751730576918315048> ")
             msg.channel.send(cards21);
             return;}
 
@@ -160,7 +160,7 @@ module.exports.run = async (bot, msg, args) => {
             .setTitle("**Black Jack\n You Busted**")
             .setThumbnail(msg.author.avatarURL())
             .setColor(0X0099ff)
-            .setDescription("**YOU LOST :(** You Busted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+authmoney+" <:chip:751730576918315048> ")
+            .setDescription("**YOU LOST :(** You Busted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+economy.get(`${author}.bal`)+" <:chip:751730576918315048> ")
           msg.channel.send(cards);
           return;}
 
@@ -188,7 +188,7 @@ module.exports.run = async (bot, msg, args) => {
                 .setTitle("**Black Jack**")
                 .setThumbnail(msg.author.avatarURL())
                 .setColor(0X0099ff)
-                .setDescription("YOU WON!! You got a Black Jack\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You WON: "+bet+" <:chip:751730576918315048> \n You now have: "+authmoney+" <:chip:751730576918315048> ")
+                .setDescription("YOU WON!! You got a Black Jack\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You WON: "+bet+" <:chip:751730576918315048> \n You now have: "+economy.get(`${author}.bal`)+" <:chip:751730576918315048> ")
               msg.channel.send(cards);
             return;}
 
@@ -198,7 +198,7 @@ module.exports.run = async (bot, msg, args) => {
               .setTitle("**Black Jack\n You Busted**")
               .setThumbnail(msg.author.avatarURL())
               .setColor(0X0099ff)
-              .setDescription("**YOU LOST :(** You Busted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+authmoney+" <:chip:751730576918315048> ")
+              .setDescription("**YOU LOST :(** You Busted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+economy.get(`${author}.bal`)+" <:chip:751730576918315048> ")
             msg.channel.send(cards);
             return;}
 //___________________________________________________
@@ -216,7 +216,7 @@ module.exports.run = async (bot, msg, args) => {
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
               .setColor(0X0099ff)
-              .setDescription("YOU WON!! You got a Black Jack\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You WON: "+bet+" <:chip:751730576918315048> \n You now have: "+authmoney+" <:chip:751730576918315048> ")
+              .setDescription("YOU WON!! You got a Black Jack\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You WON: "+bet+" <:chip:751730576918315048> \n You now have: "+economy.get(`${author}.bal`)+" <:chip:751730576918315048> ")
             msg.channel.send(cards21);
             return;}
 
@@ -226,7 +226,7 @@ module.exports.run = async (bot, msg, args) => {
             .setTitle("**Black Jack\n You Busted**")
             .setThumbnail(msg.author.avatarURL())
             .setColor(0X0099ff)
-            .setDescription("**YOU LOST :(** You Busted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+authmoney+" <:chip:751730576918315048> ")
+            .setDescription("**YOU LOST :(** You Busted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+economy.get(`${author}.bal`)+" <:chip:751730576918315048> ")
           msg.channel.send(cards);
           return;}
 
@@ -256,7 +256,7 @@ module.exports.run = async (bot, msg, args) => {
                 .setTitle("**Black Jack**")
                 .setThumbnail(msg.author.avatarURL())
                 .setColor(0X0099ff)
-                .setDescription("YOU WON!! (5 cards 21 or less -> bet 5X)\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You WON: "+bet+" <:chip:751730576918315048> \n You now have: "+authmoney+" <:chip:751730576918315048> ")
+                .setDescription("YOU WON!! (5 cards 21 or less -> bet 5X)\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You WON: "+bet+" <:chip:751730576918315048> \n You now have: "+economy.get(`${author}.bal`)+" <:chip:751730576918315048> ")
               msg.channel.send(cards);
             return;}
 
@@ -266,7 +266,7 @@ module.exports.run = async (bot, msg, args) => {
               .setTitle("**Black Jack\n You Busted**")
               .setThumbnail(msg.author.avatarURL())
               .setColor(0X0099ff)
-              .setDescription("**YOU LOST :(** You Busted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+authmoney+" <:chip:751730576918315048> ")
+              .setDescription("**YOU LOST :(** You Busted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+economy.get(`${author}.bal`)+" <:chip:751730576918315048> ")
             msg.channel.send(cards);
             return;}
 
@@ -320,7 +320,7 @@ module.exports.run = async (bot, msg, args) => {
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
               .setColor(0X0099ff)
-              .setDescription("**Its a PUSH** you both have the same score\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\nYou have: "+authmoney+" <:chip:751730576918315048> ")
+              .setDescription("**Its a PUSH** you both have the same score\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\nYou have: "+economy.get(`${author}.bal`)+" <:chip:751730576918315048> ")
             msg.channel.send(cards);
           return;}
 
@@ -330,7 +330,7 @@ module.exports.run = async (bot, msg, args) => {
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
               .setColor(0X0099ff)
-              .setDescription("**YOU LOST :(** Dealer got a Black Jack\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+authmoney+" <:chip:751730576918315048> ")
+              .setDescription("**YOU LOST :(** Dealer got a Black Jack\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+economy.get(`${author}.bal`)+" <:chip:751730576918315048> ")
             msg.channel.send(cards);
           return;}
 
@@ -340,7 +340,7 @@ module.exports.run = async (bot, msg, args) => {
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
               .setColor(0X0099ff)
-              .setDescription("**YOU WON!!** Dealer Busted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You WON: "+bet+" <:chip:751730576918315048> \n You now have: "+authmoney+" <:chip:751730576918315048> ")
+              .setDescription("**YOU WON!!** Dealer Busted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You WON: "+bet+" <:chip:751730576918315048> \n You now have: "+economy.get(`${author}.bal`)+" <:chip:751730576918315048> ")
             msg.channel.send(cards);
           return;}
           
@@ -350,7 +350,7 @@ module.exports.run = async (bot, msg, args) => {
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
               .setColor(0X0099ff)
-              .setDescription("**YOU WON!!**\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You WON: "+bet+" <:chip:751730576918315048> \n You now have: "+authmoney+" <:chip:751730576918315048> ")
+              .setDescription("**YOU WON!!**\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You WON: "+bet+" <:chip:751730576918315048> \n You now have: "+economy.get(`${author}.bal`)+" <:chip:751730576918315048> ")
             msg.channel.send(cards);
           return;}
           
@@ -360,7 +360,7 @@ module.exports.run = async (bot, msg, args) => {
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
               .setColor(0X0099ff)
-              .setDescription("**You LOST :(**\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+authmoney+" <:chip:751730576918315048> ")
+              .setDescription("**You LOST :(**\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+economy.get(`${author}.bal`)+" <:chip:751730576918315048> ")
             msg.channel.send(cards);
           return;}
         }
@@ -422,7 +422,7 @@ module.exports.run = async (bot, msg, args) => {
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
               .setColor(0X0099ff)
-              .setDescription("**Its a PUSH** you both have the same score\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\nYou have: "+authmoney+" <:chip:751730576918315048> ")
+              .setDescription("**Its a PUSH** you both have the same score\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\nYou have: "+economy.get(`${author}.bal`)+" <:chip:751730576918315048> ")
             msg.channel.send(cards);
           return;}
 
@@ -432,7 +432,7 @@ module.exports.run = async (bot, msg, args) => {
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
               .setColor(0X0099ff)
-              .setDescription("**YOU LOST :(** Dealer got a Black Jack\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+authmoney+" <:chip:751730576918315048> ")
+              .setDescription("**YOU LOST :(** Dealer got a Black Jack\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+economy.get(`${author}.bal`)+" <:chip:751730576918315048> ")
             msg.channel.send(cards);
           return;}
 
@@ -442,7 +442,7 @@ module.exports.run = async (bot, msg, args) => {
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
               .setColor(0X0099ff)
-              .setDescription("**YOU WON!!** Dealer Busted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You WON: "+bet+" <:chip:751730576918315048> \n You now have: "+authmoney+" <:chip:751730576918315048> ")
+              .setDescription("**YOU WON!!** Dealer Busted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You WON: "+bet+" <:chip:751730576918315048> \n You now have: "+economy.get(`${author}.bal`)+" <:chip:751730576918315048> ")
             msg.channel.send(cards);
           return;}
           
@@ -452,7 +452,7 @@ module.exports.run = async (bot, msg, args) => {
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
               .setColor(0X0099ff)
-              .setDescription("**YOU WON!!**\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You WON: "+bet+" <:chip:751730576918315048> \n You now have: "+authmoney+" <:chip:751730576918315048> ")
+              .setDescription("**YOU WON!!**\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You WON: "+bet+" <:chip:751730576918315048> \n You now have: "+economy.get(`${author}.bal`)+" <:chip:751730576918315048> ")
             msg.channel.send(cards);
           return;}
           
@@ -462,7 +462,7 @@ module.exports.run = async (bot, msg, args) => {
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
               .setColor(0X0099ff)
-              .setDescription("**You LOST :(**\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+authmoney+" <:chip:751730576918315048> ")
+              .setDescription("**You LOST :(**\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+economy.get(`${author}.bal`)+" <:chip:751730576918315048> ")
             msg.channel.send(cards);
           return;}
         }
@@ -524,7 +524,7 @@ module.exports.run = async (bot, msg, args) => {
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
               .setColor(0X0099ff)
-              .setDescription("**Its a PUSH** you both have the same score\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\nYou have: "+authmoney+" <:chip:751730576918315048> ")
+              .setDescription("**Its a PUSH** you both have the same score\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\nYou have: "+economy.get(`${author}.bal`)+" <:chip:751730576918315048> ")
             msg.channel.send(cards);
           return;}
 
@@ -534,7 +534,7 @@ module.exports.run = async (bot, msg, args) => {
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
               .setColor(0X0099ff)
-              .setDescription("**YOU LOST :(** Dealer got a Black Jack\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+authmoney+" <:chip:751730576918315048> ")
+              .setDescription("**YOU LOST :(** Dealer got a Black Jack\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+economy.get(`${author}.bal`)+" <:chip:751730576918315048> ")
             msg.channel.send(cards);
           return;}
 
@@ -544,7 +544,7 @@ module.exports.run = async (bot, msg, args) => {
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
               .setColor(0X0099ff)
-              .setDescription("**YOU WON!!** Dealer Busted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You WON: "+bet+" <:chip:751730576918315048> \n You now have: "+authmoney+" <:chip:751730576918315048> ")
+              .setDescription("**YOU WON!!** Dealer Busted\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You WON: "+bet+" <:chip:751730576918315048> \n You now have: "+economy.get(`${author}.bal`)+" <:chip:751730576918315048> ")
             msg.channel.send(cards);
           return;}
           
@@ -554,7 +554,7 @@ module.exports.run = async (bot, msg, args) => {
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
               .setColor(0X0099ff)
-              .setDescription("**YOU WON!!**\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You WON: "+bet+" <:chip:751730576918315048> \n You now have: "+authmoney+" <:chip:751730576918315048> ")
+              .setDescription("**YOU WON!!**\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You WON: "+bet+" <:chip:751730576918315048> \n You now have: "+economy.get(`${author}.bal`)+" <:chip:751730576918315048> ")
             msg.channel.send(cards);
           return;}
           
@@ -564,7 +564,7 @@ module.exports.run = async (bot, msg, args) => {
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
               .setColor(0X0099ff)
-              .setDescription("**You LOST :(**\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+authmoney+" <:chip:751730576918315048> ")
+              .setDescription("**You LOST :(**\n\nYour cards are a " + pcards + ", with a total of " + cardtotal + ".\nDealers cards are a " + dcards + ", with a total of " + dcardtotal + ".\n You LOST: "+bet+" <:chip:751730576918315048> \n You now have: "+economy.get(`${author}.bal`)+" <:chip:751730576918315048> ")
             msg.channel.send(cards);
           return;}
         return;}

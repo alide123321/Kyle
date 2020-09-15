@@ -2,18 +2,19 @@ async function plays(msg, serverQueue) {
     const ytdl = require("ytdl-core");
     const queue = require('./queue.js').queue;
     const playSong = require('./playSong.js').playSong;
+    const talkedRecently = require('./talked.js').talkedRecently;
     const args = msg.content.split(" ");
 
-    if (talkedRecently.has(auther) && auther !== '698051518754062387') {
+    if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
       chan.send("Cooldown 5 sec")
       .then(msg => {
         msg.delete({ timeout: 5000 })
       })
    return;}
 
-   talkedRecently.add(auther);
+   talkedRecently.add(msg.author.id);
     setTimeout(() => {
-      talkedRecently.delete(auther);
+      talkedRecently.delete(msg.author.id);
     }, 5000);
  
     const voiceChannel = msg.member.voice.channel;

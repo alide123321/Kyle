@@ -1,9 +1,8 @@
 module.exports.run = async (bot, msg, args) => {
-    const servers = require('../../functions/servers.js').servers;
-    
-    var server = servers[msg.guild.id];
-    if(server.dispatcher) server.dispatcher.end();
-    msg.channel.send("skipping the song!");
+  const queue = require('../../functions/queue.js').queue;
+  const plays = require('../../functions/plays.js').plays;
+  const serverQueue = queue.get(msg.guild.id);
+
 }
 
 module.exports.help = {

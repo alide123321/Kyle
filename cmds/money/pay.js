@@ -5,7 +5,6 @@ module.exports.run = async (bot, msg, args) => {
   let author = msg.author.id
   let mentioned = msg.mentions.members.first();
   let useracc = economy.get(`${author}.bal`)
-  let menacc = economy.get(`${mentioned}.bal`)
   let Money = args[1];
 
   if (!Money) {
@@ -65,6 +64,7 @@ module.exports.run = async (bot, msg, args) => {
       .setDescription("Please mention a user .pay <#> <@>")
     msg.channel.send(ErrorEmbed);
   return;}
+  let menacc = economy.get(mentioned.id)
 
   if (!menacc) {
     let ErrorEmbed = new Discord.MessageEmbed()
@@ -76,7 +76,7 @@ module.exports.run = async (bot, msg, args) => {
   return;}
 
   economy.subtract(`${author}.bal`, money)
-  economy.add(`${mentioned}.bal`, money)
+  economy.add(`${mentioned.id}.bal`, money)
 
   let SuccessEmbed = new Discord.MessageEmbed()
     .setTitle("**SUCCESS**")

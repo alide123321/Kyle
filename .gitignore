@@ -1,7 +1,5 @@
 node_modules
 .env
-DataBase
 music
 economy.sqlite
 json.sqlite
-*.sqlite

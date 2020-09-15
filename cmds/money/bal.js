@@ -5,7 +5,6 @@ module.exports.run = async (bot, msg, args) => {
   let author = msg.author.id
   let mentioned = msg.mentions.members.first();
   let useracc = economy.get(`${author}.bal`)
-  let menacc = economy.get(`${mentioned}.bal`)
 
   if(!useracc){
 
@@ -23,12 +22,13 @@ module.exports.run = async (bot, msg, args) => {
   useracc = economy.get(`${author}.bal`)
   
     if (mentioned) {
+      let menacc = economy.has(mentioned.id)
       if (!menacc) {
         let ErrorEmbed = new Discord.MessageEmbed()
           .setTitle("**ERROR**")
           .setColor(0XFF0000)
           .setThumbnail(msg.author.avatarURL())
-          .setDescription("That pearson isnt in the system tell them to use the .newbal command.")
+          .setDescription("That pearson isnt in the system tell them to use the .bal command.")
         msg.channel.send(ErrorEmbed);
       return;}
 
@@ -36,7 +36,7 @@ module.exports.run = async (bot, msg, args) => {
         .setTitle("**"+mentioned.user.username+"'S BALANCE**")
         .setColor(0X32CD32)
         .setThumbnail(mentioned.user.avatarURL())
-        .addField("Balance", menacc, "<:chip:751730576918315048>")
+        .addField("Balance", economy.get(`${mentioned.id}.bal`), "<:chip:751730576918315048>")
       msg.channel.send(SuccessEmbed);
     return;
     } else {

@@ -56,7 +56,7 @@ module.exports.run = async (bot, msg, args) => {
     msg.channel.send(ErrorEmbed);
   return;}
 
-  if (!Mentioned) {
+  if (!mentioned) {
     let ErrorEmbed = new Discord.MessageEmbed()
       .setTitle("**ERROR**")
       .setColor(0XFF0000)
@@ -75,14 +75,14 @@ module.exports.run = async (bot, msg, args) => {
     msg.channel.send(ErrorEmbed);
   return;}
 
-  economy.subtract(`${author}.bal`, money)
-  economy.add(`${mentioned.id}.bal`, money)
+  economy.subtract(`${author}.bal`, Money)
+  economy.add(`${mentioned.id}.bal`, Money)
 
   let SuccessEmbed = new Discord.MessageEmbed()
     .setTitle("**SUCCESS**")
     .setColor(0X32CD32)
-    .setThumbnail(Mentioned.user.avatarURL())
-    .setDescription("You have given $" + Money + "<:chip:751730576918315048> to " + Mentioned.user.username)
+    .setThumbnail(mentioned.user.avatarURL())
+    .setDescription("You have given $" + Money + "<:chip:751730576918315048> to " + mentioned.user.username)
   msg.channel.send(SuccessEmbed);
 
 }

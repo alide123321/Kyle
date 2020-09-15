@@ -26,12 +26,12 @@ module.exports.run = async (bot, msg, args) => {
     })
     return;}
 
-    /*if(msg.author.id === user.id){
-        msg.channel.send('You can\'t warn yourself dumb dumb')
+    if(msg.author.id === user.id){
+        msg.channel.send('You can\'t unmute yourself dumb dumb')
     .then(msg => {
         msg.delete({ timeout: 5000 })
     })
-    return;}*/
+    return;}
 
     if(msg.guild.owner.id === user.id){
         msg.channel.send('You can\'t unmute the server\'s owner')

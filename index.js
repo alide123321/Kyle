@@ -113,7 +113,7 @@ Fs.readdir("./cmds/money/", (err,files) => {
   });
 });
 
-/*Fs.readdir("./cmds/music/", (err,files) => {
+Fs.readdir("./cmds/music/", (err,files) => {
   if(err) console.error(err);
 
   let jsfiles = files.filter(f => f.split(".").pop() === "js");
@@ -128,7 +128,7 @@ Fs.readdir("./cmds/money/", (err,files) => {
     bot.commands.set(props.help.name, props);
     numofcommands++;
   });
-});*/
+});
 
 Fs.readdir("./cmds/vc/", (err,files) => {
   if(err) console.error(err);

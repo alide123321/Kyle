@@ -31,6 +31,12 @@ module.exports.run = async (bot, msg, args) => {
   if (Math.floor(new Date().getTime() - time) / (1000 * 60 * 60 * 24) > 1) {
     economy.add(`${author}.bal`, 50)
     economy.add(`${author}.lc`, new Date().getTime())
+    let SuccessEmbed = new Discord.MessageEmbed()
+      .setTitle("**SUCCESS**")
+      .setColor(0X32CD32)
+      .setThumbnail(msg.author.avatarURL())
+      .setDescription("You have claimed your daily reward of 50 <:chip:751730576918315048>!")
+    msg.channel.send(SuccessEmbed);
   }
 }
 

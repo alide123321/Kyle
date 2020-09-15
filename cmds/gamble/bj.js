@@ -527,7 +527,7 @@ module.exports.run = async (bot, msg, args) => {
           return;}
 
           if(dcardtotal === 21){
-            UserJSON[msg.author.id].bal -= parseInt(bet);
+            economy.subtract(`${author}.bal`, bet)
             let cards = new Discord.MessageEmbed()
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
@@ -537,7 +537,7 @@ module.exports.run = async (bot, msg, args) => {
           return;}
 
           if(dcardtotal > 21){
-            UserJSON[msg.author.id].bal += parseInt(bet);
+            economy.add(`${author}.bal`, bet)
             let cards = new Discord.MessageEmbed()
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
@@ -547,7 +547,7 @@ module.exports.run = async (bot, msg, args) => {
           return;}
           
           if(cardtotal > dcardtotal){
-            UserJSON[msg.author.id].bal += parseInt(bet);
+            economy.add(`${author}.bal`, bet)
             let cards = new Discord.MessageEmbed()
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())
@@ -557,7 +557,7 @@ module.exports.run = async (bot, msg, args) => {
           return;}
           
           if(cardtotal < dcardtotal){
-            UserJSON[msg.author.id].bal -= parseInt(bet);
+            economy.subtract(`${author}.bal`, bet)
             let cards = new Discord.MessageEmbed()
               .setTitle("**Black Jack**")
               .setThumbnail(msg.author.avatarURL())

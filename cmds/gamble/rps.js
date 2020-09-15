@@ -22,7 +22,7 @@ module.exports.run = async (bot, msg, args) => {
           .setTitle("**ERROR**")
           .setColor(0XFF0000)
           .setThumbnail(msg.author.avatarURL())
-          .setDescription("how much do you want to bet")
+          .setDescription("how much do you want to bet <0/1/2> <bet> \n0-Rock\n1-Paper\n2-scissors")
         msg.channel.send(ErrorEmbed);
       return;}
 
@@ -49,7 +49,7 @@ module.exports.run = async (bot, msg, args) => {
           .setTitle("**ERROR**")
           .setColor(0XFF0000)
           .setThumbnail(msg.author.avatarURL())
-          .setDescription("What do you want \n0-Rock\n1-Paper\n2-scissors")
+          .setDescription("What do you want <0/1/2> <bet> \n0-Rock\n1-Paper\n2-scissors")
         msg.channel.send(ErrorEmbed);
       return;}
 

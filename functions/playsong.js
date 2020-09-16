@@ -11,11 +11,11 @@ function playSong(guild, song) {
  
     const dispatcher = serverQueue.connection.play(ytdl(song.url))
         .on('end', () => {
-            serverQueue.songs.shift();
-            playSong(guild, serverQueue.songs[0]);
+          serverQueue.songs.shift();
+          playSong(guild, serverQueue.songs[0]);
         })
         .on('error', error => {
-            console.log(error);
+          console.log(error);
         })
     dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
 }

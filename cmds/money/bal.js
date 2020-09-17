@@ -4,10 +4,10 @@ module.exports.run = async (bot, msg, args) => {
   var economy = new db.table('economy')
   let author = msg.author.id
   let mentioned = msg.mentions.members.first();
-  let useracc = economy.get(`${author}.bal`)
+  let useracc = economy.get(`${author}.bal`);
 
 
-  if(!(economy.has(author.id))){
+  if(economy.has(author) === false){
 
     economy.set(`${author}.bal`, 100)
     economy.add(`${author}.lc`, 0)

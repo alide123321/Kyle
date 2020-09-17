@@ -7,7 +7,7 @@ module.exports.run = async (bot, msg, args) => {
   let useracc = economy.get(`${author}.bal`)
 
 
-  if((economy.has(author))){
+  if(!(economy.has(author.id))){
 
     economy.set(`${author}.bal`, 100)
     economy.add(`${author}.lc`, 0)

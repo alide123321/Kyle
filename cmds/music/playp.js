@@ -24,7 +24,8 @@ module.exports.run = async (bot, msg, args) => {
     if (!permissions.has("SPEAK"))
       return msg.reply("I cannot speak in this voice channel, make sure I have the proper permissions!");
 
-    const search = args.join(" ");
+    let text = msg.content;
+    const search = text.slice(2);
     const pattern = /^.*(youtu.be\/|list=)([^#\&\?]*).*/gi;
     const url = args[0];
     const urlValid = pattern.test(args[0]);

@@ -11,7 +11,8 @@ module.exports.run = async (bot, msg, args) => {
     if (!msg.member.voice.channel)
       return msg.reply("You need to join a voice channel first!").catch(console.error);
 
-    const search = args.join(" ");
+    let text = msg.content;
+    const search = text.slice(7);
 
     let resultsEmbed = new MessageEmbed()
       .setTitle(`**Reply with the song number you want to play**`)

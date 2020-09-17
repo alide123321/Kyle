@@ -24,7 +24,8 @@ module.exports.run = async (bot, msg, args) => {
     if (!permissions.has("SPEAK"))
       return msg.reply("I cannot speak in this voice channel, make sure I have the proper permissions!");
 
-    const search = args.join(" ");
+    let text = msg.content;
+    const search = text.slice(2);
     const videoPattern = /^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
     const playlistPattern = /^.*(list=)([^#\&\?]*).*/gi;
     const scRegex = /^https?:\/\/(soundcloud\.com)\/(.*)$/;

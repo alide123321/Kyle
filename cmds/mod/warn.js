@@ -44,7 +44,7 @@ module.exports.run = async (bot, msg, args) => {
     
     
     if(warnings === null) {
-        warn.set(`warnings_${msg.guild.id}_${mentioned.id}`, `${reason} by ${(author.nickname}`)
+        warn.set(`warnings_${msg.guild.id}_${mentioned.id}`, `${reason} by ${author.nickname}`)
         mentioned.send(`You have been warned in **${msg.guild.name}** for ${reason}`)
         await msg.channel.send(warningEmbed);
     } else if (warnings != null) {

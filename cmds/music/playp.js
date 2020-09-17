@@ -1,5 +1,6 @@
 module.exports.run = async (bot, msg, args) => {
     const scdl = require("soundcloud-downloader")
+    const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
     const YouTubeAPI = require("simple-youtube-api");
     const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
     const { MessageEmbed } = require("discord.js");

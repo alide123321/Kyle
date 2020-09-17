@@ -40,16 +40,16 @@ module.exports.run = async (bot, msg, args) => {
         .setTitle("**warn**")
         .setColor(0X32CD32)
         .setThumbnail(msg.author.avatarURL())
-        .setDescription(`You warned **${mentioned}** for ${reason}`)
+        .setDescription(`You warned **${mentioned}** for ${reason} by: ${author}`)
     
     
     if(warnings === null) {
-        warn.set(`warnings_${msg.guild.id}_${mentioned.id}`, reason)
+        warn.set(`warnings_${msg.guild.id}_${mentioned.id}`, `${reason} by ${author}`)
         mentioned.send(`You have been warned in **${msg.guild.name}** for ${reason}`)
         await msg.channel.send(warningEmbed);
     } else if (warnings != null) {
         await warn.delete(`warnings_${msg.guild.id}_${mentioned.id}`)
-        warnings = warnings.concat(`, and ${reason}`)
+        warnings = warnings.concat(`, and ${reason} by ${author}`)
         warn.set(`warnings_${msg.guild.id}_${mentioned.id}`, warnings)
         mentioned.send(`You have been warned in **${msg.guild.name}** for ${reason}`)
         await msg.channel.send(warningEmbed);

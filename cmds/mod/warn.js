@@ -44,12 +44,12 @@ module.exports.run = async (bot, msg, args) => {
     
     
     if(warnings === null) {
-        warn.set(`warnings_${msg.guild.id}_${mentioned.id}`, `${reason} by ${(await msg.guild.members.fetch(author)).nickname}`)
+        warn.set(`warnings_${msg.guild.id}_${mentioned.id}`, `${reason} by ${(author.nickname}`)
         mentioned.send(`You have been warned in **${msg.guild.name}** for ${reason}`)
         await msg.channel.send(warningEmbed);
     } else if (warnings != null) {
         await warn.delete(`warnings_${msg.guild.id}_${mentioned.id}`)
-        warnings = warnings.concat(`, and ${reason} by ${(await msg.guild.members.fetch(author)).nickname}`)
+        warnings = warnings.concat(`, and ${reason} by ${author.nickname}`)
         warn.set(`warnings_${msg.guild.id}_${mentioned.id}`, warnings)
         mentioned.send(`You have been warned in **${msg.guild.name}** for ${reason}`)
         await msg.channel.send(warningEmbed);

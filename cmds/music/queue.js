@@ -1,9 +1,11 @@
 module.exports.run = async (bot, msg, args) => {
-  const queue = require('../../functions/queue.js').queue;
-  const serverQueue = queue.get(msg.guild.id);
-  
-  for(var i = 0; i < serverQueue.songs.length; ++i )
-  msg.channel.send("```"+serverQueue.songs[i]+"```")
+  const serverQueue = msg.client.queue.get(msg.guild.id);
+		if (!serverQueue) return msg.channel.send('There is nothing playing.');
+		return msg.channel.send(`
+__**Song queue:**__
+${serverQueue.songs.map(song => `**-** ${song.title}`).join('\n')}
+**Now playing:** ${serverQueue.songs[0].title}
+		`);
 }
 
 module.exports.help = {

@@ -6,7 +6,8 @@ module.exports.run = async (bot, msg, args) => {
   let mentioned = msg.mentions.members.first();
   let useracc = economy.get(`${author}.bal`)
 
-  if(!useracc){
+
+  if(!(economy.has(author))){
 
     economy.set(`${author}.bal`, 100)
     economy.add(`${author}.lc`, 0)

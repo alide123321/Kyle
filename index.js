@@ -23,6 +23,8 @@ const token = process.env.TOKEN;
 const prefix = '.';
 const version = "1.5.0";
 const Fs = require("fs");
+bot.queue = new Map();
+//module.exports = { queue: queue };
 
 
 
@@ -125,7 +127,7 @@ Fs.readdir("./cmds/music/", (err,files) => {
   jsfiles.forEach((f,i) => {
     let props = require(`./cmds/music/${f}`);
     console.log(`${i+1}: ${f} loaded in music!`)
-    bot.commands.set(props.help.name, props);
+    bot.commands.set(props.help.name , props);
     numofcommands++;
   });
 });

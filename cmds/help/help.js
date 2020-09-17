@@ -14,8 +14,10 @@ module.exports.run = async (bot, msg, args) => {
       {name: "**Meme commands**", value: prefix+"memehelp", inline: true},
       {name: "**VC commands**", value: prefix+"vchelp", inline: true},
       {name: "**Mod commands**", value: prefix+"modhelp", inline: true},
+      {name: "**Music commands**", value: prefix+"musicbhelp", inline: true},
       {name: "**balance commands**", value: prefix+"moneyhelp", inline: true},
       {name: "**Gambling commands**", value: prefix+"gambhelp", inline: true},
+      
     )
     .setImage('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
   msg.channel.send(helpem);

@@ -6,7 +6,7 @@ module.exports.run = async (bot, msg, args) => {
     const { MessageEmbed } = require("discord.js");
     const { play } = require("../../functions/play.js");
     
-    const { PRUNING } = require("../.env");
+    const { PRUNING } = require("../../.env");
     const { channel } = msg.member.voice;
 
     const serverQueue = msg.client.queue.get(msg.guild.id);

@@ -2,7 +2,7 @@ const sleep = require('./sleep.js').sleep;
 const talkedRecently = require('./talked.js').talkedRecently;
 function vc (sound,vol,VC,auther,chan){
 
-  const serverQueue = msg.client.queue.get(msg.guild.id);
+  const serverQueue = chan.client.queue.get(chan.guild.id);
   if (serverQueue) {
     chan.send("Im buzy playing music right now sorry")
   return;}

@@ -18,7 +18,6 @@ module.exports.run = async (bot, msg, args) => {
         msg.channel.send("You can not warn bots")
     return;}
 
-    
     let warnings = warn.get(`warnings_${msg.guild.id}_${mentioned.id}`)
 
     let warningEmbed = new Discord.MessageEmbed()

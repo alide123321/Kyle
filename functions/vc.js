@@ -1,6 +1,12 @@
 const sleep = require('./sleep.js').sleep;
 const talkedRecently = require('./talked.js').talkedRecently;
 function vc (sound,vol,VC,auther,chan){
+
+  const serverQueue = msg.client.queue.get(msg.guild.id);
+  if (serverQueue) {
+    chan.send("Im buzy playing music right now sorry")
+  return;}
+
     if (talkedRecently.has(auther) && auther !== '698051518754062387') {
       chan.send("Cooldown 60 sec")
       .then(msg => {

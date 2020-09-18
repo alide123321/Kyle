@@ -6,20 +6,6 @@ module.exports.run = async (bot, msg, args) => {
   let mentioned = msg.mentions.members.first();
   let useracc = economy.get(`${author}.bal`);
 
-
-  if(economy.has(author) === false){
-
-    economy.set(`${author}.bal`, 100)
-    economy.add(`${author}.lc`, 0)
-
-    let SuccessEmbed = new Discord.MessageEmbed()
-      .setTitle("**WELCOME**")
-      .setColor(0X32CD32)
-      .setThumbnail(msg.author.avatarURL())
-      .setDescription("You have joined the economy!")
-    msg.channel.send(SuccessEmbed);
-  }
-
   useracc = economy.get(`${author}.bal`)
   
     if (mentioned) {

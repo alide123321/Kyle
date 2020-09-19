@@ -6,13 +6,13 @@ module.exports.run = async (bot, msg, args) => {
   let useracc = economy.get(`${author}.bal`)
   let time = economy.get(`${author}.lc`)
 
-  if(economy.has(author) === true){
+  if(economy.has(author) === false){
   
       let SuccessEmbed = new Discord.MessageEmbed()
         .setTitle("**ERORR**")
         .setColor(0X0099ff)
         .setThumbnail(msg.author.avatarURL())
-        .setDescription("You are already in the economy!")
+        .setDescription("You are not in the economy try .newbal")
       msg.channel.send(SuccessEmbed);
     return;}
 

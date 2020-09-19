@@ -7,6 +7,16 @@ module.exports.run = async (bot, msg, args) => {
   let useracc = economy.get(`${author}.bal`)
   let Money = args[1];
 
+  if(economy.has(author) === false){
+  
+      let SuccessEmbed = new Discord.MessageEmbed()
+        .setTitle("**ERORR**")
+        .setColor(0X0099ff)
+        .setThumbnail(msg.author.avatarURL())
+        .setDescription("You are not in the economy try .newbal")
+      msg.channel.send(SuccessEmbed);
+    return;}
+
   if (!Money) {
     let ErrorEmbed = new Discord.MessageEmbed()
     .setTitle("**ERROR**")
@@ -15,19 +25,6 @@ module.exports.run = async (bot, msg, args) => {
       .setDescription("Please specify an amount to give .pay <#> <@>")
     msg.channel.send(ErrorEmbed);
   return;}
-
-  if(!useracc){
-
-    economy.set(`${author}.bal`, 100)
-    economy.add(`${author}.lc`, 0)
-
-    let SuccessEmbed = new Discord.MessageEmbed()
-      .setTitle("**WELCOME**")
-      .setColor(0X32CD32)
-      .setThumbnail(msg.author.avatarURL())
-      .setDescription("You have joined the economy!")
-    msg.channel.send(SuccessEmbed);
-  }
 
   if (isNaN(Money)) {
     let ErrorEmbed = new Discord.MessageEmbed()

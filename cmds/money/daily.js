@@ -6,18 +6,15 @@ module.exports.run = async (bot, msg, args) => {
   let useracc = economy.get(`${author}.bal`)
   let time = economy.get(`${author}.lc`)
 
-  if(!useracc){
-
-    economy.set(`${author}.bal`, 100)
-    economy.add(`${author}.lc`, 0)
-
-    let SuccessEmbed = new Discord.MessageEmbed()
-      .setTitle("**WELCOME**")
-      .setColor(0X32CD32)
-      .setThumbnail(msg.author.avatarURL())
-      .setDescription("You have joined the economy!")
-    msg.channel.send(SuccessEmbed);
-  }
+  if(economy.has(author) === true){
+  
+      let SuccessEmbed = new Discord.MessageEmbed()
+        .setTitle("**ERORR**")
+        .setColor(0X0099ff)
+        .setThumbnail(msg.author.avatarURL())
+        .setDescription("You are already in the economy!")
+      msg.channel.send(SuccessEmbed);
+    return;}
 
   if (Math.floor(new Date().getTime() - time) / (1000 * 60 * 60 * 24) < 1) {
     let WarningEmbed = new Discord.MessageEmbed()

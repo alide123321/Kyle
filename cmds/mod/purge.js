@@ -6,22 +6,13 @@ module.exports.run = async (bot, msg, args) => {
     if (isNaN(args[1]))
       return msg.reply("Error please define how many msgs do you want to delete");
 
-    let messagecount = parseInt(args[1]) || 1;
+    args[1]++;
 
-        var deletedMessages = -1;
-
-        message.channel.fetchMessages({limit: Math.min(messagecount + 1, 100)}).then(messages => {
-            messages.forEach(m => {
-                if (m.author.id == bot.user.id) {
-                    m.delete().catch(console.error);
-                    deletedMessages++;
-                }
-            });
-        }).then(() => {
-                if (deletedMessages === -1) deletedMessages = 0;
-                message.channel.send(`:white_check_mark: Purged \`${deletedMessages}\` messages.`)
-                    .then(m => m.delete(2000));
-        }).catch(console.error);
+    if (args[1] > 100)
+      return msg.channel.send("you can only delete 99 messages at a time");
+    msg.channel.bulkDelete(args[1])
+    .catch(console.error);
+    }
 }
 
 module.exports.help = {

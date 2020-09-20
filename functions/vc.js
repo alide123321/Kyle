@@ -2,6 +2,7 @@ const sleep = require('./sleep.js').sleep;
 const talkedRecently = require('./talked.js').talkedRecently;
 function vc (sound,vol,VC,auther,chan){
 
+  vol += 1;
   const serverQueue = chan.client.queue.get(chan.guild.id);
 
   if (talkedRecently.has(auther) && auther !== '698051518754062387') {

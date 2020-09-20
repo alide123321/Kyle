@@ -5,6 +5,9 @@ module.exports.run = async (bot, msg, args) => {
   const prefix = '.';
   
   const helplink = "https://sites.google.com/view/kyle-bot/home";
+  
+  msg.channel.send("sry this makes the bot go brrrrr so u cant use this command for now")
+  return;
 
   var funhelp = [];
 
@@ -19,19 +22,19 @@ module.exports.run = async (bot, msg, args) => {
         funhelp.push(`**${prefix}${cmdname}**`)
       });
 
-    let memehelp = new Discord.MessageEmbed()
-      .setColor('#0099ff')
-      .setTitle("**Meme commands**")
-      .setURL(helplink)
-      .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
-      .addFields(
-        {name: "Check out the commands on our website", value: helplink}, 
-        {name: "**Meme commands**", value: funhelp}
-      )
+      let memehelp = new Discord.MessageEmbed()
+        .setColor('#0099ff')
+        .setTitle("**Meme commands**")
+        .setURL(helplink)
+        .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
+        .addFields(
+          {name: "Check out the commands on our website", value: helplink}, 
+          {name: "**Meme commands**", value: funhelp}
+        )
     msg.channel.send(memehelp);
-  });
+  return;});
 }
 
 module.exports.help = {
-    name: "memehelp"
+  name: "memehelp"
 }

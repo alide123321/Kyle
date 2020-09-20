@@ -6,6 +6,9 @@ module.exports.run = async (bot, msg, args) => {
   
     const helplink = "https://sites.google.com/view/kyle-bot/home";
 
+    msg.channel.send("sry this makes the bot go brrrrr so u cant use this command for now")
+  return;
+
     var VChelp = [];
 
     Fs.readdir("./cmds/vc/", (err,files) => {

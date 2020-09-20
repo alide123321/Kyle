@@ -30,6 +30,7 @@ bot.queue = new Map();
 
 var numofcommands = 0;
 bot.commands = new Discord.Collection();
+
 Fs.readdir("./cmds/gamble/", (err, files) => {
   if (err) console.error(err);
 
@@ -406,9 +407,8 @@ bot.on("message", async msg => {
     return;
   }
 
-  let serverID = msg.guild.id;
   let SWonderland = '599061990828277770'; // Wonderland server ID
-  if (serverID == SWonderland) {
+  if (msg.guild.id == SWonderland) {
     let Wonderland = bot.channels.cache.get('730388529171136522')
     if (Wonderland === msg.channel.id)
       msg.channel.bulkDelete(2);

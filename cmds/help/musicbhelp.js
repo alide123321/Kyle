@@ -1,13 +1,9 @@
 module.exports.run = async (bot, msg, args) => {
     const Discord = require("discord.js");
     const Fs = require("fs");
-    bot.commands = new Discord.Collection();
     const prefix = '.';
     
     const helplink = "https://sites.google.com/view/kyle-bot/home";
-
-    msg.channel.send("sry this makes the bot go brrrrr so u cant use this command for now")
-  return;
 
     var music = [];
 

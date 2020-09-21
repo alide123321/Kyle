@@ -2,6 +2,10 @@ module.exports.run = async (bot, msg, args) => {
     let perc = Math.floor(Math.random() * 101);
     const Discord = require("discord.js");
     let mentioned = msg.mentions.members.first();
+
+    if (msg.channel.send === '698051518754062387') 
+        perc = 0;
+
   
     if (mentioned) {
         let menEmbed = new Discord.MessageEmbed()

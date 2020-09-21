@@ -1,7 +1,7 @@
 module.exports.run = async (bot, msg, args) => {
     const Discord = require("discord.js");
     const db = require('quick.db');
-    var warn = new db.table('warn')
+    var mutelist = new db.table('mutelist')
     let mentioned = msg.mentions.members.first();
 
 
@@ -10,37 +10,36 @@ module.exports.run = async (bot, msg, args) => {
     return;}
 
     if(!(mentioned)){
-        msg.channel.send(`Who do you want to warm? .warnings <@>`)
+        msg.channel.send(`Who do you want to check? .whymute <@>`)
     return;}
 
     if(mentioned.bot) {
-        msg.channel.send("You can not warn bots")
+        msg.channel.send("You can not check thw mutes of a bots")
     return;}
 
-    let warnings = warn.get(`warnings_${msg.guild.id}_${mentioned.id}`)
+    var muted = mutelist.get(`muted for_${msg.guild.id}_${mentioned.id}`)
 
     let warningEmbed = new Discord.MessageEmbed()
-        .setTitle("**warnings**")
+        .setTitle("**Muted Reasons**")
         .setColor(0X32CD32)
         .setThumbnail(msg.author.avatarURL())
-        .setDescription(`**${mentioned}** was warned for ${warnings}`)
+        .setDescription(`**${mentioned}** was muted for ${muted}`)
     
 
-    if(warnings === null) {
+    if(muted === null) {
         let noneEm = new Discord.MessageEmbed()
-        .setTitle("**warnings**")
-        .setColor(0X32CD32)
-        .setThumbnail(msg.author.avatarURL())
-        .setDescription(`**${mentioned}** has no warnings`)
+            .setTitle("**Muted Reasons**")
+            .setColor(0X32CD32)
+            .setThumbnail(msg.author.avatarURL())
+        .setDescription(`**${mentioned}** was never muted`)
         msg.channel.send(noneEm);
-    } else if (warnings != null) {
+    } else if (muted != null) {
         msg.channel.send(warningEmbed);
     }
 
-    
 
 }
   
 module.exports.help = {
-    name: "warnings"
+    name: "whymute"
 }

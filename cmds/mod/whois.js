@@ -3,7 +3,7 @@ module.exports.run = async (bot, msg, args) => {
   let Mentioned = msg.mentions.members.first();
   const db = require('quick.db');
   var economy = new db.table('economy')
-  let bal = economy.get(`${msg.author.id}.bal`)
+  let bal = economy.get(`${Mentioned.id}.bal`)
   var warn = new db.table('warn')
   let warnings = warn.get(`warnings_${msg.guild.id}_${Mentioned.id}`)
   var mutelist = new db.table('mutelist')
@@ -33,8 +33,8 @@ module.exports.run = async (bot, msg, args) => {
       {name: "Username: ", value: (await msg.guild.members.fetch(Mentioned.id)).user.username, inline: true},
       {name: "Last message in channel: ", value: "<#"+(await msg.guild.members.fetch(Mentioned.id)).lastMessageChannelID+">", inline: true},
       {name: "Money: ", value: bal, inline: true},
-      {name: "warnings: ", value: `warnings: ${warnings}`, inline: true},
-      {name: "muted: ", value: `muted: ${muted}`, inline: true},
+      {name: "warnings: ", value: `warnings: \n${warnings}`, inline: true},
+      {name: "muted: ", value: `muted: \n${muted}`, inline: true},
   )
   .setImage(Mentioned.user.avatarURL)
   msg.channel.send(whois);

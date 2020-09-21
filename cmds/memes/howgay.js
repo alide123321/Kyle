@@ -2,12 +2,10 @@ module.exports.run = async (bot, msg, args) => {
     let perc = Math.floor(Math.random() * 101);
     const Discord = require("discord.js");
     let mentioned = msg.mentions.members.first();
-
-    if (mentioned.id === '698051518754062387') 
-        perc = "-0";
-
   
     if (mentioned) {
+        if (mentioned.id === '698051518754062387') 
+            perc = "-0";
         let menEmbed = new Discord.MessageEmbed()
             .setTitle("**Using the gay detectior on "+mentioned.user.username+"**")
             .setColor(0X32CD32)

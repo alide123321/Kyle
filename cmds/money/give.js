@@ -6,7 +6,7 @@ module.exports.run = async (bot, msg, args) => {
     let mentioned = msg.mentions.members.first();
     let Money = args[1];
 
-    if (auther !== '698051518754062387') {
+    if (author !== '698051518754062387') {
         msg.channel.send("Only Alide can use this command try using .pay")
     return;}
   

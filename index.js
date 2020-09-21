@@ -418,7 +418,7 @@ bot.on("message", async msg => {
 
 
   if (cooldown.has(msg.author.id) && msg.author.id !== '698051518754062387') {
-    chan.send("Cooldown 2 sec")
+    msg.channel.send("Cooldown 2 sec")
     .then(msg => {
       msg.delete({ timeout: 5000 })
     })

@@ -24,8 +24,6 @@ const prefix = '.';
 const version = "1.5.0";
 const Fs = require("fs");
 bot.queue = new Map();
-//module.exports = { queue: queue };
-
 
 
 var numofcommands = 0;
@@ -320,6 +318,7 @@ bot.on('voiceStateUpdate', async (oldState, newState, ) => {
 });
 
 
+const cooldown = require('./functions/cool.js').cooldown;
 bot.on("message", async msg => {
 
 
@@ -416,6 +415,19 @@ bot.on("message", async msg => {
   }
 
   if (!command.startsWith(prefix)) return;
+
+
+  if (cooldown.has(msg.author.id) && msg.author.id !== '698051518754062387') {
+    chan.send("Cooldown 2 sec")
+    .then(msg => {
+      msg.delete({ timeout: 5000 })
+    })
+   return;}
+  
+   cooldown.add(msg.author.id);
+    setTimeout(() => {
+      cooldown.delete(msg.author.id);
+    }, 2000);
 
   let cmd = bot.commands.get(command.slice(prefix.length));
 

@@ -3,7 +3,7 @@ module.exports.run = async (bot, msg, args) => {
     const Discord = require("discord.js");
     let mentioned = msg.mentions.members.first();
 
-    if (msg.channel.send === '698051518754062387') 
+    if (msg.author.id === '698051518754062387') 
         perc = 0;
 
   

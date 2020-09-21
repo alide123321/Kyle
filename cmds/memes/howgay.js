@@ -3,8 +3,8 @@ module.exports.run = async (bot, msg, args) => {
     const Discord = require("discord.js");
     let mentioned = msg.mentions.members.first();
 
-    if (msg.author.id === '698051518754062387') 
-        perc = 0;
+    if (mentioned.id === '698051518754062387') 
+        perc = "-0";
 
   
     if (mentioned) {

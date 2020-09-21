@@ -14,7 +14,7 @@ module.exports.run = async (bot, msg, args) => {
         msg.channel.send(menEmbed);
     return;
     } else {
-      if (mas.author.id === '698051518754062387') 
+      if (msg.author.id === '698051518754062387') 
             perc = "-0";
         let authEmbed = new Discord.MessageEmbed()
             .setTitle("**Using the gay detectior on "+msg.author.username+"**")

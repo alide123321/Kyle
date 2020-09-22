@@ -20,7 +20,7 @@ function vc (sound,vol,VC,auther,chan){
     
     if (VC){
       if (serverQueue) {
-        chan.send("Im buzy playing music right now sorry")
+        chan.send("Im busy playing music right now sorry")
           .then(msg => {
             msg.delete({ timeout: 5000 })
           })

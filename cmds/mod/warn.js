@@ -14,7 +14,7 @@ module.exports.run = async (bot, msg, args) => {
     return;}
     
     if(!(mentioned)){
-        msg.channel.send(`Who do you want to warm? .warn <@> <reason>`)
+        msg.channel.send(`Who do you want to warn? .warn <@> <reason>`)
     return;}
 
     if(mentioned.user.bot) {

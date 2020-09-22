@@ -1,7 +1,7 @@
 module.exports.run = async (bot, msg, args) => {
     const Discord = require("discord.js");
     let text = msg.content;
-    let reason = text.slice(29);
+    let reason = text.slice(28);
     const db = require('quick.db');
     var mutelist = new db.table('mutelist')
     let mentioned = msg.mentions.members.first();

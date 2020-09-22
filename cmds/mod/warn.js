@@ -7,7 +7,7 @@ module.exports.run = async (bot, msg, args) => {
     let author = msg.author.id
     let mentioned = msg.mentions.members.first();
     let text = msg.content;
-    let reason = text.slice(29);
+    let reason = text.slice(28);
 
     if(!msg.member.hasPermission("ADMINISTRATOR")) {
         msg.channel.send("You should have admin perms to use this command!")

@@ -22,7 +22,7 @@ module.exports.run = async (bot, msg, args) => {
     let warningEmbed = new Discord.MessageEmbed()
         .setTitle("**Muted Reasons**")
         .setColor(0X32CD32)
-        .setThumbnail(msg.author.avatarURL())
+        .setThumbnail(mentioned.user.avatarURL())
         .setDescription(`**${mentioned}** was muted for ${muted}`)
     
 
@@ -30,7 +30,7 @@ module.exports.run = async (bot, msg, args) => {
         let noneEm = new Discord.MessageEmbed()
             .setTitle("**Muted Reasons**")
             .setColor(0X32CD32)
-            .setThumbnail(msg.author.avatarURL())
+            .setThumbnail(mentioned.user.avatarURL())
         .setDescription(`**${mentioned}** was never muted`)
         msg.channel.send(noneEm);
     } else if (muted != null) {

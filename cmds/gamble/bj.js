@@ -12,7 +12,7 @@ module.exports.run = async (bot, msg, args) => {
           let ErrorEmbed = new Discord.MessageEmbed()
             .setTitle("**ERROR**")
             .setColor(0XFF0000)
-            .setDescription("You are not in the system try .newbal")
+            .setDescription("You are not in the system, try .newbal")
           msg.channel.send(ErrorEmbed);
     return;}
   
@@ -20,7 +20,7 @@ module.exports.run = async (bot, msg, args) => {
           let ErrorEmbed = new Discord.MessageEmbed()
             .setTitle("**ERROR**")
             .setColor(0XFF0000)
-            .setDescription("how much do you want to bet")
+            .setDescription("How much do you want to bet?")
           msg.channel.send(ErrorEmbed);
     return;}
   
@@ -28,7 +28,7 @@ module.exports.run = async (bot, msg, args) => {
           let ErrorEmbed = new Discord.MessageEmbed()
             .setTitle("**ERROR**")
             .setColor(0XFF0000)
-            .setDescription("you have to bet more than or equal to 0")
+            .setDescription("You must bet 0 or more.")
           msg.channel.send(ErrorEmbed);
     return;}
   
@@ -37,7 +37,7 @@ module.exports.run = async (bot, msg, args) => {
           let ErrorEmbed = new Discord.MessageEmbed()
             .setTitle("**ERROR**")
             .setColor(0XFF0000)
-            .setDescription("You do not have enough money")
+            .setDescription("You do not have enough money.")
           msg.channel.send(ErrorEmbed);
     return;}
 
@@ -368,7 +368,7 @@ module.exports.run = async (bot, msg, args) => {
         .catch(collected => {
           bet /= 2;
           economy.subtract(`${author}.bal`, bet)
-          msg.reply('You didn\'t do anything, so now the game\'s over. and lost half of your bet');
+          msg.reply('You didn\'t do anything, so now the game\'s over. You lost half of your bet.');
         return;});
         });
 
@@ -470,7 +470,7 @@ module.exports.run = async (bot, msg, args) => {
         .catch(collected => {
           bet /= 2;
           economy.subtract(`${author}.bal`, bet)
-          msg.reply('You didn\'t do anything, so now the game\'s over. and lost half of your bet');
+          msg.reply('You didn\'t do anything, so now the game\'s over. You lost half of your bet.');
         return;});
         });
 
@@ -572,7 +572,7 @@ module.exports.run = async (bot, msg, args) => {
         .catch(collected => {
           bet /= 2;
           economy.subtract(`${author}.bal`, bet)
-          msg.reply('You didn\'t do anything, so now the game\'s over. and lost half of your bet');
+          msg.reply('You didn\'t do anything, so now the game\'s over. You lost half of your bet.');
         return;});
       });
 }

@@ -15,7 +15,7 @@ module.exports.run = async (bot, msg, args) => {
           .setTitle("**ERROR**")
           .setColor(0XFF0000)
           .setThumbnail(msg.author.avatarURL())
-          .setDescription("That pearson isnt in the system tell them to use the .bal command.")
+          .setDescription("That person isn\'t in the system, tell them to use the .newbal command.")
         msg.channel.send(ErrorEmbed);
       return;}
 

@@ -12,7 +12,7 @@ module.exports.run = async (bot, msg, args) => {
         .setTitle("**ERORR**")
         .setColor(0X0099ff)
         .setThumbnail(msg.author.avatarURL())
-        .setDescription("You are not in the economy try .newbal")
+        .setDescription("You are not in the economy, try .newbal")
       msg.channel.send(SuccessEmbed);
     return;}
 
@@ -21,7 +21,7 @@ module.exports.run = async (bot, msg, args) => {
       .setTitle("**Daily**")
       .setColor(0XFF0000)
       .setThumbnail(msg.author.avatarURL())
-      .setDescription("You have claimed today already")
+      .setDescription("You have claimed this today already.")
     msg.channel.send(WarningEmbed);
   return;}
 

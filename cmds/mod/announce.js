@@ -4,29 +4,29 @@ module.exports.run = async (bot, msg, args) => {
     let chat = bot.channels.cache.get('707451011471507466');
 
         if (!(msg.member.hasPermission('ADMINISTRATOR'))) {
-            msg.channel.send("dumb dumb ur not a admin");
+            msg.channel.send("Dumb, dumb, you're not an admin.");
         return;}
   
         if(!(args[1])){
-            msg.channel.send("the format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight");
+            msg.channel.send("The format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight");
         return;}
   
         if(!(args[2])){
-            msg.channel.send("the format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight");
+            msg.channel.send("The format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight");
         return;}
   
         if(isNaN(args[1])){
-            msg.channel.send("the format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight");
+            msg.channel.send("The format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight");
         return;}
       
         if(args[1] !== "0" && args[1] !== "1" && args[1] !== "2" && args[1] !== "3"){
-            msg.channel.send("the format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight");
+            msg.channel.send("The format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight");
         return;}
   
   
         let mention = " ";
         if(args[1] === "0")
-            mention = "no one";
+            mention = "No one";
         if(args[1] === "1")
             mention = "@everyone";
         if(args[1] === "2")
@@ -37,7 +37,7 @@ module.exports.run = async (bot, msg, args) => {
         let text = msg.content;
         let title = text.slice(12);
   
-        msg.channel.send("What do you want the discription to be? you have 60 seconds to type it"); 
+        msg.channel.send("What do you want the description to be? You have 60 seconds to type it."); 
         let disc = " ";      
         msg.channel.awaitMessages(m => m.author.id == msg.author.id,
             {max: 1 , time: 60000}).then(collected => {

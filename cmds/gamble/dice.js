@@ -24,7 +24,7 @@ module.exports.run = async (bot, msg, args) => {
         .setTitle("**ERROR**")
         .setColor(0XFF0000)
         .setThumbnail(msg.author.avatarURL())
-        .setDescription("what number are you betting on \n.dice <1/2/3/4/5/6> <Bet>")
+        .setDescription("What number are you betting on? \n.dice <1/2/3/4/5/6> <Bet>")
       msg.channel.send(ErrorEmbed);
     return;}
 
@@ -33,7 +33,7 @@ module.exports.run = async (bot, msg, args) => {
         .setTitle("**ERROR**")
         .setColor(0XFF0000)
         .setThumbnail(msg.author.avatarURL())
-        .setDescription("what number are you betting on \n.dice <1/2/3/4/5/6> <Bet>")
+        .setDescription("What number are you betting on? \n.dice <1/2/3/4/5/6> <Bet>")
       msg.channel.send(ErrorEmbed);
     return;}
 
@@ -42,7 +42,7 @@ module.exports.run = async (bot, msg, args) => {
           .setTitle("**ERROR**")
           .setColor(0XFF0000)
           .setThumbnail(msg.author.avatarURL())
-          .setDescription("how much do you want to bet .dice <1/2/3/4/5/6> <Bet>")
+          .setDescription("How much do you want to bet? .dice <1/2/3/4/5/6> <Bet>")
         msg.channel.send(ErrorEmbed);
     return;}
 
@@ -51,7 +51,7 @@ module.exports.run = async (bot, msg, args) => {
           .setTitle("**ERROR**")
           .setColor(0XFF0000)
           .setThumbnail(msg.author.avatarURL())
-          .setDescription("you have to bet more than or equal to 0")
+          .setDescription("You must bet 0 or more.")
         msg.channel.send(ErrorEmbed);
     return;}
 
@@ -60,7 +60,7 @@ module.exports.run = async (bot, msg, args) => {
         .setTitle("**ERROR**")
         .setColor(0XFF0000)
         .setThumbnail(msg.author.avatarURL())
-        .setDescription("You do not have enough money")
+        .setDescription("You do not have enough money.")
       msg.channel.send(ErrorEmbed);
     return;}
 

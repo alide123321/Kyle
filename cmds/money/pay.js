@@ -13,7 +13,7 @@ module.exports.run = async (bot, msg, args) => {
         .setTitle("**ERORR**")
         .setColor(0X0099ff)
         .setThumbnail(msg.author.avatarURL())
-        .setDescription("You are not in the economy try .newbal")
+        .setDescription("You are not in the economy, try .newbal")
       msg.channel.send(SuccessEmbed);
     return;}
 
@@ -22,7 +22,7 @@ module.exports.run = async (bot, msg, args) => {
     .setTitle("**ERROR**")
       .setColor(0XFF0000)
       .setThumbnail(msg.author.avatarURL())
-      .setDescription("Please specify an amount to give .pay <#> <@>")
+      .setDescription("Please specify an amount to give. (.pay <#> <@>)")
     msg.channel.send(ErrorEmbed);
   return;}
 
@@ -31,7 +31,7 @@ module.exports.run = async (bot, msg, args) => {
       .setTitle("**ERROR**")
       .setColor(0XFF0000)
       .setThumbnail(msg.author.avatarURL())
-      .setDescription("Please specify a number .pay <#> <@>")
+      .setDescription("Please specify a number. (.pay <#> <@>)")
     msg.channel.send(ErrorEmbed);
   return;}
 
@@ -40,7 +40,7 @@ module.exports.run = async (bot, msg, args) => {
       .setTitle("**ERROR**")
       .setColor(0XFF0000)
       .setThumbnail(msg.author.avatarURL())
-      .setDescription("You do not have enough money")
+      .setDescription("You do not have enough money.")
     msg.channel.send(ErrorEmbed);
   return;}
 
@@ -49,7 +49,7 @@ module.exports.run = async (bot, msg, args) => {
       .setTitle("**ERROR**")
       .setColor(0XFF0000)
       .setThumbnail(msg.author.avatarURL())
-      .setDescription("Please specify an integer value greater than 0 .pay <#> <@>")
+      .setDescription("Please specify an integer value greater than 0. (.pay <#> <@>)")
     msg.channel.send(ErrorEmbed);
   return;}
 
@@ -58,7 +58,7 @@ module.exports.run = async (bot, msg, args) => {
       .setTitle("**ERROR**")
       .setColor(0XFF0000)
       .setThumbnail(msg.author.avatarURL())
-      .setDescription("Please mention a user .pay <#> <@>")
+      .setDescription("Please mention a user. (.pay <#> <@>)")
     msg.channel.send(ErrorEmbed);
   return;}
   let menacc = economy.get(mentioned.id)
@@ -68,7 +68,7 @@ module.exports.run = async (bot, msg, args) => {
       .setTitle("**ERROR**")
       .setColor(0XFF0000)
       .setThumbnail(msg.author.avatarURL())
-      .setDescription("That pearson isnt in the system tell them to use the .bal command.")
+      .setDescription("That person isn\'t in the system, tell them to use the .newbal command.")
     msg.channel.send(ErrorEmbed);
   return;}
 

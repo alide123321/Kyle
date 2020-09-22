@@ -13,9 +13,9 @@ module.exports.run = async (bot, msg, args) => {
       {name: "Check out the commands on our website", value: helplink}, 
       {name: "**Meme commands**", value: prefix+"memehelp", inline: true},
       {name: "**VC commands**", value: prefix+"vchelp", inline: true},
-      {name: "**Mod commands**", value: prefix+"modhelp", inline: true},
-      {name: "**Music commands**", value: prefix+"musicbhelp", inline: true},
-      {name: "**balance commands**", value: prefix+"moneyhelp", inline: true},
+      {name: "**Moderator commands**", value: prefix+"modhelp", inline: true},
+      {name: "**Music commands**", value: prefix+"musichelp", inline: true},
+      {name: "**Balance commands**", value: prefix+"moneyhelp", inline: true},
       {name: "**Gambling commands**", value: prefix+"gambhelp", inline: true},
       
     )

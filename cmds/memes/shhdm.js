@@ -9,11 +9,11 @@ module.exports.run = async (bot, msg, args) => {
       return;}
 
       if(!args[1]){
-        msg.channel.send("Who do you want to Dm anonymous?");
+        msg.channel.send("Who would you like to anonymously DM?");
       return;}
 
       if(!args[1].includes("@")){
-        msg.channel.send("Who do you want to Dm anonymous?");
+        msg.channel.send("Who would you like to anonymously DM?");
       return;}
 
       const embed = new Discord.MessageEmbed()

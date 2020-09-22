@@ -7,7 +7,7 @@ module.exports.run = async (bot, msg, args) => {
     if (!args.length)
       return msg.reply(`Usage: ${msg.client.prefix}${module.exports.name} <Video Name>`).catch(console.error);
     if (msg.channel.activeCollector)
-      return msg.reply("A msg collector is already active in this channel.");
+      return msg.reply("A message collector is already active in this channel.");
     if (!msg.member.voice.channel)
       return msg.reply("You need to join a voice channel first!").catch(console.error);
 

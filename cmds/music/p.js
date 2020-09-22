@@ -20,7 +20,7 @@ module.exports.run = async (bot, msg, args) => {
 
     const permissions = channel.permissionsFor(msg.client.user);
     if (!permissions.has("CONNECT"))
-      return msg.reply("Cannot connect to voice channel, missing permissions");
+      return msg.reply("Cannot connect to voice channel, missing permissions.");
     if (!permissions.has("SPEAK"))
       return msg.reply("I cannot speak in this voice channel, make sure I have the proper permissions!");
 
@@ -88,7 +88,7 @@ module.exports.run = async (bot, msg, args) => {
         };
       } catch (error) {
         console.error(error);
-        return msg.reply("No video was found with a matching title").catch(console.error);
+        return msg.reply("No video was found with a matching title.").catch(console.error);
       }
     }
 

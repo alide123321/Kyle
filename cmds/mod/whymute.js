@@ -10,11 +10,11 @@ module.exports.run = async (bot, msg, args) => {
     return;}
 
     if(!(mentioned)){
-        msg.channel.send(`Who do you want to check? .whymute <@>`)
+        msg.channel.send(`Who do you want to check? (.whymute <@>)`)
     return;}
 
     if(mentioned.bot) {
-        msg.channel.send("You can not check thw mutes of a bots")
+        msg.channel.send("You can not check the mute history of bots.")
     return;}
 
     var muted = mutelist.get(`muted for_${msg.guild.id}_${mentioned.id}`)

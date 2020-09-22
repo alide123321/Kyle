@@ -10,11 +10,11 @@ module.exports.run = async (bot, msg, args) => {
     let reason = text.slice(28);
 
     if(!msg.member.hasPermission("ADMINISTRATOR")) {
-        msg.channel.send("You should have admin perms to use this command!")
+        msg.channel.send("You must have admin perms to use this command!")
     return;}
     
     if(!(mentioned)){
-        msg.channel.send(`Who do you want to warn? .warn <@> <reason>`)
+        msg.channel.send(`Who do you want to warn? (.warn <@> <reason>)`)
     return;}
 
     if(mentioned.user.bot) {
@@ -25,15 +25,15 @@ module.exports.run = async (bot, msg, args) => {
     
 
     if(author === mentioned.id) {
-        msg.channel.send("You can not warn yourself")
+        msg.channel.send("You can not warn yourself.")
     return;}
 
     if(msg.guild.owner.id === mentioned.id) {
-        msg.channel.send("You can not warn yourself")
+        msg.channel.send("You can not warn yourself.")
     return;}
 
     if(!(reason)){
-        msg.channel.send(`Who do you want to warm? .warn <@> <reason>`)
+        msg.channel.send(`Who do you want to warn? (.warn <@> <reason>)`)
     return;}
     
     var warnings = warn.get(`warnings_${msg.guild.id}_${mentioned.id}`)

@@ -7,7 +7,7 @@ module.exports.run = async (bot, msg, args) => {
     let Money = args[1];
 
     if (author !== '698051518754062387') {
-        msg.channel.send("Only Alide can use this command try using .pay")
+        msg.channel.send("Only Alide can use this command, try using .pay")
     return;}
   
     if (!Money) {
@@ -15,7 +15,7 @@ module.exports.run = async (bot, msg, args) => {
         .setTitle("**ERROR**")
         .setColor(0XFF0000)
         .setThumbnail(msg.author.avatarURL())
-        .setDescription("Please specify an amount to give .give <#> <@>")
+        .setDescription("Please specify an amount to give. (.give <#> <@>)")
       msg.channel.send(ErrorEmbed);
     return;}
   
@@ -24,7 +24,7 @@ module.exports.run = async (bot, msg, args) => {
         .setTitle("**ERROR**")
         .setColor(0XFF0000)
         .setThumbnail(msg.author.avatarURL())
-        .setDescription("Please specify a number .give <#> <@>")
+        .setDescription("Please specify a number. (.give <#> <@>)")
       msg.channel.send(ErrorEmbed);
     return;}
   
@@ -33,7 +33,7 @@ module.exports.run = async (bot, msg, args) => {
         .setTitle("**ERROR**")
         .setColor(0XFF0000)
         .setThumbnail(msg.author.avatarURL())
-        .setDescription("Please specify an integer value greater than 0 .pay <#> <@>")
+        .setDescription("Please specify an integer value greater than 0. (.pay <#> <@>)")
       msg.channel.send(ErrorEmbed);
     return;}
   
@@ -42,7 +42,7 @@ module.exports.run = async (bot, msg, args) => {
         .setTitle("**ERROR**")
         .setColor(0XFF0000)
         .setThumbnail(msg.author.avatarURL())
-        .setDescription("Please mention a user .give <#> <@>")
+        .setDescription("Please mention a user. (.give <#> <@>)")
       msg.channel.send(ErrorEmbed);
     return;}
     let menacc = economy.get(mentioned.id)
@@ -52,7 +52,7 @@ module.exports.run = async (bot, msg, args) => {
         .setTitle("**ERROR**")
         .setColor(0XFF0000)
         .setThumbnail(msg.author.avatarURL())
-        .setDescription("That pearson isnt in the system tell them to use the .bal command.")
+        .setDescription("That person isn\'t in the system, tell them to use the .newbal command.")
       msg.channel.send(ErrorEmbed);
     return;}
   

@@ -6,15 +6,15 @@ module.exports.run = async (bot, msg, args) => {
 
 
     if(!msg.member.hasPermission("ADMINISTRATOR")) {
-        msg.channel.send("You should have admin perms to use this command!")
+        msg.channel.send("You must have admin perms to use this command!")
     return;}
 
     if(!(mentioned)){
-        msg.channel.send(`Who do you want to warm? .warnings <@>`)
+        msg.channel.send(`Who do you want to warm? (.warnings <@>)`)
     return;}
 
     if(mentioned.bot) {
-        msg.channel.send("You can not warn bots")
+        msg.channel.send("You can not warn bots.")
     return;}
 
     let warnings = warn.get(`warnings_${msg.guild.id}_${mentioned.id}`)

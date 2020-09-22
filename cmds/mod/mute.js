@@ -8,7 +8,7 @@ module.exports.run = async (bot, msg, args) => {
     let author = msg.author.id
 
     if (!(msg.member.hasPermission('ADMINISTRATOR'))) {
-        msg.channel.send('You dont have administrator perms')
+        msg.channel.send('You don\'t have administrator perms.')
     .then(msg => {
         msg.delete({ timeout: 5000 })
     })
@@ -17,28 +17,28 @@ module.exports.run = async (bot, msg, args) => {
     const user = msg.mentions.members.first();
 
     if(!user) {
-        msg.channel.send('Please specify a user, via mention or ID')
+        msg.channel.send('Please specify a user via mention or ID.')
     .then(msg => {
         msg.delete({ timeout: 5000 })
     })
     return;}
 
     if(reason === " ") {
-        msg.channel.send('Please specify a reason')
+        msg.channel.send('Please specify a reason.')
     .then(msg => {
         msg.delete({ timeout: 5000 })
     })
     return;}
 
     if(msg.author.id === user.id){
-        msg.channel.send('You can\'t warn yourself dumb dumb')
+        msg.channel.send('You can\'t warn yourself dumb, dumb.')
     .then(msg => {
         msg.delete({ timeout: 5000 })
     })
     return;}
 
     if(msg.guild.owner.id === user.id){
-        msg.channel.send('You can\'t unmute the server\'s owner')
+        msg.channel.send('You can\'t unmute the server\'s owner.')
     .then(msg => {
         msg.delete({ timeout: 5000 })
     })
@@ -51,7 +51,7 @@ module.exports.run = async (bot, msg, args) => {
         .setTitle("**Muted**")
         .setURL("https://discord.gg/gBQc5cm")
         .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
-        .setDescription(`${user}\' Was muted by ${msg.member} for the follwoing reason: \`${reason}\``)
+        .setDescription(`${user}\' was muted by ${msg.member} for the following reason: \`${reason}\``)
     msg.channel.send(mute)
 
 

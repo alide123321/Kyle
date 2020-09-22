@@ -11,14 +11,14 @@ module.exports.run = async (bot, msg, args) => {
       
       
   if (!(msg.member.hasPermission('ADMINISTRATOR'))) {
-    msg.channel.send("dumb dumb ur not a admin");
+    msg.channel.send("Dumb, dumb, you're not an admin.");
   return;}
       
   if (!Mentioned) {
     let ErrorEmbed = new Discord.MessageEmbed()
       .setTitle("**ERROR**")
       .setColor(0XFF0000)
-      .setDescription("Please mention a user")
+      .setDescription("Please mention a user.")
     msg.channel.send(ErrorEmbed);
   return;}
 

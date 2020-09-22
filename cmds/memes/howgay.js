@@ -7,7 +7,7 @@ module.exports.run = async (bot, msg, args) => {
         if (mentioned.id === '698051518754062387') 
             perc = "-0";
         let menEmbed = new Discord.MessageEmbed()
-            .setTitle("**Using the gay detectior on "+mentioned.user.username+"**")
+            .setTitle("**Using the gay detector on "+mentioned.user.username+"**")
             .setColor(0X32CD32)
             .setThumbnail(mentioned.user.avatarURL())
             .setDescription(`**${perc}% gay :rainbow_flag:**`)
@@ -17,7 +17,7 @@ module.exports.run = async (bot, msg, args) => {
       if (msg.author.id === '698051518754062387') 
             perc = "-0";
         let authEmbed = new Discord.MessageEmbed()
-            .setTitle("**Using the gay detectior on "+msg.author.username+"**")
+            .setTitle("**Using the gay detector on "+msg.author.username+"**")
             .setColor(0X32CD32)
             .setThumbnail(msg.author.avatarURL())
             .setDescription(`**${perc}% gay :rainbow_flag:**`)

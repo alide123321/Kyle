@@ -13,7 +13,7 @@ module.exports.run = async (bot, msg, args) => {
     if (serverQueue && channel !== msg.guild.me.voice.channel)
       return msg.reply(`You must be in the same channel as ${msg.client.user}`).catch(console.error);
 
-    if (!args.length)
+    if (!args[1])
       return msg
         .reply(`Usage: ${msg.client.prefix}play <YouTube URL | Video Name | Soundcloud URL>`)
         .catch(console.error);

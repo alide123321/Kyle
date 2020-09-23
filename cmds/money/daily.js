@@ -3,8 +3,8 @@ module.exports.run = async (bot, msg, args) => {
   const db = require('quick.db');
   var economy = new db.table('economy')
   let author = msg.author.id
-  let useracc = economy.get(`${author}.bal`)
   let time = economy.get(`${author}.lc`)
+  let nowtime = new Date().getTime()
 
   if(economy.has(author) === false){
   
@@ -16,7 +16,7 @@ module.exports.run = async (bot, msg, args) => {
       msg.channel.send(SuccessEmbed);
     return;}
 
-  if (Math.floor(new Date().getTime() - time) / (1000 * 60 * 60 * 24) < 1) {
+  if (Math.round((Math.abs(nowtime - time)) / (1000 * 60 * 60 * 24) <= 1)) {
     let WarningEmbed = new Discord.MessageEmbed()
       .setTitle("**Daily**")
       .setColor(0XFF0000)
@@ -25,7 +25,9 @@ module.exports.run = async (bot, msg, args) => {
     msg.channel.send(WarningEmbed);
   return;}
 
-  if (Math.floor(new Date().getTime() - time) / (1000 * 60 * 60 * 24) > 1) {
+
+
+  if (!(Math.round((Math.abs(nowtime - time)) / (1000 * 60 * 60 * 24) > 1))) {
     economy.add(`${author}.bal`, 50)
     economy.add(`${author}.lc`, new Date().getTime())
     let SuccessEmbed = new Discord.MessageEmbed()

@@ -7,7 +7,7 @@ module.exports.run = async (bot, msg, args) => {
         let embed = new Discord.MessageEmbed()
           .setTitle(json.title)
           .setImage(json.url)
-          .setFooter("Link: " + json.postLink + " | Subreddit : " + json.subreddit +"\nfor better memes follow @saudinigga123 on isntagram");
+          .setFooter("Link: " + json.postLink + " | Subreddit : " + json.subreddit +"\nfor better memes follow @saudi.nigga on isntagram");
         msg.channel.send(embed);
       });
 }

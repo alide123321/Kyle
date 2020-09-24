@@ -1,5 +1,6 @@
 const { play } = require("../../functions/play.js");
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
+const SOUNDCLOUD_CLIENT_ID = process.env.SOUNDCLOUD_CLIENT_ID;
 const ytdl = require("ytdl-core");
 const YouTubeAPI = require("simple-youtube-api");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);

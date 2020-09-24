@@ -406,15 +406,8 @@ bot.on("message", async msg => {
         sender.send(joinem);
   
       break;}
-
-      default: {
-        sender.send("LOL stupid thats not a command try .help")
-        break;
-      }
-
     }
-    return;
-  }
+    return;}
 
   let SWonderland = '599061990828277770'; // Wonderland server ID
   if (msg.guild.id == SWonderland) {

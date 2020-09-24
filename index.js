@@ -401,7 +401,7 @@ bot.on("message", async msg => {
           .setColor(0X0099ff)
           .setTitle("Click Here to join back")
           .setURL("https://discord.gg/gBQc5cm")
-          .setImage('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
+          .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
           .setFooter("I have diffrent commands if use me inside a server")
         sender.send(joinem);
   

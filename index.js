@@ -341,7 +341,8 @@ bot.on("message", async msg => {
 
     var dmhelp = [
       "**" + prefix + "help__________will bring up this page**",
-      "**" + prefix + "report________to report someone/something in the Wonderland server**"
+      "**" + prefix + "report________to report someone/something in the Wonderland server**",
+      "**" + prefix + "join__________send you a server invite link**",
     ];
 
     switch (args[0]) {
@@ -357,8 +358,7 @@ bot.on("message", async msg => {
 
         sender.send(help);
 
-        break;
-      }
+        break;}
 
       case "report": {
 
@@ -394,8 +394,18 @@ bot.on("message", async msg => {
           Wonderland.send(reportData);
 
         }
-        break;
-      }
+        break;}
+
+      case "join": {
+        let joinem = new Discord.MessageEmbed()
+          .setColor(0X0099ff)
+          .setTitle("Click Here to join back")
+          .setURL("https://discord.gg/gBQc5cm")
+          .setImage('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
+          .setFooter("I have diffrent commands if use me inside a server")
+        sender.send(joinem);
+  
+      break;}
 
       default: {
         sender.send("LOL stupid thats not a command try .help")

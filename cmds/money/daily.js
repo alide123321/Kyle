@@ -1,33 +1,32 @@
 module.exports.run = async (bot, msg, args) => {
   const Discord = require("discord.js");
   const db = require('quick.db');
+  const ms = require('parse-ms');
+  let timeout = 86400000;
   var economy = new db.table('economy')
   let author = msg.author.id
-  let time = economy.get(`${author}.lc`)
-  let nowtime = new Date().getTime()
+  let lc = economy.get(`${author}.lc`)
 
   if(economy.has(author) === false){
-  
-      let SuccessEmbed = new Discord.MessageEmbed()
-        .setTitle("**ERORR**")
-        .setColor(0X0099ff)
-        .setThumbnail(msg.author.avatarURL())
-        .setDescription("You are not in the economy, try .newbal")
-      msg.channel.send(SuccessEmbed);
-    return;}
+    let SuccessEmbed = new Discord.MessageEmbed()
+      .setTitle("**ERORR**")
+      .setColor(0X0099ff)
+      .setThumbnail(msg.author.avatarURL())
+      .setDescription("You are not in the economy, try .newbal")
+    msg.channel.send(SuccessEmbed);
+  return;}
 
-  if (Math.round((Math.abs(nowtime - time)) / (1000 * 60 * 60 * 24) <= 1)) {
+
+  if (timeout - (Date.now() - lc) > 0) {
+    let time = ms(timeout - (Date.now() - lc));
+
     let WarningEmbed = new Discord.MessageEmbed()
       .setTitle("**Daily**")
       .setColor(0XFF0000)
       .setThumbnail(msg.author.avatarURL())
-      .setDescription("You have claimed this today already.")
+      .setDescription(`You have claimed this today already.\n**${time.hours}h ${time.minutes}m ${time.seconds}s**!`)
     msg.channel.send(WarningEmbed);
-  return;}
-
-
-
-  if (!(Math.round((Math.abs(nowtime - time)) / (1000 * 60 * 60 * 24) > 1))) {
+  } else{
     economy.add(`${author}.bal`, 50)
     economy.add(`${author}.lc`, new Date().getTime())
     let SuccessEmbed = new Discord.MessageEmbed()
@@ -40,5 +39,5 @@ module.exports.run = async (bot, msg, args) => {
 }
 
 module.exports.help = {
-    name: "daily"
+  name: "daily"
 }

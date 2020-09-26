@@ -10,7 +10,7 @@ module.exports.run = async (bot, msg, args) => {
     var send = []
 
     for(let x = 0; x <= allusers.length ;++x){
-        if (economy.get(`${allusers[x]}.bal`)) {
+        if (economy.has(`${allusers[x]}.bal`)) {
             usersplaying.push(allusers[x])
         }
     }

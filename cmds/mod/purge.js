@@ -12,7 +12,7 @@ module.exports.run = async (bot, msg, args) => {
       return msg.channel.send("You can only delete 99 messages at a time.");
     msg.channel.bulkDelete(args[1])
     .catch(console.error);
-    }
+  }
 }
 
 module.exports.help = {

@@ -28,6 +28,7 @@ module.exports.run = async (bot, msg, args) => {
     msg.channel.send(WarningEmbed);
   } else{
     economy.add(`${author}.bal`, 50)
+    economy.subtract(`${author}.lc`,lc)
     economy.add(`${author}.lc`, new Date().getTime())
     let SuccessEmbed = new Discord.MessageEmbed()
       .setTitle("**SUCCESS**")

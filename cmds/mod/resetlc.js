@@ -3,7 +3,7 @@ module.exports.run = async (bot, msg, args) => {
     const db = require('quick.db');
     var economy = new db.table('economy')
 
-    if (author !== '698051518754062387') {
+    if (msg.author.id !== '698051518754062387') {
         msg.channel.send("Only Alide can use this command")
     return;}
 

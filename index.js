@@ -338,9 +338,8 @@ bot.on("message", async (msg) => {
   if (msg.guild === null) {
     let sender = msg.author;
 
-    if (text.charAt(0) !== ".") {
+    if (text.charAt(0) !== ".")
       sender.send("LOL stupid thats not a command try .help");
-    }
 
     var dmhelp = [
       "**" + prefix + "help__________will bring up this page**",
@@ -417,6 +416,10 @@ bot.on("message", async (msg) => {
       }
     }
     return;
+  }
+
+  if (text.includes("hello")) {
+    msg.channel.send("my name is jeff");
   }
 
   let SWonderland = "599061990828277770"; // Wonderland server ID

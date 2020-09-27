@@ -11,7 +11,9 @@ module.exports = {
     if (!song) {
       queue.channel.leave();
       msg.client.queue.delete(msg.guild.id);
-      return queue.textChannel.send("🚫 Music queue ended.").catch(console.error);
+      return queue.textChannel
+        .send("🚫 Music queue ended.")
+        .catch(console.error);
     }
 
     let stream = null;
@@ -46,7 +48,9 @@ module.exports = {
       return msg.channel.send(`Error: ${error.msg ? error.msg : error}`);
     }
 
-    queue.connection.on("disconnect", () => msg.client.queue.delete(msg.guild.id));
+    queue.connection.on("disconnect", () =>
+      msg.client.queue.delete(msg.guild.id)
+    );
 
     const dispatcher = queue.connection
       .play(stream, { type: streamType })
@@ -73,7 +77,9 @@ module.exports = {
     dispatcher.setVolumeLogarithmic(queue.volume / 100);
 
     try {
-      var playingMessage = await queue.textChannel.send(`🎶 Started playing: **${song.title}** ${song.url}`);
+      var playingMessage = await queue.textChannel.send(
+        `🎶 Started playing: **${song.title}** ${song.url}`
+      );
       await playingMessage.react("⏭");
       await playingMessage.react("⏯");
       await playingMessage.react("🔁");
@@ -83,7 +89,7 @@ module.exports = {
 
     const filter = (reaction, user) => user.id !== msg.client.user.id;
     var collector = playingMessage.createReactionCollector(filter, {
-      time: song.duration > 0 ? song.duration * 1000 : 600000
+      time: song.duration > 0 ? song.duration * 1000 : 600000,
     });
 
     collector.on("collect", (reaction, user) => {
@@ -96,7 +102,9 @@ module.exports = {
           reaction.users.remove(user).catch(console.error);
           if (!canModifyQueue(member)) return;
           queue.connection.dispatcher.end();
-          queue.textChannel.send(`${user} ⏩ skipped the song`).catch(console.error);
+          queue.textChannel
+            .send(`${user} ⏩ skipped the song`)
+            .catch(console.error);
           collector.stop();
           break;
 
@@ -106,20 +114,25 @@ module.exports = {
           if (queue.playing) {
             queue.playing = !queue.playing;
             queue.connection.dispatcher.pause(true);
-            queue.textChannel.send(`${user} ⏸ paused the music.`).catch(console.error);
+            queue.textChannel
+              .send(`${user} ⏸ paused the music.`)
+              .catch(console.error);
           } else {
             queue.playing = !queue.playing;
             queue.connection.dispatcher.resume();
-            queue.textChannel.send(`${user} ▶ resumed the music!`).catch(console.error);
+            queue.textChannel
+              .send(`${user} ▶ resumed the music!`)
+              .catch(console.error);
           }
           break;
-
 
         case "🔁":
           reaction.users.remove(user).catch(console.error);
           if (!canModifyQueue(member)) return;
           queue.loop = !queue.loop;
-          queue.textChannel.send(`Loop is now ${queue.loop ? "**on**" : "**off**"}`).catch(console.error);
+          queue.textChannel
+            .send(`Loop is now ${queue.loop ? "**on**" : "**off**"}`)
+            .catch(console.error);
           break;
 
         default:
@@ -134,5 +147,5 @@ module.exports = {
         playingMessage.delete({ timeout: 3000 }).catch(console.error);
       }
     });
-  }
+  },
 };

@@ -331,7 +331,7 @@ bot.on("message", async (msg) => {
   if (msg.author.bot) return;
 
   let args = msg.content.substring(prefix.length).split(" ");
-  let text = msg.content;
+  let text = msg.content.toLowerCase();
   let msgarray = msg.content.split(/\s+/g);
   let command = msgarray[0];
 

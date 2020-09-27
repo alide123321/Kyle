@@ -419,7 +419,7 @@ bot.on("message", async (msg) => {
   }
 
   if (text.includes("hello")) {
-    msg.channel.send("my name is jeff");
+    msg.channel.send("my name is Jeff");
   }
 
   let SWonderland = "599061990828277770"; // Wonderland server ID

@@ -425,7 +425,7 @@ bot.on("message", async (msg) => {
   if (msg.guild.id === "599061990828277770") {
     if (msg.channel.id === "716206448970825799") {
       if (text.slice(0, 7) == "!d bump") {
-        sleep(5000);
+        sleep(3000);
         msg.channel.bulkDelete(2);
       } else {
         msg.channel.bulkDelete(1);

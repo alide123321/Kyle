@@ -422,10 +422,15 @@ bot.on("message", async (msg) => {
     msg.channel.send("my name is Jeff");
   }
 
-  let SWonderland = "599061990828277770"; // Wonderland server ID
-  if (msg.guild.id == SWonderland) {
-    let Wonderland = bot.channels.cache.get("730388529171136522");
-    if (Wonderland === msg.channel.id) msg.channel.bulkDelete(2);
+  if (msg.guild.id === "599061990828277770") {
+    if (msg.channel.id === "716206448970825799") {
+      if (text.slice(0, 7) == "!d bump") {
+        sleep(2000);
+        msg.channel.bulkDelete(2);
+      } else {
+        msg.channel.bulkDelete(1);
+      }
+    }
   }
 
   if (!command.startsWith(prefix)) return;

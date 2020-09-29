@@ -269,6 +269,10 @@ bot.on("voiceStateUpdate", async (oldState, newState) => {
           },
           {
             id: newState.id,
+            allow: ["MANAGE_CHANNEL"],
+          },
+          {
+            id: newState.id,
             allow: ["CONNECT"],
           },
           {
@@ -445,8 +449,8 @@ bot.on("message", async (msg) => {
   if (!command.startsWith(prefix)) return;
 
   if (cooldown.has(msg.author.id) && msg.author.id !== "698051518754062387") {
-    msg.channel.send("Cooldown 2 sec").then((msg) => {
-      msg.delete({ timeout: 5000 });
+    msg.channel.send("Cooldown 2 sec").then((msge) => {
+      msge.delete({ timeout: 5000 });
     });
     return;
   }

@@ -269,10 +269,6 @@ bot.on("voiceStateUpdate", async (oldState, newState) => {
           },
           {
             id: newState.id,
-            allow: ["MANAGE_CHANNEL"],
-          },
-          {
-            id: newState.id,
             allow: ["CONNECT"],
           },
           {

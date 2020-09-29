@@ -165,10 +165,10 @@ bot.on("guildMemberAdd", (member) => {
       .get("716939268504813578")
       .send(
         "Welcome to " +
-        member.guild.name +
-        ", <@" +
-        member.user.id +
-        ">! To get started, visit <#709238410732240906> and react then go on to <#716212510398873651>. Enjoy your stay! <:goodnight:716209532233318472> <:cheemspray:716217215275237427>"
+          member.guild.name +
+          ", <@" +
+          member.user.id +
+          ">! To get started, visit <#709238410732240906> and react then go on to <#716212510398873651>. Enjoy your stay! <:goodnight:716209532233318472> <:cheemspray:716217215275237427>"
       );
   }
 });
@@ -344,8 +344,8 @@ bot.on("message", async (msg) => {
     var dmhelp = [
       "**" + prefix + "help__________will bring up this page**",
       "**" +
-      prefix +
-      "report________to report someone/something in the Wonderland server**",
+        prefix +
+        "report________to report someone/something in the Wonderland server**",
       "**" + prefix + "join__________send you a server invite link**",
     ];
 
@@ -428,6 +428,7 @@ bot.on("message", async (msg) => {
         sleep(3000);
         msg.channel.bulkDelete(2);
       } else if (text.slice(0, 4) == "redo") {
+        msg.delete();
         let doneem = new Discord.MessageEmbed()
           .setTitle("**!D BUMP**")
           .setDescription(
@@ -468,8 +469,9 @@ function serverstats(member) {
   member.guild.channels.cache
     .get("715444948568244305")
     .setName(
-      `Users: ${member.guild.memberCount -
-      member.guild.members.cache.filter((m) => m.user.bot).size
+      `Users: ${
+        member.guild.memberCount -
+        member.guild.members.cache.filter((m) => m.user.bot).size
       }`
     );
   member.guild.channels.cache

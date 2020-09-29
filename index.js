@@ -427,8 +427,16 @@ bot.on("message", async (msg) => {
       if (text.slice(0, 7) == "!d bump") {
         sleep(3000);
         msg.channel.bulkDelete(2);
+      } else if (text.slice(0, 4) == "redo") {
+        let doneem = new Discord.MessageEmbed()
+          .setTitle("**!D BUMP**")
+          .setDescription(
+            "Help grow the server by using the command **!d bump** - it helps other people find and join the server to grow the fam!"
+          );
+        msg.channel.send(doneem);
       } else {
         msg.channel.bulkDelete(1);
+        return;
       }
     }
   }

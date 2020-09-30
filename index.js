@@ -22,8 +22,8 @@ let options = {
 };
 
 const token = process.env.TOKEN;
-const prefix = ".";
-const version = "1.5.0";
+const prefix = process.env.PREFIX;
+const version = process.env.VERSION;
 const Fs = require("fs");
 bot.queue = new Map();
 

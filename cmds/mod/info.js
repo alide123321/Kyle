@@ -2,7 +2,8 @@ module.exports.run = async (bot, msg, args) => {
   const Discord = require("discord.js");
 
   const helplink = "https://sites.google.com/view/kyle-bot/home";
-  const version = "1.5.0";
+  const version = process.env.VERSION;
+  const prefix = process.env.PREFIX;
   const auther = "alide123321#9518";
 
   let info = new Discord.MessageEmbed()
@@ -13,8 +14,9 @@ module.exports.run = async (bot, msg, args) => {
       "https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png"
     )
     .addFields(
-      { name: "version: ", value: version },
-      { name: "author: ", value: auther }
+      { name: "Version: ", value: version, inline: true },
+      { name: "Prefix: ", value: prefix, inline: true },
+      { name: "Author: ", value: auther }
     );
   msg.channel.send(info);
 };

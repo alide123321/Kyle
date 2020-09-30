@@ -1,7 +1,7 @@
 module.exports.run = async (bot, msg, args) => {
   const Discord = require("discord.js");
   const Fs = require("fs");
-  const prefix = ".";
+  const prefix = process.env.PREFIX;
 
   const helplink = "https://sites.google.com/view/kyle-bot/home";
 

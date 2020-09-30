@@ -21,7 +21,7 @@ module.exports.run = async (bot, msg, args) => {
   if (!args[1])
     return msg
       .reply(
-        `Usage: ${msg.client.prefix}play <YouTube URL | Video Name | Soundcloud URL>`
+        `Usage: ${msg.client.prefix}p <YouTube URL | Video Name | Soundcloud URL>`
       )
       .catch(console.error);
 

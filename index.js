@@ -367,7 +367,7 @@ bot.on("message", async (msg) => {
       }
 
       case "report": {
-        let sender = msg.author;
+        let Sender = msg.author;
 
         if (!args[1]) {
           const embed = new Discord.MessageEmbed()
@@ -376,7 +376,7 @@ bot.on("message", async (msg) => {
             .setDescription(
               "What do you want to report (only administrators will see your report)"
             );
-          sender.send(embed);
+          Sender.send(embed);
         } else {
           let msgArgs = args.slice(1).join(" ");
 
@@ -388,7 +388,7 @@ bot.on("message", async (msg) => {
             .setDescription(
               "Your report has been successfully filed! :upside_down:"
             );
-          sender.send(embed);
+          Sender.send(embed);
 
           let reportData = new Discord.MessageEmbed()
             .setColor(0x71b3f5)

@@ -6,8 +6,6 @@ module.exports.run = async (bot, msg, args) => {
   let mentioned = msg.mentions.members.first();
   let useracc = economy.get(`${author}.bal`);
 
-  useracc = economy.get(`${author}.bal`);
-
   if (mentioned) {
     let menacc = economy.has(mentioned.id);
     if (!menacc) {

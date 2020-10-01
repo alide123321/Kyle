@@ -1,5 +1,5 @@
 module.exports.run = async (bot, msg, args) => {
-  const sleep = require("../../functions/sleep.js").sleep;
+  const sleep = require("../../assets/functions/sleep.js").sleep;
   const user = msg.mentions.members.first();
   let hacked;
   if (user) {

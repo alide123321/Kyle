@@ -70,7 +70,7 @@ module.exports.run = async (bot, msg, args) => {
 
       if (!(mention === "no one")) chat.send("||" + mention + "||");
       chat.send(announce);
-      chat.send({ files: ["./images/bar.gif"] });
+      chat.send({ files: ["./assets/images/bar.gif"] });
     });
 };
 

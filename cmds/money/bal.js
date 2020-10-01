@@ -7,8 +7,7 @@ module.exports.run = async (bot, msg, args) => {
   let useracc = economy.get(`${author}.bal`);
 
   if (mentioned) {
-    let menacc = economy.has(mentioned.id);
-    if (!menacc) {
+    if (!economy.has(mentioned.id)) {
       let ErrorEmbed = new Discord.MessageEmbed()
         .setTitle("**ERROR**")
         .setColor(0xff0000)

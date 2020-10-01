@@ -1,5 +1,5 @@
 module.exports.run = async (bot, msg, args) => {
-  const vc = require("../../functions/vc.js").vc;
+  const vc = require("../../assets/functions/vc.js").vc;
 
   var VC = msg.member.voice.channel;
   vc("cap", 0.7, VC, msg.author.id, msg.channel);

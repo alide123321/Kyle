@@ -1,5 +1,5 @@
 module.exports.run = async (bot, msg, args) => {
-  const { canModifyQueue } = require("../../util/Kylebotutil.js");
+  const { canModifyQueue } = require("../../assets/util/Kylebotutil.js");
   const queue = msg.client.queue.get(msg.guild.id);
 
   if (!queue)

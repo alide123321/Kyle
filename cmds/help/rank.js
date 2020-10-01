@@ -1,0 +1,117 @@
+const Discord = require("discord.js");
+const db = require("quick.db");
+var xp = new db.table("xp");
+let TXp;
+
+module.exports.run = async (bot, msg, args) => {
+  let mentioned = msg.mentions.members.first();
+
+  if (mentioned) {
+    if (!xp.has(`${mentioned.id}.xp`)) {
+      let ErrorEmbed = new Discord.MessageEmbed()
+        .setTitle("**ERROR**")
+        .setColor(0xff0000)
+        .setThumbnail(msg.author.avatarURL())
+        .setDescription("That person hasn't sent a message yet.");
+      msg.channel.send(ErrorEmbed);
+      return;
+    }
+    let TXp;
+    let lvl = xp.get(`${mentioned.id}.lvl`);
+    if (lvl === 0) {
+      TXp = xp.get(`${mentioned.id}.xp`);
+    } else {
+      TXp = xp.get(`${mentioned.id}.xp`) + (5 * (lvl * lvl) + 50 * lvl + 100);
+    }
+    let NXp = 5 * ((lvl + 1) * (lvl + 1)) + 50 * (lvl + 1) + 100;
+
+    var allusers = (await msg.guild.members.fetch()).keyArray("id");
+    var users = [];
+    var usersXp = [];
+    var sendarr = [];
+
+    for (let x = 0; x <= allusers.length; ++x) {
+      if (xp.has(`${allusers[x]}.xp`)) {
+        users.push(allusers[x]);
+      }
+    }
+
+    for (let x = 0; x < users.length; ++x) {
+      let lvl = xp.get(`${users[x]}.lvl`);
+      if (lvl === 0) {
+        TXp = xp.get(`${users[x]}.xp`);
+      } else {
+        TXp = xp.get(`${users[x]}.xp`) + (5 * (lvl * lvl) + 50 * lvl + 100);
+      }
+      usersXp.push(TXp);
+    }
+
+    usersXp.sort((a, b) => a - b);
+    usersXp.reverse();
+
+    let Rank = 0;
+
+    for (var i = 0; i < usersXp.length; ++i) {
+      for (var n = 0; n < users.length; ++n) {
+        if (usersXp[i] === TXP(users[n])) {
+          if (users[n] === mentioned.id) {
+            i = usersXp.length;
+            ++i;
+          }
+          ++Rank;
+          users.splice(n, 1);
+        }
+      }
+    }
+
+    let SuccessEmbed = new Discord.MessageEmbed()
+      .setTitle(`**${mentioned.user.tag}**`)
+      .setColor(0xfa1679)
+      .setThumbnail(mentioned.user.avatarURL())
+      .addFields(
+        {
+          name: "Xp",
+          value: TXp + "/" + NXp,
+          inline: true,
+        },
+        {
+          name: "levels",
+          value: lvl,
+          inline: true,
+        },
+        {
+          name: "Nummber of messages ",
+          value: xp.get(`${mentioned.id}.msgs`),
+          inline: true,
+        },
+        {
+          name: "rank",
+          value: Rank,
+          inline: true,
+        }
+      );
+    msg.channel.send(SuccessEmbed);
+    return;
+  } else {
+    let SuccessEmbed = new Discord.MessageEmbed()
+      .setTitle(msg.author.tag)
+      .setColor(0xfa1679)
+      .setThumbnail(msg.author.avatarURL())
+      .addField("Balance", "<:chip:751730576918315048>");
+    msg.channel.send(SuccessEmbed);
+  }
+};
+
+function TXP(uid) {
+  let lvl = xp.get(`${uid}.lvl`);
+  if (lvl === 0) {
+    TXp = xp.get(`${uid}.xp`);
+  } else {
+    TXp = xp.get(`${uid}.xp`) + (5 * (lvl * lvl) + 50 * lvl + 100);
+  }
+  return TXp;
+}
+
+module.exports.help = {
+  name: "rank",
+};

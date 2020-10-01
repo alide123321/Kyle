@@ -1,19 +1,19 @@
 const sleep = require("./sleep.js").sleep;
 const talkedRecently = require("./talked.js").talkedRecently;
-function vc(sound, vol, VC, auther, chan) {
+function vc(sound, vol, VC, author, chan) {
   vol += 1;
   const serverQueue = chan.client.queue.get(chan.guild.id);
 
-  if (talkedRecently.has(auther) && auther !== "698051518754062387") {
+  if (talkedRecently.has(author) && author !== "698051518754062387") {
     chan.send("Cooldown 60 sec").then((msg) => {
       msg.delete({ timeout: 5000 });
     });
     return;
   }
 
-  talkedRecently.add(auther);
+  talkedRecently.add(author);
   setTimeout(() => {
-    talkedRecently.delete(auther);
+    talkedRecently.delete(author);
   }, 60000);
 
   if (VC) {

@@ -1,6 +1,7 @@
 module.exports.run = async (bot, msg, args) => {
-  const talkedRecently = require("../../functions/talked.js").talkedRecently;
-  const sleep = require("../../functions/sleep.js").sleep;
+  const talkedRecently = require("../../assets/functions/talked.js")
+    .talkedRecently;
+  const sleep = require("../../assets/functions/sleep.js").sleep;
   let text = msg.content;
 
   console.log(talkedRecently);

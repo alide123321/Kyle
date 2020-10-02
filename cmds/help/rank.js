@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const db = require("quick.db");
 var xp = new db.table("xp");
-let TXp;
+let TXp = 0;
 let NXp = 0;
 
 module.exports.run = async (bot, msg, args) => {
@@ -21,7 +21,7 @@ module.exports.run = async (bot, msg, args) => {
       return;
     }
     let lvl = xp.get(`${mentioned.id}.lvl`);
-    TXp = TXP(mentioned.id);
+    TXp = FTXP(mentioned.id);
     for (var i = 0; i <= lvl; ++i) {
       NXp = NXp + (5 * (i * i) + 50 * i + 100);
     }
@@ -33,7 +33,7 @@ module.exports.run = async (bot, msg, args) => {
     }
 
     for (let x = 0; x < users.length; ++x) {
-      usersXp.push(TXP(users[x]));
+      usersXp.push(FTXP(users[x]));
     }
 
     usersXp.sort((a, b) => a - b);
@@ -43,7 +43,7 @@ module.exports.run = async (bot, msg, args) => {
 
     for (var i = 0; i < usersXp.length; ++i) {
       for (var n = 0; n < users.length; ++n) {
-        if (usersXp[i] === TXP(users[n])) {
+        if (usersXp[i] === FTXP(users[n])) {
           if (users[n] === mentioned.id) {
             i = usersXp.length;
             ++i;
@@ -53,6 +53,8 @@ module.exports.run = async (bot, msg, args) => {
         }
       }
     }
+
+    TXp = FTXP(msg.author.id);
 
     let SuccessEmbed = new Discord.MessageEmbed()
       .setTitle(`**${mentioned.user.tag}**`)
@@ -84,31 +86,25 @@ module.exports.run = async (bot, msg, args) => {
     return;
   } else {
     let lvl = xp.get(`${msg.author.id}.lvl`);
-
-    TXp = TXP(msg.author.id);
-
+    
     for (var i = 0; i <= lvl; ++i) {
       NXp = NXp + (5 * (i * i) + 50 * i + 100);
     }
-
     for (let x = 0; x <= allusers.length; ++x) {
       if (xp.has(`${allusers[x]}.xp`)) {
         users.push(allusers[x]);
       }
     }
-
     for (let x = 0; x < users.length; ++x) {
-      usersXp.push(TXP(users[x]));
+      usersXp.push(FTXP(users[x]));
     }
-
     usersXp.sort((a, b) => a - b);
     usersXp.reverse();
 
     let Rank = 0;
-
     for (var i = 0; i < usersXp.length; ++i) {
       for (var n = 0; n < users.length; ++n) {
-        if (usersXp[i] === TXP(users[n])) {
+        if (usersXp[i] === FTXP(users[n])) {
           if (users[n] === msg.author.id) {
             i = usersXp.length;
             ++i;
@@ -118,7 +114,7 @@ module.exports.run = async (bot, msg, args) => {
         }
       }
     }
-
+TXp = FTXP(msg.author.id);
     let SuccessEmbed = new Discord.MessageEmbed()
       .setTitle(`**${msg.author.tag}**`)
       .setColor(0xfa1679)
@@ -126,7 +122,7 @@ module.exports.run = async (bot, msg, args) => {
       .addFields(
         {
           name: "Xp",
-          value: TXp + "/" + NXp,
+          value: (TXp + "/" + NXp),
           inline: true,
         },
         {
@@ -148,9 +144,10 @@ module.exports.run = async (bot, msg, args) => {
     msg.channel.send(SuccessEmbed);
     return;
   }
+  console.log("7")
 };
 
-function TXP(uid) {
+function FTXP(uid) {
   let lvl = xp.get(`${uid}.lvl`);
   if (lvl === 0) {
     TXp = xp.get(`${uid}.xp`);

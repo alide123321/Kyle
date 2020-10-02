@@ -438,13 +438,18 @@ bot.on("message", async (msg) => {
     xp.set(`${msg.author.id}.xp`, 0);
     xp.set(`${msg.author.id}.lvl`, 0);
     xp.set(`${msg.author.id}.msgs`, 0);
+    console.log("0")
   }
 
   xp.add(`${msg.author.id}.msgs`, 1);
 
+  console.log("1")
+
   if (!XpTimeOut.has(msg.author.id)) {
     let newxp = Math.floor(Math.random() * 26) + 15;
     xp.add(`${msg.author.id}.xp`, newxp);
+
+    console.log("2")
 
     let TXp;
     let lvl = xp.get(`${msg.author.id}.lvl`);
@@ -458,6 +463,7 @@ bot.on("message", async (msg) => {
     for (var i = 0; i <= lvl; ++i) {
       NXp = NXp + (5 * (i * i) + 50 * i + 100);
     }
+    console.log("3")
 
     if (TXp > NXp) {
       xp.add(`${msg.author.id}.lvl`, 1);
@@ -467,13 +473,14 @@ bot.on("message", async (msg) => {
         `GG <@${msg.author.id}>, you just advanced to level ${lvl}!`
       );
     }
+    console.log("4")
 
     XpTimeOut.add(msg.author.id);
     setTimeout(() => {
       XpTimeOut.delete(msg.author.id);
     }, 60000);
   }
-
+console.log("5_________")
   //xp
   if (text.includes("hello")) {
     msg.channel.send("my name is Jeff");

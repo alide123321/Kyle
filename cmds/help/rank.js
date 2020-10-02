@@ -153,9 +153,9 @@ module.exports.run = async (bot, msg, args) => {
 function TXP(uid) {
   let lvl = xp.get(`${uid}.lvl`);
   if (lvl === 0) {
-    TXp = xp.get(`${uid}.xp`);
+    TXp = (xp.get(`${uid}.xp`));
   } else {
-    TXp = xp.get(`${uid}.xp`) + (5 * (lvl * lvl) + 50 * lvl + 100);
+    TXp = (xp.get(`${uid}.xp`)) + (5 * (lvl * lvl) + 50 * lvl + 100);
   }
   return TXp;
 }

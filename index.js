@@ -434,15 +434,15 @@ bot.on("message", async (msg) => {
 
   //xp
 
-  if (!xp.has(`${msg.author.id}.msgs`)) xp.set(`${msg.author.id}.msgs`, 0);
+  if (!xp.has(`${msg.author.id}.msgs`)) {
+    xp.set(`${msg.author.id}.xp`, 0);
+    xp.set(`${msg.author.id}.lvl`, 0);
+    xp.set(`${msg.author.id}.msgs`, 0);
+  }
 
   xp.add(`${msg.author.id}.msgs`, 1);
 
-  if (!XpTimeOut.has(msg.author.id)) {
-    if (!xp.has(`${msg.author.id}.xp`)) {
-      xp.set(`${msg.author.id}.xp`, 0);
-      xp.set(`${msg.author.id}.lvl`, 0);
-    }
+  if (!(XpTimeOut.has(msg.author.id))) {
 
     let newxp = Math.floor(Math.random() * 26) + 15;
     xp.add(`${msg.author.id}.xp`, newxp);
@@ -450,25 +450,27 @@ bot.on("message", async (msg) => {
     let TXp;
     let lvl = xp.get(`${msg.author.id}.lvl`);
     if (lvl === 0) {
-      TXp = xp.get(`${msg.author.id}.xp`);
+      TXp = (xp.get(`${msg.author.id}.xp`));
     } else {
-      TXp = xp.get(`${msg.author.id}.xp`) + (5 * (lvl * lvl) + 50 * lvl + 100);
+      TXp = (xp.get(`${msg.author.id}.xp`)) + (5 * (lvl * lvl) + 50 * lvl + 100);
     }
-    let NXp = 5 * ((lvl + 1) * (lvl + 1)) + 50 * (lvl + 1) + 100;
+    let NXp = (5 * ((lvl + 1) * (lvl + 1)) + 50 * (lvl + 1) + 100);
 
     if (TXp > NXp) {
       xp.add(`${msg.author.id}.lvl`, 1);
-      xp.set(`${msg.author.id}.xp`, 0);
+      xp.subtract(`${msg.author.id}.xp`, (xp.get(`${msg.author.id}.xp`)));
       msg.channel.send(
         `GG <@${msg.author.id}>, you just advanced to level ${lvl + 1}!`
       );
     }
+
+    XpTimeOut.add(msg.author.id);
+    setTimeout(() => {
+      XpTimeOut.delete(msg.author.id);
+    }, 60000);
   }
 
-  XpTimeOut.add(msg.author.id);
-  setTimeout(() => {
-    XpTimeOut.delete(msg.author.id);
-  }, 60000);
+  
 
   //xp
   if (text.includes("hello")) {

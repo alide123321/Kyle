@@ -2,13 +2,13 @@ const Discord = require("discord.js");
 const db = require("quick.db");
 var xp = new db.table("xp");
 let TXp;
+let NXp = 0;
 
 module.exports.run = async (bot, msg, args) => {
   let mentioned = msg.mentions.members.first();
   var allusers = (await msg.guild.members.fetch()).keyArray("id");
   var users = [];
   var usersXp = [];
-  var sendarr = [];
 
   if (mentioned) {
     if (!xp.has(`${mentioned.id}.xp`)) {
@@ -21,12 +21,7 @@ module.exports.run = async (bot, msg, args) => {
       return;
     }
     let lvl = xp.get(`${mentioned.id}.lvl`);
-    if (lvl === 0) {
-      TXp = xp.get(`${mentioned.id}.xp`);
-    } else {
-      TXp = xp.get(`${mentioned.id}.xp`) + (5 * (lvl * lvl) + 50 * lvl + 100);
-    }
-    let NXp = 0;
+    TXp = TXP(mentioned.id);
     for (var i = 0; i <= lvl; ++i) {
       NXp = NXp + (5 * (i * i) + 50 * i + 100);
     }
@@ -92,7 +87,6 @@ module.exports.run = async (bot, msg, args) => {
 
     TXp = TXP(msg.author.id);
 
-    let NXp = 0;
     for (var i = 0; i <= lvl; ++i) {
       NXp = NXp + (5 * (i * i) + 50 * i + 100);
     }

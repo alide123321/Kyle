@@ -13,12 +13,9 @@ module.exports.run = async (bot, msg, args) => {
 
   for (let x = 0; x <= allusers.length; ++x) {
     if (xp.get(`${allusers[x]}.xp`)) {
-      let xps = xp.get(`${allusers[x]}.xp`);
-      xp.subtract(`${allusers[x]}.xp`, xps);
-      let lvls = xp.get(`${allusers[x]}.lvl`);
-      xp.subtract(`${allusers[x]}.lvl`, lvls);
-      let msgss = xp.get(`${allusers[x]}.msgs`);
-      xp.subtract(`${allusers[x]}.msgs`, msgss);
+      xp.subtract(`${allusers[x]}.xp`, xp.get(`${allusers[x]}.xp`));
+      xp.subtract(`${allusers[x]}.lvl`, xp.get(`${allusers[x]}.lvl`));
+      xp.subtract(`${allusers[x]}.msgs`, xp.get(`${allusers[x]}.msgs`));
       send.push((await msg.guild.members.fetch(allusers[x])).displayName);
     }
   }

@@ -21,7 +21,7 @@ module.exports.run = async (bot, msg, args) => {
       return;
     }
     let lvl = xp.get(`${mentioned.id}.lvl`);
-    TXp = FTXP(mentioned.id);
+
     for (var i = 0; i <= lvl; ++i) {
       NXp = NXp + (5 * (i * i) + 50 * i + 100);
     }
@@ -54,7 +54,7 @@ module.exports.run = async (bot, msg, args) => {
       }
     }
 
-    TXp = FTXP(msg.author.id);
+    TXp = FTXP(mentioned.id);
 
     let SuccessEmbed = new Discord.MessageEmbed()
       .setTitle(`**${mentioned.user.tag}**`)

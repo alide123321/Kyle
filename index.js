@@ -458,6 +458,9 @@ bot.on("message", async (msg) => {
     for (var i = 0; i <= lvl; ++i) {
       NXp = NXp + (5 * (i * i) + 50 * i + 100);
     }
+    if (lvl === 0) {
+      NXp = 100;
+    }
 
     if (TXp > NXp) {
       xp.add(`${msg.author.id}.lvl`, 1);

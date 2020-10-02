@@ -25,6 +25,9 @@ module.exports.run = async (bot, msg, args) => {
     for (var i = 0; i <= lvl; ++i) {
       NXp = NXp + (5 * (i * i) + 50 * i + 100);
     }
+    if (lvl === 0) {
+      NXp = 100;
+    }
 
     for (let x = 0; x <= allusers.length; ++x) {
       if (xp.has(`${allusers[x]}.xp`)) {

@@ -26,7 +26,10 @@ module.exports.run = async (bot, msg, args) => {
     } else {
       TXp = xp.get(`${mentioned.id}.xp`) + (5 * (lvl * lvl) + 50 * lvl + 100);
     }
-    let NXp = 5 * ((lvl + 1) * (lvl + 1)) + 50 * (lvl + 1) + 100;
+    let NXp = 0;
+    for (var i = 0; i <= lvl; ++i) {
+      NXp = NXp + (5 * (i * i) + 50 * i + 100);
+    }
 
     for (let x = 0; x <= allusers.length; ++x) {
       if (xp.has(`${allusers[x]}.xp`)) {
@@ -89,7 +92,10 @@ module.exports.run = async (bot, msg, args) => {
 
     TXp = TXP(msg.author.id);
 
-    let NXp = 5 * ((lvl + 1) * (lvl + 1)) + 50 * (lvl + 1) + 100;
+    let NXp = 0;
+    for (var i = 0; i <= lvl; ++i) {
+      NXp = NXp + (5 * (i * i) + 50 * i + 100);
+    }
 
     for (let x = 0; x <= allusers.length; ++x) {
       if (xp.has(`${allusers[x]}.xp`)) {
@@ -153,9 +159,9 @@ module.exports.run = async (bot, msg, args) => {
 function TXP(uid) {
   let lvl = xp.get(`${uid}.lvl`);
   if (lvl === 0) {
-    TXp = (xp.get(`${uid}.xp`));
+    TXp = xp.get(`${uid}.xp`);
   } else {
-    TXp = (xp.get(`${uid}.xp`)) + (5 * (lvl * lvl) + 50 * lvl + 100);
+    TXp = xp.get(`${uid}.xp`) + (5 * (lvl * lvl) + 50 * lvl + 100);
   }
   return TXp;
 }

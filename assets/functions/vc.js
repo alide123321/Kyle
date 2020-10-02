@@ -29,7 +29,7 @@ function vc(sound, vol, VC, author, chan) {
     }
     VC.join()
       .then((connection) => {
-        const dispatcher = connection.play("./sounds/" + sound + ".mp3", {
+        const dispatcher = connection.play("./assets/sounds/" + sound + ".mp3", {
           volume: vol,
         });
         dispatcher.on("finish", (end) => {

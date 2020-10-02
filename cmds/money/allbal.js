@@ -37,7 +37,7 @@ module.exports.run = async (bot, msg, args) => {
     .setTitle("**100 BALANCE**")
     .setColor("#0099ff")
     .setDescription(send);
-  msg.channel.send(topbaly);
+  msg.author.send(topbaly);
 };
 
 module.exports.help = {

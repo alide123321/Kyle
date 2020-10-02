@@ -2,15 +2,12 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
-app.use(express.static("public"));
-app.listen(5000);
-
 app.get("/", (req, res) => {
   res.send("Hello World! this is \nKyle the bot");
 });
 
 app.get(`/ranks`, (req, res) => {
-  res.send(`use the .ranks to get the ranks link`);
+  res.send(`use the .ranks to get the top ranks in your server`);
 });
 
 app.listen(port, () =>

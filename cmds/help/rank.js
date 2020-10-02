@@ -86,7 +86,7 @@ module.exports.run = async (bot, msg, args) => {
     return;
   } else {
     let lvl = xp.get(`${msg.author.id}.lvl`);
-    
+
     for (var i = 0; i <= lvl; ++i) {
       NXp = NXp + (5 * (i * i) + 50 * i + 100);
     }
@@ -114,7 +114,7 @@ module.exports.run = async (bot, msg, args) => {
         }
       }
     }
-TXp = FTXP(msg.author.id);
+    TXp = FTXP(msg.author.id);
     let SuccessEmbed = new Discord.MessageEmbed()
       .setTitle(`**${msg.author.tag}**`)
       .setColor(0xfa1679)
@@ -122,7 +122,7 @@ TXp = FTXP(msg.author.id);
       .addFields(
         {
           name: "Xp",
-          value: (TXp + "/" + NXp),
+          value: TXp + "/" + NXp,
           inline: true,
         },
         {
@@ -144,7 +144,7 @@ TXp = FTXP(msg.author.id);
     msg.channel.send(SuccessEmbed);
     return;
   }
-  console.log("7")
+  console.log("7");
 };
 
 function FTXP(uid) {

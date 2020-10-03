@@ -333,8 +333,6 @@ bot.on("voiceStateUpdate", async (oldState, newState) => {
   }
 });
 
-const db = require("quick.db");
-
 const cooldown = require("./assets/functions/cool.js").cooldown;
 bot.on("message", async (msg) => {
   if (msg.author.bot) return;

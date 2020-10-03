@@ -334,8 +334,6 @@ bot.on("voiceStateUpdate", async (oldState, newState) => {
 });
 
 const db = require("quick.db");
-var xp = new db.table("xp");
-const XpTimeOut = require("./assets/functions/xptimeout.js").XpTimeOut;
 
 const cooldown = require("./assets/functions/cool.js").cooldown;
 bot.on("message", async (msg) => {
@@ -429,52 +427,6 @@ bot.on("message", async (msg) => {
     return;
   }
 
-  //xp
-
-  if (!xp.has(`${msg.author.id}.msgs`)) {
-    xp.set(`${msg.author.id}.xp`, 0);
-    xp.set(`${msg.author.id}.lvl`, 0);
-    xp.set(`${msg.author.id}.msgs`, 0);
-  }
-
-  xp.add(`${msg.author.id}.msgs`, 1);
-
-  if (!XpTimeOut.has(msg.author.id)) {
-    let newxp = Math.floor(Math.random() * 26) + 15;
-    xp.add(`${msg.author.id}.xp`, newxp);
-
-    let TXp;
-    let lvl = xp.get(`${msg.author.id}.lvl`);
-    if (lvl === 0) {
-      TXp = xp.get(`${msg.author.id}.xp`);
-    } else {
-      TXp = xp.get(`${msg.author.id}.xp`) + (5 * (lvl * lvl) + 50 * lvl + 100);
-    }
-    let NXp = 0;
-
-    for (var i = 0; i <= lvl; ++i) {
-      NXp = NXp + (5 * (i * i) + 50 * i + 100);
-    }
-    if (lvl === 0) {
-      NXp = 100;
-    }
-
-    if (TXp > NXp) {
-      xp.add(`${msg.author.id}.lvl`, 1);
-      lvl = xp.get(`${msg.author.id}.lvl`);
-      xp.subtract(`${msg.author.id}.xp`, xp.get(`${msg.author.id}.xp`));
-      msg.channel.send(
-        `GG <@${msg.author.id}>, you just advanced to level ${lvl}!`
-      );
-    }
-
-    XpTimeOut.add(msg.author.id);
-    setTimeout(() => {
-      XpTimeOut.delete(msg.author.id);
-    }, 60000);
-  }
-
-  //xp
   if (text.includes("hello")) {
     msg.channel.send("my name is Jeff");
   }

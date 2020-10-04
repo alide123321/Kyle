@@ -88,6 +88,23 @@ Fs.readdir("./cmds/memes/", (err, files) => {
   });
 });
 
+Fs.readdir("./cmds/misc/", (err, files) => {
+  if (err) console.error(err);
+
+  let jsfiles = files.filter((f) => f.split(".").pop() === "js");
+  if (jsfiles.length <= 0) {
+    console.log("No commands to load in misc!");
+    return;
+  }
+
+  jsfiles.forEach((f, i) => {
+    let props = require(`./cmds/misc/${f}`);
+    console.log(`${i + 1}: ${f} loaded in misc!`);
+    bot.commands.set(props.help.name, props);
+    numofcommands++;
+  });
+});
+
 Fs.readdir("./cmds/mod/", (err, files) => {
   if (err) console.error(err);
 

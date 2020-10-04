@@ -1,7 +1,7 @@
 module.exports.run = async (bot, msg, args) => {
   var unirest = require("unirest");
 
-  const WIKIHOWAPI = process.env.WIKIHOWAPI;
+  const RAPIDAPI = process.env.RAPIDAPI;
 
   var req = unirest("GET", "https://hargrimm-wikihow-v1.p.rapidapi.com/images");
 
@@ -11,7 +11,7 @@ module.exports.run = async (bot, msg, args) => {
 
   req.headers({
     "x-rapidapi-host": "hargrimm-wikihow-v1.p.rapidapi.com",
-    "x-rapidapi-key": WIKIHOWAPI,
+    "x-rapidapi-key": RAPIDAPI,
     useQueryString: true,
   });
 

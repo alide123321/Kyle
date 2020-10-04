@@ -29,6 +29,7 @@
     "request": "^2.88.2",
     "simple-youtube-api": "^5.2.1",
     "soundcloud-downloader": "^0.1.6",
+    "unirest": "^0.6.0",
     "ytdl-core": "^3.3.0",
     "ytdl-core-discord": "^1.2.3"
   },

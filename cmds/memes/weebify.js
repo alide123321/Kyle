@@ -82,6 +82,11 @@ module.exports.run = async (bot, msg, args) => {
         break;
       }
 
+      case "n": {
+        finished.push("几");
+        break;
+      }
+
       case "o": {
         finished.push("口");
         break;

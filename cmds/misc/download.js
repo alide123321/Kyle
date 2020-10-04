@@ -13,8 +13,12 @@ module.exports.run = async (bot, msg, args) => {
   const videoPattern = /^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
   const urlValid = videoPattern.test(args[1]);
 
+  if (!args[1]) {
+    msg.channel.send("I need a link .download <Youtube link>");
+  }
+
   if (!urlValid) {
-    msg.channel.send("not a commad");
+    msg.channel.send("not a link");
   } else if (urlValid) {
     try {
       songInfo = await ytdl.getInfo(args[1]);

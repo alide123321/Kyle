@@ -30,6 +30,11 @@ module.exports.run = async (bot, msg, args) => {
         name: "**Gambling commands**",
         value: prefix + "gambhelp",
         inline: true,
+      },
+      {
+        name: "**Mischelp commands**",
+        value: prefix + "Mischelp",
+        inline: true,
       }
     )
     .setImage(

@@ -5,9 +5,9 @@ module.exports.run = async (bot, msg, args) => {
 
   var req = unirest("GET", "https://joke3.p.rapidapi.com/v1/joke");
 
-  req.query({
+  /*req.query({
     nsfw: "false",
-  });
+  });*/
 
   req.headers({
     "x-rapidapi-host": "joke3.p.rapidapi.com",

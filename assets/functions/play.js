@@ -1,6 +1,6 @@
 const ytdlDiscord = require("ytdl-core-discord");
 const scdl = require("soundcloud-downloader");
-const { canModifyQueue } = require("../util/Kylebotutil.js");
+const { canModifyQueue } = require("../util/Kylebotutil");
 
 module.exports = {
   async play(song, msg) {

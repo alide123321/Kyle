@@ -1,17 +1,17 @@
 module.exports.run = async (bot, msg, args) => {
   var unirest = require("unirest");
 
-  const WIKIHOWAPI = process.env.WIKIHOWAPI;
+  const JOKEAPI = process.env.JOKEAPI;
 
-  var req = unirest("GET", "https://hargrimm-wikihow-v1.p.rapidapi.com/images");
+  var req = unirest("GET", "https://joke3.p.rapidapi.com/v1/joke");
 
   req.query({
-    count: "1",
+    nsfw: "false",
   });
 
   req.headers({
-    "x-rapidapi-host": "hargrimm-wikihow-v1.p.rapidapi.com",
-    "x-rapidapi-key": WIKIHOWAPI,
+    "x-rapidapi-host": "joke3.p.rapidapi.com",
+    "x-rapidapi-key": JOKEAPI,
     useQueryString: true,
   });
 
@@ -22,11 +22,11 @@ module.exports.run = async (bot, msg, args) => {
       message.reply("An error occurred while trying to make the API request!");
     } else {
       var json = JSON.parse(JSON.stringify(res.body));
-      msg.channel.send(json[1]);
+      msg.channel.send(json.content);
     }
   });
 };
 
 module.exports.help = {
-  name: "wikihow",
+  name: "joke",
 };

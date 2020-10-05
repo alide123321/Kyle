@@ -359,10 +359,11 @@ bot.on("message", async (msg) => {
   let msgarray = msg.content.split(/\s+/g);
   let command = msgarray[0];
 
-  if (msg.author.id === "295893639396065280") {
-    msg.author.send("you are too gay to use my bot");
-  }
   if (msg.guild === null) {
+    if (msg.author.id === "295893639396065280") {
+      msg.author.send("you are too gay to use my bot");
+    }
+
     let sender = msg.author;
 
     if (text.charAt(0) !== ".")
@@ -470,6 +471,10 @@ bot.on("message", async (msg) => {
   }
 
   if (!command.startsWith(prefix)) return;
+
+  if (msg.author.id === "295893639396065280") {
+    msg.author.send("you are too gay to use my bot");
+  }
 
   if (cooldown.has(msg.author.id) && msg.author.id !== "698051518754062387") {
     msg.channel.send("Cooldown 2 sec").then((msge) => {

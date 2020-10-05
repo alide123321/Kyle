@@ -359,6 +359,9 @@ bot.on("message", async (msg) => {
   let msgarray = msg.content.split(/\s+/g);
   let command = msgarray[0];
 
+  if (msg.author.id === "295893639396065280") {
+    msg.author.send("you are too gay to use my bot");
+  }
   if (msg.guild === null) {
     let sender = msg.author;
 

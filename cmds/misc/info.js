@@ -4,7 +4,7 @@ module.exports.run = async (bot, msg, args) => {
   const helplink = "https://sites.google.com/view/kyle-bot/home";
   const version = process.env.VERSION;
   const prefix = process.env.PREFIX;
-  const auther = "alide123321#9518";
+  const author = process.env.ALIDE;
 
   let info = new Discord.MessageEmbed()
     .setColor("#0099ff")
@@ -16,7 +16,7 @@ module.exports.run = async (bot, msg, args) => {
     .addFields(
       { name: "Version: ", value: version, inline: true },
       { name: "Prefix: ", value: prefix, inline: true },
-      { name: "Author: ", value: auther }
+      { name: "Author: ", value: author }
     );
   msg.channel.send(info);
 };

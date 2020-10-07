@@ -40,6 +40,8 @@ bot.queue = new Map();
 var numofcommands = 0;
 bot.commands = new Discord.Collection();
 
+//loading all commands
+
 Fs.readdir("./cmds/gamble/", (err, files) => {
   if (err) console.error(err);
 
@@ -176,6 +178,8 @@ Fs.readdir("./cmds/vc/", (err, files) => {
   });
 });
 
+//logs when bot truns on
+
 bot.once("ready", () => {
   console.log("Ready!");
   console.log("prefix:" + prefix);
@@ -184,6 +188,8 @@ bot.once("ready", () => {
   console.log("______________________");
   bot.user.setActivity("Im also mod mail DM me");
 });
+
+//bot code
 
 bot.on("guildMemberAdd", (member) => {
   if (member.guild.id === "599061990828277770") {
@@ -558,35 +564,4 @@ function serverstats(member) {
     );
 }
 
-/*
-case "react": {
-      let react = new Discord.MessageEmbed()
-        .setColor('#0099ff')
-        .setTitle("**React to get your role**")
-        .setURL("https://discord.gg/e5Pucbh")
-        .setThumbnail('https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png')
-        .addFields(
-          {name: "**Events**", value: "Movie night: <:movie_night:740837473965572196>\nGame night: <:game_night:740895921969299516>", inline: true},
-          {name: "**Platforms**", value: "PC: <:pc:740896282603683903>\nPS: <:ps:740822774712500285>\nXbox: <:xbox:740823180825985066>", inline: true}
-        )
-        let chan = bot.channels.cache.get('740809935247507566')
-        chan.send(react).then(sentEmbed => {
-          sentEmbed.react('740837473965572196')
-          sentEmbed.react('740895921969299516')
-          sentEmbed.react('740896282603683903')
-          sentEmbed.react('740822774712500285')
-          sentEmbed.react('740823180825985066')
-        })
-      break;}
-*/
-
-/*bot.on('messageDelete', msg =>
-{
-    let embed = new Discord.MessageEmbed()
-                .setTitle("A message was deleted here.")
-                .addField("Message created at:",msg.createdAt)
-                .setColor(0Xb05c4d)
-            msg.channel.send(embed);
-})
-*/
 bot.login(token); // turn bot online

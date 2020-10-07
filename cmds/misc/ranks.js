@@ -34,7 +34,9 @@ module.exports.run = async (bot, msg, args) => {
     for (var n = 0; n < users.length; ++n) {
       if (usersXp[i] === xp.get(`${msg.guild.id}_${users[n]}.xp`)) {
         topranks.addFields({
-          name: (await msg.guild.members.fetch(users[n])).displayName,
+          name: `${i + 1}) ${
+            (await msg.guild.members.fetch(users[n])).displayName
+          }`,
           value: `Xp: ${usersXp[i]} \t lvl: ${xp.get(
             `${msg.guild.id}_${users[n]}.lvl`
           )}`,

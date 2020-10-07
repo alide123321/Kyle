@@ -479,7 +479,7 @@ bot.on("message", async (msg) => {
     let NXp = 0;
     let nLevel = JSON.parse(Fs.readFileSync("./assets/util/levels.json"));
     if (lvl < 100) {
-      NXp = nLevel[++lvl];
+      NXp = nLevel[lvl + 1];
     } else if (lvl >= 100) {
       NXp = 1899250;
     }

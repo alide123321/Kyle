@@ -52,7 +52,7 @@ module.exports.run = async (bot, msg, args) => {
     lvl = xp.get(`${msg.guild.id}_${mentioned.id}.lvl`);
     Xp = xp.get(`${msg.guild.id}_${mentioned.id}.xp`);
     if (lvl < 100) {
-      NXp = nLevel[++lvl];
+      NXp = nLevel[lvl + 1];
     } else if (lvl >= 100) {
       NXp = 1899250;
     }
@@ -119,7 +119,7 @@ module.exports.run = async (bot, msg, args) => {
     lvl = xp.get(`${msg.guild.id}_${msg.author.id}.lvl`);
     Xp = xp.get(`${msg.guild.id}_${msg.author.id}.xp`);
     if (lvl < 100) {
-      NXp = nLevel[++lvl];
+      NXp = nLevel[lvl + 1];
     } else if (lvl >= 100) {
       NXp = 1899250;
     }

@@ -32,6 +32,9 @@ const token = process.env.TOKEN;
 const prefix = process.env.PREFIX;
 const version = process.env.VERSION;
 const Fs = require("fs");
+const db = require("quick.db");
+var xp = new db.table("xp");
+const XpTimeOut = require("./assets/util/xptimeout.js").XpTimeOut;
 bot.queue = new Map();
 
 var numofcommands = 0;
@@ -450,6 +453,46 @@ bot.on("message", async (msg) => {
   if (text.includes("hello")) {
     msg.channel.send("my name is Jeff");
   }
+
+  //xp
+
+  if (!xp.has(`${msg.guild.id}_${msg.author.id}.msgs`)) {
+    xp.set(`${msg.guild.id}_${msg.author.id}.xp`, 0);
+    xp.set(`${msg.guild.id}_${msg.author.id}.lvl`, 0);
+    xp.set(`${msg.guild.id}_${msg.author.id}.msgs`, 0);
+  }
+
+  xp.add(`${msg.guild.id}_${msg.author.id}.msgs`, 1);
+
+  if (!XpTimeOut.has(msg.author.id)) {
+    let newxp = Math.floor(Math.random() * 25) + 15;
+    xp.add(`${msg.guild.id}_${msg.author.id}.xp`, newxp);
+
+    let Xp = xp.get(`${msg.guild.id}_${msg.author.id}.xp`);
+    let lvl = xp.get(`${msg.guild.id}_${msg.author.id}.lvl`);
+    let NXp = 0;
+    let nLevel = JSON.parse(Fs.readFileSync("./assets/util/levels.json"));
+    if (lvl < 100) {
+      NXp = nLevel[++lvl];
+    } else if (lvl >= 100) {
+      NXp = 1899250;
+    }
+
+    if (Xp > NXp) {
+      xp.add(`${msg.guild.id}_${msg.author.id}.lvl`, 1);
+      lvl = xp.get(`${msg.guild.id}_${msg.author.id}.lvl`);
+      msg.channel.send(
+        `GG <@${msg.author.id}>, you just advanced to level ${lvl}!`
+      );
+    }
+
+    XpTimeOut.add(msg.author.id);
+    setTimeout(() => {
+      XpTimeOut.delete(msg.author.id);
+    }, 60000);
+  }
+
+  //xp
 
   if (msg.guild.id === "599061990828277770") {
     if (msg.channel.id === "716206448970825799") {

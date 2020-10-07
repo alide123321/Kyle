@@ -4,7 +4,6 @@ module.exports.run = async (bot, msg, args) => {
   const sleep = require("../../assets/functions/sleep.js").sleep;
   let text = msg.content;
 
-  console.log(talkedRecently);
   if (
     talkedRecently.has(msg.author.id) &&
     msg.author.id !== "698051518754062387"

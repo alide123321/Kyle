@@ -57,6 +57,8 @@ module.exports.run = async (bot, msg, args) => {
       NXp = 1899250;
     }
 
+    lvl = xp.get(`${msg.guild.id}_${msg.author.id}.lvl`);
+
     let SuccessEmbed = new Discord.MessageEmbed()
       .setTitle(`**${mentioned.user.tag}**`)
       .setColor(0xfa1679)
@@ -121,6 +123,8 @@ module.exports.run = async (bot, msg, args) => {
     } else if (lvl >= 100) {
       NXp = 1899250;
     }
+
+    lvl = xp.get(`${msg.guild.id}_${msg.author.id}.lvl`);
 
     let SuccessEmbed = new Discord.MessageEmbed()
       .setTitle(`**${msg.author.tag}**`)

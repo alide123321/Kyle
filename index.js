@@ -474,17 +474,16 @@ bot.on("message", async (msg) => {
     let newxp = Math.floor(Math.random() * 25) + 15;
     xp.add(`${msg.guild.id}_${msg.author.id}.xp`, newxp);
 
-    let Xp = xp.get(`${msg.guild.id}_${msg.author.id}.xp`);
     let lvl = xp.get(`${msg.guild.id}_${msg.author.id}.lvl`);
     let NXp = 0;
     let nLevel = JSON.parse(Fs.readFileSync("./assets/util/levels.json"));
-    if (lvl < 100) {
-      NXp = nLevel[lvl + 1];
-    } else if (lvl >= 100) {
+    if (lvl >= 100) {
       NXp = 1899250;
+    } else {
+      NXp = nLevel[lvl + 1];
     }
 
-    if (Xp > NXp) {
+    if (xp.get(`${msg.guild.id}_${msg.author.id}.xp`) >= NXp && lvl !== 100) {
       xp.add(`${msg.guild.id}_${msg.author.id}.lvl`, 1);
       lvl = xp.get(`${msg.guild.id}_${msg.author.id}.lvl`);
       msg.channel.send(

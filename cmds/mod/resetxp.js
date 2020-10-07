@@ -12,10 +12,10 @@ module.exports.run = async (bot, msg, args) => {
   var users = [];
 
   for (let x = 0; x <= allusers.length; ++x) {
-    if (xp.has(`${allusers[x]}.xp`)) {
-      xp.delete(`${allusers[x]}.xp`);
-      xp.delete(`${allusers[x]}.lvl`);
-      xp.delete(`${allusers[x]}.msgs`);
+    if (xp.has(`${msg.guild.id}_${allusers[x]}.xp`)) {
+      xp.delete(`${msg.guild.id}_${allusers[x]}.xp`);
+      xp.delete(`${msg.guild.id}_${allusers[x]}.lvl`);
+      xp.delete(`${msg.guild.id}_${allusers[x]}.msgs`);
       users.push((await msg.guild.members.fetch(allusers[x])).displayName);
     }
   }

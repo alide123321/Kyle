@@ -23,7 +23,7 @@ module.exports.run = async (bot, msg, args) => {
     msg.channel.send("No.");
     return;
   }
-  for (var i = 0; i !== 5; ++i) msg.reply(" said: " + text.slice(5) + " ");
+  for (var i = 0; i !== 5; ++i) msg.reply(` said: ${text.slice(5)} `);
 };
 
 module.exports.help = {

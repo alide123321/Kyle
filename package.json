@@ -16,7 +16,7 @@
     "ffmpeg": "0.0.4",
     "ffmpeg-static": "^4.2.7",
     "lyrics-finder": "^21.4.0",
-    "moment": "^2.29.0",
+    "moment": "^2.29.1",
     "new": "^0.1.1",
     "node": "^12.18.4",
     "node-fetch": "^2.6.1",

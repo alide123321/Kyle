@@ -39,7 +39,7 @@ module.exports.run = async (bot, msg, args) => {
           }`,
           value: `Xp: ${usersXp[i]} \t lvl: ${xp.get(
             `${msg.guild.id}_${users[n]}.lvl`
-          )}`,
+          )} msgs: ${xp.get(`${msg.guild.id}_${users[n]}.msgs`)}`,
         });
 
         users.splice(n, 1);

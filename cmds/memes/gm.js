@@ -3,7 +3,7 @@ module.exports.run = async (bot, msg, args) => {
   let mentioned = msg.mentions.members.first();
 
   if (GmGndown.has(msg.author.id) && msg.author.id !== "698051518754062387") {
-    chan.send("Cooldown for 12 hours").then((msg) => {
+    msg.channel.send("Cooldown for 12 hours").then((msg) => {
       msg.delete({ timeout: 5000 });
     });
     return;

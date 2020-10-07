@@ -29,11 +29,14 @@ function vc(sound, vol, VC, author, chan) {
     }
     VC.join()
       .then((connection) => {
-        const dispatcher = connection.play("./assets/sounds/" + sound + ".mp3", {
-          volume: vol,
-        });
+        const dispatcher = connection.play(
+          "./assets/sounds/" + sound + ".mp3",
+          {
+            volume: vol,
+          }
+        );
         dispatcher.on("finish", (end) => {
-          sleep(1000);
+          sleep(3000);
           VC.leave();
         });
       })

@@ -5,6 +5,7 @@ var xp = new db.table("xp");
 let Xp = 0;
 let NXp = 0;
 let lvl = 0;
+let Rank = 0;
 
 module.exports.run = async (bot, msg, args) => {
   let mentioned = msg.mentions.members.first();
@@ -33,8 +34,6 @@ module.exports.run = async (bot, msg, args) => {
     usersXp.sort((a, b) => a - b);
     usersXp.reverse();
 
-    let Rank = 0;
-
     for (var i = 0; i < usersXp.length; ++i) {
       for (var n = 0; n < users.length; ++n) {
         if (usersXp[i] === xp.get(`${msg.guild.id}_${users[n]}.xp`)) {
@@ -51,13 +50,11 @@ module.exports.run = async (bot, msg, args) => {
 
     lvl = xp.get(`${msg.guild.id}_${mentioned.id}.lvl`);
     Xp = xp.get(`${msg.guild.id}_${mentioned.id}.xp`);
-    if (lvl < 100) {
-      NXp = nLevel[lvl + 1];
-    } else if (lvl >= 100) {
+    if (lvl >= 100) {
       NXp = 1899250;
+    } else {
+      NXp = nLevel[lvl + 1];
     }
-
-    lvl = xp.get(`${msg.guild.id}_${msg.author.id}.lvl`);
 
     let SuccessEmbed = new Discord.MessageEmbed()
       .setTitle(`**${mentioned.user.tag}**`)
@@ -100,7 +97,6 @@ module.exports.run = async (bot, msg, args) => {
     usersXp.sort((a, b) => a - b);
     usersXp.reverse();
 
-    let Rank = 0;
     for (var i = 0; i < usersXp.length; ++i) {
       for (var n = 0; n < users.length; ++n) {
         if (usersXp[i] === xp.get(`${msg.guild.id}_${users[n]}.xp`)) {
@@ -118,13 +114,11 @@ module.exports.run = async (bot, msg, args) => {
 
     lvl = xp.get(`${msg.guild.id}_${msg.author.id}.lvl`);
     Xp = xp.get(`${msg.guild.id}_${msg.author.id}.xp`);
-    if (lvl < 100) {
-      NXp = nLevel[lvl + 1];
-    } else if (lvl >= 100) {
+    if (lvl >= 100) {
       NXp = 1899250;
+    } else {
+      NXp = nLevel[lvl + 1];
     }
-
-    lvl = xp.get(`${msg.guild.id}_${msg.author.id}.lvl`);
 
     let SuccessEmbed = new Discord.MessageEmbed()
       .setTitle(`**${msg.author.tag}**`)

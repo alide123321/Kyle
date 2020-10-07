@@ -16,7 +16,12 @@ module.exports.run = async (bot, msg, args) => {
     .addFields(
       { name: "Version: ", value: version, inline: true },
       { name: "Prefix: ", value: prefix, inline: true },
-      { name: "Author: ", value: author }
+      { name: "Author: ", value: author, inline: true },
+      {
+        name: "Code: ",
+        value: "https://github.com/alide123321/discordbot",
+        inline: true,
+      }
     );
   msg.channel.send(info);
 };

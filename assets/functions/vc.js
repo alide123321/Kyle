@@ -33,7 +33,7 @@ function vc(sound, vol, VC, author, chan) {
           volume: vol,
         });
         dispatcher.on("finish", (end) => {
-          sleep(1000);
+          sleep(3000);
           VC.leave();
         });
       })

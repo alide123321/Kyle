@@ -28,7 +28,6 @@ let options = {
   bots: "channel id",
 };
 
-const token = process.env.TOKEN;
 const prefix = process.env.PREFIX;
 const version = process.env.VERSION;
 const Fs = require("fs");
@@ -489,12 +488,35 @@ bot.on("message", async (msg) => {
       msg.channel.send(
         `GG <@${msg.author.id}>, you just advanced to level ${lvl}!`
       );
+
+      if (lvl === 5) {
+        let role = msg.guild.roles.cache.find((r) => r.name === "[5+] Slimes");
+        msg.member.roles.add(role).catch(console.error);
+      }
+      if (lvl === 10) {
+        let role = msg.guild.roles.cache.find((r) => r.name === "[10+] Elites");
+        msg.member.roles.add(role).catch(console.error);
+      }
+      if (lvl === 20) {
+        let role = msg.guild.roles.cache.find(
+          (r) => r.name === "[20+] Warriors"
+        );
+        msg.member.roles.add(role).catch(console.error);
+      }
+      if (lvl === 30) {
+        let role = msg.guild.roles.cache.find((r) => r.name === "[30+] Kings");
+        msg.member.roles.add(role).catch(console.error);
+      }
+      if (lvl === 50) {
+        let role = msg.guild.roles.cache.find((r) => r.name === "[50+] Gods");
+        msg.member.roles.add(role).catch(console.error);
+      }
     }
 
-    XpTimeOut.add(msg.author.id);
-    setTimeout(() => {
-      XpTimeOut.delete(msg.author.id);
-    }, 60000);
+    //XpTimeOut.add(msg.author.id);
+    //setTimeout(() => {
+    //  XpTimeOut.delete(msg.author.id);
+    //}, 60000);
   }
 
   //xp
@@ -563,4 +585,4 @@ function serverstats(member) {
     );
 }
 
-bot.login(token); // turn bot online
+bot.login(process.env.TOKEN); // turn bot online

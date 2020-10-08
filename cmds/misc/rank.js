@@ -2,16 +2,16 @@ const Discord = require("discord.js");
 const Fs = require("fs");
 const db = require("quick.db");
 var xp = new db.table("xp");
-let Xp = 0;
-let NXp = 0;
-let lvl = 0;
-let Rank = 0;
 
 module.exports.run = async (bot, msg, args) => {
   let mentioned = msg.mentions.members.first();
   var allusers = (await msg.guild.members.fetch()).keyArray("id");
   var users = [];
   var usersXp = [];
+  let Xp = 0;
+  let NXp = 0;
+  let lvl = 0;
+  let Rank = 0;
 
   if (mentioned) {
     if (!xp.has(`${msg.guild.id}_${mentioned.id}.xp`)) {

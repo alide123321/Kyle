@@ -12,7 +12,7 @@ module.exports.run = async (bot, msg, args) => {
   GmGndown.add(msg.author.id);
   setTimeout(() => {
     GmGndown.delete(msg.author.id);
-  }, 43200000);
+  }, 3600000);
 
   if (!mentioned)
     msg.channel.send(

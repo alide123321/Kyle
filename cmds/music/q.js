@@ -10,4 +10,5 @@ ${serverQueue.songs.map((song) => `**-** ${song.title}`).join("\n")}
 
 module.exports.help = {
   name: "q",
+  Alias: "queue",
 };

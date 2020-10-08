@@ -73,7 +73,10 @@ module.exports.run = async (bot, msg, args) => {
     }
   } else if (scRegex.test(url)) {
     try {
-      const trackInfo = await scdl.getInfo(url, process.env.SOUNDCLOUD_CLIENT_ID);
+      const trackInfo = await scdl.getInfo(
+        url,
+        process.env.SOUNDCLOUD_CLIENT_ID
+      );
       song = {
         title: trackInfo.title,
         url: trackInfo.permalink_url,
@@ -131,4 +134,5 @@ module.exports.run = async (bot, msg, args) => {
 
 module.exports.help = {
   name: "p",
+  Alias: "play",
 };

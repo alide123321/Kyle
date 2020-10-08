@@ -54,6 +54,7 @@ Fs.readdir("./cmds/gamble/", (err, files) => {
     let props = require(`./cmds/gamble/${f}`);
     console.log(`${i + 1}: ${f} loaded in gamble!`);
     bot.commands.set(props.help.name, props);
+    if (props.help.Alias) bot.commands.set(props.help.Alias, props);
     numofcommands++;
   });
 });
@@ -71,6 +72,7 @@ Fs.readdir("./cmds/help/", (err, files) => {
     let props = require(`./cmds/help/${f}`);
     console.log(`${i + 1}: ${f} loaded in help!`);
     bot.commands.set(props.help.name, props);
+    if (props.help.Alias) bot.commands.set(props.help.Alias, props);
     numofcommands++;
   });
 });
@@ -88,6 +90,7 @@ Fs.readdir("./cmds/memes/", (err, files) => {
     let props = require(`./cmds/memes/${f}`);
     console.log(`${i + 1}: ${f} loaded in memes!`);
     bot.commands.set(props.help.name, props);
+    if (props.help.Alias) bot.commands.set(props.help.Alias, props);
     numofcommands++;
   });
 });
@@ -105,6 +108,7 @@ Fs.readdir("./cmds/misc/", (err, files) => {
     let props = require(`./cmds/misc/${f}`);
     console.log(`${i + 1}: ${f} loaded in misc!`);
     bot.commands.set(props.help.name, props);
+    if (props.help.Alias) bot.commands.set(props.help.Alias, props);
     numofcommands++;
   });
 });
@@ -122,6 +126,7 @@ Fs.readdir("./cmds/mod/", (err, files) => {
     let props = require(`./cmds/mod/${f}`);
     console.log(`${i + 1}: ${f} loaded in mod!`);
     bot.commands.set(props.help.name, props);
+    if (props.help.Alias) bot.commands.set(props.help.Alias, props);
     numofcommands++;
   });
 });
@@ -139,6 +144,7 @@ Fs.readdir("./cmds/money/", (err, files) => {
     let props = require(`./cmds/money/${f}`);
     console.log(`${i + 1}: ${f} loaded in money!`);
     bot.commands.set(props.help.name, props);
+    if (props.help.Alias) bot.commands.set(props.help.Alias, props);
     numofcommands++;
   });
 });
@@ -156,6 +162,7 @@ Fs.readdir("./cmds/music/", (err, files) => {
     let props = require(`./cmds/music/${f}`);
     console.log(`${i + 1}: ${f} loaded in music!`);
     bot.commands.set(props.help.name, props);
+    if (props.help.Alias) bot.commands.set(props.help.Alias, props);
     numofcommands++;
   });
 });
@@ -173,6 +180,7 @@ Fs.readdir("./cmds/vc/", (err, files) => {
     let props = require(`./cmds/vc/${f}`);
     console.log(`${i + 1}: ${f} loaded in vc!`);
     bot.commands.set(props.help.name, props);
+    if (props.help.Alias) bot.commands.set(props.help.Alias, props);
     numofcommands++;
   });
 });

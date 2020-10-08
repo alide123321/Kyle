@@ -24,9 +24,7 @@ module.exports.run = async (bot, msg, args) => {
       .setTitle("**Daily**")
       .setColor(0xff0000)
       .setThumbnail(msg.author.avatarURL())
-      .setDescription(
-        `You have claimed this today already.\n**${time.hours}h ${time.minutes}m ${time.seconds}s**!`
-      );
+      .setDescription(`You have claimed this today already.\n**${time.hours}h ${time.minutes}m ${time.seconds}s**!`); // prettier-ignore
     msg.channel.send(WarningEmbed);
   } else {
     economy.add(`${author}.bal`, 50);
@@ -36,9 +34,7 @@ module.exports.run = async (bot, msg, args) => {
       .setTitle("**SUCCESS**")
       .setColor(0x32cd32)
       .setThumbnail(msg.author.avatarURL())
-      .setDescription(
-        "You have claimed your daily reward of 50 <:chip:751730576918315048>!"
-      );
+      .setDescription("You have claimed your daily reward of 50 <:chip:751730576918315048>!"); // prettier-ignore
     msg.channel.send(SuccessEmbed);
   }
 };

@@ -67,10 +67,7 @@ module.exports.run = async (bot, msg, args) => {
     .setDescription(`You muted **${mentioned}** for ${reason} by: ${author}`);
 
   if (muted === null) {
-    mutelist.set(
-      `muted for_${msg.guild.id}_${mentioned.id}`,
-      `${reason} by ${author}`
-    );
+    mutelist.set(`muted for_${msg.guild.id}_${mentioned.id}`,`${reason} by ${author}`); // prettier-ignore
     mentioned.send(
       `You have been muted in **${msg.guild.name}** for ${reason}`
     );
@@ -79,9 +76,7 @@ module.exports.run = async (bot, msg, args) => {
     await mutelist.delete(`muted for_${msg.guild.id}_${mentioned.id}`);
     muted = muted.concat(`\n${reason} by ${author}\n`);
     mutelist.set(`muted for_${msg.guild.id}_${mentioned.id}`, muted);
-    mentioned.send(
-      `You have been muted in **${msg.guild.name}** for ${reason}`
-    );
+    mentioned.send(`You have been muted in **${msg.guild.name}** for ${reason}`); // prettier-ignore
     await msg.channel.send(mutedEmbed);
   }
 };

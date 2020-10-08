@@ -64,9 +64,7 @@ module.exports.run = async (bot, msg, args) => {
         .setTitle("**" + title + "**")
         .setURL("https://discord.gg/hpcxUFy")
         .setDescription(disc)
-        .setThumbnail(
-          "https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png"
-        );
+        .setThumbnail("https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png"); // prettier-ignore
 
       if (!(mention === "no one")) chat.send("||" + mention + "||");
       chat.send(announce);

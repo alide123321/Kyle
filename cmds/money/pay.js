@@ -89,12 +89,7 @@ module.exports.run = async (bot, msg, args) => {
     .setTitle("**SUCCESS**")
     .setColor(0x32cd32)
     .setThumbnail(mentioned.user.avatarURL())
-    .setDescription(
-      "You have given $" +
-        Money +
-        "<:chip:751730576918315048> to " +
-        mentioned.user.username
-    );
+    .setDescription("You have given $" + Money +"<:chip:751730576918315048> to " +mentioned.user.username); // prettier-ignore
   msg.channel.send(SuccessEmbed);
 };
 

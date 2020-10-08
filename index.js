@@ -485,9 +485,8 @@ bot.on("message", async (msg) => {
     if (xp.get(`${msg.guild.id}_${msg.author.id}.xp`) >= NXp && lvl !== 100) {
       xp.add(`${msg.guild.id}_${msg.author.id}.lvl`, 1);
       lvl = xp.get(`${msg.guild.id}_${msg.author.id}.lvl`);
-      msg.channel.send(
-        `GG <@${msg.author.id}>, you just advanced to level ${lvl}!`
-      );
+
+      msg.channel.send(`GG <@${msg.author.id}>, you just advanced to level ${lvl}!`); // prettier-ignore
 
       if (lvl === 5) {
         let role = msg.guild.roles.cache.find((r) => r.name === "[5+] Slimes");
@@ -498,9 +497,7 @@ bot.on("message", async (msg) => {
         msg.member.roles.add(role).catch(console.error);
       }
       if (lvl === 20) {
-        let role = msg.guild.roles.cache.find(
-          (r) => r.name === "[20+] Warriors"
-        );
+        let role = msg.guild.roles.cache.find((r) => r.name === "[20+] Warriors"); // prettier-ignore
         msg.member.roles.add(role).catch(console.error);
       }
       if (lvl === 30) {

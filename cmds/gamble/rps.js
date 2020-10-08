@@ -179,12 +179,7 @@ module.exports.run = async (bot, msg, args) => {
         .setTitle("**LOSS**")
         .setColor(0xff0000)
         .setThumbnail(msg.author.avatarURL())
-        .setDescription(
-          "You lost: " +
-            bet +
-            " <:chip:751730576918315048> :(\nBot got: " +
-            dealer
-        );
+        .setDescription("You lost: " +bet +" <:chip:751730576918315048> :(\nBot got: " +dealer); // prettier-ignore
       msg.channel.send(SuccessEmbed);
     }
     if (drand === 1) {

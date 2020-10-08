@@ -48,21 +48,14 @@ module.exports.run = async (bot, msg, args) => {
     .setDescription(`You warned **${mentioned}** for ${reason} by: ${author}`);
 
   if (warnings === null) {
-    warn.set(
-      `warnings_${msg.guild.id}_${mentioned.id}`,
-      `${reason} by ${author}`
-    );
-    mentioned.send(
-      `You have been warned in **${msg.guild.name}** for ${reason}`
-    );
+    warn.set(`warnings_${msg.guild.id}_${mentioned.id}`,`${reason} by ${author}`); // prettier-ignore
+    mentioned.send(`You have been warned in **${msg.guild.name}** for ${reason}`); // prettier-ignore
     await msg.channel.send(warningEmbed);
   } else if (warnings != null) {
     await warn.delete(`warnings_${msg.guild.id}_${mentioned.id}`);
     warnings = warnings.concat(`\n${reason} by ${author}\n`);
     warn.set(`warnings_${msg.guild.id}_${mentioned.id}`, warnings);
-    mentioned.send(
-      `You have been warned in **${msg.guild.name}** for ${reason}`
-    );
+    mentioned.send(`You have been warned in **${msg.guild.name}** for ${reason}`); // prettier-ignore
     await msg.channel.send(warningEmbed);
   }
 };

@@ -23,11 +23,7 @@ module.exports.run = async (bot, msg, args) => {
   for (var i = 0; i < 100; ++i) {
     for (var n = 0; n < usersplaying.length; ++n) {
       if (usersplayingmoney[i] === economy.get(`${usersplaying[n]}.bal`)) {
-        send.push(
-          (await msg.guild.members.fetch(usersplaying[n])).displayName +
-            "--" +
-            usersplayingmoney[i]
-        );
+        send.push((await msg.guild.members.fetch(usersplaying[n])).displayName +"--" +usersplayingmoney[i]); // prettier-ignore
         usersplaying.splice(n, 1);
       }
     }

@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified \" && exit 1",
     "start": "node index.js"
   },
-  "author": "alide123321#9518",
+  "author": "alide123321#1000",
   "license": "ISC",
   "dependencies": {
     "discord.js": "^12.3.1",
@@ -42,5 +42,5 @@
   "bugs": {
     "url": "https://github.com/alide123321/discordbot/issues"
   },
-  "homepage": "https://github.com/alide123321/discordbot#readme"
+  "homepage": "https://discord.gg/z4FpxSJ"
 }

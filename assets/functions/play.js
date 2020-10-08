@@ -5,7 +5,6 @@ const { canModifyQueue } = require("../util/Kylebotutil");
 module.exports = {
   async play(song, msg) {
     const PRUNING = process.env.PRUNING;
-    const SOUNDCLOUD_CLIENT_ID = process.env.SOUNDCLOUD_CLIENT_ID;
     const queue = msg.client.queue.get(msg.guild.id);
 
     if (!song) {
@@ -27,13 +26,17 @@ module.exports = {
           stream = await scdl.downloadFormat(
             song.url,
             scdl.FORMATS.OPUS,
-            SOUNDCLOUD_CLIENT_ID ? SOUNDCLOUD_CLIENT_ID : undefined
+            process.env.SOUNDCLOUD_CLIENT_ID
+              ? process.env.SOUNDCLOUD_CLIENT_ID
+              : undefined
           );
         } catch (error) {
           stream = await scdl.downloadFormat(
             song.url,
             scdl.FORMATS.MP3,
-            SOUNDCLOUD_CLIENT_ID ? SOUNDCLOUD_CLIENT_ID : undefined
+            process.env.SOUNDCLOUD_CLIENT_ID
+              ? process.env.SOUNDCLOUD_CLIENT_ID
+              : undefined
           );
           streamType = "unknown";
         }

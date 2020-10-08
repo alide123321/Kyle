@@ -1,9 +1,7 @@
 const { play } = require("../../assets/functions/play.js");
-const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
-const SOUNDCLOUD_CLIENT_ID = process.env.SOUNDCLOUD_CLIENT_ID;
 const ytdl = require("ytdl-core");
 const YouTubeAPI = require("simple-youtube-api");
-const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
+const youtube = new YouTubeAPI(process.env.YOUTUBE_API_KEY);
 const scdl = require("soundcloud-downloader");
 module.exports.run = async (bot, msg, args) => {
   const { channel } = msg.member.voice;
@@ -75,7 +73,7 @@ module.exports.run = async (bot, msg, args) => {
     }
   } else if (scRegex.test(url)) {
     try {
-      const trackInfo = await scdl.getInfo(url, SOUNDCLOUD_CLIENT_ID);
+      const trackInfo = await scdl.getInfo(url, process.env.SOUNDCLOUD_CLIENT_ID);
       song = {
         title: trackInfo.title,
         url: trackInfo.permalink_url,

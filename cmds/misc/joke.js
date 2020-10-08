@@ -1,8 +1,6 @@
 module.exports.run = async (bot, msg, args) => {
   var unirest = require("unirest");
 
-  const RAPIDAPI = process.env.RAPIDAPI;
-
   var req = unirest("GET", "https://joke3.p.rapidapi.com/v1/joke");
 
   /*req.query({
@@ -11,7 +9,7 @@ module.exports.run = async (bot, msg, args) => {
 
   req.headers({
     "x-rapidapi-host": "joke3.p.rapidapi.com",
-    "x-rapidapi-key": RAPIDAPI,
+    "x-rapidapi-key": process.env.RAPIDAPI,
     useQueryString: true,
   });
 

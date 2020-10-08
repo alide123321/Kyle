@@ -3,8 +3,6 @@ module.exports.run = async (bot, msg, args) => {
   var unirest = require("unirest");
   const ytdl = require("ytdl-core");
 
-  const RAPIDAPI = process.env.RAPIDAPI;
-
   let songInfo = null;
   let vidid = null;
   var json3 = null;
@@ -72,7 +70,7 @@ module.exports.run = async (bot, msg, args) => {
 
           req3.headers({
             "x-rapidapi-host": "free-mp3-mp4-youtube.p.rapidapi.com",
-            "x-rapidapi-key": RAPIDAPI,
+            "x-rapidapi-key": process.env.RAPIDAPI,
             useQueryString: true,
           });
 
@@ -98,7 +96,7 @@ module.exports.run = async (bot, msg, args) => {
 
           req4.headers({
             "x-rapidapi-host": "free-mp3-mp4-youtube.p.rapidapi.com",
-            "x-rapidapi-key": RAPIDAPI,
+            "x-rapidapi-key": process.env.RAPIDAPI,
             useQueryString: true,
           });
 

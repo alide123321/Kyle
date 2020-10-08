@@ -448,6 +448,11 @@ bot.on("message", async (msg) => {
     return;
   }
 
+  let discordInvite = /(https:\/\/)?(www\.)?(discord\.gg|discord\.me|discordapp\.com\/invite|discord\.com\/invite)\/([a-z0-9-.]+)?/i;
+  if (discordInvite.test(text) && !msg.member.hasPermission("ADMINISTRATOR")) {
+    msg.delete();
+  }
+
   if (text.includes("hello")) {
     msg.channel.send("my name is Jeff");
   }

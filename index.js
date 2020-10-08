@@ -464,8 +464,8 @@ bot.on("message", async (msg) => {
     msg.delete();
   }
 
-  if (text.includes("hello")) {
-    msg.channel.send("my name is Jeff");
+  if (text.includes("kys") || text.includes("I wanna die")) {
+    msg.channel.send("https://www.healthscience.org/");
   }
 
   //xp

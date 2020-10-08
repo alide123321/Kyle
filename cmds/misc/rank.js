@@ -72,7 +72,7 @@ module.exports.run = async (bot, msg, args) => {
           inline: true,
         },
         {
-          name: "Nummber of messages ",
+          name: "Number of messages ",
           value: xp.get(`${msg.guild.id}_${mentioned.id}.msgs`),
           inline: true,
         },
@@ -136,7 +136,7 @@ module.exports.run = async (bot, msg, args) => {
           inline: true,
         },
         {
-          name: "Nummber of messages ",
+          name: "Number of messages ",
           value: xp.get(`${msg.guild.id}_${msg.author.id}.msgs`),
           inline: true,
         },

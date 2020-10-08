@@ -368,11 +368,6 @@ bot.on("message", async (msg) => {
   let command = msgarray[0];
 
   if (msg.guild === null) {
-    if (msg.author.id === "295893639396065280") {
-      msg.author.send("you are too gay to use my bot");
-      return;
-    }
-
     let sender = msg.author;
 
     if (text.charAt(0) !== ".")
@@ -380,9 +375,7 @@ bot.on("message", async (msg) => {
 
     var dmhelp = [
       "**" + prefix + "help__________will bring up this page**",
-      "**" +
-        prefix +
-        "report________to report someone/something in the Wonderland server**",
+      "**" + prefix + "report________to report someone/something in the Wonderland server**", //prettier-ignore
       "**" + prefix + "join__________send you a server invite link**",
     ];
 
@@ -442,7 +435,7 @@ bot.on("message", async (msg) => {
         let joinem = new Discord.MessageEmbed()
           .setColor(0x0099ff)
           .setTitle("Click Here to join back")
-          .setURL("https://discord.gg/gBQc5cm")
+          .setURL("https://discord.gg/z4FpxSJ")
           .setThumbnail(
             "https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png"
           )
@@ -488,6 +481,8 @@ bot.on("message", async (msg) => {
 
       msg.channel.send(`GG <@${msg.author.id}>, you just advanced to level ${lvl}!`); // prettier-ignore
 
+      //giving roles
+
       if (lvl === 5) {
         let role = msg.guild.roles.cache.find((r) => r.name === "[5+] Slimes");
         msg.member.roles.add(role).catch(console.error);
@@ -510,10 +505,10 @@ bot.on("message", async (msg) => {
       }
     }
 
-    //XpTimeOut.add(msg.author.id);
-    //setTimeout(() => {
-    //  XpTimeOut.delete(msg.author.id);
-    //}, 60000);
+    XpTimeOut.add(msg.author.id);
+    setTimeout(() => {
+      XpTimeOut.delete(msg.author.id);
+    }, 60000);
   }
 
   //xp
@@ -539,11 +534,6 @@ bot.on("message", async (msg) => {
   }
 
   if (!command.startsWith(prefix)) return;
-
-  if (msg.author.id === "295893639396065280") {
-    msg.author.send("you are too gay to use my bot");
-    return;
-  }
 
   if (cooldown.has(msg.author.id) && msg.author.id !== "698051518754062387") {
     msg.channel.send("Cooldown 3 sec").then((msge) => {

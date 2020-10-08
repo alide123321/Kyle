@@ -22,7 +22,7 @@ module.exports.run = async (bot, msg, args) => {
     .setColor(0xb33076)
     .setTitle("Anonymous Message")
     .setDescription(text.slice(6));
-  mention.send(embed);
+  mention.send(embed).catch(() => msg.reply("Can't send DM to that user!"));
 
   msg.channel.bulkDelete(1);
 };

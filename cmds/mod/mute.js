@@ -68,15 +68,17 @@ module.exports.run = async (bot, msg, args) => {
 
   if (muted === null) {
     mutelist.set(`muted for_${msg.guild.id}_${mentioned.id}`,`${reason} by ${author}`); // prettier-ignore
-    mentioned.send(
-      `You have been muted in **${msg.guild.name}** for ${reason}`
-    );
+    mentioned
+      .send(`You have been muted in **${msg.guild.name}** for ${reason}`)
+      .catch(() => msg.reply("Can't send DM to that user!"));
     await msg.channel.send(mutedEmbed);
   } else if (muted != null) {
     await mutelist.delete(`muted for_${msg.guild.id}_${mentioned.id}`);
     muted = muted.concat(`\n${reason} by ${author}\n`);
     mutelist.set(`muted for_${msg.guild.id}_${mentioned.id}`, muted);
-    mentioned.send(`You have been muted in **${msg.guild.name}** for ${reason}`); // prettier-ignore
+    mentioned
+      .send(`You have been muted in **${msg.guild.name}** for ${reason}`)
+      .catch(() => msg.reply("Can't send DM to that user!"));
     await msg.channel.send(mutedEmbed);
   }
 };

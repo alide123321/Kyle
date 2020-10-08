@@ -192,6 +192,9 @@ bot.once("ready", () => {
 
 bot.on("guildMemberAdd", (member) => {
   if (member.guild.id === "599061990828277770") {
+    let role = member.guild.roles.cache.find((r) => r.name === "[0+] Noobs");
+    member.roles.add(role).catch(console.error);
+
     serverstats(member);
     member.guild.channels.cache
       .get("716939268504813578")
@@ -213,11 +216,6 @@ bot.on("guildMemberRemove", (member) => {
 
 bot.on("messageReactionAdd", async (reaction, user) => {
   if (!user || user.bot || !reaction.message.channel.guild) return;
-
-  if (reaction.message.channel.id === "709238410732240906")
-    await reaction.message.guild.members.cache
-      .get(user.id)
-      .roles.add("716092067243098174");
 
   if (reaction.message.channel.id === "740809935247507566") {
     if (reaction.emoji.name === "movie_night")

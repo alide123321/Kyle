@@ -35,7 +35,9 @@ module.exports.run = async (bot, msg, args) => {
     }
   }
 
-  msg.author.send(topranks);
+  msg.author
+    .send(topranks)
+    .catch(() => msg.reply("I cant DM you. Did you block me?"));
 
   msg.channel.send(`Check your DM's please`);
 };

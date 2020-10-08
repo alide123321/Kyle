@@ -19,10 +19,14 @@ module.exports.run = async (bot, msg, args) => {
       "https://cdn.discordapp.com/attachments/599061991281131531/757130408251883571/videoplayback.mp4"
     );
   if (mentioned) {
-    mentioned.send("**" + msg.author.username + " Says Good Morning**");
-    mentioned.send(
-      "https://cdn.discordapp.com/attachments/599061991281131531/757130408251883571/videoplayback.mp4"
-    );
+    mentioned
+      .send("**" + msg.author.username + " Says Good Morning**")
+      .catch(() => msg.reply("Can't send DM to that user!"));
+    mentioned
+      .send(
+        "https://cdn.discordapp.com/attachments/599061991281131531/757130408251883571/videoplayback.mp4"
+      )
+      .catch(() => msg.reply("Can't send DM to that user!"));
     msg.channel.send("Sent " + mentioned.user.username + " a Good Morning msg");
   }
 };

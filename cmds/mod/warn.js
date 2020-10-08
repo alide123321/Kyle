@@ -49,13 +49,17 @@ module.exports.run = async (bot, msg, args) => {
 
   if (warnings === null) {
     warn.set(`warnings_${msg.guild.id}_${mentioned.id}`,`${reason} by ${author}`); // prettier-ignore
-    mentioned.send(`You have been warned in **${msg.guild.name}** for ${reason}`); // prettier-ignore
+    mentioned
+      .send(`You have been warned in **${msg.guild.name}** for ${reason}`)
+      .catch(() => msg.reply("Can't send DM to that user!"));
     await msg.channel.send(warningEmbed);
   } else if (warnings != null) {
     await warn.delete(`warnings_${msg.guild.id}_${mentioned.id}`);
     warnings = warnings.concat(`\n${reason} by ${author}\n`);
     warn.set(`warnings_${msg.guild.id}_${mentioned.id}`, warnings);
-    mentioned.send(`You have been warned in **${msg.guild.name}** for ${reason}`); // prettier-ignore
+    mentioned
+      .send(`You have been warned in **${msg.guild.name}** for ${reason}`)
+      .catch(() => msg.reply("Can't send DM to that user!"));
     await msg.channel.send(warningEmbed);
   }
 };

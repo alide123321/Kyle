@@ -17,9 +17,7 @@ module.exports.run = async (bot, msg, args) => {
 
   if (!args.length)
     return msg
-      .reply(
-        `Usage: ${msg.client.prefix}playlist <YouTube Playlist URL | Playlist Name>`
-      )
+      .reply(`Usage: ${msg.client.prefix}playlist <YouTube Playlist URL | Playlist Name>`)
       .catch(console.error);
   if (!channel)
     return msg

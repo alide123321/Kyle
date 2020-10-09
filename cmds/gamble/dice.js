@@ -7,7 +7,6 @@ module.exports.run = async (bot, msg, args) => {
 
   var dice = args[1];
   let bet = args[2];
-
   let rand = Math.floor(Math.random() * 6) + 1;
 
   if (!useracc) {

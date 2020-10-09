@@ -12,9 +12,7 @@ module.exports.run = async (bot, msg, args) => {
         .setTitle("**ERROR**")
         .setColor(0xff0000)
         .setThumbnail(msg.author.avatarURL())
-        .setDescription(
-          "That person isn't in the system, tell them to use the .newbal command."
-        );
+        .setDescription("That person isn't in the system, tell them to use the .newbal command.");
       msg.channel.send(ErrorEmbed);
       return;
     }
@@ -23,11 +21,7 @@ module.exports.run = async (bot, msg, args) => {
       .setTitle("**" + mentioned.user.username + "'S BALANCE**")
       .setColor(0x32cd32)
       .setThumbnail(mentioned.user.avatarURL())
-      .addField(
-        "Balance",
-        economy.get(`${mentioned.id}.bal`),
-        "<:chip:751730576918315048>"
-      );
+      .addField("Balance", economy.get(`${mentioned.id}.bal`), "<:chip:751730576918315048>");
     msg.channel.send(SuccessEmbed);
     return;
   } else {

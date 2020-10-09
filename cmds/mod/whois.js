@@ -49,10 +49,7 @@ module.exports.run = async (bot, msg, args) => {
       },
       {
         name: "Last message in channel: ",
-        value:
-          "<#" +
-          (await msg.guild.members.fetch(Mentioned.id)).lastMessageChannelID +
-          ">",
+        value: "<#" + (await msg.guild.members.fetch(Mentioned.id)).lastMessageChannelID + ">",
         inline: true,
       },
       { name: "Money: ", value: bal, inline: true },

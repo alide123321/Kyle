@@ -53,9 +53,7 @@ module.exports.run = async (bot, msg, args) => {
     .setThumbnail(
       "https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png"
     )
-    .setDescription(
-      `${user}\' was muted by ${msg.member} for the following reason: \`${reason}\``
-    );
+    .setDescription(`${user}\' was muted by ${msg.member} for the following reason: \`${reason}\``);
   msg.channel.send(mute);
 
   var muted = mutelist.get(`muted for_${msg.guild.id}_${mentioned.id}`);

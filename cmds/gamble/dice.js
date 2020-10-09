@@ -24,9 +24,7 @@ module.exports.run = async (bot, msg, args) => {
       .setTitle("**ERROR**")
       .setColor(0xff0000)
       .setThumbnail(msg.author.avatarURL())
-      .setDescription(
-        "What number are you betting on? \n.dice <1/2/3/4/5/6> <Bet>"
-      );
+      .setDescription("What number are you betting on? \n.dice <1/2/3/4/5/6> <Bet>");
     msg.channel.send(ErrorEmbed);
     return;
   }
@@ -36,9 +34,7 @@ module.exports.run = async (bot, msg, args) => {
       .setTitle("**ERROR**")
       .setColor(0xff0000)
       .setThumbnail(msg.author.avatarURL())
-      .setDescription(
-        "What number are you betting on? \n.dice <1/2/3/4/5/6> <Bet>"
-      );
+      .setDescription("What number are you betting on? \n.dice <1/2/3/4/5/6> <Bet>");
     msg.channel.send(ErrorEmbed);
     return;
   }

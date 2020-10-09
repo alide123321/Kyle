@@ -134,9 +134,7 @@ module.exports.run = async (bot, msg, args) => {
     sentMessage.react("👎");
 
     const filter = (reaction, user) => {
-      return (
-        ["👍", "👎"].includes(reaction.emoji.name) && user.id === msg.author.id
-      );
+      return ["👍", "👎"].includes(reaction.emoji.name) && user.id === msg.author.id;
     };
 
     sentMessage
@@ -270,10 +268,7 @@ module.exports.run = async (bot, msg, args) => {
             sentMessage2.react("👎");
 
             const filter = (reaction, user) => {
-              return (
-                ["👍", "👎"].includes(reaction.emoji.name) &&
-                user.id === msg.author.id
-              );
+              return ["👍", "👎"].includes(reaction.emoji.name) && user.id === msg.author.id;
             };
 
             sentMessage2
@@ -404,8 +399,7 @@ module.exports.run = async (bot, msg, args) => {
 
                     const filter = (reaction, user) => {
                       return (
-                        ["👍", "👎"].includes(reaction.emoji.name) &&
-                        user.id === msg.author.id
+                        ["👍", "👎"].includes(reaction.emoji.name) && user.id === msg.author.id
                       );
                     };
 
@@ -979,9 +973,7 @@ module.exports.run = async (bot, msg, args) => {
       .catch((collected) => {
         bet /= 2;
         economy.subtract(`${author}.bal`, bet);
-        msg.reply(
-          "You didn't do anything, so now the game's over. You lost half of your bet."
-        );
+        msg.reply("You didn't do anything, so now the game's over. You lost half of your bet.");
         return;
       });
   });

@@ -1,13 +1,9 @@
 module.exports.run = async (bot, msg, args) => {
-  const talkedRecently = require("../../assets/functions/talked.js")
-    .talkedRecently;
+  const talkedRecently = require("../../assets/functions/talked.js").talkedRecently;
   const sleep = require("../../assets/functions/sleep.js").sleep;
   let text = msg.content;
 
-  if (
-    talkedRecently.has(msg.author.id) &&
-    msg.author.id !== "698051518754062387"
-  ) {
+  if (talkedRecently.has(msg.author.id) && msg.author.id !== "698051518754062387") {
     msg.channel.send("Cooldown 120 sec");
     sleep(1000);
     msg.delete();

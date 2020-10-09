@@ -46,8 +46,12 @@ module.exports.run = async (bot, msg, args) => {
     .setColor("#808080")
     .setTitle("**Unmuted**")
     .setURL("https://discord.gg/gBQc5cm")
-    .setThumbnail("https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png")
-    .setDescription(`${user}\' was unmuted by ${msg.member} for the follwoing reason: \`${reason}\``);
+    .setThumbnail(
+      "https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png"
+    )
+    .setDescription(
+      `${user}\' was unmuted by ${msg.member} for the follwoing reason: \`${reason}\``
+    );
   msg.channel.send(unmute);
 };
 

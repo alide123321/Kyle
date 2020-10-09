@@ -11,9 +11,7 @@ module.exports.run = async (bot, msg, args) => {
     return;
   }
 
-  const prompt = await msg.channel.send(
-    `Hacking ${user ? hacked.user.username : hacked} now...`
-  );
+  const prompt = await msg.channel.send(`Hacking ${user ? hacked.user.username : hacked} now...`);
   sleep(1500);
 
   await prompt.edit("Finding discord login...");

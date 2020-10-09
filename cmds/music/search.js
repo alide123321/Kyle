@@ -11,9 +11,7 @@ module.exports.run = async (bot, msg, args) => {
   if (msg.channel.activeCollector)
     return msg.reply("A message collector is already active in this channel.");
   if (!msg.member.voice.channel)
-    return msg
-      .reply("You need to join a voice channel first!")
-      .catch(console.error);
+    return msg.reply("You need to join a voice channel first!").catch(console.error);
 
   let text = msg.content;
   const search = text.slice(7);
@@ -33,10 +31,7 @@ module.exports.run = async (bot, msg, args) => {
 
     function filter(msg) {
       const pattern = /(^[1-9][0-9]{0,1}$)/g;
-      return (
-        pattern.test(msg.content) &&
-        parseInt(msg.content.match(pattern)[0]) <= 10
-      );
+      return pattern.test(msg.content) && parseInt(msg.content.match(pattern)[0]) <= 10;
     }
 
     msg.channel.activeCollector = true;

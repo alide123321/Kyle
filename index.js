@@ -10,9 +10,7 @@ app.get(`/ranks`, (req, res) => {
   res.send(`use the .ranks to get the top ranks in your server`);
 });
 
-app.listen(port, () =>
-  console.log(`Example app listening at http://localhost:${port}`)
-);
+app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
 
 const Discord = require("discord.js");
 const { Client, Attachment } = require("discord.js");
@@ -226,35 +224,23 @@ bot.on("messageReactionAdd", async (reaction, user) => {
   if (!user || user.bot || !reaction.message.channel.guild) return;
 
   if (reaction.message.channel.id === "709238410732240906")
-    await reaction.message.guild.members.cache
-      .get(user.id)
-      .roles.add("716092067243098174");
+    await reaction.message.guild.members.cache.get(user.id).roles.add("716092067243098174");
 
   if (reaction.message.channel.id === "740809935247507566") {
     if (reaction.emoji.name === "movie_night")
-      await reaction.message.guild.members.cache
-        .get(user.id)
-        .roles.add("740828341069676594");
+      await reaction.message.guild.members.cache.get(user.id).roles.add("740828341069676594");
 
     if (reaction.emoji.name === "game_night")
-      await reaction.message.guild.members.cache
-        .get(user.id)
-        .roles.add("740828344794349658");
+      await reaction.message.guild.members.cache.get(user.id).roles.add("740828344794349658");
 
     if (reaction.emoji.name === "pc")
-      await reaction.message.guild.members.cache
-        .get(user.id)
-        .roles.add("740828981179318343");
+      await reaction.message.guild.members.cache.get(user.id).roles.add("740828981179318343");
 
     if (reaction.emoji.name === "ps")
-      await reaction.message.guild.members.cache
-        .get(user.id)
-        .roles.add("740828983071080470");
+      await reaction.message.guild.members.cache.get(user.id).roles.add("740828983071080470");
 
     if (reaction.emoji.name === "xbox")
-      await reaction.message.guild.members.cache
-        .get(user.id)
-        .roles.add("740828984660590672");
+      await reaction.message.guild.members.cache.get(user.id).roles.add("740828984660590672");
   }
 });
 
@@ -262,35 +248,23 @@ bot.on("messageReactionRemove", async (reaction, user) => {
   if (!user || user.bot || !reaction.message.channel.guild) return;
 
   if (reaction.message.channel.id === "709238410732240906")
-    await reaction.message.guild.members.cache
-      .get(user.id)
-      .roles.remove("716092067243098174");
+    await reaction.message.guild.members.cache.get(user.id).roles.remove("716092067243098174");
 
   if (reaction.message.channel.id === "740809935247507566") {
     if (reaction.emoji.name === "movie_night")
-      await reaction.message.guild.members.cache
-        .get(user.id)
-        .roles.remove("740828341069676594");
+      await reaction.message.guild.members.cache.get(user.id).roles.remove("740828341069676594");
 
     if (reaction.emoji.name === "game_night")
-      await reaction.message.guild.members.cache
-        .get(user.id)
-        .roles.remove("740828344794349658");
+      await reaction.message.guild.members.cache.get(user.id).roles.remove("740828344794349658");
 
     if (reaction.emoji.name === "pc")
-      await reaction.message.guild.members.cache
-        .get(user.id)
-        .roles.remove("740828981179318343");
+      await reaction.message.guild.members.cache.get(user.id).roles.remove("740828981179318343");
 
     if (reaction.emoji.name === "ps")
-      await reaction.message.guild.members.cache
-        .get(user.id)
-        .roles.remove("740828983071080470");
+      await reaction.message.guild.members.cache.get(user.id).roles.remove("740828983071080470");
 
     if (reaction.emoji.name === "xbox")
-      await reaction.message.guild.members.cache
-        .get(user.id)
-        .roles.remove("740828984660590672");
+      await reaction.message.guild.members.cache.get(user.id).roles.remove("740828984660590672");
   }
 });
 
@@ -381,8 +355,7 @@ bot.on("message", async (msg) => {
   if (msg.guild === null) {
     let sender = msg.author;
 
-    if (text.charAt(0) !== ".")
-      sender.send("LOL stupid thats not a command try .help");
+    if (text.charAt(0) !== ".") sender.send("LOL stupid thats not a command try .help");
 
     var dmhelp = [
       "**" + prefix + "help__________will bring up this page**",
@@ -426,9 +399,7 @@ bot.on("message", async (msg) => {
           let embed = new Discord.MessageEmbed()
             .setColor(0x71b3f5)
             .setTitle("Report status:")
-            .setDescription(
-              "Your report has been successfully filed! :upside_down:"
-            );
+            .setDescription("Your report has been successfully filed! :upside_down:");
           Sender.send(embed);
 
           let reportData = new Discord.MessageEmbed()
@@ -577,15 +548,12 @@ function serverstats(member) {
     .get("715444948568244305")
     .setName(
       `Users: ${
-        member.guild.memberCount -
-        member.guild.members.cache.filter((m) => m.user.bot).size
+        member.guild.memberCount - member.guild.members.cache.filter((m) => m.user.bot).size
       }`
     );
   member.guild.channels.cache
     .get("715444951332290591")
-    .setName(
-      `Bots: ${member.guild.members.cache.filter((m) => m.user.bot).size}`
-    );
+    .setName(`Bots: ${member.guild.members.cache.filter((m) => m.user.bot).size}`);
 }
 
 bot.login(process.env.TOKEN); // turn bot online

@@ -29,12 +29,7 @@ module.exports.run = async (bot, msg, args) => {
     return;
   }
 
-  if (
-    args[1] !== "0" &&
-    args[1] !== "1" &&
-    args[1] !== "2" &&
-    args[1] !== "3"
-  ) {
+  if (args[1] !== "0" && args[1] !== "1" && args[1] !== "2" && args[1] !== "3") {
     msg.channel.send(
       "The format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight"
     );
@@ -50,9 +45,7 @@ module.exports.run = async (bot, msg, args) => {
   let text = msg.content;
   let title = text.slice(12);
 
-  msg.channel.send(
-    "What do you want the description to be? You have 60 seconds to type it."
-  );
+  msg.channel.send("What do you want the description to be? You have 60 seconds to type it.");
   let disc = " ";
   msg.channel
     .awaitMessages((m) => m.author.id == msg.author.id, { max: 1, time: 60000 })

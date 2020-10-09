@@ -4,9 +4,7 @@ module.exports = {
     const botChannel = member.guild.me.voice.channel;
 
     if (channel !== botChannel) {
-      // prettier-ignore
-      member.send("You need to join the voice channel first!")
-      .catch(console.error);
+      member.send("You need to join the voice channel first!").catch(console.error);
       return false;
     }
 

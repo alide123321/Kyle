@@ -36,9 +36,7 @@ module.exports.run = async (bot, msg, args) => {
       .setTitle("**ERROR**")
       .setColor(0xff0000)
       .setThumbnail(msg.author.avatarURL())
-      .setDescription(
-        "Please specify an integer value greater than 0. (.pay <#> <@>)"
-      );
+      .setDescription("Please specify an integer value greater than 0. (.pay <#> <@>)");
     msg.channel.send(ErrorEmbed);
     return;
   }
@@ -59,9 +57,7 @@ module.exports.run = async (bot, msg, args) => {
       .setTitle("**ERROR**")
       .setColor(0xff0000)
       .setThumbnail(msg.author.avatarURL())
-      .setDescription(
-        "That person isn't in the system, tell them to use the .newbal command."
-      );
+      .setDescription("That person isn't in the system, tell them to use the .newbal command.");
     msg.channel.send(ErrorEmbed);
     return;
   }

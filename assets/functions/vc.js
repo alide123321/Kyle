@@ -18,18 +18,15 @@ function vc(sound, vol, VC, author, chan) {
 
   if (VC) {
     if (serverQueue) {
-      // prettier-ignore
-      chan.send("I'm busy playing music in a VC right now. Please try again later.") 
-        .then((msg) => {
-          msg.delete({ timeout: 5000 });
-        });
+      chan.send("I'm busy playing music in a VC right now. Please try again later.").then((msg) => {
+        msg.delete({ timeout: 5000 });
+      });
       return;
     }
     VC.join()
       .then((connection) => {
-        // prettier-ignore
-        const dispatcher = connection.play("./assets/sounds/" + sound + ".mp3",{ 
-            volume: vol,
+        const dispatcher = connection.play("./assets/sounds/" + sound + ".mp3", {
+          volume: vol,
         });
 
         dispatcher.on("finish", (end) => {

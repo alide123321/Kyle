@@ -7,20 +7,13 @@ module.exports.run = async (bot, msg, args) => {
   const { channel } = msg.member.voice;
 
   const serverQueue = msg.client.queue.get(msg.guild.id);
-  if (!channel)
-    return msg
-      .reply("You need to join a voice channel first!")
-      .catch(console.error);
+  if (!channel) return msg.reply("You need to join a voice channel first!").catch(console.error);
   if (serverQueue && channel !== msg.guild.me.voice.channel)
-    return msg
-      .reply(`You must be in the same channel as ${msg.client.user}`)
-      .catch(console.error);
+    return msg.reply(`You must be in the same channel as ${msg.client.user}`).catch(console.error);
 
   if (!args[1])
     return msg
-      .reply(
-        `Usage: ${msg.client.prefix}p <YouTube URL | Video Name | Soundcloud URL>`
-      )
+      .reply(`Usage: ${msg.client.prefix}p <YouTube URL | Video Name | Soundcloud URL>`)
       .catch(console.error);
 
   const permissions = channel.permissionsFor(msg.client.user);
@@ -73,10 +66,7 @@ module.exports.run = async (bot, msg, args) => {
     }
   } else if (scRegex.test(url)) {
     try {
-      const trackInfo = await scdl.getInfo(
-        url,
-        process.env.SOUNDCLOUD_CLIENT_ID
-      );
+      const trackInfo = await scdl.getInfo(url, process.env.SOUNDCLOUD_CLIENT_ID);
       song = {
         title: trackInfo.title,
         url: trackInfo.permalink_url,
@@ -84,12 +74,8 @@ module.exports.run = async (bot, msg, args) => {
       };
     } catch (error) {
       if (error.statusCode === 404)
-        return msg
-          .reply("Could not find that Soundcloud track.")
-          .catch(console.error);
-      return msg
-        .reply("There was an error playing that Soundcloud track.")
-        .catch(console.error);
+        return msg.reply("Could not find that Soundcloud track.").catch(console.error);
+      return msg.reply("There was an error playing that Soundcloud track.").catch(console.error);
     }
   } else {
     try {
@@ -102,9 +88,7 @@ module.exports.run = async (bot, msg, args) => {
       };
     } catch (error) {
       console.error(error);
-      return msg
-        .reply("No video was found with a matching title.")
-        .catch(console.error);
+      return msg.reply("No video was found with a matching title.").catch(console.error);
     }
   }
 
@@ -126,9 +110,7 @@ module.exports.run = async (bot, msg, args) => {
     console.error(error);
     msg.client.queue.delete(msg.guild.id);
     await channel.leave();
-    return msg.channel
-      .send(`Could not join the channel: ${error}`)
-      .catch(console.error);
+    return msg.channel.send(`Could not join the channel: ${error}`).catch(console.error);
   }
 };
 

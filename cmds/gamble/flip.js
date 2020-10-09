@@ -6,7 +6,6 @@ module.exports.run = async (bot, msg, args) => {
   let useracc = economy.get(`${author}.bal`);
 
   let bet = args[1];
-
   let rand = Math.floor(Math.random() * 2 - 1) + 1;
 
   if (!useracc) {

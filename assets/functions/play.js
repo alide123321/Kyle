@@ -10,9 +10,7 @@ module.exports = {
     if (!song) {
       queue.channel.leave();
       msg.client.queue.delete(msg.guild.id);
-      return queue.textChannel
-        .send("🚫 Music queue ended.")
-        .catch(console.error);
+      return queue.textChannel.send("🚫 Music queue ended.").catch(console.error);
     }
 
     let stream = null;
@@ -26,17 +24,13 @@ module.exports = {
           stream = await scdl.downloadFormat(
             song.url,
             scdl.FORMATS.OPUS,
-            process.env.SOUNDCLOUD_CLIENT_ID
-              ? process.env.SOUNDCLOUD_CLIENT_ID
-              : undefined
+            process.env.SOUNDCLOUD_CLIENT_ID ? process.env.SOUNDCLOUD_CLIENT_ID : undefined
           );
         } catch (error) {
           stream = await scdl.downloadFormat(
             song.url,
             scdl.FORMATS.MP3,
-            process.env.SOUNDCLOUD_CLIENT_ID
-              ? process.env.SOUNDCLOUD_CLIENT_ID
-              : undefined
+            process.env.SOUNDCLOUD_CLIENT_ID ? process.env.SOUNDCLOUD_CLIENT_ID : undefined
           );
           streamType = "unknown";
         }
@@ -51,9 +45,7 @@ module.exports = {
       return msg.channel.send(`Error: ${error.msg ? error.msg : error}`);
     }
 
-    queue.connection.on("disconnect", () =>
-      msg.client.queue.delete(msg.guild.id)
-    );
+    queue.connection.on("disconnect", () => msg.client.queue.delete(msg.guild.id));
 
     const dispatcher = queue.connection
       .play(stream, { type: streamType })
@@ -105,9 +97,7 @@ module.exports = {
           reaction.users.remove(user).catch(console.error);
           if (!canModifyQueue(member)) return;
           queue.connection.dispatcher.end();
-          queue.textChannel
-            .send(`${user} ⏩ skipped the song`)
-            .catch(console.error);
+          queue.textChannel.send(`${user} ⏩ skipped the song`).catch(console.error);
           collector.stop();
           break;
 
@@ -117,15 +107,11 @@ module.exports = {
           if (queue.playing) {
             queue.playing = !queue.playing;
             queue.connection.dispatcher.pause(true);
-            queue.textChannel
-              .send(`${user} ⏸ paused the music.`)
-              .catch(console.error);
+            queue.textChannel.send(`${user} ⏸ paused the music.`).catch(console.error);
           } else {
             queue.playing = !queue.playing;
             queue.connection.dispatcher.resume();
-            queue.textChannel
-              .send(`${user} ▶ resumed the music!`)
-              .catch(console.error);
+            queue.textChannel.send(`${user} ▶ resumed the music!`).catch(console.error);
           }
           break;
 

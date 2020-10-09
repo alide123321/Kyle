@@ -1,11 +1,11 @@
 module.exports.run = async (bot, msg, args) => {
   const Discord = require("discord.js");
 
-  const helpLink = "https://sites.google.com/view/kyle-bot/home";
-  const codeLink = "https://github.com/alide123321/discordbot";
-  const version = process.env.VERSION;
-  const prefix = process.env.PREFIX;
-  const author = process.env.ALIDE;
+  let helpLink = "https://sites.google.com/view/kyle-bot/home";
+  let codeLink = "https://github.com/alide123321/discordbot";
+  let version = process.env.VERSION;
+  let prefix = process.env.PREFIX;
+  let author = process.env.ALIDE;
 
   let info = new Discord.MessageEmbed()
     .setColor("#0099ff")

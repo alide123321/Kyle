@@ -18,7 +18,6 @@ module.exports.run = async (bot, msg, args) => {
         (economy.get(`${msg.author.id}.bal`) + economy.get(`${mentioned.id}.bal`)))
   ); // probability of falling
 
-  console.log(rand);
   if (probability <= rand) {
     msg.channel.send(`lol it worked. The odds were ${100 - probability}/100`);
     // successful rob

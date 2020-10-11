@@ -27,9 +27,8 @@ const db = require("quick.db");
 var xp = new db.table("xp");
 const XpTimeOut = require("./assets/util/xptimeout.js").XpTimeOut;
 bot.queue = new Map();
-
-var numofcommands = 0;
 bot.commands = new Discord.Collection();
+var numofcommands = 0;
 
 //loading all commands
 

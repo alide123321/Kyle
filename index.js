@@ -13,18 +13,12 @@ app.get(`/ranks`, (req, res) => {
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
 
 const Discord = require("discord.js");
-const { Client, Attachment } = require("discord.js");
 const bot = new Discord.Client({
   partials: ["MESSAGE", "CHANNEL", "REACTION"],
 });
 require("dotenv").config();
 
 const sleep = require("./assets/functions/sleep.js").sleep;
-let options = {
-  total: "channel id",
-  users: "channel id",
-  bots: "channel id",
-};
 
 const prefix = process.env.PREFIX;
 const version = process.env.VERSION;
@@ -347,15 +341,14 @@ const cooldown = require("./assets/functions/cool.js").cooldown;
 bot.on("message", async (msg) => {
   if (msg.author.bot) return;
 
-  let args = msg.content.substring(prefix.length).split(" ");
+  let args = msg.content.toLowerCase().substring(prefix.length).split(" ");
   let text = msg.content.toLowerCase();
   let msgarray = msg.content.split(/\s+/g);
   let command = msgarray[0];
 
   if (msg.guild === null) {
-    let sender = msg.author;
-
-    if (text.charAt(0) !== ".") sender.send("LOL stupid thats not a command try .help");
+    if (text.charAt(0) !== prefix)
+      msg.author.send(`LOL stupid thats not a command try ${prefix}help`);
 
     var dmhelp = [
       "**" + prefix + "help__________will bring up this page**",
@@ -375,14 +368,12 @@ bot.on("message", async (msg) => {
           .setDescription(dmhelp)
           .setFooter("I have diffrent commands if use me inside a server");
 
-        sender.send(help);
+        msg.author.send(help);
 
         break;
       }
 
       case "report": {
-        let Sender = msg.author;
-
         if (!args[1]) {
           const embed = new Discord.MessageEmbed()
             .setColor(0xde3333)
@@ -390,7 +381,7 @@ bot.on("message", async (msg) => {
             .setDescription(
               "What do you want to report (only administrators will see your report)"
             );
-          Sender.send(embed);
+          msg.author.send(embed);
         } else {
           let msgArgs = args.slice(1).join(" ");
 
@@ -400,7 +391,7 @@ bot.on("message", async (msg) => {
             .setColor(0x71b3f5)
             .setTitle("Report status:")
             .setDescription("Your report has been successfully filed! :upside_down:");
-          Sender.send(embed);
+          msg.author.send(embed);
 
           let reportData = new Discord.MessageEmbed()
             .setColor(0x71b3f5)
@@ -422,7 +413,7 @@ bot.on("message", async (msg) => {
             "https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png"
           )
           .setFooter("I have diffrent commands if use me inside a server");
-        sender.send(joinem);
+        msg.author.send(joinem);
 
         break;
       }
@@ -435,7 +426,7 @@ bot.on("message", async (msg) => {
     msg.delete();
   }
 
-  if (text.includes("kys") || text.includes("I wanna die")) {
+  if (text.includes("kys") || text.includes("i wanna die")) {
     msg.channel.send("https://www.healthscience.org/");
   }
 

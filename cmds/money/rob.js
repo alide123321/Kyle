@@ -12,9 +12,11 @@ module.exports.run = async (bot, msg, args) => {
     return msg.channel.send("they are not in the economy tell them to do .newbal");
 
   let rand = Math.floor(Math.random() * 100) + 1;
-  let probability =
-    economy.get(`${msg.author.id}.bal`) /
-    (economy.get(`${msg.author.id}.bal`) + economy.get(`${mentioned.id}.bal`)); // probability of falling
+  let probability = Math.round(
+    100 *
+      (economy.get(`${msg.author.id}.bal`) /
+        (economy.get(`${msg.author.id}.bal`) + economy.get(`${mentioned.id}.bal`)))
+  ); // probability of falling
 
   console.log(rand);
   if (probability <= rand) {

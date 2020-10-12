@@ -20,11 +20,11 @@ module.exports.run = async (bot, msg, args) => {
     );
   if (mentioned) {
     mentioned
-      .send("**" + msg.author.username + " Says Good Morning**")
-      .catch(() => msg.reply("Can't send DM to that user!"));
-    mentioned
       .send(
-        "https://cdn.discordapp.com/attachments/599061991281131531/757130408251883571/videoplayback.mp4"
+        "**" +
+          msg.author.username +
+          " Says Good Morning**\n" +
+          "https://cdn.discordapp.com/attachments/599061991281131531/757130408251883571/videoplayback.mp4"
       )
       .catch(() => msg.reply("Can't send DM to that user!"));
     msg.channel.send("Sent " + mentioned.user.username + " a Good Morning msg");

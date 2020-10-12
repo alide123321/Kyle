@@ -1,34 +1,23 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const Fs = require("fs");
 
+app.listen(3000, () => console.log(`Example app listening at http://localhost:${3000}`));
 app.get("/", (req, res) => {
   res.send("Hello World! this is \nKyle the bot");
 });
-
-app.get(`/ranks`, (req, res) => {
-  res.send(`use the .ranks to get the top ranks in your server`);
-});
-
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
 
 const Discord = require("discord.js");
 const bot = new Discord.Client({
   partials: ["MESSAGE", "CHANNEL", "REACTION"],
 });
-require("dotenv").config();
 
 const sleep = require("./assets/functions/sleep.js").sleep;
-
-const prefix = process.env.PREFIX;
-const version = process.env.VERSION;
-const Fs = require("fs");
-const db = require("quick.db");
-var xp = new db.table("xp");
 const XpTimeOut = require("./assets/util/xptimeout.js").XpTimeOut;
+const cooldown = require("./assets/functions/cool.js").cooldown;
+require("dotenv").config();
 bot.queue = new Map();
 bot.commands = new Discord.Collection();
-var numofcommands = 0;
 
 //loading all commands
 
@@ -46,7 +35,6 @@ Fs.readdir("./cmds/gamble/", (err, files) => {
     console.log(`${i + 1}: ${f} loaded in gamble!`);
     bot.commands.set(props.help.name, props);
     if (props.help.Alias) bot.commands.set(props.help.Alias, props);
-    numofcommands++;
   });
 });
 
@@ -64,7 +52,6 @@ Fs.readdir("./cmds/help/", (err, files) => {
     console.log(`${i + 1}: ${f} loaded in help!`);
     bot.commands.set(props.help.name, props);
     if (props.help.Alias) bot.commands.set(props.help.Alias, props);
-    numofcommands++;
   });
 });
 
@@ -82,7 +69,6 @@ Fs.readdir("./cmds/memes/", (err, files) => {
     console.log(`${i + 1}: ${f} loaded in memes!`);
     bot.commands.set(props.help.name, props);
     if (props.help.Alias) bot.commands.set(props.help.Alias, props);
-    numofcommands++;
   });
 });
 
@@ -100,7 +86,6 @@ Fs.readdir("./cmds/misc/", (err, files) => {
     console.log(`${i + 1}: ${f} loaded in misc!`);
     bot.commands.set(props.help.name, props);
     if (props.help.Alias) bot.commands.set(props.help.Alias, props);
-    numofcommands++;
   });
 });
 
@@ -118,7 +103,6 @@ Fs.readdir("./cmds/mod/", (err, files) => {
     console.log(`${i + 1}: ${f} loaded in mod!`);
     bot.commands.set(props.help.name, props);
     if (props.help.Alias) bot.commands.set(props.help.Alias, props);
-    numofcommands++;
   });
 });
 
@@ -136,7 +120,6 @@ Fs.readdir("./cmds/money/", (err, files) => {
     console.log(`${i + 1}: ${f} loaded in money!`);
     bot.commands.set(props.help.name, props);
     if (props.help.Alias) bot.commands.set(props.help.Alias, props);
-    numofcommands++;
   });
 });
 
@@ -154,7 +137,6 @@ Fs.readdir("./cmds/music/", (err, files) => {
     console.log(`${i + 1}: ${f} loaded in music!`);
     bot.commands.set(props.help.name, props);
     if (props.help.Alias) bot.commands.set(props.help.Alias, props);
-    numofcommands++;
   });
 });
 
@@ -172,7 +154,6 @@ Fs.readdir("./cmds/vc/", (err, files) => {
     console.log(`${i + 1}: ${f} loaded in vc!`);
     bot.commands.set(props.help.name, props);
     if (props.help.Alias) bot.commands.set(props.help.Alias, props);
-    numofcommands++;
   });
 });
 
@@ -180,9 +161,8 @@ Fs.readdir("./cmds/vc/", (err, files) => {
 
 bot.once("ready", () => {
   console.log("Ready!");
-  console.log("prefix:" + prefix);
-  console.log("version:" + version);
-  console.log("Number of Commands:" + numofcommands);
+  console.log("prefix:" + process.env.PREFIX);
+  console.log("version:" + process.env.VERSION);
   console.log("______________________");
   bot.user.setActivity("Im also mod mail DM me");
 });
@@ -336,23 +316,24 @@ bot.on("voiceStateUpdate", async (oldState, newState) => {
   }
 });
 
-const cooldown = require("./assets/functions/cool.js").cooldown;
 bot.on("message", async (msg) => {
   if (msg.author.bot) return;
 
-  let args = msg.content.toLowerCase().substring(prefix.length).split(" ");
+  let args = msg.content.toLowerCase().substring(process.env.PREFIX.length).split(" ");
   let text = msg.content.toLowerCase();
   let msgarray = msg.content.split(/\s+/g);
   let command = msgarray[0];
+  const db = require("quick.db");
+  var xp = new db.table("xp");
 
   if (msg.guild === null) {
-    if (text.charAt(0) !== prefix)
-      msg.author.send(`LOL stupid thats not a command try ${prefix}help`);
+    if (text.charAt(0) !== process.env.PREFIX)
+      msg.author.send(`LOL stupid thats not a command try ${process.env.PREFIX}help`);
 
     var dmhelp = [
-      "**" + prefix + "help__________will bring up this page**",
-      "**" + prefix + "report________to report someone/something in the Wonderland server**", //prettier-ignore
-      "**" + prefix + "join__________send you a server invite link**",
+      "**" + process.env.PREFIX + "help__________will bring up this page**",
+      "**" + process.env.PREFIX + "report________to report someone/something in the Wonderland server**", //prettier-ignore
+      "**" + process.env.PREFIX + "join__________send you a server invite link**",
     ];
 
     switch (args[0]) {
@@ -420,12 +401,12 @@ bot.on("message", async (msg) => {
     return;
   }
 
-  let discordInvite = /(https:\/\/)?(www\.)?(discord\.gg|discord\.me|discordapp\.com\/invite|discord\.com\/invite)\/([a-z0-9-.]+)?/i;
+  let discordInvite = /(https:\/\/)?(www\.)?(discord\.gg|discord\.me|discordapp\.com\/invite|discord\.com\/invite)\/([a-z0-9-.]+)?/i; //checks for links
   if (discordInvite.test(text) && !msg.member.hasPermission("ADMINISTRATOR")) {
     msg.delete();
   }
 
-  if (text.includes("kys") || text.includes("i wanna die")) {
+  if (text.includes("kys") || text.includes("i wanna die") || text.includes("kms")) {
     msg.channel.send("https://www.healthscience.org/");
   }
 
@@ -439,7 +420,7 @@ bot.on("message", async (msg) => {
 
   xp.add(`${msg.guild.id}_${msg.author.id}.msgs`, 1);
 
-  if (!XpTimeOut.has(msg.author.id)) {
+  if (!XpTimeOut.has(`${msg.guild.id}_${msg.author.id}`)) {
     let newxp = Math.floor(Math.random() * 25) + 15;
     xp.add(`${msg.guild.id}_${msg.author.id}.xp`, newxp);
 
@@ -482,9 +463,9 @@ bot.on("message", async (msg) => {
       }
     }
 
-    XpTimeOut.add(msg.author.id);
+    XpTimeOut.add(`${msg.guild.id}_${msg.author.id}`);
     setTimeout(() => {
-      XpTimeOut.delete(msg.author.id);
+      XpTimeOut.delete(`${msg.guild.id}_${msg.author.id}`);
     }, 60000);
   }
 
@@ -499,9 +480,7 @@ bot.on("message", async (msg) => {
         msg.delete();
         let doneem = new Discord.MessageEmbed()
           .setTitle("**!D BUMP**")
-          .setDescription(
-            "Help grow the server by using the command **!d bump** - it helps other people find and join the server to grow the fam!"
-          );
+          .setDescription("Help grow the server by using the command **!d bump** - it helps other people find and join the server to grow the fam!"); // prettier-ignore
         msg.channel.send(doneem);
       } else {
         msg.channel.bulkDelete(1);
@@ -510,7 +489,7 @@ bot.on("message", async (msg) => {
     }
   }
 
-  if (!command.startsWith(prefix)) return;
+  if (!command.startsWith(process.env.PREFIX)) return;
 
   if (cooldown.has(msg.author.id) && msg.author.id !== "698051518754062387") {
     msg.channel.send("Cooldown 3 sec").then((msge) => {
@@ -524,7 +503,7 @@ bot.on("message", async (msg) => {
     cooldown.delete(msg.author.id);
   }, 3000);
 
-  let cmd = bot.commands.get(command.slice(prefix.length));
+  let cmd = bot.commands.get(command.slice(process.env.PREFIX.length));
 
   if (cmd) cmd.run(bot, msg, args);
 });
@@ -536,11 +515,7 @@ function serverstats(member) {
     .setName(`Total Members: ${member.guild.memberCount}`);
   member.guild.channels.cache
     .get("715444948568244305")
-    .setName(
-      `Users: ${
-        member.guild.memberCount - member.guild.members.cache.filter((m) => m.user.bot).size
-      }`
-    );
+    .setName(`Users: ${member.guild.memberCount - member.guild.members.cache.filter((m) => m.user.bot).size}`); // prettier-ignore
   member.guild.channels.cache
     .get("715444951332290591")
     .setName(`Bots: ${member.guild.members.cache.filter((m) => m.user.bot).size}`);

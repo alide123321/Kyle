@@ -5,6 +5,7 @@ const Fs = require("fs");
 
 const cooldown = require("../functions/cool.js").cooldown;
 const XpTimeOut = require("../util/xptimeout.js").XpTimeOut;
+const sleep = require("../../assets/functions/sleep.js").sleep;
 require("dotenv").config();
 
 bot.on("message", async (msg) => {

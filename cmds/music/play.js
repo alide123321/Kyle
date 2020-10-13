@@ -115,6 +115,6 @@ module.exports.run = async (bot, msg, args) => {
 };
 
 module.exports.help = {
-  name: "p",
-  Alias: "play",
+  name: "play",
+  Alias: "p",
 };

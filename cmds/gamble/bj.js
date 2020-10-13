@@ -3,10 +3,9 @@ module.exports.run = async (bot, msg, args) => {
   const db = require("quick.db");
   var economy = new db.table("economy");
   let author = msg.author.id;
-  let useracc = economy.get(`${author}.bal`);
   let bet = args[1];
 
-  if (!useracc) {
+  if (!economy.get(`${author}.bal`)) {
     let ErrorEmbed = new Discord.MessageEmbed()
       .setTitle("**ERROR**")
       .setColor(0xff0000)
@@ -33,7 +32,7 @@ module.exports.run = async (bot, msg, args) => {
     return;
   }
 
-  if (useracc < bet) {
+  if (economy.get(`${author}.bal`) < bet) {
     let ErrorEmbed = new Discord.MessageEmbed()
       .setTitle("**ERROR**")
       .setColor(0xff0000)

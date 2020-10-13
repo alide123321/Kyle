@@ -2,13 +2,11 @@ module.exports.run = async (bot, msg, args) => {
   const Discord = require("discord.js");
   const db = require("quick.db");
   var economy = new db.table("economy");
-  let author = msg.author.id;
-  let useracc = economy.get(`${author}.bal`);
 
   let bet = args[1];
   let rand = Math.floor(Math.random() * 2 - 1) + 1;
 
-  if (!useracc) {
+  if (!economy.get(`${msg.author.id}.bal`)) {
     let ErrorEmbed = new Discord.MessageEmbed()
       .setTitle("**ERROR**")
       .setColor(0xff0000)
@@ -38,7 +36,7 @@ module.exports.run = async (bot, msg, args) => {
     return;
   }
 
-  if (useracc < bet) {
+  if (economy.get(`${msg.author.id}.bal`) < bet) {
     let ErrorEmbed = new Discord.MessageEmbed()
       .setTitle("**ERROR**")
       .setColor(0xff0000)
@@ -49,7 +47,7 @@ module.exports.run = async (bot, msg, args) => {
   }
 
   if (rand === 0) {
-    economy.subtract(`${author}.bal`, bet);
+    economy.subtract(`${msg.author.id}.bal`, bet);
     let SuccessEmbed = new Discord.MessageEmbed()
       .setTitle("**LOSS**")
       .setColor(0xff0000)
@@ -59,7 +57,7 @@ module.exports.run = async (bot, msg, args) => {
   }
 
   if (rand === 1) {
-    economy.add(`${author}.bal`, bet);
+    economy.add(`${msg.author.id}.bal`, bet);
     let SuccessEmbed = new Discord.MessageEmbed()
       .setTitle("**WIN**")
       .setColor(0x32cd32)

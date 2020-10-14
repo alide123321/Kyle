@@ -17,6 +17,10 @@ module.exports.run = async (bot, msg, args) => {
     }
   }
 
+  if (wordarr[pos] === undefined) {
+    return msg.channel.send("that user hasnt sent a message yet");
+  }
+
   var wordsarr = wordarr[pos].data;
 
   for (var k in wordsarr) keys.push(k);
@@ -30,8 +34,7 @@ module.exports.run = async (bot, msg, args) => {
   for (var i = 0; i < 5; ++i) {
     for (var n = 0; n < keys.length; ++n) {
       if (nums[i] === wordsarr[keys[n]]) {
-        let word = keys[n];
-        send.push(`${word.slice(5)}: ${nums[i]}`); // prettier-ignore
+        send.push(`${keys[n].slice(5)}: ${nums[i]}`); // prettier-ignore
         keys.splice(n, 1);
       }
     }

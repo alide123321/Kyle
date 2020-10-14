@@ -163,6 +163,9 @@ bot.on("message", async (msg) => {
   //xp end
 
   //most used word start
+
+  if (!words.has(`${msg.author.id}.sent`)) words.set(`${msg.author.id}.sent`, true);
+
   for (var n = 0; n < argwords.length; ++n) {
     if (argwords[n].startsWith(process.env.PREFIX))
       argwords[n] = argwords[n].slice(process.env.PREFIX.length);

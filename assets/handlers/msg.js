@@ -1,6 +1,7 @@
 const { bot } = require("../../index");
 const db = require("quick.db");
 var xp = new db.table("xp");
+var words = new db.table("words");
 const Fs = require("fs");
 
 const cooldown = require("../functions/cool.js").cooldown;
@@ -12,6 +13,7 @@ bot.on("message", async (msg) => {
   if (msg.author.bot) return;
 
   let args = msg.content.toLowerCase().substring(process.env.PREFIX.length).split(" ");
+  let argwords = msg.content.toLocaleLowerCase().split(" ");
   let text = msg.content.toLowerCase();
   let msgarray = msg.content.split(/\s+/g);
   let command = msgarray[0];
@@ -159,6 +161,20 @@ bot.on("message", async (msg) => {
   }
 
   //xp end
+
+  //most used word start
+  for (var n = 0; n < argwords.length; ++n) {
+    if (argwords[n].startsWith(process.env.PREFIX))
+      argwords[n] = argwords[n].slice(process.env.PREFIX.length);
+
+    if (words.has(`${msg.author.id}.word_${argwords[n]}`)) {
+      words.add(`${msg.author.id}.word_${argwords[n]}`, 1);
+    } else {
+      words.set(`${msg.author.id}.word_${argwords[n]}`, 1);
+    }
+  }
+
+  //most used word end
 
   if (msg.guild.id === "599061990828277770" && msg.channel.id === "716206448970825799") {
     //removes !d bump

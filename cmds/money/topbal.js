@@ -17,8 +17,7 @@ module.exports.run = async (bot, msg, args) => {
     usersplayingmoney.push(economy.get(`${usersplaying[x]}.bal`));
   }
 
-  usersplayingmoney.sort((a, b) => a - b);
-  usersplayingmoney.reverse();
+  usersplayingmoney.sort((a, b) => b - a);
 
   var removed = usersplayingmoney.splice(0, 5);
   usersplayingmoney = removed;

@@ -25,6 +25,7 @@ function vc(sound, vol, VC, author, chan) {
     }
     VC.join()
       .then((connection) => {
+        connection.voice.setSelfDeaf(true);
         const dispatcher = connection.play("./assets/sounds/" + sound + ".mp3", {
           volume: vol,
         });

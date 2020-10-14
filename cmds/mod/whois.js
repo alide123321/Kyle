@@ -3,11 +3,8 @@ module.exports.run = async (bot, msg, args) => {
   let Mentioned = msg.mentions.members.first();
   const db = require("quick.db");
   var economy = new db.table("economy");
-  let bal = economy.get(`${Mentioned.id}.bal`);
   var warn = new db.table("warn");
-  let warnings = warn.get(`warnings_${msg.guild.id}_${Mentioned.id}`);
   var mutelist = new db.table("mutelist");
-  var muted = mutelist.get(`muted for_${msg.guild.id}_${Mentioned.id}`);
 
   if (!msg.member.hasPermission("ADMINISTRATOR")) {
     msg.channel.send("Dumb, dumb, you're not an admin.");
@@ -22,6 +19,9 @@ module.exports.run = async (bot, msg, args) => {
     msg.channel.send(ErrorEmbed);
     return;
   }
+  let bal = economy.get(`${Mentioned.id}.bal`);
+  let warnings = warn.get(`warnings_${msg.guild.id}_${Mentioned.id}`);
+  var muted = mutelist.get(`muted for_${msg.guild.id}_${Mentioned.id}`);
 
   let whois = new Discord.MessageEmbed()
     .setColor("#0099ff")

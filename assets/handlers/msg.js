@@ -183,7 +183,11 @@ bot.on("message", async (msg) => {
     //removes !d bump
     if (text.slice(0, 7) == "!d bump") {
       sleep(3000);
-      msg.channel.bulkDelete(2);
+      try {
+        msg.channel.bulkDelete(2);
+      } catch (error) {
+        msg.channel.send(`error ${error}`);
+      }
     } else if (text.slice(0, 4) == "redo") {
       msg.delete();
       let doneem = new Discord.MessageEmbed()

@@ -10,7 +10,11 @@ module.exports.run = async (bot, msg, args) => {
 
     if (args[1] > 100) return msg.channel.send("You can only delete 99 messages at a time.");
 
-    msg.channel.bulkDelete(args[1]).catch(console.error);
+    try {
+      msg.channel.bulkDelete(args[1]).catch(console.error);
+    } catch (error) {
+      msg.channel.send(`error ${error}`);
+    }
   } else {
     return msg.reply("Error: You dont have administrator perms.");
   }

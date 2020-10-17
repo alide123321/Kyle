@@ -10,11 +10,6 @@ const sleep = require("../../assets/functions/sleep.js").sleep;
 require("dotenv").config();
 
 bot.on("message", async (msg) => {
-  if (msg.author.id === "388866947061645322") {
-    msg.delete();
-    msg.author.send("no my meme page is the best");
-  }
-
   if (msg.author.bot) return;
 
   let args = msg.content.toLowerCase().substring(process.env.PREFIX.length).split(" ");

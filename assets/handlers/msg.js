@@ -96,6 +96,7 @@ bot.on("message", async (msg) => {
   let discordInvite = /(https:\/\/)?(www\.)?(discord\.gg|discord\.me|discordapp\.com\/invite|discord\.com\/invite)\/([a-z0-9-.]+)?/i; //checks for links
   if (discordInvite.test(text) && !msg.member.hasPermission("ADMINISTRATOR")) {
     msg.delete();
+    return;
   }
 
   if (text.includes("kys") || text.includes("i wanna die") || text.includes("kms")) {

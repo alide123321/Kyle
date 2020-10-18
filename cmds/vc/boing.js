@@ -4,7 +4,7 @@ module.exports.run = async (bot, msg, args) => {
   var VC = msg.member.voice.channel;
   vc("boing", 0.5, VC, msg.author.id, msg.channel);
   msg.channel.send(
-    "https://cdn.discordapp.com/attachments/752042865349230662/759799959229825104/Zias_Stop_The_Cap.mp4"
+    "https://cdn.discordapp.com/attachments/707451317626470455/767339717326667806/video0.mp4"
   );
 };
 

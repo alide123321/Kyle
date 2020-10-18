@@ -16,24 +16,24 @@ module.exports.run = async (bot, msg, args) => {
 
   if (!mentioned)
     msg.channel.send(
-      "https://cdn.discordapp.com/attachments/599061991281131531/751735078203293726/118375543_164947441915565_6934644620562947858_n.mp4"
+      "https://cdn.discordapp.com/attachments/599061991281131531/767378167408885810/video0.mov"
     );
   else {
     mentioned
       .send(
         "**" +
           msg.author.username +
-          " Says Good Night**\n" +
-          "https://cdn.discordapp.com/attachments/599061991281131531/751735078203293726/118375543_164947441915565_6934644620562947858_n.mp4"
+          " Says Sorry**\n" +
+          "https://cdn.discordapp.com/attachments/599061991281131531/767378167408885810/video0.mov"
       )
       .catch(() => {
         return msg.reply("Can't send DM to that user!");
       });
-    msg.channel.send("Sent " + mentioned.user.username + " a Good Night msg");
+    msg.channel.send("Sent " + mentioned.user.username + " a sorry msg");
   }
 };
 
 module.exports.help = {
-  name: "gn",
-  Alias: "goodnight",
+  name: "sorry",
+  Alias: "sry",
 };

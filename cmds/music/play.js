@@ -1,9 +1,10 @@
-const { play } = require("../../assets/functions/play.js");
-const ytdl = require("ytdl-core");
-const YouTubeAPI = require("simple-youtube-api");
-const youtube = new YouTubeAPI(process.env.YOUTUBE_API_KEY);
-const scdl = require("soundcloud-downloader");
 module.exports.run = async (bot, msg, args) => {
+  const { play } = require("../../assets/functions/play.js");
+  const ytdl = require("ytdl-core");
+  const YouTubeAPI = require("simple-youtube-api");
+  const youtube = new YouTubeAPI(process.env.YOUTUBE_API_KEY);
+  const scdl = require("soundcloud-downloader");
+
   const { channel } = msg.member.voice;
 
   const serverQueue = msg.client.queue.get(msg.guild.id);
@@ -30,10 +31,9 @@ module.exports.run = async (bot, msg, args) => {
   const playlistPattern = /^.*(list=)([^#\&\?]*).*/gi;
   const scRegex = /^https?:\/\/(soundcloud\.com)\/(.*)$/;
   const url = args[1];
-  const urlValid = videoPattern.test(args[1]);
 
   // Start the playlist if playlist url was provided
-  if (!videoPattern.test(args[1]) && playlistPattern.test(args[1])) {
+  if (!videoPattern.test(url) && playlistPattern.test(url)) {
     return msg.client.commands.get("playlist").execute(msg, args);
   } else if (scdl.isValidUrl(url) && url.includes("/sets/")) {
     return msg.client.commands.get("playlist").execute(msg, args);
@@ -52,7 +52,7 @@ module.exports.run = async (bot, msg, args) => {
   let songInfo = null;
   let song = null;
 
-  if (urlValid) {
+  if (videoPattern.test(url)) {
     try {
       songInfo = await ytdl.getInfo(url);
       song = {
@@ -62,7 +62,7 @@ module.exports.run = async (bot, msg, args) => {
       };
     } catch (error) {
       console.error(error);
-      return msg.reply(error.msg).catch(console.error);
+      return msg.reply(error.message).catch(console.error);
     }
   } else if (scRegex.test(url)) {
     try {

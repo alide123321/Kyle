@@ -20,7 +20,7 @@ module.exports.run = async (bot, msg, args) => {
 
     let musichelp = new Discord.MessageEmbed()
       .setColor("#0099ff")
-      .setTitle("**Mod commands**")
+      .setTitle("**Music commands**")
       .setURL(helplink)
       .setThumbnail(
         "https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png"

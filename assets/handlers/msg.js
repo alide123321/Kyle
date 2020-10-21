@@ -172,7 +172,7 @@ bot.on("message", async (msg) => {
       argwords[n] = argwords[n].slice(process.env.PREFIX.length);
 
     if (words.has(`${msg.author.id}.word_${argwords[n]}`)) {
-      words.add(`${msg.author.id}.word_${argwords[n]}`, 1).catch(console.error());
+      words.add(`${msg.author.id}.word_${argwords[n]}`, 1);
     } else {
       words.set(`${msg.author.id}.word_${argwords[n]}`, 1);
     }

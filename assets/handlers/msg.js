@@ -12,7 +12,7 @@ require("dotenv").config();
 bot.on("message", async (msg) => {
   if (msg.author.bot) return;
 
-  let args = msg.content.toLowerCase().substring(process.env.PREFIX.length).split(" ");
+  let args = msg.content.toLowerCase().substring(process.env.PREFIX.length).split(/\s+/g);
   let argwords = msg.content.toLocaleLowerCase().split(/\s+/g);
   let text = msg.content.toLowerCase();
   let msgarray = msg.content.split(/\s+/g);

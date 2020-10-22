@@ -16,7 +16,7 @@ bot.on("message", async (msg) => {
   let argwords = msg.content.toLocaleLowerCase().split(/\s+/g);
   let text = msg.content.toLowerCase();
   let msgarray = msg.content.split(/\s+/g);
-  let command = msgarray[0];
+  let command = msgarray[0].toLowerCase();
 
   if (msg.guild === null) {
     if (text.charAt(0) !== process.env.PREFIX)

@@ -166,7 +166,7 @@ bot.on("message", async (msg) => {
 
   //most used word start
 
-  if (!words.has(`${msg.author.id}.sent`)) words.set(`${msg.author.id}.sent`, true);
+  words.set(`${msg.author.id}.sent`, true);
 
   for (var n = 0; n < argwords.length; ++n) {
     if (argwords[n].startsWith(process.env.PREFIX))

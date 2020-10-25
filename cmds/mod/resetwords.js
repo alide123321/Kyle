@@ -1,40 +1,36 @@
 module.exports.run = async (bot, msg, args) => {
-  const Discord = require("discord.js");
   const db = require("quick.db");
   var words = new db.table("words");
+  let user = msg.author;
+  let mention = msg.mentions.users.first();
 
-  if (msg.author.id !== "698051518754062387") {
-    msg.channel.send("Only Alide can use this command");
-    return;
-  }
-
-  var allusers = (await msg.guild.members.fetch()).keyArray("id");
-  var users = [];
-  var keys = [];
-  var finishedusers = [];
-
-  for (var x = 0; x <= allusers.length; ++x) {
-    if (words.has(`${allusers[x]}.sent`)) users.push(allusers[x]);
-  }
-
-  for (var u = 0; u < users.length; ++u) {
-    let wordarr = words.all(`${users[u]}.word_`, { sort: ".data" });
-
-    for (var w = 0; w < wordarr.length; ++w) {
-      var wordsarr = wordarr[w].data;
-
-      for (var k in wordsarr) {
-        words.delete(`${users[u]}.word_${k.slice(5)}`);
-      }
-      finishedusers.push((await msg.guild.members.fetch(users[u])).displayName);
+  if (mention) {
+    if (msg.author.id === "698051518754062387") {
+      user = mention;
+    } else {
+      return msg.channel.send(`only ${process.env.ALIDE} can reset other people`);
     }
   }
 
-  const embed = new Discord.MessageEmbed()
-    .setColor(0xb33076)
-    .setTitle("Reseted")
-    .setDescription(finishedusers);
-  msg.channel.send(embed);
+  if (!words.has(`${user.id}.sent`)) return msg.channel.send("that user hasnt sent a message yet");
+
+  words.set(`${user.id}.sent`, false);
+
+  let wordarr = words.all(`${user.id}.word_`, { sort: ".data" });
+  let pos = null;
+
+  for (var i = 0; i <= wordarr.length; ++i) {
+    if (wordarr[i].ID === user.id) {
+      pos = i;
+      i += wordarr.length + 1;
+    }
+  }
+
+  var wordsarr = wordarr[pos].data;
+
+  for (var k in wordsarr) words.delete(`${user.id}.word_${k.slice(5)}`);
+
+  msg.channel.send("done.");
 };
 
 module.exports.help = {

@@ -4,7 +4,7 @@ module.exports.run = async (bot, msg, args) => {
   let mentioned = msg.mentions.members.first();
 
   if (mentioned) {
-    if (mentioned.id === "698051518754062387") perc = "-0";
+    if (mentioned.id === "698051518754062387" || mentioned.id === "723144931153281104") perc = "-0";
     let menEmbed = new Discord.MessageEmbed()
       .setTitle("**Using the gay detector on " + mentioned.user.username + "**")
       .setColor(0x32cd32)
@@ -13,7 +13,8 @@ module.exports.run = async (bot, msg, args) => {
     msg.channel.send(menEmbed);
     return;
   } else {
-    if (msg.author.id === "698051518754062387") perc = "-0";
+    if (msg.author.id === "698051518754062387" || msg.author.id === "723144931153281104")
+      perc = "-0";
     let authEmbed = new Discord.MessageEmbed()
       .setTitle("**Using the gay detector on " + msg.author.username + "**")
       .setColor(0x32cd32)

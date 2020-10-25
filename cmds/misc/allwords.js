@@ -47,7 +47,7 @@ module.exports.run = async (bot, msg, args) => {
     .setColor("#0099ff")
     .setThumbnail(user.avatarURL())
     .setDescription(send);
-  user.send(topwordem);
+  msg.author.send(topwordem);
 };
 
 module.exports.help = {

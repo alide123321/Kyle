@@ -31,10 +31,18 @@ module.exports.run = async (bot, msg, args) => {
 
   nums.sort((a, b) => b - a);
 
+  let topwordem = new Discord.MessageEmbed()
+    .setTitle("**all the words you said**")
+    .setColor("#0099ff")
+    .setThumbnail(user.avatarURL());
+
   for (var i = 0; i < nums.length; ++i) {
     for (var n = 0; n < keys.length; ++n) {
       if (nums[i] === wordsarr[keys[n]]) {
-        send.push(`${keys[n].slice(5)}: ${nums[i]}`); // prettier-ignore
+        topwordem.addFields({
+          name: `${i + 1}) ${(await msg.guild.members.fetch(users[n])).displayName}`,
+          value: nums[i],
+        });
         keys.splice(n, 1);
       }
     }
@@ -42,11 +50,6 @@ module.exports.run = async (bot, msg, args) => {
 
   msg.channel.send("Check your DM'S");
 
-  let topwordem = new Discord.MessageEmbed()
-    .setTitle("**all the words you said**")
-    .setColor("#0099ff")
-    .setThumbnail(user.avatarURL())
-    .setDescription(send);
   msg.author.send(topwordem);
 };
 

@@ -1,15 +1,16 @@
 const { bot } = require("../../index");
-const db = require("quick.db");
-var xp = new db.table("xp");
-var words = new db.table("words");
-const Fs = require("fs");
-
-const cooldown = require("../functions/cool.js").cooldown;
-const XpTimeOut = require("../util/xptimeout.js").XpTimeOut;
-const sleep = require("../../assets/functions/sleep.js").sleep;
-require("dotenv").config();
 
 bot.on("message", async (msg) => {
+  const db = require("quick.db");
+  var xp = new db.table("xp");
+  var words = new db.table("words");
+  const Fs = require("fs");
+
+  const cooldown = require("../functions/cool.js").cooldown;
+  const XpTimeOut = require("../util/xptimeout.js").XpTimeOut;
+  const sleep = require("../../assets/functions/sleep.js").sleep;
+  require("dotenv").config();
+
   if (msg.author.bot) return;
 
   let args = msg.content.toLowerCase().substring(process.env.PREFIX.length).split(/\s+/g);

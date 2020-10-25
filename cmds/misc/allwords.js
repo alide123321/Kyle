@@ -40,8 +40,9 @@ module.exports.run = async (bot, msg, args) => {
     for (var n = 0; n < keys.length; ++n) {
       if (nums[i] === wordsarr[keys[n]]) {
         topwordem.addFields({
-          name: `${i + 1}) ${(await msg.guild.members.fetch(users[n])).displayName}`,
+          name: keys[n],
           value: nums[i],
+          inline: true,
         });
         keys.splice(n, 1);
       }

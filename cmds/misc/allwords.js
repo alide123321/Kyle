@@ -31,6 +31,8 @@ module.exports.run = async (bot, msg, args) => {
 
   nums.sort((a, b) => b - a);
 
+  let maxcount = 0;
+
   let topwordem = new Discord.MessageEmbed()
     .setTitle("**all the words you said**")
     .setColor("#0099ff")
@@ -39,11 +41,13 @@ module.exports.run = async (bot, msg, args) => {
   for (var i = 0; i < nums.length; ++i) {
     for (var n = 0; n < keys.length; ++n) {
       if (nums[i] === wordsarr[keys[n]]) {
+        if (maxcount >= 5500) i += nums.length + 1;
         topwordem.addFields({
           name: keys[n],
           value: nums[i],
           inline: true,
         });
+        maxcount += keys[n].length + nums[i].length;
         keys.splice(n, 1);
       }
     }

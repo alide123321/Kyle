@@ -198,7 +198,7 @@ bot.on("message", async (msg) => {
       msg.channel.send(doneem);
     } else {
       msg.channel.bulkDelete(1);
-      return response(1);
+      return;
     }
   }
 

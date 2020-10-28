@@ -4,7 +4,7 @@ module.exports.run = async (bot, msg, args) => {
   var economy = new db.table("economy");
   let author = msg.author.id;
 
-  if (economy.has(author) === true) {
+  if (economy.has(`${author}.bal`)) {
     let SuccessEmbed = new Discord.MessageEmbed()
       .setTitle("**ERORR**")
       .setColor(0x0099ff)

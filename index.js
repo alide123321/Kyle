@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const Discord = require("discord.js");
-const bot = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"] });
+const bot = new Discord.Client();
 require("dotenv").config();
 bot.queue = new Map();
 bot.commands = new Discord.Collection();

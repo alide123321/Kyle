@@ -172,10 +172,10 @@ bot.on("message", async (msg) => {
     if (argwords[n].startsWith(process.env.PREFIX))
       argwords[n] = argwords[n].slice(process.env.PREFIX.length);
 
-    if (words.has(`${parseInt(msg.author.id)}.word_${argwords[n]}`)) {
-      words.add(`${parseInt(msg.author.id)}.word_${argwords[n]}`, 1);
+    if (words.has(`${msg.author.id}.word_${argwords[n]}`)) {
+      words.add(`${msg.author.id}.word_${argwords[n]}`, parseInt(1));
     } else {
-      words.set(`${parseInt(msg.author.id)}.word_${argwords[n]}`, 1);
+      words.set(`${msg.author.id}.word_${argwords[n]}`, parseInt(1));
     }
   }
 

@@ -4,6 +4,8 @@ module.exports.run = async (bot, msg, args) => {
   var words = new db.table("words");
   let user = msg.mentions.users.first() || msg.author;
 
+  if(user.bot) return msg.channel.send("no");
+
   let wordarr = words.all(`${user.id}.word_`, { sort: ".data" });
   let pos = null;
   var keys = [];

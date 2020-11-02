@@ -30,7 +30,7 @@ module.exports.run = async (bot, msg, args) => {
       },
       {
         name: "Online Users: ",
-        value: `${online} / ${users}`,
+        value: `${online - bots} / ${users}`,
         inline: true,
       },
       {

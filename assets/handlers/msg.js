@@ -1,6 +1,7 @@
 const { bot } = require("../../index");
 
 bot.on("message", async (msg) => {
+  const Discord = require("discord.js");
   const db = require("quick.db");
   var xp = new db.table("xp");
   var words = new db.table("words");

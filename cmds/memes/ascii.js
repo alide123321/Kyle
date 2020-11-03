@@ -9,8 +9,8 @@ module.exports.run = async (bot, msg, args) => {
     return msg.channel.send("unsuported format");
   var options = {
     fit: "box",
-    width: 40,
-    height: 40,
+    width: 30,
+    height: 30,
     color: false,
   };
   var optionsOut = {

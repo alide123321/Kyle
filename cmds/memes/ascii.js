@@ -5,7 +5,7 @@ module.exports.run = async (bot, msg, args) => {
 
   if (!link) return msg.channel.send("Please give me a link");
 
-  if (!link.endsWith(".jpg") && !link.endsWith(".gif"))
+  if (!link.endsWith(".jpg") && !link.endsWith(".gif") && !link.endsWith(".png"))
     return msg.channel.send("unsuported format");
   var options = {
     fit: "box",

@@ -5,7 +5,7 @@ module.exports.run = async (bot, msg, args) => {
 
   if (!args.length)
     return msg
-      .reply(`Usage: ${msg.client.prefix}${module.exports.name} <Video Name>`)
+      .reply(`Usage: ${process.env.PREFIX}${module.exports.name} <Video Name>`)
       .catch(console.error);
   if (msg.channel.activeCollector)
     return msg.reply("A message collector is already active in this channel.");
@@ -13,7 +13,7 @@ module.exports.run = async (bot, msg, args) => {
     return msg.reply("You need to join a voice channel first!").catch(console.error);
 
   let text = msg.content;
-  const search = text.slice(7);
+  let search = text.slice(7);
 
   let resultsEmbed = new MessageEmbed()
     .setTitle(`**Reply with the song number you want to play**`)
@@ -22,9 +22,9 @@ module.exports.run = async (bot, msg, args) => {
 
   try {
     const results = await youtube.searchVideos(search, 10);
-    results.map((video, index) =>
-      resultsEmbed.addField(video.shortURL, `${index + 1}. ${video.title}`)
-    );
+    results.map((video, index) => {
+      resultsEmbed.addField(video.shortURL, `${index + 1}. ${video.title}`);
+    });
 
     var resultsMessage = await msg.channel.send(resultsEmbed);
 

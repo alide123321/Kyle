@@ -1,11 +1,12 @@
 const ytdlDiscord = require("ytdl-core-discord");
 const scdl = require("soundcloud-downloader");
 const { canModifyQueue } = require("../util/Kylebotutil");
+const parseMilliseconds = require("parse-ms");
 
 module.exports = {
   async play(song, msg) {
-    const PRUNING = process.env.PRUNING;
-    const queue = msg.client.queue.get(msg.guild.id);
+    let PRUNING = process.env.PRUNING;
+    let queue = msg.client.queue.get(msg.guild.id);
 
     if (!song) {
       queue.channel.leave();
@@ -42,7 +43,7 @@ module.exports = {
       }
 
       console.error(error);
-      return msg.channel.send(`Error: ${error.msg ? error.msg : error}`);
+      return msg.channel.send(`Error: ${error.message ? error.message : error}`);
     }
 
     queue.connection.on("disconnect", () => msg.client.queue.delete(msg.guild.id));
@@ -72,8 +73,14 @@ module.exports = {
     dispatcher.setVolumeLogarithmic(queue.volume / 100);
 
     try {
+      let time = parseMilliseconds(song.duration * 1000);
+      let min = time.minutes;
+      let sec = time.seconds;
+      if (min < 10) min = `0${min}`;
+      if (sec < 10) sec = `0${sec}`;
+
       var playingMessage = await queue.textChannel.send(
-        `🎶 Started playing: **${song.title}** ${song.url}`
+        `🎶 Started playing: **${song.title}** - [${min}:${sec}]`
       );
       await playingMessage.react("⏭");
       await playingMessage.react("⏯");

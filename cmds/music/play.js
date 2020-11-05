@@ -1,10 +1,11 @@
-module.exports.run = async (bot, msg, args) => {
-  const { play } = require("../../assets/functions/play.js");
-  const ytdl = require("ytdl-core");
-  const YouTubeAPI = require("simple-youtube-api");
-  const youtube = new YouTubeAPI(process.env.YOUTUBE_API_KEY);
-  const scdl = require("soundcloud-downloader");
+const { play } = require("../../assets/functions/play.js");
+const ytdl = require("ytdl-core");
+const YouTubeAPI = require("simple-youtube-api");
+const youtube = new YouTubeAPI(process.env.YOUTUBE_API_KEY);
+const scdl = require("soundcloud-downloader");
+const parseMilliseconds = require("parse-ms");
 
+module.exports.run = async (bot, msg, args) => {
   const { channel } = msg.member.voice;
 
   const serverQueue = msg.client.queue.get(msg.guild.id);
@@ -12,30 +13,33 @@ module.exports.run = async (bot, msg, args) => {
   if (serverQueue && channel !== msg.guild.me.voice.channel)
     return msg.reply(`You must be in the same channel as ${msg.client.user}`).catch(console.error);
 
-  if (!args[1])
+  if (!args.length)
     return msg
-      .reply(`Usage: ${msg.client.prefix}p <YouTube URL | Video Name | Soundcloud URL>`)
+      .reply(`Usage: ${msg.client.prefix}play <YouTube URL | Video Name | Soundcloud URL>`)
       .catch(console.error);
 
   const permissions = channel.permissionsFor(msg.client.user);
   if (!permissions.has("CONNECT"))
-    return msg.reply("Cannot connect to voice channel, missing permissions.");
+    return msg.reply("Cannot connect to voice channel, missing permissions");
   if (!permissions.has("SPEAK"))
     return msg.reply(
       "I cannot speak in this voice channel, make sure I have the proper permissions!"
     );
 
-  let text = msg.content;
-  const search = text.slice(2);
-  const videoPattern = /^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
+  const search = args.join(" ");
+  const videoPattern = /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/gm;
   const playlistPattern = /^.*(list=)([^#\&\?]*).*/gi;
   const scRegex = /^https?:\/\/(soundcloud\.com)\/(.*)$/;
-  const url = args[1];
+  const url = args[0];
+  const urlValid = videoPattern.test(args[0]);
+  let songInfo = null;
+  let song = null;
 
   // Start the playlist if playlist url was provided
-  if (!videoPattern.test(url) && playlistPattern.test(url)) {
-    return msg.client.commands.get("playlist").execute(msg, args);
-  } else if (scdl.isValidUrl(url) && url.includes("/sets/")) {
+  if (
+    (!videoPattern.test(args[0]) && playlistPattern.test(args[0])) ||
+    (scdl.isValidUrl(url) && url.includes("/sets/"))
+  ) {
     return msg.client.commands.get("playlist").execute(msg, args);
   }
 
@@ -49,10 +53,7 @@ module.exports.run = async (bot, msg, args) => {
     playing: true,
   };
 
-  let songInfo = null;
-  let song = null;
-
-  if (videoPattern.test(url)) {
+  if (urlValid) {
     try {
       songInfo = await ytdl.getInfo(url);
       song = {
@@ -62,11 +63,11 @@ module.exports.run = async (bot, msg, args) => {
       };
     } catch (error) {
       console.error(error);
-      return msg.reply(error.message).catch(console.error);
+      return msg.reply(error.msg).catch(console.error);
     }
   } else if (scRegex.test(url)) {
     try {
-      const trackInfo = await scdl.getInfo(url, process.env.SOUNDCLOUD_CLIENT_ID);
+      let trackInfo = await scdl.getInfo(url, process.env.SOUNDCLOUD_CLIENT_ID);
       song = {
         title: trackInfo.title,
         url: trackInfo.permalink_url,
@@ -79,7 +80,9 @@ module.exports.run = async (bot, msg, args) => {
     }
   } else {
     try {
-      const results = await youtube.searchVideos(search, 1);
+      let results = await youtube.searchVideos(search, 1).catch((err) => {
+        return msg.channel.send("Coudnt find the video \n*Erorr " + err);
+      });
       songInfo = await ytdl.getInfo(results[0].url);
       song = {
         title: songInfo.videoDetails.title,
@@ -88,14 +91,22 @@ module.exports.run = async (bot, msg, args) => {
       };
     } catch (error) {
       console.error(error);
-      return msg.reply("No video was found with a matching title.").catch(console.error);
+      return msg.reply("No video was found with a matching title").catch(console.error);
     }
   }
 
   if (serverQueue) {
     serverQueue.songs.push(song);
+    let time = parseMilliseconds(song.duration * 1000);
+    let min = time.minutes;
+    let sec = time.seconds;
+    if (min < 10) min = `0${min}`;
+    if (sec < 10) sec = `0${sec}`;
+
     return serverQueue.textChannel
-      .send(`✅ **${song.title}** has been added to the queue by ${msg.author}`)
+      .send(
+        `✅ **${song.title}** has been added to the queue by ${msg.author} song duration: [${min}:${sec}]`
+      )
       .catch(console.error);
   }
 

@@ -82,6 +82,7 @@ bot.on("message", async (msg) => {
           .setColor(0x0099ff)
           .setTitle("Click Here to join back")
           .setURL("https://discord.gg/z4FpxSJ")
+          .setDescription("https://discord.gg/z4FpxSJ")
           .setThumbnail(
             "https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png"
           )
@@ -163,7 +164,6 @@ bot.on("message", async (msg) => {
   }
 
   //xp end
-
 
   if (msg.guild.id === "599061990828277770" && msg.channel.id === "716206448970825799") {
     //removes !d bump

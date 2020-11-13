@@ -4,17 +4,23 @@ module.exports.run = async (bot, msg, args) => {
   let text = msg.content;
 
   if (text.includes("@here") || text.includes("@everyone")) {
-    msg.channel.send("NO!");
+    msg.channel.send("NO!").then((smsg) => {
+      smsg.delete({ timeout: 5000 });
+    });
     return;
   }
 
   if (!args[1]) {
-    msg.channel.send("Who would you like to anonymously DM?");
+    msg.channel.send("Who would you like to anonymously DM?").then((smsg) => {
+      smsg.delete({ timeout: 5000 });
+    });
     return;
   }
 
-  if (!args[1].includes("@")) {
-    msg.channel.send("Who would you like to anonymously DM?");
+  if (!mention) {
+    msg.channel.send("Who would you like to anonymously DM?").then((smsg) => {
+      smsg.delete({ timeout: 5000 });
+    });
     return;
   }
 
@@ -22,7 +28,12 @@ module.exports.run = async (bot, msg, args) => {
     .setColor(0xb33076)
     .setTitle("Anonymous Message")
     .setDescription(text.slice(6));
-  mention.send(embed).catch(() => msg.reply("Can't send DM to that user!"));
+
+  mention.send(embed).catch(() =>
+    msg.reply("Can't send DM to that user!").then((smsg) => {
+      smsg.delete({ timeout: 5000 });
+    })
+  );
 
   msg.channel.bulkDelete(1);
 };

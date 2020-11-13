@@ -27,8 +27,7 @@ module.exports.run = async (bot, msg, args) => {
     msg.channel.send(WarningEmbed);
   } else {
     economy.add(`${msg.author.id}.bal`, 50);
-    economy.subtract(`${msg.author.id}.lc`, lc);
-    economy.add(`${msg.author.id}.lc`, new Date().getTime());
+    economy.set(`${msg.author.id}.lc`, new Date().getTime());
     let SuccessEmbed = new Discord.MessageEmbed()
       .setTitle("**SUCCESS**")
       .setColor(0x32cd32)

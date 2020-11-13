@@ -2,12 +2,7 @@ const { bot } = require("../../index");
 
 bot.on("message", async (msg) => {
   const Discord = require("discord.js");
-  const db = require("quick.db");
-  var xp = new db.table("xp");
-  const Fs = require("fs");
-
   const cooldown = require("../functions/cool.js").cooldown;
-  const XpTimeOut = require("../util/xptimeout.js").XpTimeOut;
   const sleep = require("../../assets/functions/sleep.js").sleep;
   require("dotenv").config();
 
@@ -104,66 +99,6 @@ bot.on("message", async (msg) => {
   if (text.includes("kys") || text.includes("i wanna die") || text.includes("kms")) {
     msg.channel.send("https://www.healthscience.org/");
   }
-
-  //xp start
-
-  if (!xp.has(`${msg.guild.id}_${msg.author.id}.msgs`)) {
-    xp.set(`${msg.guild.id}_${msg.author.id}.xp`, 0);
-    xp.set(`${msg.guild.id}_${msg.author.id}.lvl`, 0);
-    xp.set(`${msg.guild.id}_${msg.author.id}.msgs`, 0);
-  }
-  xp.add(`${msg.guild.id}_${msg.author.id}.msgs`, 1);
-
-  if (!XpTimeOut.has(`${msg.guild.id}_${msg.author.id}`)) {
-    let newxp = Math.floor(Math.random() * 25) + 15;
-    xp.add(`${msg.guild.id}_${msg.author.id}.xp`, newxp);
-
-    let lvl = xp.get(`${msg.guild.id}_${msg.author.id}.lvl`);
-    let NXp = 0;
-    let nLevel = JSON.parse(Fs.readFileSync("./assets/util/levels.json"));
-    if (lvl >= 100) {
-      NXp = 1899250;
-    } else {
-      NXp = nLevel[lvl + 1];
-    }
-
-    if (xp.get(`${msg.guild.id}_${msg.author.id}.xp`) >= NXp && lvl !== 100) {
-      xp.add(`${msg.guild.id}_${msg.author.id}.lvl`, 1);
-      lvl = xp.get(`${msg.guild.id}_${msg.author.id}.lvl`);
-
-      msg.channel.send(`GG <@${msg.author.id}>, you just advanced to level ${lvl}!`); // prettier-ignore
-
-      //giving roles
-
-      if (lvl === 5) {
-        let role = msg.guild.roles.cache.find((r) => r.name === "[5+] Slimes");
-        msg.member.roles.add(role).catch(console.error);
-      }
-      if (lvl === 10) {
-        let role = msg.guild.roles.cache.find((r) => r.name === "[10+] Elites");
-        msg.member.roles.add(role).catch(console.error);
-      }
-      if (lvl === 20) {
-        let role = msg.guild.roles.cache.find((r) => r.name === "[20+] Warriors"); // prettier-ignore
-        msg.member.roles.add(role).catch(console.error);
-      }
-      if (lvl === 30) {
-        let role = msg.guild.roles.cache.find((r) => r.name === "[30+] Kings");
-        msg.member.roles.add(role).catch(console.error);
-      }
-      if (lvl === 50) {
-        let role = msg.guild.roles.cache.find((r) => r.name === "[50+] Gods");
-        msg.member.roles.add(role).catch(console.error);
-      }
-    }
-
-    XpTimeOut.add(`${msg.guild.id}_${msg.author.id}`);
-    setTimeout(() => {
-      XpTimeOut.delete(`${msg.guild.id}_${msg.author.id}`);
-    }, 60000);
-  }
-
-  //xp end
 
   if (msg.guild.id === "599061990828277770" && msg.channel.id === "716206448970825799") {
     //removes !d bump

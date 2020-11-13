@@ -52,23 +52,19 @@ module.exports.run = async (bot, msg, args) => {
   }
   let menacc = economy.get(mentioned.id);
 
-  if (!menacc) {
-    let ErrorEmbed = new Discord.MessageEmbed()
-      .setTitle("**ERROR**")
-      .setColor(0xff0000)
-      .setThumbnail(msg.author.avatarURL())
-      .setDescription("That person isn't in the system, tell them to use the .newbal command.");
-    msg.channel.send(ErrorEmbed);
-    return;
-  }
-
-  economy.add(`${mentioned.id}.bal`, Money);
-
   let SuccessEmbed = new Discord.MessageEmbed()
     .setTitle("**SUCCESS**")
     .setColor(0x32cd32)
     .setThumbnail(mentioned.user.avatarURL())
     .setDescription("You have given $" +Money +"<:chip:751730576918315048> to " +mentioned.user.username); // prettier-ignore
+
+  if (!menacc) {
+    economy.set(`${mentioned.id}.bal`, Money);
+    msg.channel.send(SuccessEmbed);
+    return;
+  }
+
+  economy.add(`${mentioned.id}.bal`, Money);
   msg.channel.send(SuccessEmbed);
 };
 

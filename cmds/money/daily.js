@@ -4,10 +4,9 @@ module.exports.run = async (bot, msg, args) => {
   const ms = require("parse-ms");
   let timeout = 86400000;
   var economy = new db.table("economy");
-  let author = msg.author.id;
-  let lc = economy.get(`${author}.lc`);
+  let lc = economy.get(`${msg.author.id}.lc`);
 
-  if (economy.has(author) === false) {
+  if (!economy.has(msg.author.id)) {
     let SuccessEmbed = new Discord.MessageEmbed()
       .setTitle("**ERORR**")
       .setColor(0x0099ff)
@@ -27,9 +26,9 @@ module.exports.run = async (bot, msg, args) => {
       .setDescription(`You have claimed this today already.\n**${time.hours}h ${time.minutes}m ${time.seconds}s**!`); // prettier-ignore
     msg.channel.send(WarningEmbed);
   } else {
-    economy.add(`${author}.bal`, 50);
-    economy.subtract(`${author}.lc`, lc);
-    economy.add(`${author}.lc`, new Date().getTime());
+    economy.add(`${msg.author.id}.bal`, 50);
+    economy.subtract(`${msg.author.id}.lc`, lc);
+    economy.add(`${msg.author.id}.lc`, new Date().getTime());
     let SuccessEmbed = new Discord.MessageEmbed()
       .setTitle("**SUCCESS**")
       .setColor(0x32cd32)

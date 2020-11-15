@@ -11,8 +11,11 @@ module.exports.run = (bot, msg, args) => {
 			"https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png"
 		)
 		.addFields(
-			{ name: "Check out the commands on our website", value: "" },
-			{ name: "**Gambling  commands**", value: "" }
+			{
+				name: "Check out the commands on our website",
+				value: "`_____________________________________`",
+			},
+			{ name: "**Gambling commands**", value: "`_________________`" }
 		);
 
 	Fs.readdir("./cmds/gamble/", (err, files) => {
@@ -22,7 +25,7 @@ module.exports.run = (bot, msg, args) => {
 
 		jsfiles.forEach((f, i) => {
 			f = f.slice(0, f.length - 3);
-			gamhelp.addFields({ name: `**${prefix}${f}**`, value: "", inline: true });
+			gamhelp.addFields({ name: `**${prefix}${f}**`, value: i + 1, inline: true });
 		});
 
 		msg.channel.send(gamhelp);

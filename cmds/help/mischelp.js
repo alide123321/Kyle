@@ -1,38 +1,34 @@
 module.exports.run = (bot, msg, args) => {
-  const Discord = require("discord.js");
-  const Fs = require("fs");
-  const prefix = process.env.PREFIX;
+	const Discord = require("discord.js");
+	const Fs = require("fs");
+	const prefix = process.env.PREFIX;
 
-  const helplink = "https://sites.google.com/view/kyle-bot/home";
+	let Misc = new Discord.MessageEmbed()
+		.setColor("#0099ff")
+		.setTitle("**Misc commands**")
+		.setURL("https://sites.google.com/view/kyle-bot/home")
+		.setThumbnail(
+			"https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png"
+		)
+		.addFields(
+			{ name: "Check out the commands on our website", value: helplink },
+			{ name: "**Misc  commands**" }
+		);
 
-  var mischelp = [];
+	Fs.readdir("./cmds/misc/", (err, files) => {
+		if (err) console.error(err);
 
-  Fs.readdir("./cmds/misc/", (err, files) => {
-    if (err) console.error(err);
+		let jsfiles = files.filter((f) => f.split(".").pop() === "js");
 
-    let jsfiles = files.filter((f) => f.split(".").pop() === "js");
+		jsfiles.forEach((f, i) => {
+			f = f.slice(0, f.length - 3);
+			Misc.addFields({ name: `**${prefix}${f}**`, inline: true });
+		});
 
-    jsfiles.forEach((f, i) => {
-      let cmdname = f;
-      cmdname = cmdname.slice(0, cmdname.length - 3);
-      mischelp.push(`**${prefix}${cmdname}**`);
-    });
-
-    let gamhelp = new Discord.MessageEmbed()
-      .setColor("#0099ff")
-      .setTitle("**Misc commands**")
-      .setURL(helplink)
-      .setThumbnail(
-        "https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png"
-      )
-      .addFields(
-        { name: "Check out the commands on our website", value: helplink },
-        { name: "**Misc  commands**", value: mischelp }
-      );
-    msg.channel.send(gamhelp);
-  });
+		msg.channel.send(Misc);
+	});
 };
 
 module.exports.help = {
-  name: "mischelp",
+	name: "mischelp",
 };

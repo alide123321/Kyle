@@ -1,39 +1,35 @@
 module.exports.run = async (bot, msg, args) => {
-  const Discord = require("discord.js");
-  const Fs = require("fs");
-  const prefix = process.env.PREFIX;
+	const Discord = require("discord.js");
+	const Fs = require("fs");
+	const prefix = process.env.PREFIX;
 
-  const helplink = "https://sites.google.com/view/kyle-bot/home";
+	let memehelp = new Discord.MessageEmbed()
+		.setColor("#0099ff")
+		.setTitle("**Meme commands**")
+		.setURL("https://sites.google.com/view/kyle-bot/home")
+		.setThumbnail(
+			"https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png"
+		)
+		.addFields(
+			{ name: "Check out the commands on our website", value: helplink },
+			{ name: "**Meme commands**" }
+		);
 
-  var funhelp = [];
+	Fs.readdir("./cmds/memes/", (err, files) => {
+		if (err) console.error(err);
 
-  Fs.readdir("./cmds/memes/", (err, files) => {
-    if (err) console.error(err);
+		let jsfiles = files.filter((f) => f.split(".").pop() === "js");
 
-    let jsfiles = files.filter((f) => f.split(".").pop() === "js");
+		jsfiles.forEach((f, i) => {
+			f = f.slice(0, f.length - 3);
+			memehelp.addFields({ name: `**${prefix}${f}**`, inline: true });
+		});
 
-    jsfiles.forEach((f, i) => {
-      let cmdname = f;
-      cmdname = cmdname.slice(0, cmdname.length - 3);
-      funhelp.push(`**${prefix}${cmdname}**`);
-    });
-
-    let memehelp = new Discord.MessageEmbed()
-      .setColor("#0099ff")
-      .setTitle("**Meme commands**")
-      .setURL(helplink)
-      .setThumbnail(
-        "https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png"
-      )
-      .addFields(
-        { name: "Check out the commands on our website", value: helplink },
-        { name: "**Meme commands**", value: funhelp }
-      );
-    msg.channel.send(memehelp);
-    return;
-  });
+		msg.channel.send(memehelp);
+		return;
+	});
 };
 
 module.exports.help = {
-  name: "memehelp",
+	name: "memehelp",
 };

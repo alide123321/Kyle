@@ -10,7 +10,10 @@ module.exports.run = async (bot, msg, args) => {
 		.setThumbnail(
 			"https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png"
 		)
-		.addFields({ name: "Check out the commands on our website" }, { name: "**Money Commands**" });
+		.addFields(
+			{ name: "Check out the commands on our website", value: "" },
+			{ name: "**Money Commands**", value: "" }
+		);
 
 	Fs.readdir("./cmds/money/", (err, files) => {
 		if (err) console.error(err);
@@ -19,7 +22,7 @@ module.exports.run = async (bot, msg, args) => {
 
 		jsfiles.forEach((f, i) => {
 			f = f.slice(0, f.length - 3);
-			balhelp.addFields({ name: `**${prefix}${f}**`, inline: true });
+			balhelp.addFields({ name: `**${prefix}${f}**`, value: "", inline: true });
 		});
 
 		msg.channel.send(balhelp);

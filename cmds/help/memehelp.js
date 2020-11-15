@@ -10,7 +10,10 @@ module.exports.run = async (bot, msg, args) => {
 		.setThumbnail(
 			"https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png"
 		)
-		.addFields({ name: "Check out the commands on our website" }, { name: "**Meme commands**" });
+		.addFields(
+			{ name: "Check out the commands on our website", value: "" },
+			{ name: "**Meme commands**", value: "" }
+		);
 
 	Fs.readdir("./cmds/memes/", (err, files) => {
 		if (err) console.error(err);
@@ -19,7 +22,7 @@ module.exports.run = async (bot, msg, args) => {
 
 		jsfiles.forEach((f, i) => {
 			f = f.slice(0, f.length - 3);
-			memehelp.addFields({ name: `**${prefix}${f}**`, inline: true });
+			memehelp.addFields({ name: `**${prefix}${f}**`, value: "", inline: true });
 		});
 
 		msg.channel.send(memehelp);

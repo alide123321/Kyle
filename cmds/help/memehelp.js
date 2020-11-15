@@ -10,10 +10,7 @@ module.exports.run = async (bot, msg, args) => {
 		.setThumbnail(
 			"https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png"
 		)
-		.addFields(
-			{ name: "Check out the commands on our website", value: helplink },
-			{ name: "**Meme commands**" }
-		);
+		.addFields({ name: "Check out the commands on our website" }, { name: "**Meme commands**" });
 
 	Fs.readdir("./cmds/memes/", (err, files) => {
 		if (err) console.error(err);

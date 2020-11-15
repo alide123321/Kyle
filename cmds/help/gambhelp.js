@@ -11,7 +11,7 @@ module.exports.run = (bot, msg, args) => {
 			"https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png"
 		)
 		.addFields(
-			{ name: "Check out the commands on our website", value: helplink },
+			{ name: "Check out the commands on our website" },
 			{ name: "**Gambling  commands**" }
 		);
 

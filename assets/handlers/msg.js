@@ -104,6 +104,7 @@ bot.on("message", async (msg) => {
 	if (msg.channel.id === "716206448970825799") {
 		//removes !d bump
 		if (text.slice(0, 7).toLocaleLowerCase() === "!d bump") {
+			msg.channel.send("sus");
 			sleep(3000);
 			try {
 				msg.channel.bulkDelete(2);

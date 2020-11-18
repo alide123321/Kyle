@@ -3,13 +3,13 @@ const sleep = require("../../assets/functions/sleep.js").sleep;
 
 bot.on("guildMemberAdd", (member) => {
 	if (member.guild.id === "599061990828277770") {
-		let role = member.guild.roles.cache.find((r) => r.name === "__Levels__");
+		let role = member.guild.roles.cache.find((r) => r.name === "________Levels________");
 		member.roles.add(role).catch(console.error);
 		role = member.guild.roles.cache.find((r) => r.name === "[0+] Noobs");
 		member.roles.add(role).catch(console.error);
-		role = member.guild.roles.cache.find((r) => r.name === "__Notifications__");
+		role = member.guild.roles.cache.find((r) => r.name === "________Notifications________");
 		member.roles.add(role).catch(console.error);
-		role = member.guild.roles.cache.find((r) => r.name === "__Platform__");
+		role = member.guild.roles.cache.find((r) => r.name === "________Platform________");
 		member.roles.add(role).catch(console.error);
 
 		serverstats(member);

@@ -101,9 +101,9 @@ bot.on("message", async (msg) => {
 		msg.channel.send("https://www.healthscience.org/");
 	}
 
-	if (msg.guild.id === "599061990828277770" && msg.channel.id === "716206448970825799") {
+	if (msg.channel.id === "716206448970825799") {
 		//removes !d bump
-		if (text.slice(0, 7) == "!d bump") {
+		if (text.slice(0, 7).toLocaleLowerCase() == "!d bump") {
 			sleep(3000);
 			try {
 				msg.channel.bulkDelete(2);

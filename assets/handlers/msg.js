@@ -103,7 +103,7 @@ bot.on("message", async (msg) => {
 
 	if (msg.channel.id === "716206448970825799") {
 		//removes !d bump
-		if (text.slice(0, 7).toLocaleLowerCase() == "!d bump") {
+		if (text.slice(0, 7).toLocaleLowerCase() === "!d bump") {
 			sleep(3000);
 			try {
 				msg.channel.bulkDelete(2);
@@ -113,8 +113,8 @@ bot.on("message", async (msg) => {
 		} else if (text.slice(0, 4) == "redo") {
 			msg.delete();
 			let doneem = new Discord.MessageEmbed()
-        .setTitle("**!D BUMP**")
-        .setDescription("Help grow the server by using the command **!d bump** - it helps other people find and join the server to grow the fam!"); // prettier-ignore
+        		.setTitle("**!D BUMP**")
+        		.setDescription("Help grow the server by using the command **!d bump** - it helps other people find and join the server to grow the fam!"); // prettier-ignore
 			msg.channel.send(doneem);
 		} else {
 			msg.channel.bulkDelete(1);

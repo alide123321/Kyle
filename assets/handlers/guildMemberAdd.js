@@ -5,11 +5,11 @@ bot.on("guildMemberAdd", (member) => {
 	if (member.guild.id === "599061990828277770") {
 		let role = member.guild.roles.cache.find((r) => r.name === "__Levels__");
 		member.roles.add(role).catch(console.error);
-		let role = member.guild.roles.cache.find((r) => r.name === "[0+] Noobs");
+		role = member.guild.roles.cache.find((r) => r.name === "[0+] Noobs");
 		member.roles.add(role).catch(console.error);
-		let role = member.guild.roles.cache.find((r) => r.name === "__Notifications__");
+		role = member.guild.roles.cache.find((r) => r.name === "__Notifications__");
 		member.roles.add(role).catch(console.error);
-		let role = member.guild.roles.cache.find((r) => r.name === "__Platform__");
+		role = member.guild.roles.cache.find((r) => r.name === "__Platform__");
 		member.roles.add(role).catch(console.error);
 
 		serverstats(member);

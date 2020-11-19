@@ -9,7 +9,7 @@ bot.on("guildMemberAdd", (member) => {
 		member.roles.add(role).catch(console.error);
 		role = member.guild.roles.cache.find((r) => r.name === "________Notifications________");
 		member.roles.add(role).catch(console.error);
-		role = member.guild.roles.cache.find((r) => r.name === "________Platform________");
+		role = member.guild.roles.cache.find((r) => r.name === "__________Platform__________");
 		member.roles.add(role).catch(console.error);
 
 		serverstats(member);

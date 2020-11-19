@@ -1,8 +1,6 @@
 const { bot } = require("../../index");
 
 bot.on("message", async (msg) => {
-	if (msg.author.id === "723144931153281104") return msg.delete();
-
 	const Discord = require("discord.js");
 	const cooldown = require("../functions/cool.js").cooldown;
 	const sleep = require("../../assets/functions/sleep.js").sleep;

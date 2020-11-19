@@ -1,28 +1,25 @@
 module.exports.run = async (bot, msg, args) => {
 	const Discord = require("discord.js");
-	var unirest = require("unirest");
-	const ytdl = require("ytdl-core");
+	var jsYoutubeId = require("js-youtube-id");
 
-	let songInfo = null;
 	let vidid = null;
-	var json3 = null;
-	var json4 = null;
 
 	const videoPattern = /^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
 	const urlValid = videoPattern.test(args[1]);
 
 	if (!args[1]) return msg.channel.send("I need a link .download <Youtube link>");
 
-	if (!urlValid) {
-		return msg.channel.send("not a link");
-	} else if (urlValid) {
+	if (urlValid) {
 		try {
-			songInfo = await ytdl.getInfo(args[1]);
-			vidid = songInfo.videoDetails.videoId;
+			vidid = jsYoutubeId(args[1]);
+			if (vidid === null) return msg.channel.send("not a youtube valid link");
+			msg.channel.send(vidid);
 		} catch (error) {
 			console.error(error);
 			return msg.reply(error).catch(console.error);
 		}
+	} else {
+		return msg.channel.send("not a youtube valid link");
 	}
 
 	let embed = new Discord.MessageEmbed()
@@ -49,6 +46,13 @@ module.exports.run = async (bot, msg, args) => {
 		sentmsg.react("3️⃣");
 		sentmsg.react("4️⃣");
 
+		let linkEmbed = new Discord.MessageEmbed()
+			.setColor("#0099ff")
+			.setURL("https://discord.gg/hpcxUFy")
+			.setThumbnail(
+				"https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png"
+			);
+
 		const filter = (reaction, user) => {
 			return ["3️⃣", "4️⃣"].includes(reaction.emoji.name) && user.id === msg.author.id;
 		};
@@ -59,52 +63,18 @@ module.exports.run = async (bot, msg, args) => {
 				const reaction = collected.first();
 
 				if (reaction.emoji.name === "3️⃣") {
-					var req3 = unirest(
-						"GET",
-						`https://free-mp3-mp4-youtube.p.rapidapi.com/${vidid}/MP3/spinner/2196f3/100/box-button/2196f3/tiny-button/Download/FFFFFF/yes/FFFFFF/none`
+					linkEmbed.setTitle("MP33️⃣");
+					linkEmbed.setURL(`https://www.yt-download.org/api/widget/mp3/${vidid}`);
+					linkEmbed.setDescription(`MP3: https://www.yt-download.org/api/widget/mp3/${vidid}`);
+				} else if (reaction.emoji.name === "4️⃣") {
+					linkEmbed.setTitle("MP44️⃣");
+					linkEmbed.setURL(`https://www.yt-download.org/api/widget/videos/${vidid}`);
+					linkEmbed.setDescription(
+						`MP4: https://www.yt-download.org/api/widget/videos/${vidid}`
 					);
-
-					req3.headers({
-						"x-rapidapi-host": "free-mp3-mp4-youtube.p.rapidapi.com",
-						"x-rapidapi-key": process.env.RAPIDAPI,
-						useQueryString: true,
-					});
-
-					req3.end(function (res) {
-						if (res.error) throw new Error(res.error);
-
-						if (res.status != 200) {
-							message.reply("An error occurred while trying to make the API request!");
-						} else {
-							json3 = JSON.parse(JSON.stringify(res.body));
-							msg.channel.send(`MP3:${json3.url}`);
-						}
-					});
 				}
 
-				if (reaction.emoji.name === "4️⃣") {
-					var req4 = unirest(
-						"GET",
-						`https://free-mp3-mp4-youtube.p.rapidapi.com/${vidid}/MP4/spinner/2196f3/100/box-button/2196f3/tiny-button/Download/FFFFFF/yes/FFFFFF/none`
-					);
-
-					req4.headers({
-						"x-rapidapi-host": "free-mp3-mp4-youtube.p.rapidapi.com",
-						"x-rapidapi-key": process.env.RAPIDAPI,
-						useQueryString: true,
-					});
-
-					req4.end(function (res) {
-						if (res.error) throw new Error(res.error);
-
-						if (res.status != 200) {
-							message.reply("An error occurred while trying to make the API request!");
-						} else {
-							json4 = JSON.parse(JSON.stringify(res.body));
-							msg.channel.send(`MP4:${json4.url}`);
-						}
-					});
-				}
+				msg.channel.send(linkEmbed);
 			});
 	});
 };

@@ -1,8 +1,14 @@
 module.exports.run = async (bot, msg, args) => {
-	if (msg.guild.id == "599061990828277770")
-		msg.channel.send(
-			"https://cdn.discordapp.com/attachments/707451317626470455/778898547369836544/video0.mp4"
-		);
+	if (msg.guild.id !== "599061990828277770") {
+		try {
+			return msg.delete();
+		} catch (error) {
+			return;
+		}
+	}
+	msg.channel.send(
+		"https://cdn.discordapp.com/attachments/707451317626470455/778898547369836544/video0.mp4"
+	);
 };
 
 module.exports.help = {

@@ -4,10 +4,14 @@ module.exports.run = async (bot, msg, args) => {
 	let link = args[1];
 	let error = false;
 
+	if (link === "latest") {
+		return msg.channel.send({
+			files: ["./assets/images/HigherQualityAscii.txt"],
+		});
+	}
+
 	if (!link) return msg.channel.send("Please give me a link");
 
-	if (!link.endsWith(".jpg") && !link.endsWith(".gif") && !link.endsWith(".png"))
-		return msg.channel.send("unsuported format");
 	var options = {
 		fit: "box",
 		width: 30,

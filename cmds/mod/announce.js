@@ -53,11 +53,11 @@ module.exports.run = async (bot, msg, args) => {
 			disc = collected.first().content;
 
 			let announce = new Discord.MessageEmbed()
-        .setColor("#0099ff")
-        .setTitle("**" + title + "**")
-        .setURL("https://discord.gg/z4FpxSJ")
-        .setDescription(disc)
-        .setThumbnail("https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png"); // prettier-ignore
+        		.setColor("#0099ff")
+        		.setTitle("**" + title + "**")
+        		.setURL("https://discord.gg/z4FpxSJ")
+        		.setDescription(disc)
+        		.setThumbnail("https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png"); // prettier-ignore
 
 			if (mention !== "no one") chat.send("||" + mention + "||");
 			chat.send(announce);

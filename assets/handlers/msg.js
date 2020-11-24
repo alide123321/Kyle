@@ -96,7 +96,7 @@ bot.on("message", async (msg) => {
 	}
 
 	if (text.includes("kys") || text.includes("i wanna die") || text.includes("kms")) {
-		msg.channel.send("https://www.healthscience.org/");
+		msg.channel.send("https://suicidepreventionlifeline.org/");
 	}
 
 	if (msg.channel.id === "716206448970825799") {

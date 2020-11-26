@@ -26,6 +26,8 @@ module.exports.run = async (bot, msg, args) => {
 		return;
 	}
 
+	bet = Math.floor(bet);
+
 	if (bet < 0) {
 		let ErrorEmbed = new Discord.MessageEmbed()
 			.setTitle("**ERROR**")

@@ -627,8 +627,7 @@ module.exports.run = async (bot, msg, args) => {
                         }
                       })
                       .catch((collected) => {
-                        bet /= 2;
-                        economy.subtract(`${author}.bal`, bet);
+                        economy.subtract(`${author}.bal`, Math.floor(bet /= 2));
                         msg.reply(
                           "You didn't do anything, so now the game's over. You lost half of your bet."
                         );
@@ -797,8 +796,7 @@ module.exports.run = async (bot, msg, args) => {
                 }
               })
               .catch((collected) => {
-                bet /= 2;
-                economy.subtract(`${author}.bal`, bet);
+                economy.subtract(`${author}.bal`, Math.floor(bet /= 2));
                 msg.reply(
                   "You didn't do anything, so now the game's over. You lost half of your bet."
                 );
@@ -970,8 +968,7 @@ module.exports.run = async (bot, msg, args) => {
         }
       })
       .catch((collected) => {
-        bet /= 2;
-        economy.subtract(`${author}.bal`, bet);
+        economy.subtract(`${author}.bal`, Math.floor(bet /= 2));
         msg.reply("You didn't do anything, so now the game's over. You lost half of your bet.");
         return;
       });

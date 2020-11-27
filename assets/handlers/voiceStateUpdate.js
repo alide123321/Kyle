@@ -63,8 +63,13 @@ bot.on("voiceStateUpdate", async (oldState, newState) => {
 			let chw = temporaryw[i];
 
 			if (ch.members.size <= 0) {
-				if (ch.deletable()) await ch.delete();
-				if (chw.deletable()) await chw.delete();
+				try {
+					await ch.delete();
+					await chw.delete();
+				} catch (error) {
+					temporary.splice(i, 1);
+					temporaryw.splice(i, 1);
+				}
 
 				temporary.splice(i, 1);
 				temporaryw.splice(i, 1);

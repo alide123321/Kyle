@@ -23,7 +23,7 @@ module.exports.run = async (bot, msg, args) => {
 	}
 
 	if (msg.author.id === mentioned.id) {
-		msg.channel.send("You can not warn yourself.");
+		msg.channel.send("You can't unwarn yourself.");
 		return;
 	}
 

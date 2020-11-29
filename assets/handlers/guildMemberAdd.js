@@ -4,13 +4,7 @@ const sleep = require("../../assets/functions/sleep.js").sleep;
 bot.on("guildMemberAdd", (member) => {
 	if (member.guild.id === "599061990828277770") {
 		try {
-			let role = member.guild.roles.cache.find((r) => r.name === "________Levels________");
-			member.roles.add(role).catch(console.error);
-			role = member.guild.roles.cache.find((r) => r.name === "[0+] Noobs");
-			member.roles.add(role).catch(console.error);
-			role = member.guild.roles.cache.find((r) => r.name === "________Notifications________");
-			member.roles.add(role).catch(console.error);
-			role = member.guild.roles.cache.find((r) => r.name === "__________Platform__________");
+			let role = member.guild.roles.cache.find((r) => r.name === "[0+] Noobs");
 			member.roles.add(role).catch(console.error);
 		} catch (error) {
 			console.log(`couldn't give roles to ${member.user.username} \n\nError* ${error}`);

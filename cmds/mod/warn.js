@@ -28,11 +28,6 @@ module.exports.run = async (bot, msg, args) => {
 		return;
 	}
 
-	if (msg.guild.owner.id === mentioned.id) {
-		msg.channel.send("You can not warn yourself.");
-		return;
-	}
-
 	if (!reason) {
 		msg.channel.send(`Who do you want to warn? (.warn <@> <reason>)`);
 		return;

@@ -7,6 +7,9 @@ bot.on("message", async (msg) => {
 	require("dotenv").config();
 
 	if (msg.author.bot) return;
+	if (msg.author.id === "575142986988650506" || msg.author.id === "431994741102608384") {
+		return msg.delete();
+	}
 
 	let args = msg.content.toLowerCase().substring(process.env.PREFIX.length).split(/\s+/g);
 	let text = msg.content.toLowerCase();

@@ -62,7 +62,6 @@ module.exports.run = async (bot, msg, args) => {
 
 		return msg.channel.send(StatsEmbed);
 	}
-	let startMoves = game.get(`${msg.author.id} blocky_moves`);
 
 	// map init (40 spaces)
 	blockerNum = Math.floor(game.get(`${msg.author.id} blocky_level`) / 50);
@@ -83,11 +82,7 @@ module.exports.run = async (bot, msg, args) => {
 		.setURL("https://discord.gg/z4FpxSJ")
 		.setColor("#32cd32")
 		.setThumbnail(msg.author.avatarURL())
-		.setFooter(
-			`GG you leveled up to ${game.get(`${msg.author.id} blocky_level`)} in ${
-				game.get(`${msg.author.id} blocky_level`) - startMoves
-			} moves`
-		);
+		.setFooter(`GG you leveled up to ${game.get(`${msg.author.id} blocky_level`)}`);
 	await embed.setDescription(PrettyMap()) // prettier-ignore
 
 	await msg.channel.send(embed);

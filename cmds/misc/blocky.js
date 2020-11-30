@@ -72,6 +72,7 @@ module.exports.run = async (bot, msg, args) => {
 	Generate(4);
 
 	while (!wining) {
+		sleep(50);
 		await send(msg);
 	}
 
@@ -109,8 +110,6 @@ async function send(msg) {
 						m.content.toLowerCase() == "d")
 				);
 			};
-
-			await sleep(50);
 
 			await msg.channel
 				.awaitMessages(filter, { max: 1, time: 15000 })

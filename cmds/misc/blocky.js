@@ -194,6 +194,7 @@ function Generate(x) {
 							map[r][c] = 3;
 							++newRowPosBlocker;
 						}
+						if (newRowPosBlocker >= blockerNum) return;
 					}
 				}
 			}

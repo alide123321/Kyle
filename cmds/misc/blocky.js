@@ -128,7 +128,7 @@ async function send(msg) {
 						await input.delete();
 						Smsg.delete();
 					} catch (error) {
-						return console.log(`Coudn't delete blocky msg`);
+						return;
 					}
 
 					return;

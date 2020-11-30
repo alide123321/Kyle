@@ -70,8 +70,8 @@ module.exports.run = async (bot, msg, args) => {
 	}
 
 	// map init (40 spaces)
-	blockerNum = Math.floor(game.get(`${msg.author.id} blocky_level`) / 25);
-	if (blockerNum > 10) blockerNum = 10;
+	blockerNum = Math.floor(game.get(`${msg.author.id} blocky_level`) / 10);
+	if (blockerNum > 20) blockerNum = 20;
 
 	Generate(1);
 	Generate(2);

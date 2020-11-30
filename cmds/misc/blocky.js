@@ -181,9 +181,9 @@ function Generate(x) {
 			}
 		}
 	} else if (x === 3) {
-		let newRowPosBlocker = -1;
+		let newRowPosBlocker = 0;
 
-		while (newRowPosBlocker + 1 < blockerNum) {
+		while (newRowPosBlocker < blockerNum) {
 			for (var r = 0; r < map.length; ++r) {
 				for (var c = 0; c < map[r].length; ++c) {
 					let taken = false;

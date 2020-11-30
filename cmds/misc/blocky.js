@@ -122,7 +122,9 @@ async function send(msg) {
 					else if (reaction[0].startsWith("d")) move(4, msg);
 
 					msg.channel.messages.fetch(input.id).then((Omsg) => {
-						Omsg.delete();
+						try {
+							Omsg.delete();
+						} catch (error) {}
 					});
 
 					game.add(`${msg.author.id} blocky_moves`, 1);

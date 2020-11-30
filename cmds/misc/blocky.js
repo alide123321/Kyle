@@ -1,4 +1,4 @@
-const sleep = require("../../assets/functions/sleep.js");
+const sleep = require("../../assets/functions/sleep.js").sleep;
 const Discord = require("discord.js");
 const db = require("quick.db");
 var game = new db.table("Game");

@@ -6,7 +6,7 @@ var game = new db.table("Game");
 let winPos = null;
 let moverPos = null;
 let playerPos = null;
-let blockerNum = null;
+let blockerNum = 0;
 let map = [];
 let wining = false;
 

@@ -187,7 +187,7 @@ function Generate(x) {
 			for (var r = 0; r < map.length; ++r) {
 				for (var c = 0; c < map[r].length; ++c) {
 					let taken = false;
-					if (Math.floor(Math.random() * 40) + 1 !== 1) {
+					if (Math.floor(Math.random() * 40) + 1 === 1) {
 						if (map[r][c] !== 0) taken = true;
 
 						if (!taken) {

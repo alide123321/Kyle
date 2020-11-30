@@ -76,18 +76,20 @@ module.exports.run = async (bot, msg, args) => {
 		sleep(50);
 		await send(msg);
 	}
+	if (winPos[0] === moverPos[0] && winPos[1] === moverPos[1]) {
+		game.add(`${msg.author.id} blocky_level`, 1);
 
-	game.add(`${msg.author.id} blocky_level`, 1);
+		let embed = new Discord.MessageEmbed()
+			.setTitle(`**Blocky**`)
+			.setURL("https://discord.gg/z4FpxSJ")
+			.setColor("#32cd32")
+			.setThumbnail(msg.author.avatarURL())
+			.setFooter(`GG you leveled up to ${game.get(`${msg.author.id} blocky_level`)}`);
+		await embed.setDescription(PrettyMap()) // prettier-ignore
 
-	let embed = new Discord.MessageEmbed()
-		.setTitle(`**Blocky**`)
-		.setURL("https://discord.gg/z4FpxSJ")
-		.setColor("#32cd32")
-		.setThumbnail(msg.author.avatarURL())
-		.setFooter(`GG you leveled up to ${game.get(`${msg.author.id} blocky_level`)}`);
-	await embed.setDescription(PrettyMap()) // prettier-ignore
+		await msg.channel.send(embed);
+	}
 
-	await msg.channel.send(embed);
 	wining = false;
 };
 
@@ -135,6 +137,7 @@ async function send(msg) {
 					return;
 				});
 		} catch (error) {
+			wining = true;
 			return msg.channel.send("Time ran out. Bye");
 		}
 	});

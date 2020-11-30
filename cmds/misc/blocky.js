@@ -130,15 +130,7 @@ async function send(msg) {
 					else if (reaction[0].startsWith("d")) move(4, msg);
 
 					game.add(`${msg.author.id} blocky_moves`, 1);
-				})
-				.then((ESmsg) => {
-					try {
-						ESmsg.delete();
-					} catch (error) {
-						console.log(`Coudn't delete blocky msg`);
-					}
 				});
-
 			try {
 				Smsg.delete();
 			} catch (error) {

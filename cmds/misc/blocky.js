@@ -423,6 +423,8 @@ function move(x, msg) {
 		playerPos[1] += 1;
 		map[playerPos[0]][playerPos[1]] = 1;
 	}
+
+	return;
 }
 
 function PrettyMap() {

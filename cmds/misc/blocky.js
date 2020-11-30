@@ -112,7 +112,7 @@ async function send(msg) {
 			};
 
 			await msg.channel
-				.awaitMessages(filter, { max: 1, time: 15000 })
+				.awaitMessages(filter, { max: 1, time: 15000, errors: ["time"] })
 				.then(async (collected) => {
 					let input = collected.first();
 					let reaction = input.content.toLowerCase().split(/\s+/g);
@@ -129,6 +129,8 @@ async function send(msg) {
 					} catch (error) {
 						return console.log(`Coudn't delete blocky msg`);
 					}
+
+					return;
 				});
 		} catch (error) {
 			return msg.channel.send("Time ran out. Bye");
@@ -239,19 +241,31 @@ function move(x, msg) {
 		// unable to move
 		if (playerPos[1] === 0) {
 			msg.channel.send("You cant move to the left").then((Smsg) => {
-				Smsg.delete({ timeout: 1500 });
+				try {
+					Smsg.delete({ timeout: 1500 });
+				} catch (error) {
+					return;
+				}
 			});
 			return;
 		} else if (winPos[0] === playerPos[0] && winPos[1] + 1 === playerPos[1]) {
 			msg.channel
 				.send("You cant move to the left the winning spot is in the way")
 				.then((Smsg) => {
-					Smsg.delete({ timeout: 1500 });
+					try {
+						Smsg.delete({ timeout: 1500 });
+					} catch (error) {
+						return;
+					}
 				});
 			return;
 		} else if (map[playerPos[0]][playerPos[1] - 1] === 3) {
 			msg.channel.send("You cant move to the left a blocker is in the way").then((Smsg) => {
-				Smsg.delete({ timeout: 1500 });
+				try {
+					Smsg.delete({ timeout: 1500 });
+				} catch (error) {
+					return;
+				}
 			});
 			return;
 		}
@@ -262,12 +276,20 @@ function move(x, msg) {
 				msg.channel
 					.send("You cant move to the left the mover reached the edge")
 					.then((Smsg) => {
-						Smsg.delete({ timeout: 1500 });
+						try {
+							Smsg.delete({ timeout: 1500 });
+						} catch (error) {
+							return;
+						}
 					});
 				return;
 			} else if (map[moverPos[0]][moverPos[1] - 1] === 3) {
 				msg.channel.send("You cant move to the left a blocker is in the way").then((Smsg) => {
-					Smsg.delete({ timeout: 1500 });
+					try {
+						Smsg.delete({ timeout: 1500 });
+					} catch (error) {
+						return;
+					}
 				});
 				return;
 			}
@@ -287,17 +309,29 @@ function move(x, msg) {
 		// unable to move
 		if (playerPos[0] === 0) {
 			msg.channel.send("You cant move to up").then((Smsg) => {
-				Smsg.delete({ timeout: 1500 });
+				try {
+					Smsg.delete({ timeout: 1500 });
+				} catch (error) {
+					return;
+				}
 			});
 			return;
 		} else if (winPos[0] + 1 === playerPos[0] && winPos[1] === playerPos[1]) {
 			msg.channel.send("You cant move up the winning spot is in the way").then((Smsg) => {
-				Smsg.delete({ timeout: 1500 });
+				try {
+					Smsg.delete({ timeout: 1500 });
+				} catch (error) {
+					return;
+				}
 			});
 			return;
 		} else if (map[playerPos[0] - 1][playerPos[1]] === 3) {
 			msg.channel.send("You cant move up a blocker is in the way").then((Smsg) => {
-				Smsg.delete({ timeout: 1500 });
+				try {
+					Smsg.delete({ timeout: 1500 });
+				} catch (error) {
+					return;
+				}
 			});
 			return;
 		}
@@ -306,12 +340,20 @@ function move(x, msg) {
 		if (moverPos[0] + 1 === playerPos[0] && moverPos[1] === playerPos[1]) {
 			if (moverPos[0] === 0) {
 				msg.channel.send("You cant move up the mover reached the edge").then((Smsg) => {
-					Smsg.delete({ timeout: 1500 });
+					try {
+						Smsg.delete({ timeout: 1500 });
+					} catch (error) {
+						return;
+					}
 				});
 				return;
 			} else if (map[moverPos[0] - 1][moverPos[1]] === 3) {
 				msg.channel.send("You cant move up a blocker is in the way").then((Smsg) => {
-					Smsg.delete({ timeout: 1500 });
+					try {
+						Smsg.delete({ timeout: 1500 });
+					} catch (error) {
+						return;
+					}
 				});
 				return;
 			}
@@ -331,19 +373,31 @@ function move(x, msg) {
 		// unable to move
 		if (playerPos[0] === map.length - 1) {
 			msg.channel.send("You cant move to the bottom").then((Smsg) => {
-				Smsg.delete({ timeout: 1500 });
+				try {
+					Smsg.delete({ timeout: 1500 });
+				} catch (error) {
+					return;
+				}
 			});
 			return;
 		} else if (winPos[0] - 1 === playerPos[0] && winPos[1] === playerPos[1]) {
 			msg.channel
 				.send("You cant move to the bottom the winning spot is in the way")
 				.then((Smsg) => {
-					Smsg.delete({ timeout: 1500 });
+					try {
+						Smsg.delete({ timeout: 1500 });
+					} catch (error) {
+						return;
+					}
 				});
 			return;
 		} else if (map[playerPos[0] + 1][playerPos[1]] === 3) {
 			msg.channel.send("You cant move to the bottom a blocker is in the way").then((Smsg) => {
-				Smsg.delete({ timeout: 1500 });
+				try {
+					Smsg.delete({ timeout: 1500 });
+				} catch (error) {
+					return;
+				}
 			});
 			return;
 		}
@@ -354,12 +408,20 @@ function move(x, msg) {
 				msg.channel
 					.send("You cant move to the bottom the mover reached the edge")
 					.then((Smsg) => {
-						Smsg.delete({ timeout: 1500 });
+						try {
+							Smsg.delete({ timeout: 1500 });
+						} catch (error) {
+							return;
+						}
 					});
 				return;
 			} else if (map[moverPos[0] + 1][moverPos[1]] === 3) {
 				msg.channel.send("You cant move to the bottom a blocker is in the way").then((Smsg) => {
-					Smsg.delete({ timeout: 1500 });
+					try {
+						Smsg.delete({ timeout: 1500 });
+					} catch (error) {
+						return;
+					}
 				});
 				return;
 			}
@@ -379,19 +441,31 @@ function move(x, msg) {
 		// unable to move
 		if (playerPos[1] === map[0].length - 1) {
 			msg.channel.send("You cant move to the right").then((Smsg) => {
-				Smsg.delete({ timeout: 1500 });
+				try {
+					Smsg.delete({ timeout: 1500 });
+				} catch (error) {
+					return;
+				}
 			});
 			return;
 		} else if (winPos[0] === playerPos[0] && winPos[1] - 1 === playerPos[1]) {
 			msg.channel
 				.send("You cant move to the right the winning spot is in the way")
 				.then((Smsg) => {
-					Smsg.delete({ timeout: 1500 });
+					try {
+						Smsg.delete({ timeout: 1500 });
+					} catch (error) {
+						return;
+					}
 				});
 			return;
 		} else if (map[playerPos[0]][playerPos[1] + 1] === 3) {
 			msg.channel.send("You cant move to the right a blocker is in the way").then((Smsg) => {
-				Smsg.delete({ timeout: 1500 });
+				try {
+					Smsg.delete({ timeout: 1500 });
+				} catch (error) {
+					return;
+				}
 			});
 			return;
 		}
@@ -402,12 +476,20 @@ function move(x, msg) {
 				msg.channel
 					.send("You cant move to the right the mover reached the edge")
 					.then((Smsg) => {
-						Smsg.delete({ timeout: 1500 });
+						try {
+							Smsg.delete({ timeout: 1500 });
+						} catch (error) {
+							return;
+						}
 					});
 				return;
 			} else if (map[moverPos[0]][moverPos[1] + 1] === 3) {
 				msg.channel.send("You cant move to the right a blocker is in the way").then((Smsg) => {
-					Smsg.delete({ timeout: 1500 });
+					try {
+						Smsg.delete({ timeout: 1500 });
+					} catch (error) {
+						return;
+					}
 				});
 				return;
 			}

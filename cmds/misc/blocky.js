@@ -124,7 +124,9 @@ async function send(msg) {
 					try {
 						Smsg.delete();
 						input.delete();
-					} catch (error) {}
+					} catch (error) {
+						console.log(`Coudn't delete blocky msg`);
+					}
 
 					game.add(`${msg.author.id} blocky_moves`, 1);
 				});

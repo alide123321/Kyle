@@ -1,4 +1,5 @@
 const sleep = require("../../assets/functions/sleep.js").sleep;
+const playingGame = require("../../assets/functions/playingGame.js").playingGame;
 const Discord = require("discord.js");
 const db = require("quick.db");
 var game = new db.table("Game");
@@ -11,6 +12,11 @@ let map = [];
 let wining = false;
 
 module.exports.run = async (bot, msg, args) => {
+	if (playingGame.has(msg.author.id))
+		return msg.channel.send("You are already playing a game finish it to start a new one");
+
+	playingGame.add(msg.author.id);
+
 	winPos = [0, 0]; //  Win pos 4
 	moverPos = [0, 0]; //  Mover is 2
 	playerPos = [0, 0]; //  Player is 1
@@ -91,6 +97,7 @@ module.exports.run = async (bot, msg, args) => {
 	}
 
 	wining = false;
+	playingGame.delete(msg.author.id);
 };
 
 async function send(msg) {

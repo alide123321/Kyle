@@ -64,7 +64,8 @@ module.exports.run = async (bot, msg, args) => {
 	}
 
 	// map init (40 spaces)
-	blockerNum = Math.floor(game.get(`${msg.author.id} blocky_level`) / 50);
+	blockerNum = Math.floor(game.get(`${msg.author.id} blocky_level`) / 25);
+	if (blockerNum > 10) blockerNum = 10;
 
 	Generate(1);
 	Generate(2);
@@ -178,7 +179,6 @@ function Generate(x) {
 		}
 	} else if (x === 3) {
 		let newRowPosBlocker = -1;
-		if (blockerNum > 10) blockerNum = 10;
 
 		while (newRowPosBlocker + 1 < blockerNum) {
 			for (var r = 0; r < map.length; ++r) {

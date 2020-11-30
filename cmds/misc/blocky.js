@@ -1,4 +1,4 @@
-// TODO: check bounds
+const sleep = require("../../assets/functions/sleep.js");
 const Discord = require("discord.js");
 const db = require("quick.db");
 var game = new db.table("Game");
@@ -109,6 +109,8 @@ async function send(msg) {
 						m.content.toLowerCase() == "d")
 				);
 			};
+
+			await sleep(50);
 
 			await msg.channel
 				.awaitMessages(filter, { max: 1, time: 15000 })

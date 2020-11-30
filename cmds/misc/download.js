@@ -1,22 +1,20 @@
 module.exports.run = async (bot, msg, args) => {
 	const Discord = require("discord.js");
-	var jsYoutubeId = require("js-youtube-id");
+	const ytdl = require("ytdl-core");
 
 	let vidid = null;
+	let url = msg.content.substring(process.env.PREFIX.length).split(/\s+/g);
 
-	const videoPattern = /^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
-	const urlValid = videoPattern.test(args[1]);
+	if (!url[1]) return msg.channel.send("I need a link .download <Youtube link>");
 
-	if (!args[1]) return msg.channel.send("I need a link .download <Youtube link>");
-
-	if (urlValid) {
+	if (ytdl.validateURL(url[1])) {
 		try {
-			vidid = jsYoutubeId(args[1]);
+			vidid = ytdl.getVideoID(url[1]);
 			if (vidid === null) return msg.channel.send("not a youtube valid link");
 			msg.channel.send(vidid);
 		} catch (error) {
 			console.error(error);
-			return msg.reply(error).catch(console.error);
+			return msg.reply("Haram");
 		}
 	} else {
 		return msg.channel.send("not a youtube valid link");
@@ -75,6 +73,9 @@ module.exports.run = async (bot, msg, args) => {
 				}
 
 				msg.channel.send(linkEmbed);
+			})
+			.catch((error) => {
+				msg.reply("Time out");
 			});
 	});
 };

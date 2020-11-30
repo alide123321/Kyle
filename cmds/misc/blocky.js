@@ -120,7 +120,6 @@ async function send(msg) {
 
 					try {
 						Smsg.delete();
-						input.delete();
 					} catch (error) {
 						console.log(`Coudn't delete blocky msg`);
 					}
@@ -131,7 +130,20 @@ async function send(msg) {
 					else if (reaction[0].startsWith("d")) move(4, msg);
 
 					game.add(`${msg.author.id} blocky_moves`, 1);
+				})
+				.then((ESmsg) => {
+					try {
+						ESmsg.delete();
+					} catch (error) {
+						console.log(`Coudn't delete blocky msg`);
+					}
 				});
+
+			try {
+				Smsg.delete();
+			} catch (error) {
+				console.log(`Coudn't delete blocky msg`);
+			}
 		} catch (error) {
 			return msg.channel.send("Time ran out. Bye");
 		}

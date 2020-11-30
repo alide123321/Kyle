@@ -116,17 +116,17 @@ async function send(msg) {
 					let input = collected.first();
 					let reaction = input.content.toLowerCase().split(/\s+/g);
 
-					if (reaction[0].startsWith("a")) move(1, msg);
-					else if (reaction[0].startsWith("w")) move(2, msg);
-					else if (reaction[0].startsWith("s")) move(3, msg);
-					else if (reaction[0].startsWith("d")) move(4, msg);
-
 					try {
 						Smsg.delete();
 						input.delete();
 					} catch (error) {
 						console.log(`Coudn't delete blocky msg`);
 					}
+
+					if (reaction[0].startsWith("a")) move(1, msg);
+					else if (reaction[0].startsWith("w")) move(2, msg);
+					else if (reaction[0].startsWith("s")) move(3, msg);
+					else if (reaction[0].startsWith("d")) move(4, msg);
 
 					game.add(`${msg.author.id} blocky_moves`, 1);
 				});

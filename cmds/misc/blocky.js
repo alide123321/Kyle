@@ -123,9 +123,10 @@ async function send(msg) {
 					else if (reaction[0].startsWith("d")) move(4, msg);
 
 					game.add(`${msg.author.id} blocky_moves`, 1);
+
 					try {
-						await Smsg.delete();
 						await input.delete();
+						Smsg.delete();
 					} catch (error) {
 						return console.log(`Coudn't delete blocky msg`);
 					}

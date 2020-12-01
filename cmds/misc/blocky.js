@@ -33,13 +33,11 @@ module.exports.run = async (bot, msg, args) => {
 	];
 
 	if (!game.has(`${msg.author.id} blocky_level`)) {
-		// if first time
 		game.set(`${msg.author.id} blocky_level`, 0);
 		game.set(`${msg.author.id} blocky_moves`, 0);
 	}
 
 	if (args[1] === "reset") {
-		//if user wants to rest stats
 		game.set(`${msg.author.id} blocky_level`, 0);
 		game.set(`${msg.author.id} blocky_moves`, 0);
 		return msg.channel.send("done");

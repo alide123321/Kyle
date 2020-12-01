@@ -28,7 +28,7 @@ module.exports.run = async (bot, msg, args) => {
 	const videoPattern = /^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
 	const playlistPattern = /^.*(list=)([^#\&\?]*).*/gi;
 	const scRegex = /^https?:\/\/(soundcloud\.com)\/(.*)$/;
-	const url = args[0];
+	const url = msg.content.substring(process.env.PREFIX.length).split(/\s+/g);
 	const urlValid = videoPattern.test(url);
 
 	// Start the playlist if playlist url was provided

@@ -8,12 +8,10 @@ module.exports.run = async (bot, msg, args) => {
 	let text = msg.content;
 	let reason = text.slice(28);
 
-	if (
-		!msg.member.hasPermission("ADMINISTRATOR") &&
-		msg.member.roles.cache.find((r) => r.name !== "Moderators")
-	) {
-		msg.channel.send("You must have admin perms to use this command!");
-		return;
+	if (!msg.member.hasPermission("ADMINISTRATOR")) {
+		if (!msg.member.roles.cache.find((r) => r.name === "Moderators")) {
+			return msg.channel.send("You must have admin perms to use this command!");
+		}
 	}
 
 	if (!mentioned) {

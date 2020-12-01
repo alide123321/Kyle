@@ -1,5 +1,4 @@
 const ytdlDiscord = require("ytdl-core-discord");
-const scdl = require("soundcloud-downloader");
 const { canModifyQueue } = require("../util/Kylebotutil");
 const parseMilliseconds = require("parse-ms");
 
@@ -18,24 +17,7 @@ module.exports = {
 		let streamType = song.url.includes("youtube.com") ? "opus" : "ogg/opus";
 
 		try {
-			if (song.url.includes("youtube.com")) {
-				stream = await ytdlDiscord(song.url, { highWaterMark: 1 << 25 });
-			} else if (song.url.includes("soundcloud.com")) {
-				try {
-					stream = await scdl.downloadFormat(
-						song.url,
-						scdl.FORMATS.OPUS,
-						process.env.SOUNDCLOUD_CLIENT_ID ? process.env.SOUNDCLOUD_CLIENT_ID : undefined
-					);
-				} catch (error) {
-					stream = await scdl.downloadFormat(
-						song.url,
-						scdl.FORMATS.MP3,
-						process.env.SOUNDCLOUD_CLIENT_ID ? process.env.SOUNDCLOUD_CLIENT_ID : undefined
-					);
-					streamType = "unknown";
-				}
-			}
+			stream = await ytdlDiscord(song.url, { highWaterMark: 1 << 25 });
 		} catch (error) {
 			if (queue) {
 				queue.songs.shift();

@@ -2,7 +2,6 @@ const { play } = require("../../assets/functions/play.js");
 const ytdl = require("ytdl-core");
 const YouTubeAPI = require("simple-youtube-api");
 const youtube = new YouTubeAPI(process.env.YOUTUBE_API_KEY);
-const scdl = require("soundcloud-downloader");
 const parseMilliseconds = require("parse-ms");
 
 module.exports.run = async (bot, msg, args) => {
@@ -27,15 +26,11 @@ module.exports.run = async (bot, msg, args) => {
 	const search = args.join(" ");
 	const videoPattern = /^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
 	const playlistPattern = /^.*(list=)([^#\&\?]*).*/gi;
-	const scRegex = /^https?:\/\/(soundcloud\.com)\/(.*)$/;
 	const url = msg.content.substring(process.env.PREFIX.length).split(/\s+/g);
 	const urlValid = videoPattern.test(url);
 
 	// Start the playlist if playlist url was provided
-	if (
-		(!urlValid && playlistPattern.test(url)) ||
-		(scdl.isValidUrl(url) && url.includes("/sets/"))
-	) {
+	if (!urlValid && playlistPattern.test(url)) {
 		return msg.client.commands.get("playlist").execute(msg, args);
 	}
 
@@ -63,19 +58,6 @@ module.exports.run = async (bot, msg, args) => {
 		} catch (error) {
 			console.error(error);
 			return msg.reply(error.message).catch(console.error);
-		}
-	} else if (scRegex.test(url)) {
-		try {
-			const trackInfo = await scdl.getInfo(url, process.env.SOUNDCLOUD_CLIENT_ID);
-			song = {
-				title: trackInfo.title,
-				url: trackInfo.permalink_url,
-				duration: Math.ceil(trackInfo.duration / 1000),
-			};
-		} catch (error) {
-			if (error.statusCode === 404)
-				return msg.reply("Could not find that Soundcloud track.").catch(console.error);
-			return msg.reply("There was an error playing that Soundcloud track.").catch(console.error);
 		}
 	} else {
 		try {

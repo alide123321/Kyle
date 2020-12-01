@@ -10,7 +10,7 @@ module.exports.run = async (bot, msg, args) => {
 
 	if (
 		!msg.member.hasPermission("ADMINISTRATOR") &&
-		msg.member.roles.find((r) => r.name !== "Moderators")
+		msg.member.roles.cache.find((r) => r.name !== "Moderators")
 	) {
 		msg.channel.send("You must have admin perms to use this command!");
 		return;

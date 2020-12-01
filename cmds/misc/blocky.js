@@ -61,7 +61,6 @@ module.exports.run = async (bot, msg, args) => {
 					inline: true,
 				}
 			);
-
 		if (mentioned) StatsEmbed.setThumbnail(mentioned.user.avatarURL());
 
 		return msg.channel.send(StatsEmbed);

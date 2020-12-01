@@ -4,7 +4,7 @@ module.exports.run = async (bot, msg, args) => {
 	let mentioned = msg.mentions.members.first();
 
 	if (mentioned) {
-		if (mentioned.id === "698051518754062387" || mentioned.id === "326895102708547585")
+		if (mentioned.id === "698051518754062387" || mentioned.id === "397822189707198475")
 			perc = "-0";
 		let menEmbed = new Discord.MessageEmbed()
 			.setTitle("**Using the gay detector on " + mentioned.user.username + "**")
@@ -14,7 +14,7 @@ module.exports.run = async (bot, msg, args) => {
 		msg.channel.send(menEmbed);
 		return;
 	} else {
-		if (msg.author.id === "698051518754062387" || msg.author.id === "326895102708547585")
+		if (msg.author.id === "698051518754062387" || msg.author.id === "397822189707198475")
 			perc = "-0";
 		let authEmbed = new Discord.MessageEmbed()
 			.setTitle("**Using the gay detector on " + msg.author.username + "**")

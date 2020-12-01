@@ -1,4 +1,5 @@
 const ytdlDiscord = require("ytdl-core-discord");
+const sleep = require("./sleep.js").sleep;
 const { canModifyQueue } = require("../util/Kylebotutil");
 const parseMilliseconds = require("parse-ms");
 
@@ -77,7 +78,10 @@ module.exports = {
 		});
 
 		collector.on("collect", (reaction, user) => {
-			if (!queue) return;
+			if (!queue) {
+				sleep(3000);
+				return;
+			}
 			const member = msg.guild.member(user);
 
 			switch (reaction.emoji.name) {

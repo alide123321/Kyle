@@ -3,9 +3,9 @@ const { play } = require("../../assets/functions/play.js");
 const MAX_PLAYLIST_SIZE = process.env.MAX_PLAYLIST_SIZE;
 const YouTubeAPI = require("simple-youtube-api");
 const youtube = new YouTubeAPI(process.env.YOUTUBE_API_KEY);
-const scdl = require("soundcloud-downloader");
 
 module.exports.run = async (bot, msg, args) => {
+	args = msg.content.substring(process.env.PREFIX.length).split(/\s+/g);
 	const { channel } = msg.member.voice;
 	const serverQueue = msg.client.queue.get(msg.guild.id);
 
@@ -26,8 +26,8 @@ module.exports.run = async (bot, msg, args) => {
 
 	const search = args.join(" ");
 	const pattern = /^.*(youtu.be\/|list=)([^#\&\?]*).*/gi;
-	const url = args[0];
-	const urlValid = pattern.test(args[0]);
+	const url = args[1];
+	const urlValid = pattern.test(url);
 
 	const queueConstruct = {
 		textChannel: msg.channel,
@@ -50,16 +50,6 @@ module.exports.run = async (bot, msg, args) => {
 		} catch (error) {
 			console.error(error);
 			return msg.reply("Playlist not found :(").catch(console.error);
-		}
-	} else if (scdl.isValidUrl(args[0])) {
-		if (args[0].includes("/sets/")) {
-			msg.channel.send("⌛ fetching the playlist...");
-			playlist = await scdl.getSetInfo(args[0], process.env.SOUNDCLOUD_CLIENT_ID);
-			videos = playlist.tracks.map((track) => ({
-				title: track.title,
-				url: track.permalink_url,
-				duration: track.duration / 1000,
-			}));
 		}
 	} else {
 		try {

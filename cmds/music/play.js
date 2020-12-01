@@ -5,6 +5,7 @@ const youtube = new YouTubeAPI(process.env.YOUTUBE_API_KEY);
 const parseMilliseconds = require("parse-ms");
 
 module.exports.run = async (bot, msg, args) => {
+	args = msg.content.substring(process.env.PREFIX.length).split(/\s+/g);
 	const { channel } = msg.member.voice;
 
 	const serverQueue = msg.client.queue.get(msg.guild.id);
@@ -26,7 +27,7 @@ module.exports.run = async (bot, msg, args) => {
 	const search = args.join(" ");
 	const videoPattern = /^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
 	const playlistPattern = /^.*(list=)([^#\&\?]*).*/gi;
-	const url = msg.content.substring(process.env.PREFIX.length).split(/\s+/g);
+	const url = args[1];
 	const urlValid = videoPattern.test(url);
 
 	// Start the playlist if playlist url was provided

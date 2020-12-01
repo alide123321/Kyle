@@ -10,7 +10,7 @@ module.exports.run = async (bot, msg, args) => {
 
 	let modRole = message.guild.roles.find("name", "Moderators");
 
-	if (!msg.member.hasPermission("ADMINISTRATOR") && msg.member.roles.has(modRole)) {
+	if (!msg.member.hasPermission("ADMINISTRATOR") && !msg.member.roles.has(modRole)) {
 		msg.channel.send("You must have admin perms to use this command!");
 		return;
 	}

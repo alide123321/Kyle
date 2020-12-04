@@ -1,13 +1,12 @@
 module.exports.run = async (bot, msg, args) => {
-  const vc = require("../../assets/functions/vc.js").vc;
+	const vc = require("../../assets/functions/vc.js").vc;
 
-  var VC = msg.member.voice.channel;
-  vc("sad", 2.0, VC, msg.author.id, msg.channel);
-  msg.channel.send(
-    "https://cdn.discordapp.com/attachments/707451317626470455/746467065577078915/video0.mp4"
-  );
+	vc("sad", 0.9, msg);
+	msg.channel.send(
+		"https://cdn.discordapp.com/attachments/707451317626470455/746467065577078915/video0.mp4"
+	);
 };
 
 module.exports.help = {
-  name: "sad",
+	name: "sad",
 };

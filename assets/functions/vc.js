@@ -1,7 +1,7 @@
 const sleep = require("./sleep.js").sleep;
 const talkedRecently = require("./talked.js").talkedRecently;
 function vc(sound, vol, msg) {
-	if (msg.content.toLowerCase().substring(process.env.PREFIX.length).includes("-mute")) return;
+	if (msg.content.toLowerCase().substring(process.env.PREFIX.length).includes("--mute")) return;
 
 	vol += 0.7;
 	let author = msg.author.id;

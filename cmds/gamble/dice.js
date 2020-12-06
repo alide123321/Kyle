@@ -70,7 +70,7 @@ module.exports.run = async (bot, msg, args) => {
 	}
 
 	if (dice == rand) {
-		bet *= 3;
+		bet *= 5;
 
 		economy.add(`${msg.author.id}.bal`, bet);
 		let SuccessEmbed = new Discord.MessageEmbed()

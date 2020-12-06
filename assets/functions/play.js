@@ -1,4 +1,4 @@
-const ytdlDiscord = require("ytdl-core-discord");
+const ytdl = require("erit-ytdl");
 const sleep = require("./sleep.js").sleep;
 const { canModifyQueue } = require("../util/Kylebotutil");
 const parseMilliseconds = require("parse-ms");
@@ -18,7 +18,7 @@ module.exports = {
 		let streamType = song.url.includes("youtube.com") ? "opus" : "ogg/opus";
 
 		try {
-			stream = await ytdlDiscord(song.url, { highWaterMark: 1 << 25 });
+			stream = await ytdl(song.url, { highWaterMark: 1 << 25 });
 		} catch (error) {
 			if (queue) {
 				queue.songs.shift();

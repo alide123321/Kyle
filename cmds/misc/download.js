@@ -23,7 +23,7 @@ module.exports.run = async (bot, msg, args) => {
 	let embed = new Discord.MessageEmbed()
 		.setColor("#0099ff")
 		.setTitle("**React to one**")
-		.setURL("https://discord.gg/hpcxUFy")
+		.setURL("https://discord.gg/z4FpxSJ")
 		.addFields(
 			{
 				name: "**MP3**",
@@ -46,7 +46,7 @@ module.exports.run = async (bot, msg, args) => {
 
 		let linkEmbed = new Discord.MessageEmbed()
 			.setColor("#0099ff")
-			.setURL("https://discord.gg/hpcxUFy")
+			.setURL("https://discord.gg/z4FpxSJ")
 			.setThumbnail(
 				"https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png"
 			);

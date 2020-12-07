@@ -74,7 +74,7 @@ module.exports.run = async (bot, msg, args) => {
 	let DiffEmbed = new Discord.MessageEmbed()
 		.setColor("#0099ff")
 		.setTitle("**React to one**")
-		.setURL("https://discord.gg/hpcxUFy")
+		.setURL("https://discord.gg/z4FpxSJ")
 		.setThumbnail(msg.author.avatarURL())
 		.addFields(
 			{

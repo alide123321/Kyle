@@ -1,17 +1,22 @@
 const { bot } = require("../../index");
-const db = require("quick.db");
-var vcName = new db.table("vcName");
+let db = require("quick.db");
+let vcName = new db.table("vcName");
 
 var temporary = []; // private vc
 var temporaryw = []; // private vc waitting room
 let ParentId = "707452089453903943";
 let CreationVcId = "746447827055673434";
-let PrivName = "[private room]";
-let WaitName = "[waiting room]";
+let PrivName = `${newState.member.user.username} [private room]`;
+let WaitName = `${newState.member.user.username}`;
 bot.on("voiceStateUpdate", async (oldState, newState) => {
+	if (vcName.has(`${newState.id}`)) {
+		PrivName = vcName.get(`${newState.id}`);
+		WaitName = PrivName.concat(" [waiting room]");
+	}
+
 	if (newState.channelID === CreationVcId) {
 		newState.guild.channels
-			.create(`${newState.member.user.username} ${PrivName}`, {
+			.create(`${PrivName}`, {
 				type: "voice",
 				parent: ParentId,
 			})
@@ -41,7 +46,7 @@ bot.on("voiceStateUpdate", async (oldState, newState) => {
 			});
 
 		newState.guild.channels
-			.create(`${newState.member.user.username} ${WaitName}`, {
+			.create(`${WaitName} [waiting room]`, {
 				type: "voice",
 				parent: ParentId,
 			})

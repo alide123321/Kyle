@@ -62,7 +62,7 @@ module.exports.run = async (bot, msg, args) => {
 		}
 	} else {
 		try {
-			let results = await youtube.searchVideos(search, 1);
+			const results = await youtube.searchVideos(search, 2);
 			songInfo = await ytdl.getInfo(results[0].url);
 			song = {
 				title: songInfo.videoDetails.title,

@@ -142,7 +142,7 @@ async function play(msg) {
 		GuessedLetters = tempLet;
 	}
 
-	if (tries >= 7) {
+	if (tries > 7) {
 		end = true;
 		let LoseEmbed = new Discord.MessageEmbed()
 			.setTitle(`**HangMan - LOSS**`)

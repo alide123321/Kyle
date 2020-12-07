@@ -42,8 +42,8 @@ module.exports.run = async (bot, msg, args) => {
 				inline: true,
 			},
 			{
-				name: "**Gambling commands**",
-				value: prefix + "gambhelp",
+				name: "**Game commands**",
+				value: prefix + "gamehelp",
 				inline: true,
 			},
 			{

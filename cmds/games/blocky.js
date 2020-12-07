@@ -47,9 +47,25 @@ module.exports.run = async (bot, msg, args) => {
 		let StatsEmbed = new Discord.MessageEmbed()
 			.setTitle(`**Blocky**`)
 			.setURL("https://discord.gg/z4FpxSJ")
-			.setColor("#0099ff")
-			.setThumbnail(msg.author.avatarURL())
-			.addFields(
+			.setColor("#0099ff");
+
+		if (mentioned) {
+			StatsEmbed.setThumbnail(mentioned.user.avatarURL());
+			StatsEmbed.addFields(
+				{
+					name: "Level",
+					value: game.get(`${mentioned.id} blocky_level`),
+					inline: true,
+				},
+				{
+					name: "Moves made",
+					value: game.get(`${mentioned.id} blocky_moves`),
+					inline: true,
+				}
+			);
+		} else {
+			StatsEmbed.setThumbnail(msg.author.avatarURL());
+			StatsEmbed.addFields(
 				{
 					name: "Level",
 					value: game.get(`${msg.author.id} blocky_level`),
@@ -61,7 +77,7 @@ module.exports.run = async (bot, msg, args) => {
 					inline: true,
 				}
 			);
-		if (mentioned) StatsEmbed.setThumbnail(mentioned.user.avatarURL());
+		}
 
 		return msg.channel.send(StatsEmbed);
 	}

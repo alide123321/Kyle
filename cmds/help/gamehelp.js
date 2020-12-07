@@ -5,7 +5,7 @@ module.exports.run = (bot, msg, args) => {
 
 	let gamhelp = new Discord.MessageEmbed()
 		.setColor("#0099ff")
-		.setTitle("**Gambling commands**")
+		.setTitle("**Game commands**")
 		.setURL("https://sites.google.com/view/kyle-bot/home")
 		.setThumbnail(
 			"https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png"
@@ -15,10 +15,10 @@ module.exports.run = (bot, msg, args) => {
 				name: "Check out the commands on our website",
 				value: "`_____________________________________`",
 			},
-			{ name: "**Gambling commands**", value: "`_________________`" }
+			{ name: "**Game commands**", value: "`_________________`" }
 		);
 
-	Fs.readdir("./cmds/gamble/", (err, files) => {
+	Fs.readdir("./cmds/games/", (err, files) => {
 		if (err) console.error(err);
 
 		let jsfiles = files.filter((f) => f.split(".").pop() === "js");
@@ -33,5 +33,5 @@ module.exports.run = (bot, msg, args) => {
 };
 
 module.exports.help = {
-	name: "gambhelp",
+	name: "gamehelp",
 };

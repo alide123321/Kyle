@@ -10,7 +10,8 @@ module.exports.run = async (bot, msg, args) => {
 		let name = msg.content.substring(process.env.PREFIX.length + 7); // 7 bc vcname is 6 long + one space
 
 		if (args[1] === "reset") {
-			return vcName.delete(`${msg.author.id}`);
+			vcName.delete(`${msg.author.id}`);
+			return msg.channel.send("Done!");
 		}
 
 		if (name.length > 85)

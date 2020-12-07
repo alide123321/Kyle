@@ -6,9 +6,10 @@ var temporary = []; // private vc
 var temporaryw = []; // private vc waitting room
 let ParentId = "707452089453903943";
 let CreationVcId = "746447827055673434";
-let PrivName = `${newState.member.user.username} [private room]`;
-let WaitName = `${newState.member.user.username}`;
 bot.on("voiceStateUpdate", async (oldState, newState) => {
+	let PrivName = `${newState.member.user.username} [private room]`;
+	let WaitName = `${newState.member.user.username}`;
+
 	if (vcName.has(`${newState.id}`)) {
 		PrivName = vcName.get(`${newState.id}`);
 		WaitName = PrivName.concat(" [waiting room]");

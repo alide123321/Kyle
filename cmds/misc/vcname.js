@@ -8,12 +8,12 @@ module.exports.run = async (bot, msg, args) => {
 	if (msg.member.roles.cache.some((r) => AllowedRoles.includes(r.name))) {
 		let name = msg.content.substring(process.env.PREFIX.length + 7); // 7 bc vcname is 6 long + one space
 
-		if (name.length() > 85)
+		if (name.length > 85)
 			return msg.channel.send(
 				`Sorry but the name has to be below 85 characters you have ${name.length()}`
 			);
 
-		if (name.length() <= 0)
+		if (name.length <= 0)
 			return msg.channel.send("Sorry but the name has to be above 0 characters");
 
 		let SucsessEmbed = new Discord.MessageEmbed()

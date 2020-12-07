@@ -1,4 +1,5 @@
 module.exports.run = async (bot, msg, args) => {
+	const Discord = require("discord.js");
 	let db = require("quick.db");
 	let vcName = new db.table("vcName");
 	require("dotenv").config();

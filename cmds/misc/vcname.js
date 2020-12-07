@@ -9,6 +9,10 @@ module.exports.run = async (bot, msg, args) => {
 	if (msg.member.roles.cache.some((r) => AllowedRoles.includes(r.name))) {
 		let name = msg.content.substring(process.env.PREFIX.length + 7); // 7 bc vcname is 6 long + one space
 
+		if (args[1] === "reset") {
+			return vcName.delete(`${msg.author.id}`);
+		}
+
 		if (name.length > 85)
 			return msg.channel.send(
 				`Sorry but the name has to be below 85 characters you have ${name.length()}`
@@ -32,7 +36,7 @@ module.exports.run = async (bot, msg, args) => {
 					value: `${name} [waiting room]`,
 				}
 			)
-			.setFooter("If you dont like it you can restart");
+			.setFooter("If you dont like it you can do `.vcname reset`");
 
 		await vcName.set(`${msg.author.id}`, name);
 		msg.channel.send(SucsessEmbed);

@@ -4,8 +4,8 @@ var vcName = new db.table("vcName");
 
 var temporary = []; // private vc
 var temporaryw = []; // private vc waitting room
-let ParentId = "757169664848691271";
-let CreationVcId = "785515396430037022";
+let ParentId = "707452089453903943";
+let CreationVcId = "746447827055673434";
 let PrivName = "[private room]";
 let WaitName = "[waiting room]";
 bot.on("voiceStateUpdate", async (oldState, newState) => {

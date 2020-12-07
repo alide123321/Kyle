@@ -8,7 +8,7 @@ var tries = 0;
 var end = false;
 var word = "";
 module.exports.run = async (bot, msg, args) => {
-	const obj = JSON.parse(fs.readFileSync("assets\\util\\wordlist.json"));
+	const obj = JSON.parse(fs.readFileSync("assets/util/wordlist.json"));
 	const sleep = require("../../assets/functions/sleep.js").sleep;
 	const playingGame = require("../../assets/functions/playingGame.js").playingGame;
 

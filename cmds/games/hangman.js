@@ -174,7 +174,7 @@ async function play(msg) {
 			};
 
 			await msg.channel
-				.awaitMessages(filter, { max: 1, time: 15000, errors: ["time"] })
+				.awaitMessages(filter, { max: 1, time: 60000, errors: ["time"] })
 				.then(async (collected) => {
 					let input = collected.first();
 					let reaction = input.content.toLowerCase().split(/\s+/g);

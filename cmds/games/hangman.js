@@ -1,47 +1,47 @@
-const Discord = require("discord.js");
-const fs = require("fs");
-const db = require("quick.db");
-var game = new db.table("Game");
+const Discord = require('discord.js');
+const fs = require('fs');
+const db = require('quick.db');
+var game = new db.table('Game');
 
 var Guessed = [];
 var tries = 0;
 var end = false;
-var word = "";
+var word = '';
 module.exports.run = async (bot, msg, args) => {
-	const obj = JSON.parse(fs.readFileSync("assets/util/wordlist.json"));
-	const sleep = require("../../assets/functions/sleep.js").sleep;
-	const playingGame = require("../../assets/functions/playingGame.js").playingGame;
+	const obj = JSON.parse(fs.readFileSync('assets/util/wordlist.json'));
+	const sleep = require('../../assets/functions/sleep.js').sleep;
+	const playingGame = require('../../assets/functions/playingGame.js').playingGame;
 
 	if (playingGame.has(msg.author.id))
-		return "You are already playing a game finish it to start a new one";
+		return msg.channel.send('You are already playing a game finish it to start a new one');
 
 	if (!game.has(`${msg.author.id} hm_level`)) {
 		game.set(`${msg.author.id} hm_level`, 0);
 		game.set(`${msg.author.id} hm_letters`, 0);
 	}
 
-	if (args[1] === "reset") {
+	if (args[1] === 'reset') {
 		game.set(`${msg.author.id} hm_level`, 0);
 		game.set(`${msg.author.id} hm_letters`, 0);
-		return msg.channel.send("done");
-	} else if (args[1] === "stats") {
+		return msg.channel.send('done');
+	} else if (args[1] === 'stats') {
 		let mentioned = msg.mentions.members.first();
 
 		let StatsEmbed = new Discord.MessageEmbed()
 			.setTitle(`**HangMan**`)
-			.setURL("https://discord.gg/z4FpxSJ")
-			.setColor("#0099ff");
+			.setURL('https://discord.gg/z4FpxSJ')
+			.setColor('#0099ff');
 
 		if (mentioned) {
 			StatsEmbed.setThumbnail(mentioned.user.avatarURL());
 			StatsEmbed.addFields(
 				{
-					name: "Level",
+					name: 'Level',
 					value: game.get(`${mentioned.id} hm_level`),
 					inline: true,
 				},
 				{
-					name: "Letters Guessed",
+					name: 'Letters Guessed',
 					value: game.get(`${mentioned.id} hm_letters`),
 					inline: true,
 				}
@@ -50,12 +50,12 @@ module.exports.run = async (bot, msg, args) => {
 			StatsEmbed.setThumbnail(msg.author.avatarURL());
 			StatsEmbed.addFields(
 				{
-					name: "Level",
+					name: 'Level',
 					value: game.get(`${msg.author.id} hm_level`),
 					inline: true,
 				},
 				{
-					name: "Letters Guessed",
+					name: 'Letters Guessed',
 					value: game.get(`${msg.author.id} hm_letters`),
 					inline: true,
 				}
@@ -69,59 +69,59 @@ module.exports.run = async (bot, msg, args) => {
 
 	Guessed = [];
 	tries = 0;
-	word = "";
+	word = '';
 
 	let DiffEmbed = new Discord.MessageEmbed()
-		.setColor("#0099ff")
-		.setTitle("**React to one**")
-		.setURL("https://discord.gg/z4FpxSJ")
+		.setColor('#0099ff')
+		.setTitle('**React to one**')
+		.setURL('https://discord.gg/z4FpxSJ')
 		.setThumbnail(msg.author.avatarURL())
 		.addFields(
 			{
-				name: "**Easy**",
-				value: "Easy (3-4) 1️⃣",
+				name: '**Easy**',
+				value: 'Easy (3-4) 1️⃣',
 				inline: true,
 			},
 			{
-				name: "**Normal**",
-				value: "Normal (5-8) 2️⃣",
+				name: '**Normal**',
+				value: 'Normal (5-8) 2️⃣',
 				inline: true,
 			},
 			{
-				name: "**Hard**",
-				value: "Hard (9-12) 3️⃣",
+				name: '**Hard**',
+				value: 'Hard (9-12) 3️⃣',
 				inline: true,
 			}
 		)
-		.setFooter("Difficultes for HangMan (Easy-Normal-Hard)");
+		.setFooter('Difficultes for HangMan (Easy-Normal-Hard)');
 
 	await msg.channel.send(DiffEmbed).then(async (sentmsg) => {
-		sentmsg.react("1️⃣");
-		sentmsg.react("2️⃣");
-		sentmsg.react("3️⃣");
+		sentmsg.react('1️⃣');
+		sentmsg.react('2️⃣');
+		sentmsg.react('3️⃣');
 
 		const filter = (reaction, user) => {
-			return ["1️⃣", "2️⃣", "3️⃣"].includes(reaction.emoji.name) && user.id === msg.author.id;
+			return ['1️⃣', '2️⃣', '3️⃣'].includes(reaction.emoji.name) && user.id === msg.author.id;
 		};
 
 		await sentmsg
-			.awaitReactions(filter, { max: 1, time: 10000, errors: ["time"] })
+			.awaitReactions(filter, { max: 1, time: 10000, errors: ['time'] })
 			.then((collected) => {
 				const reaction = collected.first();
 
-				if (reaction.emoji.name === "1️⃣") {
+				if (reaction.emoji.name === '1️⃣') {
 					let WordNumPos = Math.floor(Math.random() * obj.easy.length);
 					word = obj.easy[WordNumPos];
-				} else if (reaction.emoji.name === "2️⃣") {
+				} else if (reaction.emoji.name === '2️⃣') {
 					let WordNumPos = Math.floor(Math.random() * obj.normal.length);
 					word = obj.normal[WordNumPos];
-				} else if (reaction.emoji.name === "3️⃣") {
+				} else if (reaction.emoji.name === '3️⃣') {
 					let WordNumPos = Math.floor(Math.random() * obj.hard.length);
 					word = obj.hard[WordNumPos];
 				}
 			})
 			.catch((error) => {
-				msg.reply("Time out");
+				msg.reply('Time out');
 			});
 	});
 
@@ -136,7 +136,7 @@ module.exports.run = async (bot, msg, args) => {
 };
 
 async function play(msg) {
-	let GuessedLetters = " ";
+	let GuessedLetters = ' ';
 	for (let letter in Guessed) {
 		let tempLet = GuessedLetters.concat(`${Guessed[letter]}, `);
 		GuessedLetters = tempLet;
@@ -146,8 +146,8 @@ async function play(msg) {
 		end = true;
 		let LoseEmbed = new Discord.MessageEmbed()
 			.setTitle(`**HangMan - LOSS**`)
-			.setURL("https://discord.gg/z4FpxSJ")
-			.setColor("#ff0000")
+			.setURL('https://discord.gg/z4FpxSJ')
+			.setColor('#ff0000')
 			.setThumbnail(msg.author.avatarURL())
 			.setFooter(`GG You've guessed: ${GuessedLetters} \n The word was \"${word}\"`);
 		await LoseEmbed.setDescription(gui());
@@ -157,8 +157,8 @@ async function play(msg) {
 
 	let HMEmbed = new Discord.MessageEmbed()
 		.setTitle(`**HangMan**`)
-		.setURL("https://discord.gg/z4FpxSJ")
-		.setColor("#0099ff")
+		.setURL('https://discord.gg/z4FpxSJ')
+		.setColor('#0099ff')
 		.setThumbnail(msg.author.avatarURL())
 		.setFooter(
 			`Guess a letter you haven't guessed \nYou've guessed: ${GuessedLetters} \n${
@@ -174,7 +174,7 @@ async function play(msg) {
 			};
 
 			await msg.channel
-				.awaitMessages(filter, { max: 1, time: 60000, errors: ["time"] })
+				.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] })
 				.then(async (collected) => {
 					let input = collected.first();
 					let reaction = input.content.toLowerCase().split(/\s+/g);
@@ -184,15 +184,15 @@ async function play(msg) {
 						Guessed.push(reaction[0]);
 					} else {
 						if (word === reaction[0]) {
-							let letters = reaction[0].split("");
+							let letters = reaction[0].split('');
 							for (let letter in letters) {
 								if (!Guessed.includes(letters[letter])) Guessed.push(letters[letter]);
 							}
 
 							let WonEmbed = new Discord.MessageEmbed()
 								.setTitle(`**HangMan - WIN**`)
-								.setURL("https://discord.gg/z4FpxSJ")
-								.setColor("#32cd32")
+								.setURL('https://discord.gg/z4FpxSJ')
+								.setColor('#32cd32')
 								.setThumbnail(msg.author.avatarURL())
 								.setFooter(
 									`GG You've guessed: ${GuessedLetters} \nand The word was ${word} in ${
@@ -208,8 +208,8 @@ async function play(msg) {
 							end = true;
 							let LoseEmbed = new Discord.MessageEmbed()
 								.setTitle(`**HangMan - LOSS**`)
-								.setURL("https://discord.gg/z4FpxSJ")
-								.setColor("#ff0000")
+								.setURL('https://discord.gg/z4FpxSJ')
+								.setColor('#ff0000')
 								.setThumbnail(msg.author.avatarURL())
 								.setFooter(`GG You've guessed: ${GuessedLetters} \n The word was ${word}`);
 							await LoseEmbed.setDescription(gui());
@@ -224,40 +224,40 @@ async function play(msg) {
 				});
 		} catch (error) {
 			end = true;
-			return msg.channel.send("Time ran out. Bye");
+			return msg.channel.send('Time ran out. Bye');
 		}
 	});
 }
 
 function gui() {
 	return (
-		"```" +
-		"|‾‾‾‾‾‾|   \n|     " +
-		(tries > 0 ? "⏳" : " ") +
-		"   \n|     " +
-		(tries > 1 ? "🎀" : " ") +
-		"   \n|     " +
-		(tries > 2 ? "🎩" : " ") +
-		"   \n|     " +
-		(tries > 3 ? "😟" : " ") +
-		"   \n|     " +
-		(tries > 4 ? "👕" : " ") +
-		"   \n|     " +
-		(tries > 5 ? "🩳" : " ") +
-		"   \n|    " +
-		(tries > 6 ? "👞👞" : " ") +
-		"   \n|     " +
-		(tries >= 7 ? "🎀" : " ") +
-		"   \n|     \n|__________\n\n" +
+		'```' +
+		'|‾‾‾‾‾‾|   \n|     ' +
+		(tries > 0 ? '⏳' : ' ') +
+		'   \n|     ' +
+		(tries > 1 ? '🎀' : ' ') +
+		'   \n|     ' +
+		(tries > 2 ? '🎩' : ' ') +
+		'   \n|     ' +
+		(tries > 3 ? '😟' : ' ') +
+		'   \n|     ' +
+		(tries > 4 ? '👕' : ' ') +
+		'   \n|     ' +
+		(tries > 5 ? '🩳' : ' ') +
+		'   \n|    ' +
+		(tries > 6 ? '👞👞' : ' ') +
+		'   \n|     ' +
+		(tries >= 7 ? '🎀' : ' ') +
+		'   \n|     \n|__________\n\n' +
 		word
-			.split("")
-			.map((l) => (Guessed.includes(l) ? l : "_"))
-			.join(" ") +
-		"```"
+			.split('')
+			.map((l) => (Guessed.includes(l) ? l : '_'))
+			.join(' ') +
+		'```'
 	);
 }
 
 module.exports.help = {
-	name: "hangman",
-	Alias: "hm",
+	name: 'hangman',
+	Alias: 'hm',
 };

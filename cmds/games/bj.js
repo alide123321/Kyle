@@ -2,7 +2,7 @@ const playingGame = require("../../assets/functions/playingGame.js").playingGame
 
 module.exports.run = async (bot, msg, args) => {
 	if (playingGame.has(msg.author.id))
-		return "You are already playing a game finish it to start a new one";
+		return msg.channel.send("You are already playing a game finish it to start a new one");
 
 	playingGame.add(msg.author.id);
 

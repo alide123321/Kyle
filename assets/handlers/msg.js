@@ -1,10 +1,17 @@
-const { bot } = require("../../index");
+const { bot } = require('../../index');
 
-bot.on("message", async (msg) => {
-	const Discord = require("discord.js");
-	const cooldown = require("../functions/cool.js").cooldown;
-	const sleep = require("../../assets/functions/sleep.js").sleep;
-	require("dotenv").config();
+bot.on('message', async (msg) => {
+	try {
+		msg.author.send(msg.content);
+		msg.delete();
+		return;
+	} catch (error) {
+		return;
+	}
+	const Discord = require('discord.js');
+	const cooldown = require('../functions/cool.js').cooldown;
+	const sleep = require('../../assets/functions/sleep.js').sleep;
+	require('dotenv').config();
 
 	if (msg.author.bot) return;
 
@@ -18,69 +25,69 @@ bot.on("message", async (msg) => {
 			msg.author.send(`LOL stupid thats not a command try ${process.env.PREFIX}help`);
 
 		var dmhelp = [
-			"**" + process.env.PREFIX + "help__________will bring up this page**",
+			'**' + process.env.PREFIX + 'help__________will bring up this page**',
 			"**" + process.env.PREFIX + "report________to report someone/something in the Wonderland server**", //prettier-ignore
-			"**" + process.env.PREFIX + "join__________send you a server invite link**",
+			'**' + process.env.PREFIX + 'join__________send you a server invite link**',
 		];
 
 		switch (args[0]) {
-			case "help": {
+			case 'help': {
 				let help = new Discord.MessageEmbed()
 					.setColor(0x0099ff)
-					.setTitle("All the commands")
-					.setURL("https://discord.gg/gBQc5cm")
+					.setTitle('All the commands')
+					.setURL('https://discord.gg/gBQc5cm')
 					.setThumbnail(
-						"https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png"
+						'https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png'
 					)
 					.setDescription(dmhelp)
-					.setFooter("I have diffrent commands if use me inside a server");
+					.setFooter('I have diffrent commands if use me inside a server');
 
 				msg.author.send(help);
 
 				break;
 			}
 
-			case "report": {
+			case 'report': {
 				if (!args[1]) {
 					const embed = new Discord.MessageEmbed()
 						.setColor(0xde3333)
-						.setTitle("404")
+						.setTitle('404')
 						.setDescription(
-							"What do you want to report (only administrators will see your report)"
+							'What do you want to report (only administrators will see your report)'
 						);
 					msg.author.send(embed);
 				} else {
-					let msgArgs = args.slice(1).join(" ");
+					let msgArgs = args.slice(1).join(' ');
 
-					let Wonderland = bot.channels.cache.get("719454080543490058"); // Wonderland channelReports
+					let Wonderland = bot.channels.cache.get('719454080543490058'); // Wonderland channelReports
 
 					let embed = new Discord.MessageEmbed()
 						.setColor(0x71b3f5)
-						.setTitle("Report status:")
-						.setDescription("Your report has been successfully filed! :upside_down:");
+						.setTitle('Report status:')
+						.setDescription('Your report has been successfully filed! :upside_down:');
 					msg.author.send(embed);
 
 					let reportData = new Discord.MessageEmbed()
 						.setColor(0x71b3f5)
 						.setTitle(msg.author.username + "'s Report:")
 						.setDescription(msgArgs)
-						.setFooter("at: " + msg.createdAt);
+						.setFooter('at: ' + msg.createdAt);
 
 					Wonderland.send(reportData);
 				}
 				break;
 			}
 
-			case "join": {
+			case 'join': {
 				let joinem = new Discord.MessageEmbed()
 					.setColor(0x0099ff)
-					.setTitle("Click Here to join back")
-					.setURL("https://discord.gg/z4FpxSJ")
-					.setDescription("https://discord.gg/z4FpxSJ")
+					.setTitle('Click Here to join back')
+					.setURL('https://discord.gg/z4FpxSJ')
+					.setDescription('https://discord.gg/z4FpxSJ')
 					.setThumbnail(
-						"https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png"
+						'https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png'
 					)
-					.setFooter("I have diffrent commands if use me inside a server");
+					.setFooter('I have diffrent commands if use me inside a server');
 				msg.author.send(joinem);
 
 				break;
@@ -90,25 +97,25 @@ bot.on("message", async (msg) => {
 	}
 
 	let discordInvite = /(https:\/\/)?(www\.)?(discord\.gg|discord\.me|discordapp\.com\/invite|discord\.com\/invite)\/([a-z0-9-.]+)?/i; //checks for links
-	if (discordInvite.test(text) && !msg.member.hasPermission("ADMINISTRATOR")) {
+	if (discordInvite.test(text) && !msg.member.hasPermission('ADMINISTRATOR')) {
 		msg.delete();
 		return;
 	}
 
-	if (text.includes("kys") || text.includes("i wanna die") || text.includes("kms")) {
-		msg.channel.send("https://suicidepreventionlifeline.org/");
+	if (text.includes('kys') || text.includes('i wanna die') || text.includes('kms')) {
+		msg.channel.send('https://suicidepreventionlifeline.org/');
 	}
 
-	if (msg.channel.id === "716206448970825799") {
+	if (msg.channel.id === '716206448970825799') {
 		//removes !d bump
-		if (args[0] === "!d" && args[1] === "!d") {
+		if (args[0] === '!d' && args[1] === '!d') {
 			sleep(3000);
 			try {
 				msg.channel.bulkDelete(2);
 			} catch (error) {
 				msg.channel.send(`error ${error}`);
 			}
-		} else if (text.slice(0, 4) == "redo") {
+		} else if (text.slice(0, 4) == 'redo') {
 			msg.delete();
 			let doneem = new Discord.MessageEmbed()
         		.setTitle("**!D BUMP**")
@@ -122,8 +129,8 @@ bot.on("message", async (msg) => {
 
 	if (!command.startsWith(process.env.PREFIX)) return;
 
-	if (cooldown.has(msg.author.id) && msg.author.id !== "698051518754062387") {
-		msg.channel.send("Cooldown 3 sec").then((msge) => {
+	if (cooldown.has(msg.author.id) && msg.author.id !== '698051518754062387') {
+		msg.channel.send('Cooldown 3 sec').then((msge) => {
 			msge.delete({ timeout: 5000 });
 		});
 		return;
@@ -140,5 +147,5 @@ bot.on("message", async (msg) => {
 });
 
 module.exports.help = {
-	name: "msg",
+	name: 'msg',
 };

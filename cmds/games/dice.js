@@ -69,7 +69,7 @@ module.exports.run = async (bot, msg, args) => {
 		return;
 	}
 
-	if (dice == rand) {
+	if (dice === rand) {
 		bet *= 5;
 
 		economy.add(`${msg.author.id}.bal`, bet);
@@ -80,15 +80,13 @@ module.exports.run = async (bot, msg, args) => {
 			.setDescription('You won: ' + bet + ' :) <:chip:751730576918315048>');
 		msg.channel.send(SuccessEmbed);
 		return;
-	}
-
-	if (dice !== rand) {
+	} else {
 		economy.subtract(`${msg.author.id}.bal`, bet);
 		let SuccessEmbed = new Discord.MessageEmbed()
-      .setTitle("**LOSS**")
-      .setColor(0xff0000)
-      .setThumbnail(msg.author.avatarURL())
-      .setDescription("You lost: " +bet +" <:chip:751730576918315048> :(\n The dice was: " +rand); // prettier-ignore
+			.setTitle("**LOSS**")
+			.setColor(0xff0000)
+			.setThumbnail(msg.author.avatarURL())
+			.setDescription("You lost: " +bet +" <:chip:751730576918315048> :(\n The dice was: " +rand); // prettier-ignore
 		msg.channel.send(SuccessEmbed);
 		return;
 	}

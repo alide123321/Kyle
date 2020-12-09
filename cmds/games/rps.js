@@ -14,8 +14,7 @@ module.exports.run = async (bot, msg, args) => {
 			.setColor(0xff0000)
 			.setThumbnail(msg.author.avatarURL())
 			.setDescription('You are not in the system try .newbal');
-		msg.channel.send(ErrorEmbed);
-		return;
+		return msg.channel.send(ErrorEmbed);
 	}
 
 	if (!args[2] || isNaN(bet)) {
@@ -24,8 +23,7 @@ module.exports.run = async (bot, msg, args) => {
 			.setColor(0xff0000)
 			.setThumbnail(msg.author.avatarURL())
 			.setDescription('How much do you want to bet? <0/1/2> <bet> \n0-Rock\n1-Paper\n2-scissors');
-		msg.channel.send(ErrorEmbed);
-		return;
+		return msg.channel.send(ErrorEmbed);
 	}
 
 	bet = Math.floor(bet);
@@ -36,8 +34,7 @@ module.exports.run = async (bot, msg, args) => {
 			.setColor(0xff0000)
 			.setThumbnail(msg.author.avatarURL())
 			.setDescription('You must bet 0 or more.');
-		msg.channel.send(ErrorEmbed);
-		return;
+		return msg.channel.send(ErrorEmbed);
 	}
 
 	if (useracc < bet) {
@@ -46,8 +43,7 @@ module.exports.run = async (bot, msg, args) => {
 			.setColor(0xff0000)
 			.setThumbnail(msg.author.avatarURL())
 			.setDescription('You do not have enough money.');
-		msg.channel.send(ErrorEmbed);
-		return;
+		return msg.channel.send(ErrorEmbed);
 	}
 
 	if (!args[1]) {
@@ -56,8 +52,7 @@ module.exports.run = async (bot, msg, args) => {
 			.setColor(0xff0000)
 			.setThumbnail(msg.author.avatarURL())
 			.setDescription('What do you want? <0/1/2> <bet> \n0-Rock\n1-Paper\n2-scissors');
-		msg.channel.send(ErrorEmbed);
-		return;
+		return msg.channel.send(ErrorEmbed);
 	}
 
 	let player = args[1];
@@ -67,8 +62,7 @@ module.exports.run = async (bot, msg, args) => {
 			.setColor(0xff0000)
 			.setThumbnail(msg.author.avatarURL())
 			.setDescription('What do you want? \n0-Rock\n1-Paper\n2-scissors');
-		msg.channel.send(ErrorEmbed);
-		return;
+		return msg.channel.send(ErrorEmbed);
 	}
 
 	// 0 = rock
@@ -84,8 +78,7 @@ module.exports.run = async (bot, msg, args) => {
 				.setThumbnail(msg.author.avatarURL())
 				.setDescription('You both got rock');
 			msg.channel.send(SuccessEmbed);
-		}
-		if (drand === 1) {
+		} else if (drand === 1) {
 			//if u get rock and dealer gets paper
 			var dealer = 'paper';
 			economy.subtract(`${author}.bal`, bet);
@@ -95,8 +88,7 @@ module.exports.run = async (bot, msg, args) => {
 				.setThumbnail(msg.author.avatarURL())
 				.setDescription('You lost: ' + bet + ' <:chip:751730576918315048> :(\nBot got: ' + dealer);
 			msg.channel.send(SuccessEmbed);
-		}
-		if (drand === 2) {
+		} else if (drand === 2) {
 			//if u get rock and dealer gets sis
 			var dealer = 'scissors';
 			economy.add(`${author}.bal`, bet);
@@ -108,9 +100,7 @@ module.exports.run = async (bot, msg, args) => {
 			msg.channel.send(SuccessEmbed);
 		}
 		return;
-	}
-
-	if (player == 1) {
+	} else if (player == 1) {
 		if (drand === 1) {
 			//if u get paper and dealer gets paper
 			let SuccessEmbed = new Discord.MessageEmbed()
@@ -119,8 +109,7 @@ module.exports.run = async (bot, msg, args) => {
 				.setThumbnail(msg.author.avatarURL())
 				.setDescription('You both got paper');
 			msg.channel.send(SuccessEmbed);
-		}
-		if (drand === 2) {
+		} else if (drand === 2) {
 			//if u get paper and dealer gets sis
 			var dealer = 'scissors';
 			economy.subtract(`${author}.bal`, bet);
@@ -130,8 +119,7 @@ module.exports.run = async (bot, msg, args) => {
 				.setThumbnail(msg.author.avatarURL())
 				.setDescription('You lost: ' + bet + ' <:chip:751730576918315048> :(\nBot got: ' + dealer);
 			msg.channel.send(SuccessEmbed);
-		}
-		if (drand === 0) {
+		} else if (drand === 0) {
 			//if u get paper and dealer gets rock
 			var dealer = 'rock';
 			economy.add(`${author}.bal`, bet);
@@ -143,9 +131,7 @@ module.exports.run = async (bot, msg, args) => {
 			msg.channel.send(SuccessEmbed);
 		}
 		return;
-	}
-
-	if (player == 2) {
+	} else if (player == 2) {
 		if (drand === 2) {
 			//if u get sis and dealer gets sis
 			let SuccessEmbed = new Discord.MessageEmbed()
@@ -154,8 +140,7 @@ module.exports.run = async (bot, msg, args) => {
 				.setThumbnail(msg.author.avatarURL())
 				.setDescription('You both got scissors');
 			msg.channel.send(SuccessEmbed);
-		}
-		if (drand === 0) {
+		} else if (drand === 0) {
 			//if u get sis and dealer gets rock
 			var dealer = 'rock';
 			economy.subtract(`${author}.bal`, bet);
@@ -165,8 +150,7 @@ module.exports.run = async (bot, msg, args) => {
         .setThumbnail(msg.author.avatarURL())
         .setDescription("You lost: " +bet +" <:chip:751730576918315048> :(\nBot got: " +dealer); // prettier-ignore
 			msg.channel.send(SuccessEmbed);
-		}
-		if (drand === 1) {
+		} else if (drand === 1) {
 			//if u get sis and dealer gets paper
 			var dealer = 'paper';
 			economy.add(`${author}.bal`, bet);

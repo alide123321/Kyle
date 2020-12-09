@@ -56,9 +56,7 @@ module.exports.run = async (bot, msg, args) => {
 			.setThumbnail(msg.author.avatarURL())
 			.setDescription('You lost: ' + bet + ' :( <:chip:751730576918315048>');
 		msg.channel.send(SuccessEmbed);
-	}
-
-	if (rand === 1) {
+	} else {
 		economy.add(`${msg.author.id}.bal`, bet);
 		let SuccessEmbed = new Discord.MessageEmbed()
 			.setTitle('**WIN**')

@@ -14,7 +14,7 @@ module.exports.run = async (bot, msg, args) => {
 		(mentioned1.id === '698051518754062387' && mentioned2.id === '713878109509779516') ||
 		(mentioned2.id === '713878109509779516' && mentioned2.id === '698051518754062387')
 	)
-		perc = ':ahegao: 1000 :ahegao:';
+		perc = ':hot_face: 1000 :hot_face:';
 
 	if (
 		(mentioned1.id === '698051518754062387' && mentioned2.id === '228230808584978442') ||

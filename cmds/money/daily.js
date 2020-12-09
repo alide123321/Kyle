@@ -3,7 +3,7 @@ module.exports.run = async (bot, msg, args) => {
 	const db = require('quick.db');
 	const ms = require('parse-ms');
 	let timeout = 86400000;
-	var economy = new db.table('economy');
+	let economy = new db.table('economy');
 	let lc = economy.get(`${msg.author.id}.lc`);
 
 	if (!economy.has(msg.author.id)) {

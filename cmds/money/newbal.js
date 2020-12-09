@@ -16,6 +16,8 @@ module.exports.run = async (bot, msg, args) => {
 
 	economy.set(`${author}.bal`, 100);
 	economy.add(`${author}.lc`, 0);
+	economy.set(`${msg.author.id}.lrobed`, 0);
+	economy.set(`${msg.author.id}.lgrobed`, 0);
 
 	let SuccessEmbed = new Discord.MessageEmbed()
 		.setTitle('**WELCOME**')

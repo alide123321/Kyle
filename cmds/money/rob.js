@@ -32,7 +32,7 @@ module.exports.run = async (bot, msg, args) => {
 			.setTitle("**Rob**")
 			.setColor(0xff0000)
 			.setThumbnail(msg.author.avatarURL())
-			.setDescription(`You just robed someone 12 hours ago you need to hide.\n you can rob someone again in **${time.hours}h ${time.minutes}m ${time.seconds}s**!`); // prettier-ignore
+			.setDescription(`You just robed someone wiht in 12 hours you need to hide.\n you can rob someone again in **\`\`\`${time.hours}h ${time.minutes}m ${time.seconds}s!\`\`\`**`); // prettier-ignore
 		return msg.channel.send(RobedEmbed);
 	}
 

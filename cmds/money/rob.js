@@ -47,7 +47,7 @@ module.exports.run = async (bot, msg, args) => {
 		return msg.channel.send(RobEmbed);
 	}
 
-	if (economy.get(`${msg.autho.id}.bal`) < 500)
+	if (economy.get(`${msg.author.id}.bal`) < 500)
 		return msg.channel.send(
 			`Bruh you broke asf calm down \nyou need $${500 - economy.get(`${mentioned.id}.bal`)} more`
 		);

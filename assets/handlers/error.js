@@ -1,5 +1,5 @@
-const { bot } = require("../../index");
+const { bot } = require('../../index');
 
-bot.on("error", (error) => {
+bot.on('error', (error) => {
 	console.log(`client's WebSocket encountered a connection error: ${error}`);
 });

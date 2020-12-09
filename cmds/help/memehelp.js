@@ -1,27 +1,27 @@
 module.exports.run = async (bot, msg, args) => {
-	const Discord = require("discord.js");
-	const Fs = require("fs");
+	const Discord = require('discord.js');
+	const Fs = require('fs');
 	const prefix = process.env.PREFIX;
 
 	let memehelp = new Discord.MessageEmbed()
-		.setColor("#0099ff")
-		.setTitle("**Meme commands**")
-		.setURL("https://sites.google.com/view/kyle-bot/home")
+		.setColor('#0099ff')
+		.setTitle('**Meme commands**')
+		.setURL('https://sites.google.com/view/kyle-bot/home')
 		.setThumbnail(
-			"https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png"
+			'https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png'
 		)
 		.addFields(
 			{
-				name: "Check out the commands on our website",
-				value: "`_____________________________________`",
+				name: 'Check out the commands on our website',
+				value: '`_____________________________________`',
 			},
-			{ name: "**Meme commands**", value: "`_____________`" }
+			{ name: '**Meme commands**', value: '`_____________`' }
 		);
 
-	Fs.readdir("./cmds/memes/", (err, files) => {
+	Fs.readdir('./cmds/memes/', (err, files) => {
 		if (err) console.error(err);
 
-		let jsfiles = files.filter((f) => f.split(".").pop() === "js");
+		let jsfiles = files.filter((f) => f.split('.').pop() === 'js');
 
 		jsfiles.forEach((f, i) => {
 			f = f.slice(0, f.length - 3);
@@ -34,5 +34,5 @@ module.exports.run = async (bot, msg, args) => {
 };
 
 module.exports.help = {
-	name: "memehelp",
+	name: 'memehelp',
 };

@@ -1,7 +1,7 @@
 module.exports.run = async (bot, msg, args) => {
-	const Discord = require("discord.js");
-	const fetch = require("node-fetch");
-	fetch("https://meme-api.herokuapp.com/gimme")
+	const Discord = require('discord.js');
+	const fetch = require('node-fetch');
+	fetch('https://meme-api.herokuapp.com/gimme')
 		.then((res) => res.json())
 		.then((json) => {
 			let embed = new Discord.MessageEmbed()
@@ -13,5 +13,5 @@ module.exports.run = async (bot, msg, args) => {
 };
 
 module.exports.help = {
-	name: "meme",
+	name: 'meme',
 };

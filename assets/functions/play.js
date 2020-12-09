@@ -1,7 +1,7 @@
-const ytdl = require("erit-ytdl");
-const sleep = require("./sleep.js").sleep;
-const { canModifyQueue } = require("../util/Kylebotutil");
-const parseMilliseconds = require("parse-ms");
+const ytdl = require('erit-ytdl');
+const sleep = require('./sleep.js').sleep;
+const { canModifyQueue } = require('../util/Kylebotutil');
+const parseMilliseconds = require('parse-ms');
 
 module.exports = {
 	async play(song, msg) {
@@ -11,11 +11,11 @@ module.exports = {
 		if (!song) {
 			queue.channel.leave();
 			msg.client.queue.delete(msg.guild.id);
-			return queue.textChannel.send("🚫 Music queue ended.").catch(console.error);
+			return queue.textChannel.send('🚫 Music queue ended.').catch(console.error);
 		}
 
 		let stream = null;
-		let streamType = song.url.includes("youtube.com") ? "opus" : "ogg/opus";
+		let streamType = song.url.includes('youtube.com') ? 'opus' : 'ogg/opus';
 
 		try {
 			stream = await ytdl(song.url, { highWaterMark: 1 << 25 });
@@ -29,11 +29,11 @@ module.exports = {
 			return msg.channel.send(`Error: ${error.message ? error.message : error}`);
 		}
 
-		queue.connection.on("disconnect", () => msg.client.queue.delete(msg.guild.id));
+		queue.connection.on('disconnect', () => msg.client.queue.delete(msg.guild.id));
 
 		const dispatcher = queue.connection
 			.play(stream, { type: streamType })
-			.on("finish", () => {
+			.on('finish', () => {
 				if (collector && !collector.ended) collector.stop();
 
 				if (queue.loop) {
@@ -48,7 +48,7 @@ module.exports = {
 					module.exports.play(queue.songs[0], msg);
 				}
 			})
-			.on("error", (err) => {
+			.on('error', (err) => {
 				console.error(err);
 				queue.songs.shift();
 				module.exports.play(queue.songs[0], msg);
@@ -65,9 +65,9 @@ module.exports = {
 			var playingMessage = await queue.textChannel.send(
 				`🎶 Started playing: **${song.title}** - [${min}:${sec}]`
 			);
-			await playingMessage.react("⏭");
-			await playingMessage.react("⏯");
-			await playingMessage.react("🔁");
+			await playingMessage.react('⏭');
+			await playingMessage.react('⏯');
+			await playingMessage.react('🔁');
 		} catch (error) {
 			console.error(error);
 		}
@@ -77,7 +77,7 @@ module.exports = {
 			time: song.duration > 0 ? song.duration * 1000 : 600000,
 		});
 
-		collector.on("collect", (reaction, user) => {
+		collector.on('collect', (reaction, user) => {
 			if (!queue) {
 				sleep(3000);
 				return;
@@ -85,7 +85,7 @@ module.exports = {
 			const member = msg.guild.member(user);
 
 			switch (reaction.emoji.name) {
-				case "⏭":
+				case '⏭':
 					queue.playing = true;
 					reaction.users.remove(user).catch(console.error);
 					if (!canModifyQueue(member)) return;
@@ -94,7 +94,7 @@ module.exports = {
 					collector.stop();
 					break;
 
-				case "⏯":
+				case '⏯':
 					reaction.users.remove(user).catch(console.error);
 					if (!canModifyQueue(member)) return;
 					if (queue.playing) {
@@ -108,12 +108,12 @@ module.exports = {
 					}
 					break;
 
-				case "🔁":
+				case '🔁':
 					reaction.users.remove(user).catch(console.error);
 					if (!canModifyQueue(member)) return;
 					queue.loop = !queue.loop;
 					queue.textChannel
-						.send(`Loop is now ${queue.loop ? "**on**" : "**off**"}`)
+						.send(`Loop is now ${queue.loop ? '**on**' : '**off**'}`)
 						.catch(console.error);
 					break;
 
@@ -123,7 +123,7 @@ module.exports = {
 			}
 		});
 
-		collector.on("end", () => {
+		collector.on('end', () => {
 			playingMessage.reactions.removeAll().catch(console.error);
 			if (PRUNING && playingMessage && !playingMessage.deleted) {
 				playingMessage.delete({ timeout: 3000 }).catch(console.error);

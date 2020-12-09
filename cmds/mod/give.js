@@ -1,32 +1,32 @@
 module.exports.run = async (bot, msg, args) => {
-	const Discord = require("discord.js");
-	const db = require("quick.db");
-	var economy = new db.table("economy");
+	const Discord = require('discord.js');
+	const db = require('quick.db');
+	var economy = new db.table('economy');
 	let author = msg.author.id;
 	let mentioned = msg.mentions.members.first();
 	let Money = args[1];
 
-	if (author !== "698051518754062387") {
-		msg.channel.send("Only Alide can use this command, try using .pay");
+	if (author !== '698051518754062387') {
+		msg.channel.send('Only Alide can use this command, try using .pay');
 		return;
 	}
 
 	if (!Money || isNaN(Money) || !mentioned) {
 		let ErrorEmbed = new Discord.MessageEmbed()
-			.setTitle("**ERROR**")
+			.setTitle('**ERROR**')
 			.setColor(0xff0000)
 			.setThumbnail(msg.author.avatarURL())
-			.setDescription("Please specify an amount/user to give. (.give <#> <@>)");
+			.setDescription('Please specify an amount/user to give. (.give <#> <@>)');
 		msg.channel.send(ErrorEmbed);
 		return;
 	}
 
-	if (Money.includes(".")) {
+	if (Money.includes('.')) {
 		let ErrorEmbed = new Discord.MessageEmbed()
-			.setTitle("**ERROR**")
+			.setTitle('**ERROR**')
 			.setColor(0xff0000)
 			.setThumbnail(msg.author.avatarURL())
-			.setDescription("Please specify an integer value greater than 0. (.pay <#> <@>)");
+			.setDescription('Please specify an integer value greater than 0. (.pay <#> <@>)');
 		msg.channel.send(ErrorEmbed);
 		return;
 	}
@@ -49,5 +49,5 @@ module.exports.run = async (bot, msg, args) => {
 };
 
 module.exports.help = {
-	name: "give",
+	name: 'give',
 };

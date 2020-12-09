@@ -1,12 +1,12 @@
-const { bot } = require("../../index");
-let db = require("quick.db");
-let vcName = new db.table("vcName");
+const { bot } = require('../../index');
+let db = require('quick.db');
+let vcName = new db.table('vcName');
 
 var temporary = []; // private vc
 var temporaryw = []; // private vc waitting room
-let ParentId = "707452089453903943";
-let CreationVcId = "746447827055673434";
-bot.on("voiceStateUpdate", async (oldState, newState) => {
+let ParentId = '707452089453903943';
+let CreationVcId = '746447827055673434';
+bot.on('voiceStateUpdate', async (oldState, newState) => {
 	let PrivName = `${newState.member.user.username} [private room]`;
 	let WaitName = `${newState.member.user.username}`;
 
@@ -18,26 +18,26 @@ bot.on("voiceStateUpdate", async (oldState, newState) => {
 	if (newState.channelID === CreationVcId) {
 		newState.guild.channels
 			.create(`${PrivName}`, {
-				type: "voice",
+				type: 'voice',
 				parent: ParentId,
 			})
 			.then((vc) => {
 				vc.overwritePermissions([
 					{
 						id: newState.id,
-						type: "member",
+						type: 'member',
 						allow: 19924480,
 						deny: 0,
 					},
 					{
 						id: bot.user.id,
-						type: "member",
+						type: 'member',
 						allow: 286262288,
 						deny: 0,
 					},
 					{
 						id: newState.guild.id,
-						type: "role",
+						type: 'role',
 						allow: 0,
 						deny: 1048576,
 					},
@@ -48,26 +48,26 @@ bot.on("voiceStateUpdate", async (oldState, newState) => {
 
 		newState.guild.channels
 			.create(`${WaitName} [waiting room]`, {
-				type: "voice",
+				type: 'voice',
 				parent: ParentId,
 			})
 			.then((vc) => {
 				vc.overwritePermissions([
 					{
 						id: newState.id,
-						type: "member",
+						type: 'member',
 						allow: 16777216,
 						deny: 0,
 					},
 					{
 						id: bot.user.id,
-						type: "member",
+						type: 'member',
 						allow: 286262288,
 						deny: 0,
 					},
 					{
 						id: newState.guild.id,
-						type: "role",
+						type: 'role',
 						allow: 1049600,
 						deny: 2097153,
 					},

@@ -1,19 +1,17 @@
-const { play } = require("../../assets/functions/play.js");
-const ytdl = require("ytdl-core");
-const YouTubeAPI = require("simple-youtube-api");
+const { play } = require('../../assets/functions/play.js');
+const ytdl = require('ytdl-core');
+const YouTubeAPI = require('simple-youtube-api');
 const youtube = new YouTubeAPI(process.env.YOUTUBE_API_KEY);
-const parseMilliseconds = require("parse-ms");
+const parseMilliseconds = require('parse-ms');
 
 module.exports.run = async (bot, msg, args) => {
 	args = msg.content.substring(process.env.PREFIX.length).split(/\s+/g);
 	const { channel } = msg.member.voice;
 
 	const serverQueue = msg.client.queue.get(msg.guild.id);
-	if (!channel) return msg.reply("You need to join a voice channel first!").catch(console.error);
+	if (!channel) return msg.reply('You need to join a voice channel first!').catch(console.error);
 	if (serverQueue && channel !== msg.guild.me.voice.channel)
-		return msg
-			.reply(`You must be in the same channel as ${msg.client.user}`)
-			.catch(console.error);
+		return msg.reply(`You must be in the same channel as ${msg.client.user}`).catch(console.error);
 
 	if (!args.length)
 		return msg
@@ -21,10 +19,10 @@ module.exports.run = async (bot, msg, args) => {
 			.catch(console.error);
 
 	const permissions = channel.permissionsFor(msg.client.user);
-	if (!permissions.has("CONNECT")) return msg.reply("Give me perms to join the vc!");
-	if (!permissions.has("SPEAK")) return msg.reply("Give me speaking perms!");
+	if (!permissions.has('CONNECT')) return msg.reply('Give me perms to join the vc!');
+	if (!permissions.has('SPEAK')) return msg.reply('Give me speaking perms!');
 
-	const search = args.join(" ");
+	const search = args.join(' ');
 	const videoPattern = /^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
 	const playlistPattern = /^.*(list=)([^#\&\?]*).*/gi;
 	const url = args[1];
@@ -32,7 +30,7 @@ module.exports.run = async (bot, msg, args) => {
 
 	// Start the playlist if playlist url was provided
 	if (!urlValid && playlistPattern.test(url)) {
-		return msg.client.commands.get("playlist").execute(msg, args);
+		return msg.client.commands.get('playlist').execute(msg, args);
 	}
 
 	const queueConstruct = {
@@ -71,7 +69,7 @@ module.exports.run = async (bot, msg, args) => {
 			};
 		} catch (error) {
 			console.error(error);
-			return msg.reply("No video was found with a matching title").catch(console.error);
+			return msg.reply('No video was found with a matching title').catch(console.error);
 		}
 	}
 
@@ -106,6 +104,6 @@ module.exports.run = async (bot, msg, args) => {
 };
 
 module.exports.help = {
-	name: "play",
-	Alias: "p",
+	name: 'play',
+	Alias: 'p',
 };

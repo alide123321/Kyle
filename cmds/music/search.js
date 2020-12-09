@@ -1,6 +1,6 @@
 module.exports.run = async (bot, msg, args) => {
-	const { MessageEmbed } = require("discord.js");
-	const YouTubeAPI = require("simple-youtube-api");
+	const { MessageEmbed } = require('discord.js');
+	const YouTubeAPI = require('simple-youtube-api');
 	const youtube = new YouTubeAPI(process.env.YOUTUBE_API_KEY);
 
 	if (!args.length)
@@ -8,16 +8,16 @@ module.exports.run = async (bot, msg, args) => {
 			.reply(`Usage: ${process.env.PREFIX}${module.exports.name} <Video Name>`)
 			.catch(console.error);
 	if (msg.channel.activeCollector)
-		return msg.reply("A message collector is already active in this channel.");
+		return msg.reply('A message collector is already active in this channel.');
 	if (!msg.member.voice.channel)
-		return msg.reply("You need to join a voice channel first!").catch(console.error);
+		return msg.reply('You need to join a voice channel first!').catch(console.error);
 
-	const search = args.join(" ");
+	const search = args.join(' ');
 
 	let resultsEmbed = new MessageEmbed()
 		.setTitle(`**Reply with the song number you want to play**`)
 		.setDescription(`Results for: ${search}`)
-		.setColor("#F8AA2A");
+		.setColor('#F8AA2A');
 
 	try {
 		const results = await youtube.searchVideos(search, 10);
@@ -36,21 +36,21 @@ module.exports.run = async (bot, msg, args) => {
 		const response = await msg.channel.awaitMessages(filter, {
 			max: 1,
 			time: 30000,
-			errors: ["time"],
+			errors: ['time'],
 		});
 		const reply = response.first().content;
 
-		if (reply.includes(",")) {
-			let songs = reply.split(",").map((str) => str.trim());
+		if (reply.includes(',')) {
+			let songs = reply.split(',').map((str) => str.trim());
 
 			for (let song of songs) {
 				await msg.client.commands
-					.get("play")
+					.get('play')
 					.execute(msg, [resultsEmbed.fields[parseInt(song) - 1].name]);
 			}
 		} else {
 			const choice = resultsEmbed.fields[parseInt(response.first()) - 1].name;
-			msg.client.commands.get("play").execute(msg, [choice]);
+			msg.client.commands.get('play').execute(msg, [choice]);
 		}
 
 		msg.channel.activeCollector = false;
@@ -64,5 +64,5 @@ module.exports.run = async (bot, msg, args) => {
 };
 
 module.exports.help = {
-	name: "search",
+	name: 'search',
 };

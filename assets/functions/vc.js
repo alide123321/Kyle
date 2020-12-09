@@ -1,7 +1,7 @@
-const sleep = require("./sleep.js").sleep;
-const talkedRecently = require("./talked.js").talkedRecently;
+const sleep = require('./sleep.js').sleep;
+const talkedRecently = require('./talked.js').talkedRecently;
 function vc(sound, vol, msg) {
-	if (msg.content.toLowerCase().substring(process.env.PREFIX.length).includes("--mute")) return;
+	if (msg.content.toLowerCase().includes('--mute')) return;
 
 	vol += 0.7;
 	let author = msg.author.id;
@@ -10,8 +10,8 @@ function vc(sound, vol, msg) {
 
 	const serverQueue = chan.client.queue.get(chan.guild.id);
 
-	if (talkedRecently.has(author) && author !== "698051518754062387") {
-		chan.send("Cooldown 60 sec").then((msg) => {
+	if (talkedRecently.has(author) && author !== '698051518754062387') {
+		chan.send('Cooldown 60 sec').then((msg) => {
 			msg.delete({ timeout: 5000 });
 		});
 		return;
@@ -24,21 +24,19 @@ function vc(sound, vol, msg) {
 
 	if (VC) {
 		if (serverQueue) {
-			chan
-				.send("I'm busy playing music in a VC right now. Please try again later.")
-				.then((msg) => {
-					msg.delete({ timeout: 5000 });
-				});
+			chan.send("I'm busy playing music in a VC right now. Please try again later.").then((msg) => {
+				msg.delete({ timeout: 5000 });
+			});
 			return;
 		}
 		VC.join()
 			.then((connection) => {
 				connection.voice.setSelfDeaf(true);
-				const dispatcher = connection.play("./assets/sounds/" + sound + ".mp3", {
+				const dispatcher = connection.play('./assets/sounds/' + sound + '.mp3', {
 					volume: vol,
 				});
 
-				dispatcher.on("finish", (end) => {
+				dispatcher.on('finish', (end) => {
 					sleep(3000);
 					VC.leave();
 				});

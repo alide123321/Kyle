@@ -1,11 +1,11 @@
-const Fs = require("fs");
+const Fs = require('fs');
 
 module.exports = (bot) => {
-	Fs.readdir("./assets/handlers/", (err, files) => {
-		console.log("____________Handler start_______________");
+	Fs.readdir('./assets/handlers/', (err, files) => {
+		console.log('____________Handler start_______________');
 		if (err) console.error(err);
-		let jsfiles = files.filter((f) => f.split(".").pop() === "js");
-		if (jsfiles.length <= 0) return console.log("There are no events to load...");
+		let jsfiles = files.filter((f) => f.split('.').pop() === 'js');
+		if (jsfiles.length <= 0) return console.log('There are no events to load...');
 		jsfiles.forEach((f, i) => {
 			require(`./assets/handlers/${f}`);
 			console.log(`${i + 1}: ${f} loaded!`);
@@ -14,13 +14,13 @@ module.exports = (bot) => {
 
 	//loading all commands
 
-	Fs.readdir("./cmds/games/", (err, files) => {
-		console.log("____________Games_______________");
+	Fs.readdir('./cmds/games/', (err, files) => {
+		console.log('____________Games_______________');
 		if (err) console.error(err);
 
-		let jsfiles = files.filter((f) => f.split(".").pop() === "js");
+		let jsfiles = files.filter((f) => f.split('.').pop() === 'js');
 		if (jsfiles.length <= 0) {
-			console.log("No commands to load in games!");
+			console.log('No commands to load in games!');
 			return;
 		}
 
@@ -32,13 +32,13 @@ module.exports = (bot) => {
 		});
 	});
 
-	Fs.readdir("./cmds/help/", (err, files) => {
-		console.log("____________Help_______________");
+	Fs.readdir('./cmds/help/', (err, files) => {
+		console.log('____________Help_______________');
 		if (err) console.error(err);
 
-		let jsfiles = files.filter((f) => f.split(".").pop() === "js");
+		let jsfiles = files.filter((f) => f.split('.').pop() === 'js');
 		if (jsfiles.length <= 0) {
-			console.log("No commands to load in help!");
+			console.log('No commands to load in help!');
 			return;
 		}
 
@@ -50,13 +50,13 @@ module.exports = (bot) => {
 		});
 	});
 
-	Fs.readdir("./cmds/memes/", (err, files) => {
-		console.log("____________Memes_______________");
+	Fs.readdir('./cmds/memes/', (err, files) => {
+		console.log('____________Memes_______________');
 		if (err) console.error(err);
 
-		let jsfiles = files.filter((f) => f.split(".").pop() === "js");
+		let jsfiles = files.filter((f) => f.split('.').pop() === 'js');
 		if (jsfiles.length <= 0) {
-			console.log("No commands to load in memes!");
+			console.log('No commands to load in memes!');
 			return;
 		}
 
@@ -68,13 +68,13 @@ module.exports = (bot) => {
 		});
 	});
 
-	Fs.readdir("./cmds/misc/", (err, files) => {
-		console.log("____________Misc_______________");
+	Fs.readdir('./cmds/misc/', (err, files) => {
+		console.log('____________Misc_______________');
 		if (err) console.error(err);
 
-		let jsfiles = files.filter((f) => f.split(".").pop() === "js");
+		let jsfiles = files.filter((f) => f.split('.').pop() === 'js');
 		if (jsfiles.length <= 0) {
-			console.log("No commands to load in misc!");
+			console.log('No commands to load in misc!');
 			return;
 		}
 
@@ -86,13 +86,13 @@ module.exports = (bot) => {
 		});
 	});
 
-	Fs.readdir("./cmds/mod/", (err, files) => {
-		console.log("____________Mod_______________");
+	Fs.readdir('./cmds/mod/', (err, files) => {
+		console.log('____________Mod_______________');
 		if (err) console.error(err);
 
-		let jsfiles = files.filter((f) => f.split(".").pop() === "js");
+		let jsfiles = files.filter((f) => f.split('.').pop() === 'js');
 		if (jsfiles.length <= 0) {
-			console.log("No commands to load in mod!");
+			console.log('No commands to load in mod!');
 			return;
 		}
 
@@ -104,13 +104,13 @@ module.exports = (bot) => {
 		});
 	});
 
-	Fs.readdir("./cmds/money/", (err, files) => {
-		console.log("____________Money_______________");
+	Fs.readdir('./cmds/money/', (err, files) => {
+		console.log('____________Money_______________');
 		if (err) console.error(err);
 
-		let jsfiles = files.filter((f) => f.split(".").pop() === "js");
+		let jsfiles = files.filter((f) => f.split('.').pop() === 'js');
 		if (jsfiles.length <= 0) {
-			console.log("No commands to load in money!");
+			console.log('No commands to load in money!');
 			return;
 		}
 
@@ -122,13 +122,13 @@ module.exports = (bot) => {
 		});
 	});
 
-	Fs.readdir("./cmds/music/", (err, files) => {
-		console.log("____________Music_______________");
+	Fs.readdir('./cmds/music/', (err, files) => {
+		console.log('____________Music_______________');
 		if (err) console.error(err);
 
-		let jsfiles = files.filter((f) => f.split(".").pop() === "js");
+		let jsfiles = files.filter((f) => f.split('.').pop() === 'js');
 		if (jsfiles.length <= 0) {
-			console.log("No commands to load in music!");
+			console.log('No commands to load in music!');
 			return;
 		}
 
@@ -140,13 +140,13 @@ module.exports = (bot) => {
 		});
 	});
 
-	Fs.readdir("./cmds/vc/", (err, files) => {
-		console.log("____________Vc_______________");
+	Fs.readdir('./cmds/vc/', (err, files) => {
+		console.log('____________Vc_______________');
 		if (err) console.error(err);
 
-		let jsfiles = files.filter((f) => f.split(".").pop() === "js");
+		let jsfiles = files.filter((f) => f.split('.').pop() === 'js');
 		if (jsfiles.length <= 0) {
-			console.log("No commands to load in vc!");
+			console.log('No commands to load in vc!');
 			return;
 		}
 

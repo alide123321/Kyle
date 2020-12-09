@@ -1,16 +1,16 @@
-const { userInfo } = require("os");
+const { userInfo } = require('os');
 
 module.exports.run = async (bot, msg, args) => {
-	const Discord = require("discord.js");
-	const db = require("quick.db");
-	var warn = new db.table("warn");
+	const Discord = require('discord.js');
+	const db = require('quick.db');
+	var warn = new db.table('warn');
 	let mentioned = msg.mentions.members.first();
 	let text = msg.content;
 	let reason = text.slice(28);
 
-	if (!msg.member.hasPermission("ADMINISTRATOR")) {
-		if (!msg.member.roles.cache.find((r) => r.name === "Moderators")) {
-			return msg.channel.send("You must have admin perms to use this command!");
+	if (!msg.member.hasPermission('ADMINISTRATOR')) {
+		if (!msg.member.roles.cache.find((r) => r.name === 'Moderators')) {
+			return msg.channel.send('You must have admin perms to use this command!');
 		}
 	}
 
@@ -20,12 +20,12 @@ module.exports.run = async (bot, msg, args) => {
 	}
 
 	if (mentioned.user.bot) {
-		msg.channel.send("You can not warn bots");
+		msg.channel.send('You can not warn bots');
 		return;
 	}
 
 	if (msg.author.id === mentioned.id) {
-		msg.channel.send("You can not warn yourself.");
+		msg.channel.send('You can not warn yourself.');
 		return;
 	}
 
@@ -37,7 +37,7 @@ module.exports.run = async (bot, msg, args) => {
 	var warnings = warn.get(`warnings_${msg.guild.id}_${mentioned.id}`);
 
 	let warningEmbed = new Discord.MessageEmbed()
-		.setTitle("**warn**")
+		.setTitle('**warn**')
 		.setColor(0x32cd32)
 		.setThumbnail(msg.author.avatarURL())
 		.setDescription(`You warned **${mentioned}** for ${reason} by: <@${msg.author.id}>`);
@@ -60,5 +60,5 @@ module.exports.run = async (bot, msg, args) => {
 };
 
 module.exports.help = {
-	name: "warn",
+	name: 'warn',
 };

@@ -12,15 +12,15 @@ module.exports.run = async (bot, msg, args) => {
 	if (!economy.has(`${msg.author.id}.bal`)) return msg.channel.send('you are not in the economy');
 	if (!economy.has(`${mentioned.id}.bal`)) return msg.channel.send('they are not in the economy');
 
-	//if (!economy.has(`${msg.author.id}.lrobed`)) {
-	economy.set(`${msg.author.id}.lrobed`, 0);
-	economy.set(`${msg.author.id}.lgrobed`, 0);
-	//}
+	if (!economy.has(`${msg.author.id}.lrobed`)) {
+		economy.set(`${msg.author.id}.lrobed`, 0);
+		economy.set(`${msg.author.id}.lgrobed`, 0);
+	}
 
-	//if (!economy.has(`${mentioned.id}.lrobed`)) {
-	economy.set(`${mentioned.id}.lrobed`, 0);
-	economy.set(`${mentioned.id}.lgrobed`, 0);
-	//}
+	if (!economy.has(`${mentioned.id}.lrobed`)) {
+		economy.set(`${mentioned.id}.lrobed`, 0);
+		economy.set(`${mentioned.id}.lgrobed`, 0);
+	}
 
 	let UserLRobed = economy.get(`${msg.author.id}.lrobed`);
 	let TargetLGRobed = economy.get(`${mentioned.id}.lgrobed`);

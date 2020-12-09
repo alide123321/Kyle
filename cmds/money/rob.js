@@ -29,10 +29,12 @@ module.exports.run = async (bot, msg, args) => {
 		let time = ms(RobTimeout - (Date.now() - UserLRobed));
 
 		let RobedEmbed = new Discord.MessageEmbed()
-			.setTitle("**Rob**")
+			.setTitle('**Rob**')
 			.setColor(0xff0000)
 			.setThumbnail(msg.author.avatarURL())
-			.setDescription(`You just robed someone wiht in 12 hours you need to hide.\n you can rob someone again in **\`\`\`${time.hours}h ${time.minutes}m ${time.seconds}s!\`\`\`**`); // prettier-ignore
+			.setDescription(
+				`You just robed someone wiht in 12 hours you need to hide.\n you can rob someone again in **\`\`\`${time.hours}h ${time.minutes}m ${time.seconds}s!\`\`\`**`
+			);
 		return msg.channel.send(RobedEmbed);
 	}
 
@@ -40,10 +42,12 @@ module.exports.run = async (bot, msg, args) => {
 		let time = ms(RobedTimeout - (Date.now() - TargetLGRobed));
 
 		let RobEmbed = new Discord.MessageEmbed()
-			.setTitle("**Rob**")
+			.setTitle('**Rob**')
 			.setColor(0xff0000)
 			.setThumbnail(msg.author.avatarURL())
-			.setDescription(`They already got robed today.\n you can rob them again in **${time.hours}h ${time.minutes}m ${time.seconds}s**!`); // prettier-ignore
+			.setDescription(
+				`They already got robed today.\n you can rob them again in **\`\`\`${time.hours}h ${time.minutes}m ${time.seconds}s!\`\`\`**`
+			);
 		return msg.channel.send(RobEmbed);
 	}
 

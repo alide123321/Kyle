@@ -1,8 +1,8 @@
-const sleep = require("../../assets/functions/sleep.js").sleep;
-const playingGame = require("../../assets/functions/playingGame.js").playingGame;
-const Discord = require("discord.js");
-const db = require("quick.db");
-var game = new db.table("Game");
+const sleep = require('../../assets/functions/sleep.js').sleep;
+const playingGame = require('../../assets/functions/playingGame.js').playingGame;
+const Discord = require('discord.js');
+const db = require('quick.db');
+var game = new db.table('Game');
 
 let winPos = null;
 let moverPos = null;
@@ -13,7 +13,7 @@ let wining = false;
 
 module.exports.run = async (bot, msg, args) => {
 	if (playingGame.has(msg.author.id))
-		return msg.channel.send("You are already playing a game finish it to start a new one");
+		return msg.channel.send('You are already playing a game finish it to start a new one');
 
 	playingGame.add(msg.author.id);
 
@@ -37,28 +37,28 @@ module.exports.run = async (bot, msg, args) => {
 		game.set(`${msg.author.id} blocky_moves`, 0);
 	}
 
-	if (args[1] === "reset") {
+	if (args[1] === 'reset') {
 		game.set(`${msg.author.id} blocky_level`, 0);
 		game.set(`${msg.author.id} blocky_moves`, 0);
-		return msg.channel.send("done");
-	} else if (args[1] === "stats") {
+		return msg.channel.send('done');
+	} else if (args[1] === 'stats') {
 		let mentioned = msg.mentions.members.first();
 
 		let StatsEmbed = new Discord.MessageEmbed()
 			.setTitle(`**Blocky**`)
-			.setURL("https://discord.gg/z4FpxSJ")
-			.setColor("#0099ff");
+			.setURL('https://discord.gg/z4FpxSJ')
+			.setColor('#0099ff');
 
 		if (mentioned) {
 			StatsEmbed.setThumbnail(mentioned.user.avatarURL());
 			StatsEmbed.addFields(
 				{
-					name: "Level",
+					name: 'Level',
 					value: game.get(`${mentioned.id} blocky_level`),
 					inline: true,
 				},
 				{
-					name: "Moves made",
+					name: 'Moves made',
 					value: game.get(`${mentioned.id} blocky_moves`),
 					inline: true,
 				}
@@ -67,12 +67,12 @@ module.exports.run = async (bot, msg, args) => {
 			StatsEmbed.setThumbnail(msg.author.avatarURL());
 			StatsEmbed.addFields(
 				{
-					name: "Level",
+					name: 'Level',
 					value: game.get(`${msg.author.id} blocky_level`),
 					inline: true,
 				},
 				{
-					name: "Moves made",
+					name: 'Moves made',
 					value: game.get(`${msg.author.id} blocky_moves`),
 					inline: true,
 				}
@@ -100,8 +100,8 @@ module.exports.run = async (bot, msg, args) => {
 
 		let embed = new Discord.MessageEmbed()
 			.setTitle(`**Blocky**`)
-			.setURL("https://discord.gg/z4FpxSJ")
-			.setColor("#32cd32")
+			.setURL('https://discord.gg/z4FpxSJ')
+			.setColor('#32cd32')
 			.setThumbnail(msg.author.avatarURL())
 			.setFooter(`GG you leveled up to ${game.get(`${msg.author.id} blocky_level`)}`);
 		await embed.setDescription(PrettyMap()) // prettier-ignore
@@ -116,8 +116,8 @@ module.exports.run = async (bot, msg, args) => {
 async function send(msg) {
 	let embed = new Discord.MessageEmbed()
 		.setTitle(`**Blocky**`)
-		.setURL("https://discord.gg/z4FpxSJ")
-		.setColor("#0099ff")
+		.setURL('https://discord.gg/z4FpxSJ')
+		.setColor('#0099ff')
 		.setThumbnail(msg.author.avatarURL())
 		.setFooter(`Use W(Up) A(Left) S(Down) D(Right) || WASD (15 Sec)`);
 	await embed.setDescription(PrettyMap()) // prettier-ignore
@@ -127,38 +127,30 @@ async function send(msg) {
 			const filter = (m) => {
 				return (
 					m.author.id == msg.author.id &&
-					(m.content.toLowerCase() == "a" ||
-						m.content.toLowerCase() == "w" ||
-						m.content.toLowerCase() == "s" ||
-						m.content.toLowerCase() == "d")
+					(m.content.toLowerCase() == 'a' ||
+						m.content.toLowerCase() == 'w' ||
+						m.content.toLowerCase() == 's' ||
+						m.content.toLowerCase() == 'd')
 				);
 			};
 
 			await msg.channel
-				.awaitMessages(filter, { max: 1, time: 15000, errors: ["time"] })
+				.awaitMessages(filter, { max: 1, time: 15000, errors: ['time'] })
 				.then(async (collected) => {
 					let input = collected.first();
 					let reaction = input.content.toLowerCase().split(/\s+/g);
 
-					if (reaction[0].startsWith("a")) move(1, msg);
-					else if (reaction[0].startsWith("w")) move(2, msg);
-					else if (reaction[0].startsWith("s")) move(3, msg);
-					else if (reaction[0].startsWith("d")) move(4, msg);
+					if (reaction[0].startsWith('a')) move(1, msg);
+					else if (reaction[0].startsWith('w')) move(2, msg);
+					else if (reaction[0].startsWith('s')) move(3, msg);
+					else if (reaction[0].startsWith('d')) move(4, msg);
 
 					game.add(`${msg.author.id} blocky_moves`, 1);
-
-					try {
-						await input.delete();
-						Smsg.delete();
-					} catch (error) {
-						return;
-					}
-
 					return;
 				});
 		} catch (error) {
 			wining = true;
-			return msg.channel.send("Time ran out. Bye");
+			return msg.channel.send('Time ran out. Bye');
 		}
 	});
 }
@@ -265,7 +257,7 @@ function move(x, msg) {
 		//  left
 		// unable to move
 		if (playerPos[1] === 0) {
-			msg.channel.send("You cant move to the left").then((Smsg) => {
+			msg.channel.send('You cant move to the left').then((Smsg) => {
 				try {
 					Smsg.delete({ timeout: 1500 });
 				} catch (error) {
@@ -274,18 +266,16 @@ function move(x, msg) {
 			});
 			return;
 		} else if (winPos[0] === playerPos[0] && winPos[1] + 1 === playerPos[1]) {
-			msg.channel
-				.send("You cant move to the left the winning spot is in the way")
-				.then((Smsg) => {
-					try {
-						Smsg.delete({ timeout: 1500 });
-					} catch (error) {
-						return;
-					}
-				});
+			msg.channel.send('You cant move to the left the winning spot is in the way').then((Smsg) => {
+				try {
+					Smsg.delete({ timeout: 1500 });
+				} catch (error) {
+					return;
+				}
+			});
 			return;
 		} else if (map[playerPos[0]][playerPos[1] - 1] === 3) {
-			msg.channel.send("You cant move to the left a blocker is in the way").then((Smsg) => {
+			msg.channel.send('You cant move to the left a blocker is in the way').then((Smsg) => {
 				try {
 					Smsg.delete({ timeout: 1500 });
 				} catch (error) {
@@ -298,18 +288,16 @@ function move(x, msg) {
 		//mover
 		if (moverPos[0] === playerPos[0] && moverPos[1] + 1 === playerPos[1]) {
 			if (moverPos[1] === 0) {
-				msg.channel
-					.send("You cant move to the left the mover reached the edge")
-					.then((Smsg) => {
-						try {
-							Smsg.delete({ timeout: 1500 });
-						} catch (error) {
-							return;
-						}
-					});
+				msg.channel.send('You cant move to the left the mover reached the edge').then((Smsg) => {
+					try {
+						Smsg.delete({ timeout: 1500 });
+					} catch (error) {
+						return;
+					}
+				});
 				return;
 			} else if (map[moverPos[0]][moverPos[1] - 1] === 3) {
-				msg.channel.send("You cant move to the left a blocker is in the way").then((Smsg) => {
+				msg.channel.send('You cant move to the left a blocker is in the way').then((Smsg) => {
 					try {
 						Smsg.delete({ timeout: 1500 });
 					} catch (error) {
@@ -333,7 +321,7 @@ function move(x, msg) {
 		//  up
 		// unable to move
 		if (playerPos[0] === 0) {
-			msg.channel.send("You cant move to up").then((Smsg) => {
+			msg.channel.send('You cant move to up').then((Smsg) => {
 				try {
 					Smsg.delete({ timeout: 1500 });
 				} catch (error) {
@@ -342,7 +330,7 @@ function move(x, msg) {
 			});
 			return;
 		} else if (winPos[0] + 1 === playerPos[0] && winPos[1] === playerPos[1]) {
-			msg.channel.send("You cant move up the winning spot is in the way").then((Smsg) => {
+			msg.channel.send('You cant move up the winning spot is in the way').then((Smsg) => {
 				try {
 					Smsg.delete({ timeout: 1500 });
 				} catch (error) {
@@ -351,7 +339,7 @@ function move(x, msg) {
 			});
 			return;
 		} else if (map[playerPos[0] - 1][playerPos[1]] === 3) {
-			msg.channel.send("You cant move up a blocker is in the way").then((Smsg) => {
+			msg.channel.send('You cant move up a blocker is in the way').then((Smsg) => {
 				try {
 					Smsg.delete({ timeout: 1500 });
 				} catch (error) {
@@ -364,7 +352,7 @@ function move(x, msg) {
 		//mover
 		if (moverPos[0] + 1 === playerPos[0] && moverPos[1] === playerPos[1]) {
 			if (moverPos[0] === 0) {
-				msg.channel.send("You cant move up the mover reached the edge").then((Smsg) => {
+				msg.channel.send('You cant move up the mover reached the edge').then((Smsg) => {
 					try {
 						Smsg.delete({ timeout: 1500 });
 					} catch (error) {
@@ -373,7 +361,7 @@ function move(x, msg) {
 				});
 				return;
 			} else if (map[moverPos[0] - 1][moverPos[1]] === 3) {
-				msg.channel.send("You cant move up a blocker is in the way").then((Smsg) => {
+				msg.channel.send('You cant move up a blocker is in the way').then((Smsg) => {
 					try {
 						Smsg.delete({ timeout: 1500 });
 					} catch (error) {
@@ -397,7 +385,7 @@ function move(x, msg) {
 		//  down
 		// unable to move
 		if (playerPos[0] === map.length - 1) {
-			msg.channel.send("You cant move to the bottom").then((Smsg) => {
+			msg.channel.send('You cant move to the bottom').then((Smsg) => {
 				try {
 					Smsg.delete({ timeout: 1500 });
 				} catch (error) {
@@ -407,7 +395,7 @@ function move(x, msg) {
 			return;
 		} else if (winPos[0] - 1 === playerPos[0] && winPos[1] === playerPos[1]) {
 			msg.channel
-				.send("You cant move to the bottom the winning spot is in the way")
+				.send('You cant move to the bottom the winning spot is in the way')
 				.then((Smsg) => {
 					try {
 						Smsg.delete({ timeout: 1500 });
@@ -417,7 +405,7 @@ function move(x, msg) {
 				});
 			return;
 		} else if (map[playerPos[0] + 1][playerPos[1]] === 3) {
-			msg.channel.send("You cant move to the bottom a blocker is in the way").then((Smsg) => {
+			msg.channel.send('You cant move to the bottom a blocker is in the way').then((Smsg) => {
 				try {
 					Smsg.delete({ timeout: 1500 });
 				} catch (error) {
@@ -430,18 +418,16 @@ function move(x, msg) {
 		//mover
 		if (moverPos[0] - 1 === playerPos[0] && moverPos[1] === playerPos[1]) {
 			if (moverPos[0] === map.length - 1) {
-				msg.channel
-					.send("You cant move to the bottom the mover reached the edge")
-					.then((Smsg) => {
-						try {
-							Smsg.delete({ timeout: 1500 });
-						} catch (error) {
-							return;
-						}
-					});
+				msg.channel.send('You cant move to the bottom the mover reached the edge').then((Smsg) => {
+					try {
+						Smsg.delete({ timeout: 1500 });
+					} catch (error) {
+						return;
+					}
+				});
 				return;
 			} else if (map[moverPos[0] + 1][moverPos[1]] === 3) {
-				msg.channel.send("You cant move to the bottom a blocker is in the way").then((Smsg) => {
+				msg.channel.send('You cant move to the bottom a blocker is in the way').then((Smsg) => {
 					try {
 						Smsg.delete({ timeout: 1500 });
 					} catch (error) {
@@ -465,7 +451,7 @@ function move(x, msg) {
 		//  right
 		// unable to move
 		if (playerPos[1] === map[0].length - 1) {
-			msg.channel.send("You cant move to the right").then((Smsg) => {
+			msg.channel.send('You cant move to the right').then((Smsg) => {
 				try {
 					Smsg.delete({ timeout: 1500 });
 				} catch (error) {
@@ -474,18 +460,16 @@ function move(x, msg) {
 			});
 			return;
 		} else if (winPos[0] === playerPos[0] && winPos[1] - 1 === playerPos[1]) {
-			msg.channel
-				.send("You cant move to the right the winning spot is in the way")
-				.then((Smsg) => {
-					try {
-						Smsg.delete({ timeout: 1500 });
-					} catch (error) {
-						return;
-					}
-				});
+			msg.channel.send('You cant move to the right the winning spot is in the way').then((Smsg) => {
+				try {
+					Smsg.delete({ timeout: 1500 });
+				} catch (error) {
+					return;
+				}
+			});
 			return;
 		} else if (map[playerPos[0]][playerPos[1] + 1] === 3) {
-			msg.channel.send("You cant move to the right a blocker is in the way").then((Smsg) => {
+			msg.channel.send('You cant move to the right a blocker is in the way').then((Smsg) => {
 				try {
 					Smsg.delete({ timeout: 1500 });
 				} catch (error) {
@@ -498,18 +482,16 @@ function move(x, msg) {
 		//mover
 		if (moverPos[0] === playerPos[0] && moverPos[1] - 1 === playerPos[1]) {
 			if (moverPos[1] === map[0].length - 1) {
-				msg.channel
-					.send("You cant move to the right the mover reached the edge")
-					.then((Smsg) => {
-						try {
-							Smsg.delete({ timeout: 1500 });
-						} catch (error) {
-							return;
-						}
-					});
+				msg.channel.send('You cant move to the right the mover reached the edge').then((Smsg) => {
+					try {
+						Smsg.delete({ timeout: 1500 });
+					} catch (error) {
+						return;
+					}
+				});
 				return;
 			} else if (map[moverPos[0]][moverPos[1] + 1] === 3) {
-				msg.channel.send("You cant move to the right a blocker is in the way").then((Smsg) => {
+				msg.channel.send('You cant move to the right a blocker is in the way').then((Smsg) => {
 					try {
 						Smsg.delete({ timeout: 1500 });
 					} catch (error) {
@@ -535,7 +517,7 @@ function move(x, msg) {
 }
 
 function PrettyMap() {
-	let emojiMap = " ";
+	let emojiMap = ' ';
 	if (wining === true) {
 		for (var r = 0; r < map.length; ++r) {
 			for (var c = 0; c < map[r].length; ++c) {
@@ -557,7 +539,7 @@ function PrettyMap() {
 				//Win
 				if (map[r][c] === 4) emojiMap = emojiMap.concat(`:negative_squared_cross_mark:`);
 			}
-			emojiMap = emojiMap.concat("\n");
+			emojiMap = emojiMap.concat('\n');
 		}
 	} else {
 		for (var r = 0; r < map.length; ++r) {
@@ -573,12 +555,12 @@ function PrettyMap() {
 				//Win
 				if (map[r][c] === 4) emojiMap = emojiMap.concat(`:negative_squared_cross_mark:`);
 			}
-			emojiMap = emojiMap.concat("\n");
+			emojiMap = emojiMap.concat('\n');
 		}
 	}
 	return emojiMap;
 }
 
 module.exports.help = {
-	name: "blocky",
+	name: 'blocky',
 };

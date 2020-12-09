@@ -20,7 +20,7 @@ module.exports.run = async (bot, msg, args) => {
 		(mentioned1.id === '698051518754062387' && mentioned2.id === '228230808584978442') ||
 		(mentioned2.id === '228230808584978442' && mentioned2.id === '698051518754062387')
 	)
-		perc = ':haram: Fuck No bitch :haram:';
+		perc = 'HARAM Fuck No bitch HARAM';
 
 	let ShipEmbed = new Discord.MessageEmbed()
 		.setTitle(`Shiping ${mentioned1.user.username} & ${mentioned2.user.username}`)

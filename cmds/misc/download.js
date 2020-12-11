@@ -11,7 +11,6 @@ module.exports.run = async (bot, msg, args) => {
 		try {
 			vidid = ytdl.getVideoID(url[1]);
 			if (vidid === null) return msg.channel.send('not a youtube valid link');
-			msg.channel.send(vidid);
 		} catch (error) {
 			console.error(error);
 			return msg.reply('Haram');

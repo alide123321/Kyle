@@ -12,11 +12,6 @@ let map = [];
 let wining = false;
 
 module.exports.run = async (bot, msg, args) => {
-	if (playingGame.has(msg.author.id))
-		return msg.channel.send('You are already playing a game finish it to start a new one');
-
-	playingGame.add(msg.author.id);
-
 	winPos = [0, 0]; //  Win pos 4
 	moverPos = [0, 0]; //  Mover is 2
 	playerPos = [0, 0]; //  Player is 1
@@ -81,6 +76,11 @@ module.exports.run = async (bot, msg, args) => {
 
 		return msg.channel.send(StatsEmbed);
 	}
+
+	if (playingGame.has(msg.author.id))
+		return msg.channel.send('You are already playing a game finish it to start a new one');
+
+	playingGame.add(msg.author.id);
 
 	// map init (40 spaces)
 	blockerNum = Math.floor(game.get(`${msg.author.id} blocky_level`) / 10);

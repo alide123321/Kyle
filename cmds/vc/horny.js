@@ -8,5 +8,6 @@ module.exports.run = async (bot, msg, args) => {
 };
 
 module.exports.help = {
-	name: 'nicweee',
+	name: 'horny',
+	Alias: 'nicweee',
 };

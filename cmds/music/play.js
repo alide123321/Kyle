@@ -22,7 +22,13 @@ module.exports.run = async (bot, msg, args) => {
 	if (!permissions.has('CONNECT')) return msg.reply('Give me perms to join the vc!');
 	if (!permissions.has('SPEAK')) return msg.reply('Give me speaking perms!');
 
-	const search = args.join(' ');
+	if (args[0] === 'play') {
+		var searchLength = 5;
+	} else if (args[0] === 'p') {
+		var searchLength = 2;
+	}
+
+	const search = msg.content.slice(searchLength);
 	const videoPattern = /^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
 	const playlistPattern = /^.*(list=)([^#\&\?]*).*/gi;
 	const url = args[1];

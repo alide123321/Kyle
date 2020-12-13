@@ -1,11 +1,11 @@
 module.exports.run = async (bot, msg, args) => {
 	try {
 		const Discord = require('discord.js');
-		let Total = msg.guild.memberCount;
-		let bots = msg.guild.members.cache.filter((m) => m.user.bot).size;
+		let Total = await msg.guild.memberCount;
+		let bots = await msg.guild.members.cache.filter((m) => m.user.bot).size;
 		let users = Total - bots;
 		let Voice = 0;
-		const voiceChannels = msg.guild.channels.cache.filter((c) => c.type === 'voice');
+		const voiceChannels = await msg.guild.channels.cache.filter((c) => c.type === 'voice');
 		for (const [id, voiceChannel] of voiceChannels) Voice += voiceChannel.members.size;
 
 		let Stats = new Discord.MessageEmbed()

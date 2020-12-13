@@ -34,7 +34,7 @@ module.exports.run = async (bot, msg, args) => {
 			},
 			{
 				name: 'Owner: ',
-				value: (await msg.guild.members.fetch(msg.guild.owner.id)).user.username,
+				value: `${msg.guild.owner.user.username}#${msg.guild.owner.user.discriminator}`,
 				inline: true,
 			}
 		);

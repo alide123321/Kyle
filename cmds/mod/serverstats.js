@@ -35,7 +35,7 @@ module.exports.run = async (bot, msg, args) => {
 				},
 				{
 					name: 'Owner: ',
-					value: `${msg.guild.owner.user.username}#${msg.guild.owner.user.discriminator}`,
+					value: `<@${msg.guild.ownerID}>`,
 					inline: true,
 				}
 			);

@@ -77,7 +77,7 @@ module.exports.run = async (bot, msg, args) => {
 			} more coins`
 		);
 
-	let rand = Math.floor(Math.random() * 16);
+	let rand = Math.floor(Math.random() * 8);
 	let ammount = Math.floor(Math.random() * (200 + Math.floor(Math.random() * 51))) + 1;
 
 	if (rand > 0) {
@@ -105,6 +105,7 @@ module.exports.run = async (bot, msg, args) => {
 		economy.subtract(`${msg.author.id}.bal`, ammount);
 		economy.set(`${msg.author.id}.lrobed`, new Date().getTime());
 		economy.add(`${mentioned.id}.bal`, Math.floor(ammount / 2));
+		economy.add(`Prizepool`, Math.floor(ammount / 2));
 
 		let embed = new Discord.MessageEmbed()
 			.setTitle('***Fail!***')

@@ -82,6 +82,7 @@ module.exports.run = async (bot, msg, args) => {
 			//if u get rock and dealer gets paper
 			var dealer = 'paper';
 			economy.subtract(`${author}.bal`, bet);
+			economy.add(`Prizepool`, bet);
 			let SuccessEmbed = new Discord.MessageEmbed()
 				.setTitle('**LOSS**')
 				.setColor(0xff0000)
@@ -113,6 +114,7 @@ module.exports.run = async (bot, msg, args) => {
 			//if u get paper and dealer gets sis
 			var dealer = 'scissors';
 			economy.subtract(`${author}.bal`, bet);
+			economy.add(`Prizepool`, bet);
 			let SuccessEmbed = new Discord.MessageEmbed()
 				.setTitle('**LOSS**')
 				.setColor(0xff0000)
@@ -144,6 +146,7 @@ module.exports.run = async (bot, msg, args) => {
 			//if u get sis and dealer gets rock
 			var dealer = 'rock';
 			economy.subtract(`${author}.bal`, bet);
+			economy.add(`Prizepool`, bet);
 			let SuccessEmbed = new Discord.MessageEmbed()
         .setTitle("**LOSS**")
         .setColor(0xff0000)

@@ -82,6 +82,7 @@ module.exports.run = async (bot, msg, args) => {
 		return;
 	} else {
 		economy.subtract(`${msg.author.id}.bal`, bet);
+		economy.add(`Prizepool`, bet);
 		let SuccessEmbed = new Discord.MessageEmbed()
 			.setTitle("**LOSS**")
 			.setColor(0xff0000)

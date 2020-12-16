@@ -101,21 +101,31 @@ bot.on('message', async (msg) => {
 
 	if (msg.channel.id === '716206448970825799') {
 		//removes !d bump
-		if (args[0] === '!d' && args[1] === '!d') {
+		if (text.includes('!d bump')) {
 			sleep(3000);
 			try {
 				msg.channel.bulkDelete(2);
 			} catch (error) {
-				msg.channel.send(`error ${error}`);
+				console.log(`*Error ${error}`);
 			}
-		} else if (text.slice(0, 4) == 'redo') {
-			msg.delete();
-			let doneem = new Discord.MessageEmbed()
+			return;
+		} else if (text.slice(0, 4) === 'redo') {
+			try {
+				msg.delete();
+				let doneem = new Discord.MessageEmbed()
         		.setTitle("**!D BUMP**")
         		.setDescription("Help grow the server by using the command **!d bump** - it helps other people find and join the server to grow the fam!"); // prettier-ignore
-			msg.channel.send(doneem);
+				msg.channel.send(doneem);
+			} catch (error) {
+				console.log(`*Error ${error}`);
+			}
+			return;
 		} else {
-			msg.channel.bulkDelete(1);
+			try {
+				msg.delete();
+			} catch (error) {
+				console.log(`*Error ${error}`);
+			}
 			return;
 		}
 	}

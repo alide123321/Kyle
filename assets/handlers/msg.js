@@ -109,7 +109,7 @@ bot.on('message', async (msg) => {
 				console.log(`*Error ${error}`);
 			}
 			return;
-		} else if (text.slice(0, 4) === 'redo') {
+		} else if (text.startsWith('redo')) {
 			try {
 				msg.delete();
 				let doneem = new Discord.MessageEmbed()

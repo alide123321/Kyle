@@ -68,7 +68,6 @@ module.exports.run = async (bot, msg, args) => {
 	var c1, c2, c3, c4, c5;
 	for (let i = 1; i <= 5; ++i) {
 		let cardPos = Math.floor(Math.random() * card.length);
-		console.log(card);
 
 		if (i === 1) {
 			c1 = card[cardPos];
@@ -92,7 +91,7 @@ module.exports.run = async (bot, msg, args) => {
 
 	for (let i = 1; i <= 10; ++i) {
 		let cardPos = Math.floor(Math.random() * card.length);
-		console.log(card);
+
 		if (i === 1) {
 			dc1 = card[cardPos];
 		} else if (i === 2) {

@@ -12,19 +12,19 @@ module.exports.run = async (bot, msg, args) => {
 
 	if (
 		(mentioned1.id === '698051518754062387' && mentioned2.id === '713878109509779516') ||
-		(mentioned2.id === '713878109509779516' && mentioned2.id === '698051518754062387')
+		(mentioned1.id === '713878109509779516' && mentioned2.id === '698051518754062387')
 	)
 		perc = ':hot_face: 1000 :hot_face:';
 
 	if (
 		(mentioned1.id === '698051518754062387' && mentioned2.id === '228230808584978442') ||
-		(mentioned2.id === '228230808584978442' && mentioned2.id === '698051518754062387')
+		(mentioned1.id === '228230808584978442' && mentioned2.id === '698051518754062387')
 	)
 		perc = 'HARAM Fuck No bitch HARAM';
 
 	if (
 		(mentioned1.id === '542196378940473354' && mentioned2.id === '767836972084494337') ||
-		(mentioned2.id === '767836972084494337' && mentioned2.id === '542196378940473354')
+		(mentioned1.id === '767836972084494337' && mentioned2.id === '542196378940473354')
 	)
 		perc = 'HALAL YES DADDY PLEASE HALAL';
 

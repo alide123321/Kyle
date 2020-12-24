@@ -4,8 +4,8 @@ module.exports.run = async (bot, msg, args) => {
 	let economy = new db.table('economy');
 	const ms = require('parse-ms');
 	let mentioned = msg.mentions.members.first();
-	let RobTimeout = 43200000; // rob ppl every 12 hours
-	let RobedTimeout = 86400000; // get robed once a day
+	let RobTimeout = 21600000; // rob ppl every 6 hours
+	let RobedTimeout = 43200000; // get robed once every 12 hours
 
 	if (!mentioned) return msg.channel.send('Sorry, you forgot to mention somebody. \n.rob <@>');
 
@@ -51,15 +51,15 @@ module.exports.run = async (bot, msg, args) => {
 		return msg.channel.send(RobEmbed);
 	}
 
-	if (economy.get(`${msg.author.id}.bal`) < 500)
+	if (economy.get(`${msg.author.id}.bal`) < 300)
 		return msg.channel.send(
-			`Bruh you broke asf calm down \nyou need $${500 - economy.get(`${mentioned.id}.bal`)} more`
+			`Bruh you broke asf calm down \nyou need $${300 - economy.get(`${msg.author.id}.bal`)} more`
 		);
 
-	if (economy.get(`${mentioned.id}.bal`) < 500)
+	if (economy.get(`${mentioned.id}.bal`) < 300)
 		return msg.channel.send(
 			`Bruh they broke aswell calm down \nthey need $${
-				500 - economy.get(`${mentioned.id}.bal`)
+				300 - economy.get(`${mentioned.id}.bal`)
 			} more`
 		);
 
@@ -77,7 +77,7 @@ module.exports.run = async (bot, msg, args) => {
 			} more coins`
 		);
 
-	let rand = Math.floor(Math.random() * 8);
+	let rand = Math.floor(Math.random() * 16);
 	let ammount = Math.floor(Math.random() * (200 + Math.floor(Math.random() * 51))) + 1;
 
 	if (rand > 0) {

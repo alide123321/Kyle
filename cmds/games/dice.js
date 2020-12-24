@@ -77,7 +77,7 @@ module.exports.run = async (bot, msg, args) => {
 			.setTitle('**WIN**')
 			.setColor(0x32cd32)
 			.setThumbnail(msg.author.avatarURL())
-			.setDescription('You won: ' + bet + ' :) <:chip:751730576918315048>');
+			.setDescription('You won: ' + bet + ' :) 💰');
 		msg.channel.send(SuccessEmbed);
 		return;
 	} else {
@@ -87,7 +87,7 @@ module.exports.run = async (bot, msg, args) => {
 			.setTitle("**LOSS**")
 			.setColor(0xff0000)
 			.setThumbnail(msg.author.avatarURL())
-			.setDescription("You lost: " +bet +" <:chip:751730576918315048> :(\n The dice was: " +rand); // prettier-ignore
+			.setDescription("You lost: " +bet +" 💰 :(\n The dice was: " +rand); // prettier-ignore
 		msg.channel.send(SuccessEmbed);
 		return;
 	}

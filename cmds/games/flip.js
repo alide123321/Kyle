@@ -55,7 +55,7 @@ module.exports.run = async (bot, msg, args) => {
 			.setTitle('**LOSS**')
 			.setColor(0xff0000)
 			.setThumbnail(msg.author.avatarURL())
-			.setDescription('You lost: ' + bet + ' :( <:chip:751730576918315048>');
+			.setDescription('You lost: ' + bet + ' :( 💰');
 		msg.channel.send(SuccessEmbed);
 	} else {
 		economy.add(`${msg.author.id}.bal`, bet);
@@ -63,7 +63,7 @@ module.exports.run = async (bot, msg, args) => {
 			.setTitle('**WIN**')
 			.setColor(0x32cd32)
 			.setThumbnail(msg.author.avatarURL())
-			.setDescription('You won: ' + bet + ' :) <:chip:751730576918315048>');
+			.setDescription('You won: ' + bet + ' :) 💰');
 		msg.channel.send(SuccessEmbed);
 	}
 };

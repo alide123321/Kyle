@@ -151,9 +151,9 @@ module.exports.run = async (bot, msg, args) => {
 						dcardtotal +
 						'.\n You WON: ' +
 						bet +
-						' <:chip:751730576918315048> \n You now have: ' +
+						' 💰 \n You now have: ' +
 						economy.get(`${author}.bal`) +
-						' <:chip:751730576918315048> '
+						' 💰 '
 				);
 			msg.channel.send(cards);
 			return playingGame.delete(msg.author.id);
@@ -177,9 +177,9 @@ module.exports.run = async (bot, msg, args) => {
 						dcardtotal +
 						'.\n You LOST: ' +
 						bet +
-						' <:chip:751730576918315048> \n You now have: ' +
+						' 💰 \n You now have: ' +
 						economy.get(`${author}.bal`) +
-						' <:chip:751730576918315048> '
+						' 💰 '
 				);
 			msg.channel.send(cards);
 			return playingGame.delete(msg.author.id);
@@ -220,9 +220,9 @@ module.exports.run = async (bot, msg, args) => {
 									dcardtotal +
 									'.\n You WON: ' +
 									bet +
-									' <:chip:751730576918315048> \n You now have: ' +
+									' 💰 \n You now have: ' +
 									economy.get(`${author}.bal`) +
-									' <:chip:751730576918315048> '
+									' 💰 '
 							);
 						msg.channel.send(cards);
 						return playingGame.delete(msg.author.id);
@@ -246,9 +246,9 @@ module.exports.run = async (bot, msg, args) => {
 									dcardtotal +
 									'.\n You LOST: ' +
 									bet +
-									' <:chip:751730576918315048> \n You now have: ' +
+									' 💰 \n You now have: ' +
 									economy.get(`${author}.bal`) +
-									' <:chip:751730576918315048> '
+									' 💰 '
 							);
 						msg.channel.send(cards);
 						return playingGame.delete(msg.author.id);
@@ -287,9 +287,9 @@ module.exports.run = async (bot, msg, args) => {
 										dcardtotal +
 										'.\n You WON: ' +
 										bet +
-										' <:chip:751730576918315048> \n You now have: ' +
+										' 💰 \n You now have: ' +
 										economy.get(`${author}.bal`) +
-										' <:chip:751730576918315048> '
+										' 💰 '
 								);
 							msg.channel.send(cards21);
 							return playingGame.delete(msg.author.id);
@@ -313,9 +313,9 @@ module.exports.run = async (bot, msg, args) => {
 										dcardtotal +
 										'.\n You LOST: ' +
 										bet +
-										' <:chip:751730576918315048> \n You now have: ' +
+										' 💰 \n You now have: ' +
 										economy.get(`${author}.bal`) +
-										' <:chip:751730576918315048> '
+										' 💰 '
 								);
 							msg.channel.send(cards);
 							return playingGame.delete(msg.author.id);
@@ -354,9 +354,9 @@ module.exports.run = async (bot, msg, args) => {
 													dcardtotal +
 													'.\n You WON: ' +
 													bet +
-													' <:chip:751730576918315048> \n You now have: ' +
+													' 💰 \n You now have: ' +
 													economy.get(`${author}.bal`) +
-													' <:chip:751730576918315048> '
+													' 💰 '
 											);
 										msg.channel.send(cards);
 										return playingGame.delete(msg.author.id);
@@ -380,9 +380,9 @@ module.exports.run = async (bot, msg, args) => {
 													dcardtotal +
 													'.\n You LOST: ' +
 													bet +
-													' <:chip:751730576918315048> \n You now have: ' +
+													' 💰 \n You now have: ' +
 													economy.get(`${author}.bal`) +
-													' <:chip:751730576918315048> '
+													' 💰 '
 											);
 										msg.channel.send(cards);
 										return playingGame.delete(msg.author.id);
@@ -419,9 +419,9 @@ module.exports.run = async (bot, msg, args) => {
 														dcardtotal +
 														'.\n You WON: ' +
 														bet +
-														' <:chip:751730576918315048> \n You now have: ' +
+														' 💰 \n You now have: ' +
 														economy.get(`${author}.bal`) +
-														' <:chip:751730576918315048> '
+														' 💰 '
 												);
 											msg.channel.send(cards21);
 											return playingGame.delete(msg.author.id);
@@ -445,9 +445,9 @@ module.exports.run = async (bot, msg, args) => {
 														dcardtotal +
 														'.\n You LOST: ' +
 														bet +
-														' <:chip:751730576918315048> \n You now have: ' +
+														' 💰 \n You now have: ' +
 														economy.get(`${author}.bal`) +
-														' <:chip:751730576918315048> '
+														' 💰 '
 												);
 											msg.channel.send(cards);
 											return playingGame.delete(msg.author.id);
@@ -493,9 +493,9 @@ module.exports.run = async (bot, msg, args) => {
 																	dcardtotal +
 																	'.\n You WON: ' +
 																	bet +
-																	' <:chip:751730576918315048> \n You now have: ' +
+																	' 💰 \n You now have: ' +
 																	economy.get(`${author}.bal`) +
-																	' <:chip:751730576918315048> '
+																	' 💰 '
 															);
 														msg.channel.send(cards);
 														return playingGame.delete(msg.author.id);
@@ -519,9 +519,9 @@ module.exports.run = async (bot, msg, args) => {
 																	dcardtotal +
 																	'.\n You LOST: ' +
 																	bet +
-																	' <:chip:751730576918315048> \n You now have: ' +
+																	' 💰 \n You now have: ' +
 																	economy.get(`${author}.bal`) +
-																	' <:chip:751730576918315048> '
+																	' 💰 '
 															);
 														msg.channel.send(cards);
 														return playingGame.delete(msg.author.id);
@@ -580,7 +580,7 @@ module.exports.run = async (bot, msg, args) => {
 																	dcardtotal +
 																	'.\nYou have: ' +
 																	economy.get(`${author}.bal`) +
-																	' <:chip:751730576918315048> '
+																	' 💰 '
 															);
 														msg.channel.send(cards);
 														return playingGame.delete(msg.author.id);
@@ -604,9 +604,9 @@ module.exports.run = async (bot, msg, args) => {
 																	dcardtotal +
 																	'.\n You LOST: ' +
 																	bet +
-																	' <:chip:751730576918315048> \n You now have: ' +
+																	' 💰 \n You now have: ' +
 																	economy.get(`${author}.bal`) +
-																	' <:chip:751730576918315048> '
+																	' 💰 '
 															);
 														msg.channel.send(cards);
 														return playingGame.delete(msg.author.id);
@@ -629,9 +629,9 @@ module.exports.run = async (bot, msg, args) => {
 																	dcardtotal +
 																	'.\n You WON: ' +
 																	bet +
-																	' <:chip:751730576918315048> \n You now have: ' +
+																	' 💰 \n You now have: ' +
 																	economy.get(`${author}.bal`) +
-																	' <:chip:751730576918315048> '
+																	' 💰 '
 															);
 														msg.channel.send(cards);
 														return playingGame.delete(msg.author.id);
@@ -654,9 +654,9 @@ module.exports.run = async (bot, msg, args) => {
 																	dcardtotal +
 																	'.\n You WON: ' +
 																	bet +
-																	' <:chip:751730576918315048> \n You now have: ' +
+																	' 💰 \n You now have: ' +
 																	economy.get(`${author}.bal`) +
-																	' <:chip:751730576918315048> '
+																	' 💰 '
 															);
 														msg.channel.send(cards);
 														return playingGame.delete(msg.author.id);
@@ -680,9 +680,9 @@ module.exports.run = async (bot, msg, args) => {
 																	dcardtotal +
 																	'.\n You LOST: ' +
 																	bet +
-																	' <:chip:751730576918315048> \n You now have: ' +
+																	' 💰 \n You now have: ' +
 																	economy.get(`${author}.bal`) +
-																	' <:chip:751730576918315048> '
+																	' 💰 '
 															);
 														msg.channel.send(cards);
 														return playingGame.delete(msg.author.id);
@@ -753,7 +753,7 @@ module.exports.run = async (bot, msg, args) => {
 													dcardtotal +
 													'.\nYou have: ' +
 													economy.get(`${author}.bal`) +
-													' <:chip:751730576918315048> '
+													' 💰 '
 											);
 										msg.channel.send(cards);
 										return playingGame.delete(msg.author.id);
@@ -777,9 +777,9 @@ module.exports.run = async (bot, msg, args) => {
 													dcardtotal +
 													'.\n You LOST: ' +
 													bet +
-													' <:chip:751730576918315048> \n You now have: ' +
+													' 💰 \n You now have: ' +
 													economy.get(`${author}.bal`) +
-													' <:chip:751730576918315048> '
+													' 💰 '
 											);
 										msg.channel.send(cards);
 										return playingGame.delete(msg.author.id);
@@ -802,9 +802,9 @@ module.exports.run = async (bot, msg, args) => {
 													dcardtotal +
 													'.\n You WON: ' +
 													bet +
-													' <:chip:751730576918315048> \n You now have: ' +
+													' 💰 \n You now have: ' +
 													economy.get(`${author}.bal`) +
-													' <:chip:751730576918315048> '
+													' 💰 '
 											);
 										msg.channel.send(cards);
 										return playingGame.delete(msg.author.id);
@@ -827,9 +827,9 @@ module.exports.run = async (bot, msg, args) => {
 													dcardtotal +
 													'.\n You WON: ' +
 													bet +
-													' <:chip:751730576918315048> \n You now have: ' +
+													' 💰 \n You now have: ' +
 													economy.get(`${author}.bal`) +
-													' <:chip:751730576918315048> '
+													' 💰 '
 											);
 										msg.channel.send(cards);
 										return playingGame.delete(msg.author.id);
@@ -853,9 +853,9 @@ module.exports.run = async (bot, msg, args) => {
 													dcardtotal +
 													'.\n You LOST: ' +
 													bet +
-													' <:chip:751730576918315048> \n You now have: ' +
+													' 💰 \n You now have: ' +
 													economy.get(`${author}.bal`) +
-													' <:chip:751730576918315048> '
+													' 💰 '
 											);
 										msg.channel.send(cards);
 										return playingGame.delete(msg.author.id);
@@ -928,7 +928,7 @@ module.exports.run = async (bot, msg, args) => {
 									dcardtotal +
 									'.\nYou have: ' +
 									economy.get(`${author}.bal`) +
-									' <:chip:751730576918315048> '
+									' 💰 '
 							);
 						msg.channel.send(cards);
 						return playingGame.delete(msg.author.id);
@@ -952,9 +952,9 @@ module.exports.run = async (bot, msg, args) => {
 									dcardtotal +
 									'.\n You LOST: ' +
 									bet +
-									' <:chip:751730576918315048> \n You now have: ' +
+									' 💰 \n You now have: ' +
 									economy.get(`${author}.bal`) +
-									' <:chip:751730576918315048> '
+									' 💰 '
 							);
 						msg.channel.send(cards);
 						return playingGame.delete(msg.author.id);
@@ -977,9 +977,9 @@ module.exports.run = async (bot, msg, args) => {
 									dcardtotal +
 									'.\n You WON: ' +
 									bet +
-									' <:chip:751730576918315048> \n You now have: ' +
+									' 💰 \n You now have: ' +
 									economy.get(`${author}.bal`) +
-									' <:chip:751730576918315048> '
+									' 💰 '
 							);
 						msg.channel.send(cards);
 						return playingGame.delete(msg.author.id);
@@ -1002,9 +1002,9 @@ module.exports.run = async (bot, msg, args) => {
 									dcardtotal +
 									'.\n You WON: ' +
 									bet +
-									' <:chip:751730576918315048> \n You now have: ' +
+									' 💰 \n You now have: ' +
 									economy.get(`${author}.bal`) +
-									' <:chip:751730576918315048> '
+									' 💰 '
 							);
 						msg.channel.send(cards);
 						return playingGame.delete(msg.author.id);
@@ -1028,9 +1028,9 @@ module.exports.run = async (bot, msg, args) => {
 									dcardtotal +
 									'.\n You LOST: ' +
 									bet +
-									' <:chip:751730576918315048> \n You now have: ' +
+									' 💰 \n You now have: ' +
 									economy.get(`${author}.bal`) +
-									' <:chip:751730576918315048> '
+									' 💰 '
 							);
 						msg.channel.send(cards);
 						return playingGame.delete(msg.author.id);

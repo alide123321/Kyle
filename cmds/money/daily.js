@@ -32,7 +32,7 @@ module.exports.run = async (bot, msg, args) => {
       .setTitle("**SUCCESS**")
       .setColor(0x32cd32)
       .setThumbnail(msg.author.avatarURL())
-      .setDescription("You have claimed your daily reward of 50 <:chip:751730576918315048>!"); // prettier-ignore
+      .setDescription("You have claimed your daily reward of 50 💰!"); // prettier-ignore
 		msg.channel.send(SuccessEmbed);
 	}
 };

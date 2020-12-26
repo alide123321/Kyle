@@ -25,7 +25,7 @@ module.exports.run = async (bot, msg, args) => {
 		let ErrorEmbed = new Discord.MessageEmbed()
 			.setTitle('**ERROR**')
 			.setColor(0xff0000)
-			.setDescription('How much do you want to bet?');
+			.setDescription('How much do you want to bet? `.bj <$>`');
 		msg.channel.send(ErrorEmbed);
 		return playingGame.delete(msg.author.id);
 	}

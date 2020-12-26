@@ -33,7 +33,7 @@ module.exports.run = async (bot, msg, args) => {
 			.setColor(0xff0000)
 			.setThumbnail(msg.author.avatarURL())
 			.setDescription(
-				`You just robed someone wiht in 12 hours you need to hide.\n you can rob someone again in **\`\`\`${time.hours}h ${time.minutes}m ${time.seconds}s!\`\`\`**`
+				`You just robed someone with in 12 hours you need to hide.\n you can rob someone again in **\`\`\`${time.hours}h ${time.minutes}m ${time.seconds}s!\`\`\`**`
 			);
 		return msg.channel.send(RobedEmbed);
 	}

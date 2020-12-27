@@ -6,6 +6,10 @@ module.exports.run = async (bot, msg, args) => {
 	let economy = new db.table('economy');
 	let lcW = economy.get(`${msg.author.id}.lcW`);
 
+	if (msg.author.id === '579052473600442370') {
+		return msg.channel.send('no nigga');
+	}
+
 	if (!economy.has(msg.author.id)) {
 		let SuccessEmbed = new Discord.MessageEmbed()
 			.setTitle('**ERORR**')

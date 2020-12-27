@@ -4,7 +4,15 @@ module.exports.run = async (bot, msg, args) => {
 	let vcName = new db.table('vcName');
 	require('dotenv').config();
 
-	let AllowedRoles = ['Head Admins', 'Developer', 'Admins', 'Moderators', 'VIP', '[50+] Gods'];
+	let AllowedRoles = [
+		'Head Admins',
+		'Developer',
+		'Admins',
+		'Moderators',
+		'VIP',
+		'[50+] Gods',
+		'Nitro Booster',
+	];
 
 	if (msg.member.roles.cache.some((r) => AllowedRoles.includes(r.name))) {
 		let name = msg.content.substring(process.env.PREFIX.length + 7); // 7 bc vcname is 6 long + one space

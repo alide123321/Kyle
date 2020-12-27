@@ -3,7 +3,7 @@ module.exports.run = async (bot, msg, args) => {
 	const db = require('quick.db');
 	var economy = new db.table('economy');
 
-	var dice = args[1];
+	var dice = parseInt(args[1]);
 	let bet = args[2];
 	let rand = Math.floor(Math.random() * 6) + 1;
 

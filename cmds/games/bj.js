@@ -50,7 +50,7 @@ module.exports.run = async (bot, msg, args) => {
 		return playingGame.delete(msg.author.id);
 	}
 
-	var a = 10;
+	var a = 11;
 	// prettier-ignore
 	var card = [
 		2, 2, 2, 2,

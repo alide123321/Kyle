@@ -49,7 +49,7 @@ module.exports.run = async (bot, msg, args) => {
 			msg.channel.send(
 				`You joined the give away good luck winner will be announced in **${d}d ${h}h ${m}m ${s}** the prize pool so far is ${Math.floor(
 					economy.get(`Prizepool`) / 2
-				)}`
+				)}💰`
 			);
 		}
 	} else {
@@ -66,7 +66,7 @@ module.exports.run = async (bot, msg, args) => {
 		msg.channel.send(
 			`Its not friday yet wait **${d}d ${h}h ${m}m ${s}s** the prize pool so far is ${Math.floor(
 				economy.get(`Prizepool`) / 2
-			)}`
+			)}💰`
 		);
 	}
 };
@@ -118,7 +118,7 @@ function End() {
 		let EndEmbed = new Discord.MessageEmbed()
 			.setTitle('**GIVEAWAY ENDED**')
 			.setColor(0x0099ff)
-			.setDescription(`Winner is <@${winerId}> and won ${ammount}`);
+			.setDescription(`Winner is <@${winerId}> and won ${ammount}💰`);
 
 		guild.channels.cache.get('740514553531465769').send(EndEmbed); //Channel Id
 	} catch (error) {

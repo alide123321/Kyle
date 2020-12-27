@@ -7,12 +7,9 @@ module.exports.run = async (bot, msg, args) => {
 	var economy = new db.table('economy');
 
 	var allusers = (await msg.guild.members.fetch()).keyArray('id');
-
 	var usersplaying = [];
 	var usersplayingmoney = [];
 	var send = [];
-
-	console.log(allusers);
 
 	for (let x = 0; x <= allusers.length; ++x) {
 		if (economy.has(`${allusers[x]}.bal`)) {
@@ -28,12 +25,9 @@ module.exports.run = async (bot, msg, args) => {
 	var removed = usersplayingmoney.splice(0, 5);
 	usersplayingmoney = removed;
 
-	console.log(usersplayingmoney);
-
 	for (var i = 0; i < 5; ++i) {
 		for (var n = 0; n < usersplaying.length; ++n) {
 			if (usersplayingmoney[i] === economy.get(`${usersplaying[n]}.bal`)) {
-				console.log(i);
 				send.push(`${(await msg.guild.members.fetch(usersplaying[n])).displayName} -- ${usersplayingmoney[i]}💰`); // prettier-ignore
 				usersplaying.splice(n, 1);
 			}

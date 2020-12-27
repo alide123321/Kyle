@@ -10,13 +10,7 @@ module.exports.run = async (bot, msg, args) => {
 		.setThumbnail(
 			'https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png'
 		)
-		.addFields(
-			{
-				name: 'Check out the commands on our website',
-				value: '`_____________________________________`',
-			},
-			{ name: '**Music commands**', value: '`_______________`' }
-		);
+		.addFields({ name: '**Music commands**', value: 'Check out the commands on our website' });
 
 	Fs.readdir('./cmds/music/', (err, files) => {
 		if (err) console.error(err);

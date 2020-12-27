@@ -15,6 +15,9 @@ module.exports.run = async (bot, msg, args) => {
 		if (economy.get(`${allusers[x]}.lc`)) {
 			let lc = economy.get(`${allusers[x]}.lc`);
 			economy.subtract(`${allusers[x]}.lc`, lc);
+
+			let lcW = economy.get(`${allusers[x]}.lcW`);
+			economy.subtract(`${allusers[x]}.lcW`, lcW);
 			send.push((await msg.guild.members.fetch(allusers[x])).displayName);
 		}
 	}

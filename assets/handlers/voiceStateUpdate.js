@@ -90,7 +90,6 @@ bot.on('voiceStateUpdate', async (oldState, newState) => {
 
 				temporary.splice(i, 1);
 				temporaryw.splice(i, 1);
-				return;
 			}
 		}
 	}

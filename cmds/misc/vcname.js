@@ -10,8 +10,8 @@ module.exports.run = async (bot, msg, args) => {
 		'Admins',
 		'Moderators',
 		'VIP',
-		'[50+] Gods',
 		'Nitro Booster',
+		'[50+] Gods',
 	];
 
 	if (msg.member.roles.cache.some((r) => AllowedRoles.includes(r.name))) {

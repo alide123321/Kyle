@@ -82,8 +82,8 @@ bot.on('voiceStateUpdate', async (oldState, newState) => {
 
 			if (ch.members.size <= 0) {
 				try {
-					await ch.delete();
-					await chw.delete();
+					ch.delete();
+					chw.delete();
 				} catch (error) {
 					console.log(`cant delete vc ${error}`);
 				}

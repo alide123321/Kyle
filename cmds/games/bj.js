@@ -85,6 +85,16 @@ module.exports.run = async (bot, msg, args) => {
 	}
 	var cardtotal = c1 + c2;
 	var pcards = [];
+
+	if (cardtotal > 21) {
+		if (c1 === 11) {
+			c1 = 1;
+			cardtotal -= 10;
+		} else if (c2 === 11) {
+			c2 = 1;
+			cardtotal -= 10;
+		}
+	}
 	pcards.push(c1, c2);
 
 	var dc1, dc2, dc3, dc4, dc5, dc6, dc7, dc8, dc9, dc10;
@@ -116,7 +126,7 @@ module.exports.run = async (bot, msg, args) => {
 
 		card.splice(cardPos, 1);
 	}
-	var dcardtotal = dc1 + dc2;
+	var dcardtotal = dc1;
 	var dcards = [];
 	dcards.push(dc1);
 
@@ -198,10 +208,22 @@ module.exports.run = async (bot, msg, args) => {
 				const reaction = collected.first();
 
 				if (reaction.emoji.name === '👍') {
-					a = 11;
+					cardtotal += c3;
+
+					if (cardtotal > 21) {
+						if (c1 === 11) {
+							c1 = 1;
+							cardtotal -= 10;
+						} else if (c2 === 11) {
+							c2 = 1;
+							cardtotal -= 10;
+						} else if (c3 === 11) {
+							c3 = 1;
+							cardtotal -= 10;
+						}
+					}
 
 					pcards.push(c3);
-					cardtotal += c3;
 
 					if (cardtotal === 21) {
 						economy.add(`${author}.bal`, bet);
@@ -334,8 +356,25 @@ module.exports.run = async (bot, msg, args) => {
 								const reaction = collected.first();
 
 								if (reaction.emoji.name === '👍') {
-									pcards.push(c4);
 									cardtotal += c4;
+
+									if (cardtotal > 21) {
+										if (c1 === 11) {
+											c1 = 1;
+											cardtotal -= 10;
+										} else if (c2 === 11) {
+											c2 = 1;
+											cardtotal -= 10;
+										} else if (c3 === 11) {
+											c3 = 1;
+											cardtotal -= 10;
+										} else if (c4 === 11) {
+											c4 = 1;
+											cardtotal -= 10;
+										}
+									}
+
+									pcards.push(c4);
 
 									if (cardtotal === 21) {
 										economy.add(`${author}.bal`, bet);
@@ -472,8 +511,28 @@ module.exports.run = async (bot, msg, args) => {
 												const reaction = collected.first();
 
 												if (reaction.emoji.name === '👍') {
-													pcards.push(c5);
 													cardtotal += c5;
+
+													if (cardtotal > 21) {
+														if (c1 === 11) {
+															c1 = 1;
+															cardtotal -= 10;
+														} else if (c2 === 11) {
+															c2 = 1;
+															cardtotal -= 10;
+														} else if (c3 === 11) {
+															c3 = 1;
+															cardtotal -= 10;
+														} else if (c4 === 11) {
+															c4 = 1;
+															cardtotal -= 10;
+														} else if (c5 === 11) {
+															c5 = 1;
+															cardtotal -= 10;
+														}
+													}
+
+													pcards.push(c5);
 
 													if (cardtotal <= 21) {
 														bet *= 5;
@@ -527,40 +586,247 @@ module.exports.run = async (bot, msg, args) => {
 														return playingGame.delete(msg.author.id);
 													}
 												} else if (reaction.emoji.name === '👎') {
+													dcardtotal += dc2;
+
+													if (dcardtotal > 21) {
+														if (dc1 === 11) {
+															dc1 = 1;
+															dcardtotal -= 10;
+														} else if (dc2 === 11) {
+															dc2 = 1;
+															dcardtotal -= 10;
+														}
+													}
+
 													dcards.push(dc2);
 
 													for (let i = 3; dcardtotal <= 16; ++i) {
 														if (i === 3) {
-															dcards.push(dc3);
 															dcardtotal += dc3;
+
+															if (dcardtotal > 21) {
+																if (dc1 === 11) {
+																	dc1 = 1;
+																	dcardtotal -= 10;
+																} else if (dc2 === 11) {
+																	dc2 = 1;
+																	dcardtotal -= 10;
+																} else if (dc3 === 11) {
+																	dc3 = 1;
+																	dcardtotal -= 10;
+																}
+															}
+															dcards.push(dc3);
 														}
 														if (i === 4) {
-															dcards.push(dc4);
 															dcardtotal += dc4;
+
+															if (dcardtotal > 21) {
+																if (dc1 === 11) {
+																	dc1 = 1;
+																	dcardtotal -= 10;
+																} else if (dc2 === 11) {
+																	dc2 = 1;
+																	dcardtotal -= 10;
+																} else if (dc3 === 11) {
+																	dc3 = 1;
+																	dcardtotal -= 10;
+																} else if (dc4 === 11) {
+																	dc4 = 1;
+																	dcardtotal -= 10;
+																}
+															}
+
+															dcards.push(dc4);
 														}
 														if (i === 5) {
-															dcards.push(dc5);
 															dcardtotal += dc5;
+
+															if (dcardtotal > 21) {
+																if (dc1 === 11) {
+																	dc1 = 1;
+																	dcardtotal -= 10;
+																} else if (dc2 === 11) {
+																	dc2 = 1;
+																	dcardtotal -= 10;
+																} else if (dc3 === 11) {
+																	dc3 = 1;
+																	dcardtotal -= 10;
+																} else if (dc4 === 11) {
+																	dc4 = 1;
+																	dcardtotal -= 10;
+																} else if (dc5 === 11) {
+																	dc5 = 1;
+																	dcardtotal -= 10;
+																}
+															}
+
+															dcards.push(dc5);
 														}
 														if (i === 6) {
-															dcards.push(dc6);
 															dcardtotal += dc6;
+
+															if (dcardtotal > 21) {
+																if (dc1 === 11) {
+																	dc1 = 1;
+																	dcardtotal -= 10;
+																} else if (dc2 === 11) {
+																	dc2 = 1;
+																	dcardtotal -= 10;
+																} else if (dc3 === 11) {
+																	dc3 = 1;
+																	dcardtotal -= 10;
+																} else if (dc4 === 11) {
+																	dc4 = 1;
+																	dcardtotal -= 10;
+																} else if (dc5 === 11) {
+																	dc5 = 1;
+																	dcardtotal -= 10;
+																} else if (dc6 === 11) {
+																	dc6 = 1;
+																	dcardtotal -= 10;
+																}
+															}
+
+															dcards.push(dc6);
 														}
 														if (i === 7) {
-															dcards.push(dc7);
 															dcardtotal += dc7;
+
+															if (dcardtotal > 21) {
+																if (dc1 === 11) {
+																	dc1 = 1;
+																	dcardtotal -= 10;
+																} else if (dc2 === 11) {
+																	dc2 = 1;
+																	dcardtotal -= 10;
+																} else if (dc3 === 11) {
+																	dc3 = 1;
+																	dcardtotal -= 10;
+																} else if (dc4 === 11) {
+																	dc4 = 1;
+																	dcardtotal -= 10;
+																} else if (dc5 === 11) {
+																	dc5 = 1;
+																	dcardtotal -= 10;
+																} else if (dc6 === 11) {
+																	dc6 = 1;
+																	dcardtotal -= 10;
+																} else if (dc7 === 11) {
+																	dc7 = 1;
+																	dcardtotal -= 10;
+																}
+															}
+
+															dcards.push(dc7);
 														}
 														if (i === 8) {
-															dcards.push(dc8);
 															dcardtotal += dc8;
+
+															if (dcardtotal > 21) {
+																if (dc1 === 11) {
+																	dc1 = 1;
+																	dcardtotal -= 10;
+																} else if (dc2 === 11) {
+																	dc2 = 1;
+																	dcardtotal -= 10;
+																} else if (dc3 === 11) {
+																	dc3 = 1;
+																	dcardtotal -= 10;
+																} else if (dc4 === 11) {
+																	dc4 = 1;
+																	dcardtotal -= 10;
+																} else if (dc5 === 11) {
+																	dc5 = 1;
+																	dcardtotal -= 10;
+																} else if (dc6 === 11) {
+																	dc6 = 1;
+																	dcardtotal -= 10;
+																} else if (dc7 === 11) {
+																	dc7 = 1;
+																	dcardtotal -= 10;
+																} else if (dc8 === 11) {
+																	dc8 = 1;
+																	dcardtotal -= 10;
+																}
+															}
+
+															dcards.push(dc8);
 														}
 														if (i === 9) {
-															dcards.push(dc9);
 															dcardtotal += dc9;
+
+															if (dcardtotal > 21) {
+																if (dc1 === 11) {
+																	dc1 = 1;
+																	dcardtotal -= 10;
+																} else if (dc2 === 11) {
+																	dc2 = 1;
+																	dcardtotal -= 10;
+																} else if (dc3 === 11) {
+																	dc3 = 1;
+																	dcardtotal -= 10;
+																} else if (dc4 === 11) {
+																	dc4 = 1;
+																	dcardtotal -= 10;
+																} else if (dc5 === 11) {
+																	dc5 = 1;
+																	dcardtotal -= 10;
+																} else if (dc6 === 11) {
+																	dc6 = 1;
+																	dcardtotal -= 10;
+																} else if (dc7 === 11) {
+																	dc7 = 1;
+																	dcardtotal -= 10;
+																} else if (dc8 === 11) {
+																	dc8 = 1;
+																	dcardtotal -= 10;
+																} else if (dc9 === 11) {
+																	dc9 = 1;
+																	dcardtotal -= 10;
+																}
+															}
+
+															dcards.push(dc9);
 														}
 														if (i === 10) {
-															dcards.push(dc10);
 															dcardtotal += dc10;
+
+															if (dcardtotal > 21) {
+																if (dc1 === 11) {
+																	dc1 = 1;
+																	dcardtotal -= 10;
+																} else if (dc2 === 11) {
+																	dc2 = 1;
+																	dcardtotal -= 10;
+																} else if (dc3 === 11) {
+																	dc3 = 1;
+																	dcardtotal -= 10;
+																} else if (dc4 === 11) {
+																	dc4 = 1;
+																	dcardtotal -= 10;
+																} else if (dc5 === 11) {
+																	dc5 = 1;
+																	dcardtotal -= 10;
+																} else if (dc6 === 11) {
+																	dc6 = 1;
+																	dcardtotal -= 10;
+																} else if (dc7 === 11) {
+																	dc7 = 1;
+																	dcardtotal -= 10;
+																} else if (dc8 === 11) {
+																	dc8 = 1;
+																	dcardtotal -= 10;
+																} else if (dc9 === 11) {
+																	dc9 = 1;
+																	dcardtotal -= 10;
+																} else if (dc10 === 11) {
+																	dc10 = 1;
+																	dcardtotal -= 10;
+																}
+															}
+
+															dcards.push(dc10);
 														}
 													}
 
@@ -700,40 +966,247 @@ module.exports.run = async (bot, msg, args) => {
 											});
 									});
 								} else if (reaction.emoji.name === '👎') {
+									dcardtotal += dc2;
+
+									if (dcardtotal > 21) {
+										if (dc1 === 11) {
+											dc1 = 1;
+											dcardtotal -= 10;
+										} else if (dc2 === 11) {
+											dc2 = 1;
+											dcardtotal -= 10;
+										}
+									}
+
 									dcards.push(dc2);
 
 									for (let i = 3; dcardtotal <= 16; ++i) {
 										if (i === 3) {
-											dcards.push(dc3);
 											dcardtotal += dc3;
+
+											if (dcardtotal > 21) {
+												if (dc1 === 11) {
+													dc1 = 1;
+													dcardtotal -= 10;
+												} else if (dc2 === 11) {
+													dc2 = 1;
+													dcardtotal -= 10;
+												} else if (dc3 === 11) {
+													dc3 = 1;
+													dcardtotal -= 10;
+												}
+											}
+											dcards.push(dc3);
 										}
 										if (i === 4) {
-											dcards.push(dc4);
 											dcardtotal += dc4;
+
+											if (dcardtotal > 21) {
+												if (dc1 === 11) {
+													dc1 = 1;
+													dcardtotal -= 10;
+												} else if (dc2 === 11) {
+													dc2 = 1;
+													dcardtotal -= 10;
+												} else if (dc3 === 11) {
+													dc3 = 1;
+													dcardtotal -= 10;
+												} else if (dc4 === 11) {
+													dc4 = 1;
+													dcardtotal -= 10;
+												}
+											}
+
+											dcards.push(dc4);
 										}
 										if (i === 5) {
-											dcards.push(dc5);
 											dcardtotal += dc5;
+
+											if (dcardtotal > 21) {
+												if (dc1 === 11) {
+													dc1 = 1;
+													dcardtotal -= 10;
+												} else if (dc2 === 11) {
+													dc2 = 1;
+													dcardtotal -= 10;
+												} else if (dc3 === 11) {
+													dc3 = 1;
+													dcardtotal -= 10;
+												} else if (dc4 === 11) {
+													dc4 = 1;
+													dcardtotal -= 10;
+												} else if (dc5 === 11) {
+													dc5 = 1;
+													dcardtotal -= 10;
+												}
+											}
+
+											dcards.push(dc5);
 										}
 										if (i === 6) {
-											dcards.push(dc6);
 											dcardtotal += dc6;
+
+											if (dcardtotal > 21) {
+												if (dc1 === 11) {
+													dc1 = 1;
+													dcardtotal -= 10;
+												} else if (dc2 === 11) {
+													dc2 = 1;
+													dcardtotal -= 10;
+												} else if (dc3 === 11) {
+													dc3 = 1;
+													dcardtotal -= 10;
+												} else if (dc4 === 11) {
+													dc4 = 1;
+													dcardtotal -= 10;
+												} else if (dc5 === 11) {
+													dc5 = 1;
+													dcardtotal -= 10;
+												} else if (dc6 === 11) {
+													dc6 = 1;
+													dcardtotal -= 10;
+												}
+											}
+
+											dcards.push(dc6);
 										}
 										if (i === 7) {
-											dcards.push(dc7);
 											dcardtotal += dc7;
+
+											if (dcardtotal > 21) {
+												if (dc1 === 11) {
+													dc1 = 1;
+													dcardtotal -= 10;
+												} else if (dc2 === 11) {
+													dc2 = 1;
+													dcardtotal -= 10;
+												} else if (dc3 === 11) {
+													dc3 = 1;
+													dcardtotal -= 10;
+												} else if (dc4 === 11) {
+													dc4 = 1;
+													dcardtotal -= 10;
+												} else if (dc5 === 11) {
+													dc5 = 1;
+													dcardtotal -= 10;
+												} else if (dc6 === 11) {
+													dc6 = 1;
+													dcardtotal -= 10;
+												} else if (dc7 === 11) {
+													dc7 = 1;
+													dcardtotal -= 10;
+												}
+											}
+
+											dcards.push(dc7);
 										}
 										if (i === 8) {
-											dcards.push(dc8);
 											dcardtotal += dc8;
+
+											if (dcardtotal > 21) {
+												if (dc1 === 11) {
+													dc1 = 1;
+													dcardtotal -= 10;
+												} else if (dc2 === 11) {
+													dc2 = 1;
+													dcardtotal -= 10;
+												} else if (dc3 === 11) {
+													dc3 = 1;
+													dcardtotal -= 10;
+												} else if (dc4 === 11) {
+													dc4 = 1;
+													dcardtotal -= 10;
+												} else if (dc5 === 11) {
+													dc5 = 1;
+													dcardtotal -= 10;
+												} else if (dc6 === 11) {
+													dc6 = 1;
+													dcardtotal -= 10;
+												} else if (dc7 === 11) {
+													dc7 = 1;
+													dcardtotal -= 10;
+												} else if (dc8 === 11) {
+													dc8 = 1;
+													dcardtotal -= 10;
+												}
+											}
+
+											dcards.push(dc8);
 										}
 										if (i === 9) {
-											dcards.push(dc9);
 											dcardtotal += dc9;
+
+											if (dcardtotal > 21) {
+												if (dc1 === 11) {
+													dc1 = 1;
+													dcardtotal -= 10;
+												} else if (dc2 === 11) {
+													dc2 = 1;
+													dcardtotal -= 10;
+												} else if (dc3 === 11) {
+													dc3 = 1;
+													dcardtotal -= 10;
+												} else if (dc4 === 11) {
+													dc4 = 1;
+													dcardtotal -= 10;
+												} else if (dc5 === 11) {
+													dc5 = 1;
+													dcardtotal -= 10;
+												} else if (dc6 === 11) {
+													dc6 = 1;
+													dcardtotal -= 10;
+												} else if (dc7 === 11) {
+													dc7 = 1;
+													dcardtotal -= 10;
+												} else if (dc8 === 11) {
+													dc8 = 1;
+													dcardtotal -= 10;
+												} else if (dc9 === 11) {
+													dc9 = 1;
+													dcardtotal -= 10;
+												}
+											}
+
+											dcards.push(dc9);
 										}
 										if (i === 10) {
-											dcards.push(dc10);
 											dcardtotal += dc10;
+
+											if (dcardtotal > 21) {
+												if (dc1 === 11) {
+													dc1 = 1;
+													dcardtotal -= 10;
+												} else if (dc2 === 11) {
+													dc2 = 1;
+													dcardtotal -= 10;
+												} else if (dc3 === 11) {
+													dc3 = 1;
+													dcardtotal -= 10;
+												} else if (dc4 === 11) {
+													dc4 = 1;
+													dcardtotal -= 10;
+												} else if (dc5 === 11) {
+													dc5 = 1;
+													dcardtotal -= 10;
+												} else if (dc6 === 11) {
+													dc6 = 1;
+													dcardtotal -= 10;
+												} else if (dc7 === 11) {
+													dc7 = 1;
+													dcardtotal -= 10;
+												} else if (dc8 === 11) {
+													dc8 = 1;
+													dcardtotal -= 10;
+												} else if (dc9 === 11) {
+													dc9 = 1;
+													dcardtotal -= 10;
+												} else if (dc10 === 11) {
+													dc10 = 1;
+													dcardtotal -= 10;
+												}
+											}
+
+											dcards.push(dc10);
 										}
 									}
 
@@ -875,40 +1348,247 @@ module.exports.run = async (bot, msg, args) => {
 
 					//________________________________________________________________________
 				} else if (reaction.emoji.name === '👎') {
+					dcardtotal += dc2;
+
+					if (dcardtotal > 21) {
+						if (dc1 === 11) {
+							dc1 = 1;
+							dcardtotal -= 10;
+						} else if (dc2 === 11) {
+							dc2 = 1;
+							dcardtotal -= 10;
+						}
+					}
+
 					dcards.push(dc2);
 
 					for (let i = 3; dcardtotal <= 16; ++i) {
 						if (i === 3) {
-							dcards.push(dc3);
 							dcardtotal += dc3;
+
+							if (dcardtotal > 21) {
+								if (dc1 === 11) {
+									dc1 = 1;
+									dcardtotal -= 10;
+								} else if (dc2 === 11) {
+									dc2 = 1;
+									dcardtotal -= 10;
+								} else if (dc3 === 11) {
+									dc3 = 1;
+									dcardtotal -= 10;
+								}
+							}
+							dcards.push(dc3);
 						}
 						if (i === 4) {
-							dcards.push(dc4);
 							dcardtotal += dc4;
+
+							if (dcardtotal > 21) {
+								if (dc1 === 11) {
+									dc1 = 1;
+									dcardtotal -= 10;
+								} else if (dc2 === 11) {
+									dc2 = 1;
+									dcardtotal -= 10;
+								} else if (dc3 === 11) {
+									dc3 = 1;
+									dcardtotal -= 10;
+								} else if (dc4 === 11) {
+									dc4 = 1;
+									dcardtotal -= 10;
+								}
+							}
+
+							dcards.push(dc4);
 						}
 						if (i === 5) {
-							dcards.push(dc5);
 							dcardtotal += dc5;
+
+							if (dcardtotal > 21) {
+								if (dc1 === 11) {
+									dc1 = 1;
+									dcardtotal -= 10;
+								} else if (dc2 === 11) {
+									dc2 = 1;
+									dcardtotal -= 10;
+								} else if (dc3 === 11) {
+									dc3 = 1;
+									dcardtotal -= 10;
+								} else if (dc4 === 11) {
+									dc4 = 1;
+									dcardtotal -= 10;
+								} else if (dc5 === 11) {
+									dc5 = 1;
+									dcardtotal -= 10;
+								}
+							}
+
+							dcards.push(dc5);
 						}
 						if (i === 6) {
-							dcards.push(dc6);
 							dcardtotal += dc6;
+
+							if (dcardtotal > 21) {
+								if (dc1 === 11) {
+									dc1 = 1;
+									dcardtotal -= 10;
+								} else if (dc2 === 11) {
+									dc2 = 1;
+									dcardtotal -= 10;
+								} else if (dc3 === 11) {
+									dc3 = 1;
+									dcardtotal -= 10;
+								} else if (dc4 === 11) {
+									dc4 = 1;
+									dcardtotal -= 10;
+								} else if (dc5 === 11) {
+									dc5 = 1;
+									dcardtotal -= 10;
+								} else if (dc6 === 11) {
+									dc6 = 1;
+									dcardtotal -= 10;
+								}
+							}
+
+							dcards.push(dc6);
 						}
 						if (i === 7) {
-							dcards.push(dc7);
 							dcardtotal += dc7;
+
+							if (dcardtotal > 21) {
+								if (dc1 === 11) {
+									dc1 = 1;
+									dcardtotal -= 10;
+								} else if (dc2 === 11) {
+									dc2 = 1;
+									dcardtotal -= 10;
+								} else if (dc3 === 11) {
+									dc3 = 1;
+									dcardtotal -= 10;
+								} else if (dc4 === 11) {
+									dc4 = 1;
+									dcardtotal -= 10;
+								} else if (dc5 === 11) {
+									dc5 = 1;
+									dcardtotal -= 10;
+								} else if (dc6 === 11) {
+									dc6 = 1;
+									dcardtotal -= 10;
+								} else if (dc7 === 11) {
+									dc7 = 1;
+									dcardtotal -= 10;
+								}
+							}
+
+							dcards.push(dc7);
 						}
 						if (i === 8) {
-							dcards.push(dc8);
 							dcardtotal += dc8;
+
+							if (dcardtotal > 21) {
+								if (dc1 === 11) {
+									dc1 = 1;
+									dcardtotal -= 10;
+								} else if (dc2 === 11) {
+									dc2 = 1;
+									dcardtotal -= 10;
+								} else if (dc3 === 11) {
+									dc3 = 1;
+									dcardtotal -= 10;
+								} else if (dc4 === 11) {
+									dc4 = 1;
+									dcardtotal -= 10;
+								} else if (dc5 === 11) {
+									dc5 = 1;
+									dcardtotal -= 10;
+								} else if (dc6 === 11) {
+									dc6 = 1;
+									dcardtotal -= 10;
+								} else if (dc7 === 11) {
+									dc7 = 1;
+									dcardtotal -= 10;
+								} else if (dc8 === 11) {
+									dc8 = 1;
+									dcardtotal -= 10;
+								}
+							}
+
+							dcards.push(dc8);
 						}
 						if (i === 9) {
-							dcards.push(dc9);
 							dcardtotal += dc9;
+
+							if (dcardtotal > 21) {
+								if (dc1 === 11) {
+									dc1 = 1;
+									dcardtotal -= 10;
+								} else if (dc2 === 11) {
+									dc2 = 1;
+									dcardtotal -= 10;
+								} else if (dc3 === 11) {
+									dc3 = 1;
+									dcardtotal -= 10;
+								} else if (dc4 === 11) {
+									dc4 = 1;
+									dcardtotal -= 10;
+								} else if (dc5 === 11) {
+									dc5 = 1;
+									dcardtotal -= 10;
+								} else if (dc6 === 11) {
+									dc6 = 1;
+									dcardtotal -= 10;
+								} else if (dc7 === 11) {
+									dc7 = 1;
+									dcardtotal -= 10;
+								} else if (dc8 === 11) {
+									dc8 = 1;
+									dcardtotal -= 10;
+								} else if (dc9 === 11) {
+									dc9 = 1;
+									dcardtotal -= 10;
+								}
+							}
+
+							dcards.push(dc9);
 						}
 						if (i === 10) {
-							dcards.push(dc10);
 							dcardtotal += dc10;
+
+							if (dcardtotal > 21) {
+								if (dc1 === 11) {
+									dc1 = 1;
+									dcardtotal -= 10;
+								} else if (dc2 === 11) {
+									dc2 = 1;
+									dcardtotal -= 10;
+								} else if (dc3 === 11) {
+									dc3 = 1;
+									dcardtotal -= 10;
+								} else if (dc4 === 11) {
+									dc4 = 1;
+									dcardtotal -= 10;
+								} else if (dc5 === 11) {
+									dc5 = 1;
+									dcardtotal -= 10;
+								} else if (dc6 === 11) {
+									dc6 = 1;
+									dcardtotal -= 10;
+								} else if (dc7 === 11) {
+									dc7 = 1;
+									dcardtotal -= 10;
+								} else if (dc8 === 11) {
+									dc8 = 1;
+									dcardtotal -= 10;
+								} else if (dc9 === 11) {
+									dc9 = 1;
+									dcardtotal -= 10;
+								} else if (dc10 === 11) {
+									dc10 = 1;
+									dcardtotal -= 10;
+								}
+							}
+
+							dcards.push(dc10);
 						}
 					}
 

@@ -203,7 +203,7 @@ module.exports.run = async (bot, msg, args) => {
 		};
 
 		sentMessage
-			.awaitReactions(filter, { max: 1, time: 10000, errors: ['time'] })
+			.awaitReactions(filter, { max: 1, time: 15000, errors: ['time'] })
 			.then((collected) => {
 				const reaction = collected.first();
 
@@ -351,7 +351,7 @@ module.exports.run = async (bot, msg, args) => {
 						};
 
 						sentMessage2
-							.awaitReactions(filter, { max: 1, time: 10000, errors: ['time'] })
+							.awaitReactions(filter, { max: 1, time: 15000, errors: ['time'] })
 							.then((collected) => {
 								const reaction = collected.first();
 
@@ -504,7 +504,7 @@ module.exports.run = async (bot, msg, args) => {
 										sentMessage2
 											.awaitReactions(filter, {
 												max: 1,
-												time: 10000,
+												time: 15000,
 												errors: ['time'],
 											})
 											.then((collected) => {

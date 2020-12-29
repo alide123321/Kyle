@@ -1,7 +1,6 @@
 const e = require('express');
 
 module.exports.run = async (bot, msg, args) => {
-	console.log(`2112313`);
 	const Discord = require('discord.js');
 	const db = require('quick.db');
 	var economy = new db.table('economy');

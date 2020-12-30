@@ -134,7 +134,7 @@ module.exports.run = async (bot, msg, args) => {
 				.setTitle('**Win**')
 				.setColor(0x32cd32)
 				.setThumbnail(msg.author.avatarURL())
-				.setDescription('You Win: ' + bet + '💰 \nBot got: ' + dealer);
+				.setDescription('You Win: ' + bet + '💰 \nBot got: ' + dealer)
 				.setFooter('You win %80 of your bet');
 			msg.channel.send(SuccessEmbed);
 		}
@@ -169,7 +169,7 @@ module.exports.run = async (bot, msg, args) => {
 				.setTitle('**Win**')
 				.setColor(0x32cd32)
 				.setThumbnail(msg.author.avatarURL())
-				.setDescription('You Win: ' + bet + ' 💰\nBot got: ' + dealer);
+				.setDescription('You Win: ' + bet + ' 💰\nBot got: ' + dealer)
 				.setFooter('You win %80 of your bet');
 			msg.channel.send(SuccessEmbed);
 		}

@@ -92,12 +92,15 @@ module.exports.run = async (bot, msg, args) => {
 		} else if (drand === 2) {
 			//if u get rock and dealer gets sis
 			var dealer = 'scissors';
+			bet *= 4;
+			bet = Math.floor(bet / 5);
 			economy.add(`${author}.bal`, bet);
 			let SuccessEmbed = new Discord.MessageEmbed()
 				.setTitle('**Win**')
 				.setColor(0x32cd32)
 				.setThumbnail(msg.author.avatarURL())
-				.setDescription('You Win: ' + bet + '💰\nBot got: ' + dealer);
+				.setDescription('You Win: ' + bet + '💰\nBot got: ' + dealer)
+				.setFooter('You win %80 of your bet');
 			msg.channel.send(SuccessEmbed);
 		}
 		return;
@@ -124,12 +127,15 @@ module.exports.run = async (bot, msg, args) => {
 		} else if (drand === 0) {
 			//if u get paper and dealer gets rock
 			var dealer = 'rock';
+			bet *= 4;
+			bet = Math.floor(bet / 5);
 			economy.add(`${author}.bal`, bet);
 			let SuccessEmbed = new Discord.MessageEmbed()
 				.setTitle('**Win**')
 				.setColor(0x32cd32)
 				.setThumbnail(msg.author.avatarURL())
 				.setDescription('You Win: ' + bet + '💰 \nBot got: ' + dealer);
+				.setFooter('You win %80 of your bet');
 			msg.channel.send(SuccessEmbed);
 		}
 		return;
@@ -156,12 +162,15 @@ module.exports.run = async (bot, msg, args) => {
 		} else if (drand === 1) {
 			//if u get sis and dealer gets paper
 			var dealer = 'paper';
+			bet *= 4;
+			bet = Math.floor(bet / 5);
 			economy.add(`${author}.bal`, bet);
 			let SuccessEmbed = new Discord.MessageEmbed()
 				.setTitle('**Win**')
 				.setColor(0x32cd32)
 				.setThumbnail(msg.author.avatarURL())
 				.setDescription('You Win: ' + bet + ' 💰\nBot got: ' + dealer);
+				.setFooter('You win %80 of your bet');
 			msg.channel.send(SuccessEmbed);
 		}
 		return;

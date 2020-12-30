@@ -90,9 +90,17 @@ module.exports.run = async (bot, msg, args) => {
 		if (c1 === 11) {
 			c1 = 1;
 			cardtotal -= 10;
+			let index = pcards.indexOf(11);
+			if (index !== -1) {
+				pcards[index] = 1;
+			}
 		} else if (c2 === 11) {
 			c2 = 1;
 			cardtotal -= 10;
+			let index = pcards.indexOf(11);
+			if (index !== -1) {
+				pcards[index] = 1;
+			}
 		}
 	}
 	pcards.push(c1, c2);
@@ -214,12 +222,24 @@ module.exports.run = async (bot, msg, args) => {
 						if (c1 === 11) {
 							c1 = 1;
 							cardtotal -= 10;
+							let index = pcards.indexOf(11);
+							if (index !== -1) {
+								pcards[index] = 1;
+							}
 						} else if (c2 === 11) {
 							c2 = 1;
 							cardtotal -= 10;
+							let index = pcards.indexOf(11);
+							if (index !== -1) {
+								pcards[index] = 1;
+							}
 						} else if (c3 === 11) {
 							c3 = 1;
 							cardtotal -= 10;
+							let index = pcards.indexOf(11);
+							if (index !== -1) {
+								pcards[index] = 1;
+							}
 						}
 					}
 
@@ -362,15 +382,31 @@ module.exports.run = async (bot, msg, args) => {
 										if (c1 === 11) {
 											c1 = 1;
 											cardtotal -= 10;
+											let index = pcards.indexOf(11);
+											if (index !== -1) {
+												pcards[index] = 1;
+											}
 										} else if (c2 === 11) {
 											c2 = 1;
 											cardtotal -= 10;
+											let index = pcards.indexOf(11);
+											if (index !== -1) {
+												pcards[index] = 1;
+											}
 										} else if (c3 === 11) {
 											c3 = 1;
 											cardtotal -= 10;
+											let index = pcards.indexOf(11);
+											if (index !== -1) {
+												pcards[index] = 1;
+											}
 										} else if (c4 === 11) {
 											c4 = 1;
 											cardtotal -= 10;
+											let index = pcards.indexOf(11);
+											if (index !== -1) {
+												pcards[index] = 1;
+											}
 										}
 									}
 
@@ -517,18 +553,38 @@ module.exports.run = async (bot, msg, args) => {
 														if (c1 === 11) {
 															c1 = 1;
 															cardtotal -= 10;
+															let index = pcards.indexOf(11);
+															if (index !== -1) {
+																pcards[index] = 1;
+															}
 														} else if (c2 === 11) {
 															c2 = 1;
 															cardtotal -= 10;
+															let index = pcards.indexOf(11);
+															if (index !== -1) {
+																pcards[index] = 1;
+															}
 														} else if (c3 === 11) {
 															c3 = 1;
 															cardtotal -= 10;
+															let index = pcards.indexOf(11);
+															if (index !== -1) {
+																pcards[index] = 1;
+															}
 														} else if (c4 === 11) {
 															c4 = 1;
 															cardtotal -= 10;
+															let index = pcards.indexOf(11);
+															if (index !== -1) {
+																pcards[index] = 1;
+															}
 														} else if (c5 === 11) {
 															c5 = 1;
 															cardtotal -= 10;
+															let index = pcards.indexOf(11);
+															if (index !== -1) {
+																pcards[index] = 1;
+															}
 														}
 													}
 
@@ -592,9 +648,17 @@ module.exports.run = async (bot, msg, args) => {
 														if (dc1 === 11) {
 															dc1 = 1;
 															dcardtotal -= 10;
+															let index = dcards.indexOf(11);
+															if (index !== -1) {
+																dcards[index] = 1;
+															}
 														} else if (dc2 === 11) {
 															dc2 = 1;
 															dcardtotal -= 10;
+															let index = dcards.indexOf(11);
+															if (index !== -1) {
+																dcards[index] = 1;
+															}
 														}
 													}
 
@@ -608,12 +672,24 @@ module.exports.run = async (bot, msg, args) => {
 																if (dc1 === 11) {
 																	dc1 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc2 === 11) {
 																	dc2 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc3 === 11) {
 																	dc3 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																}
 															}
 															dcards.push(dc3);
@@ -625,15 +701,31 @@ module.exports.run = async (bot, msg, args) => {
 																if (dc1 === 11) {
 																	dc1 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc2 === 11) {
 																	dc2 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc3 === 11) {
 																	dc3 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc4 === 11) {
 																	dc4 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																}
 															}
 
@@ -646,18 +738,38 @@ module.exports.run = async (bot, msg, args) => {
 																if (dc1 === 11) {
 																	dc1 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc2 === 11) {
 																	dc2 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc3 === 11) {
 																	dc3 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc4 === 11) {
 																	dc4 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc5 === 11) {
 																	dc5 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																}
 															}
 
@@ -670,21 +782,45 @@ module.exports.run = async (bot, msg, args) => {
 																if (dc1 === 11) {
 																	dc1 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc2 === 11) {
 																	dc2 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc3 === 11) {
 																	dc3 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc4 === 11) {
 																	dc4 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc5 === 11) {
 																	dc5 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc6 === 11) {
 																	dc6 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																}
 															}
 
@@ -697,24 +833,52 @@ module.exports.run = async (bot, msg, args) => {
 																if (dc1 === 11) {
 																	dc1 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc2 === 11) {
 																	dc2 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc3 === 11) {
 																	dc3 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc4 === 11) {
 																	dc4 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc5 === 11) {
 																	dc5 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc6 === 11) {
 																	dc6 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc7 === 11) {
 																	dc7 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																}
 															}
 
@@ -727,27 +891,59 @@ module.exports.run = async (bot, msg, args) => {
 																if (dc1 === 11) {
 																	dc1 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc2 === 11) {
 																	dc2 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc3 === 11) {
 																	dc3 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc4 === 11) {
 																	dc4 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc5 === 11) {
 																	dc5 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc6 === 11) {
 																	dc6 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc7 === 11) {
 																	dc7 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc8 === 11) {
 																	dc8 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																}
 															}
 
@@ -760,30 +956,66 @@ module.exports.run = async (bot, msg, args) => {
 																if (dc1 === 11) {
 																	dc1 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc2 === 11) {
 																	dc2 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc3 === 11) {
 																	dc3 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc4 === 11) {
 																	dc4 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc5 === 11) {
 																	dc5 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc6 === 11) {
 																	dc6 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc7 === 11) {
 																	dc7 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc8 === 11) {
 																	dc8 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc9 === 11) {
 																	dc9 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																}
 															}
 
@@ -796,33 +1028,73 @@ module.exports.run = async (bot, msg, args) => {
 																if (dc1 === 11) {
 																	dc1 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc2 === 11) {
 																	dc2 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc3 === 11) {
 																	dc3 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc4 === 11) {
 																	dc4 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc5 === 11) {
 																	dc5 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc6 === 11) {
 																	dc6 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc7 === 11) {
 																	dc7 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc8 === 11) {
 																	dc8 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc9 === 11) {
 																	dc9 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																} else if (dc10 === 11) {
 																	dc10 = 1;
 																	dcardtotal -= 10;
+																	let index = dcards.indexOf(11);
+																	if (index !== -1) {
+																		dcards[index] = 1;
+																	}
 																}
 															}
 
@@ -972,9 +1244,17 @@ module.exports.run = async (bot, msg, args) => {
 										if (dc1 === 11) {
 											dc1 = 1;
 											dcardtotal -= 10;
+											let index = dcards.indexOf(11);
+											if (index !== -1) {
+												dcards[index] = 1;
+											}
 										} else if (dc2 === 11) {
 											dc2 = 1;
 											dcardtotal -= 10;
+											let index = dcards.indexOf(11);
+											if (index !== -1) {
+												dcards[index] = 1;
+											}
 										}
 									}
 
@@ -988,12 +1268,24 @@ module.exports.run = async (bot, msg, args) => {
 												if (dc1 === 11) {
 													dc1 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc2 === 11) {
 													dc2 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc3 === 11) {
 													dc3 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												}
 											}
 											dcards.push(dc3);
@@ -1005,15 +1297,31 @@ module.exports.run = async (bot, msg, args) => {
 												if (dc1 === 11) {
 													dc1 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc2 === 11) {
 													dc2 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc3 === 11) {
 													dc3 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc4 === 11) {
 													dc4 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												}
 											}
 
@@ -1026,18 +1334,38 @@ module.exports.run = async (bot, msg, args) => {
 												if (dc1 === 11) {
 													dc1 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc2 === 11) {
 													dc2 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc3 === 11) {
 													dc3 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc4 === 11) {
 													dc4 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc5 === 11) {
 													dc5 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												}
 											}
 
@@ -1050,21 +1378,45 @@ module.exports.run = async (bot, msg, args) => {
 												if (dc1 === 11) {
 													dc1 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc2 === 11) {
 													dc2 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc3 === 11) {
 													dc3 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc4 === 11) {
 													dc4 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc5 === 11) {
 													dc5 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc6 === 11) {
 													dc6 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												}
 											}
 
@@ -1077,24 +1429,52 @@ module.exports.run = async (bot, msg, args) => {
 												if (dc1 === 11) {
 													dc1 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc2 === 11) {
 													dc2 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc3 === 11) {
 													dc3 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc4 === 11) {
 													dc4 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc5 === 11) {
 													dc5 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc6 === 11) {
 													dc6 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc7 === 11) {
 													dc7 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												}
 											}
 
@@ -1107,27 +1487,59 @@ module.exports.run = async (bot, msg, args) => {
 												if (dc1 === 11) {
 													dc1 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc2 === 11) {
 													dc2 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc3 === 11) {
 													dc3 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc4 === 11) {
 													dc4 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc5 === 11) {
 													dc5 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc6 === 11) {
 													dc6 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc7 === 11) {
 													dc7 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc8 === 11) {
 													dc8 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												}
 											}
 
@@ -1140,30 +1552,66 @@ module.exports.run = async (bot, msg, args) => {
 												if (dc1 === 11) {
 													dc1 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc2 === 11) {
 													dc2 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc3 === 11) {
 													dc3 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc4 === 11) {
 													dc4 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc5 === 11) {
 													dc5 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc6 === 11) {
 													dc6 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc7 === 11) {
 													dc7 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc8 === 11) {
 													dc8 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc9 === 11) {
 													dc9 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												}
 											}
 
@@ -1176,33 +1624,73 @@ module.exports.run = async (bot, msg, args) => {
 												if (dc1 === 11) {
 													dc1 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc2 === 11) {
 													dc2 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc3 === 11) {
 													dc3 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc4 === 11) {
 													dc4 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc5 === 11) {
 													dc5 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc6 === 11) {
 													dc6 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc7 === 11) {
 													dc7 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc8 === 11) {
 													dc8 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc9 === 11) {
 													dc9 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												} else if (dc10 === 11) {
 													dc10 = 1;
 													dcardtotal -= 10;
+													let index = dcards.indexOf(11);
+													if (index !== -1) {
+														dcards[index] = 1;
+													}
 												}
 											}
 
@@ -1354,9 +1842,17 @@ module.exports.run = async (bot, msg, args) => {
 						if (dc1 === 11) {
 							dc1 = 1;
 							dcardtotal -= 10;
+							let index = dcards.indexOf(11);
+							if (index !== -1) {
+								dcards[index] = 1;
+							}
 						} else if (dc2 === 11) {
 							dc2 = 1;
 							dcardtotal -= 10;
+							let index = dcards.indexOf(11);
+							if (index !== -1) {
+								dcards[index] = 1;
+							}
 						}
 					}
 
@@ -1370,12 +1866,24 @@ module.exports.run = async (bot, msg, args) => {
 								if (dc1 === 11) {
 									dc1 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc2 === 11) {
 									dc2 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc3 === 11) {
 									dc3 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								}
 							}
 							dcards.push(dc3);
@@ -1387,15 +1895,31 @@ module.exports.run = async (bot, msg, args) => {
 								if (dc1 === 11) {
 									dc1 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc2 === 11) {
 									dc2 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc3 === 11) {
 									dc3 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc4 === 11) {
 									dc4 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								}
 							}
 
@@ -1408,18 +1932,38 @@ module.exports.run = async (bot, msg, args) => {
 								if (dc1 === 11) {
 									dc1 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc2 === 11) {
 									dc2 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc3 === 11) {
 									dc3 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc4 === 11) {
 									dc4 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc5 === 11) {
 									dc5 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								}
 							}
 
@@ -1432,21 +1976,45 @@ module.exports.run = async (bot, msg, args) => {
 								if (dc1 === 11) {
 									dc1 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc2 === 11) {
 									dc2 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc3 === 11) {
 									dc3 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc4 === 11) {
 									dc4 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc5 === 11) {
 									dc5 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc6 === 11) {
 									dc6 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								}
 							}
 
@@ -1459,24 +2027,52 @@ module.exports.run = async (bot, msg, args) => {
 								if (dc1 === 11) {
 									dc1 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc2 === 11) {
 									dc2 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc3 === 11) {
 									dc3 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc4 === 11) {
 									dc4 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc5 === 11) {
 									dc5 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc6 === 11) {
 									dc6 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc7 === 11) {
 									dc7 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								}
 							}
 
@@ -1489,27 +2085,59 @@ module.exports.run = async (bot, msg, args) => {
 								if (dc1 === 11) {
 									dc1 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc2 === 11) {
 									dc2 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc3 === 11) {
 									dc3 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc4 === 11) {
 									dc4 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc5 === 11) {
 									dc5 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc6 === 11) {
 									dc6 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc7 === 11) {
 									dc7 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc8 === 11) {
 									dc8 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								}
 							}
 
@@ -1522,30 +2150,66 @@ module.exports.run = async (bot, msg, args) => {
 								if (dc1 === 11) {
 									dc1 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc2 === 11) {
 									dc2 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc3 === 11) {
 									dc3 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc4 === 11) {
 									dc4 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc5 === 11) {
 									dc5 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc6 === 11) {
 									dc6 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc7 === 11) {
 									dc7 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc8 === 11) {
 									dc8 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc9 === 11) {
 									dc9 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								}
 							}
 
@@ -1561,30 +2225,66 @@ module.exports.run = async (bot, msg, args) => {
 								} else if (dc2 === 11) {
 									dc2 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc3 === 11) {
 									dc3 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc4 === 11) {
 									dc4 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc5 === 11) {
 									dc5 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc6 === 11) {
 									dc6 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc7 === 11) {
 									dc7 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc8 === 11) {
 									dc8 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc9 === 11) {
 									dc9 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								} else if (dc10 === 11) {
 									dc10 = 1;
 									dcardtotal -= 10;
+									let index = dcards.indexOf(11);
+									if (index !== -1) {
+										dcards[index] = 1;
+									}
 								}
 							}
 

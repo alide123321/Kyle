@@ -591,14 +591,14 @@ module.exports.run = async (bot, msg, args) => {
 													pcards.push(c5);
 
 													if (cardtotal <= 21) {
-														bet *= 5;
+														bet *= 3;
 														economy.add(`${author}.bal`, bet);
 														let cards = new Discord.MessageEmbed()
 															.setTitle('**Black Jack**')
 															.setThumbnail(msg.author.avatarURL())
 															.setColor(0x0099ff)
 															.setDescription(
-																'YOU WON!! (5 cards 21 or less -> bet 5X)\n\nYour cards are a ' +
+																'YOU WON!! (5 cards 21 or less -> bet 3X)\n\nYour cards are a ' +
 																	pcards +
 																	', with a total of ' +
 																	cardtotal +

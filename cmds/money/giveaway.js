@@ -22,10 +22,10 @@ module.exports.run = async (bot, msg, args) => {
 		return msg.channel.send(JoinEmbed);
 	}
 
-	var today = new Date();
+	let today = new Date();
 	let dayNum = today.getDay();
-	var daysToFri = 5 - (dayNum < 5 ? dayNum : dayNum - 7);
-	var daysToSat = 6 - (dayNum < 6 ? dayNum : dayNum - 7);
+	let daysToFri = 5 - (dayNum < 5 ? dayNum : dayNum - 7);
+	let daysToSat = 6 - (dayNum < 6 ? dayNum : dayNum - 7);
 
 	if (dayNum === 5) {
 		const obj = JSON.parse(fs.readFileSync('assets/util/givwaway.json'));
@@ -41,7 +41,7 @@ module.exports.run = async (bot, msg, args) => {
 		let s = ((ms % 6e4) / 1e3) | 0;
 
 		if (obj.entered.includes(`${msg.author.id}`)) {
-			msg.channel.send(`Ur already in. There is **${d}d ${h}h ${m}m ${s}s** left`);
+			msg.channel.send(`Your already in. There is **${d}d ${h}h ${m}m ${s}s** left`);
 		} else {
 			obj.entered.push(`${msg.author.id}`);
 

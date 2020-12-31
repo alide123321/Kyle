@@ -71,7 +71,7 @@ module.exports.run = async (bot, msg, args) => {
 	}
 };
 
-var Fri = new cron.CronJob('0 00 00 * * 5', () => {
+var Fri = new cron.CronJob('00 00 * * 5', () => {
 	try {
 		let guild = bot.guilds.cache.get('599061990828277770'); //Guild Id
 
@@ -85,7 +85,7 @@ var Fri = new cron.CronJob('0 00 00 * * 5', () => {
 	}
 });
 
-var Sat = new cron.CronJob('00 00 00 * * 6', () => {
+var Sat = new cron.CronJob('00 00 * * 6', () => {
 	End();
 });
 Sat.start();

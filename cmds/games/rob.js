@@ -8,7 +8,7 @@ module.exports.run = async (bot, msg, args) => {
 	let RobedTimeout = 43200000; // get robed once every 12 hours
 
 	if (!mentioned) return msg.channel.send('Sorry, you forgot to mention somebody. \n.rob <@>');
-	if (msg.author.id === mentioned.id) return msg.channel.send('Sorry, you Cant rob your self');
+	if (msg.author.id === mentioned.id) return msg.channel.send('Sorry, you cant rob your self');
 
 	if (!economy.has(`${msg.author.id}.bal`)) return msg.channel.send('you are not in the economy');
 	if (!economy.has(`${mentioned.id}.bal`)) return msg.channel.send('they are not in the economy');

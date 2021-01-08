@@ -6,6 +6,8 @@ module.exports.run = async (bot, msg, args) => {
 	let useracc = economy.get(`${msg.author.id}.bal`);
 	let Money = args[1];
 
+	if (msg.author.id === mentioned.id) return msg.channel.send('Sorry, you cant pay your self');
+
 	if (economy.has(msg.author.id) === false) {
 		let SuccessEmbed = new Discord.MessageEmbed()
 			.setTitle('**ERORR**')

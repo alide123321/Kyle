@@ -28,6 +28,12 @@ module.exports.run = async (bot, msg, args) => {
 	)
 		perc = 'HALAL YES DADDY PLEASE HALAL';
 
+	if (
+		(mentioned1.id === '723144931153281104' && mentioned2.id === '375037560931745794') ||
+		(mentioned1.id === '375037560931745794' && mentioned2.id === '723144931153281104')
+	)
+		perc = 'HALAL YES DADDY PLEASE HALAL';
+
 	let ShipEmbed = new Discord.MessageEmbed()
 		.setTitle(`Shiping ${mentioned1.user.username} & ${mentioned2.user.username}`)
 		.setColor(0x32cd32)

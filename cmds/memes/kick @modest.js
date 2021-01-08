@@ -19,7 +19,7 @@ module.exports.run = async (bot, msg, args) => {
 			mention.kick();
 		}
 	} else {
-		msg.channel.send('I think you mean `.kick <@326895102708547585>`');
+		msg.channel.send('I think you mean `.kick `<@326895102708547585>');
 	}
 };
 

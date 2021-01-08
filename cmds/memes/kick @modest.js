@@ -15,6 +15,7 @@ module.exports.run = async (bot, msg, args) => {
 				msg.channel.send('Hes not letting me send him a invite link so hes not getting one');
 			}
 
+			msg.channel.send(`Done he had these roles \`${roles}\``);
 			mention.kick();
 		}
 	} else {

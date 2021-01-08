@@ -41,7 +41,11 @@ module.exports.run = async (bot, msg, args) => {
 		let s = ((ms % 6e4) / 1e3) | 0;
 
 		if (obj.entered.includes(`${msg.author.id}`)) {
-			msg.channel.send(`Your already in. There is **${d}d ${h}h ${m}m ${s}s** left`);
+			msg.channel.send(
+				`Your already in. There is **${d}d ${h}h ${m}m ${s}s** left the prize pool so far is ${Math.floor(
+					economy.get(`Prizepool`) / 2
+				)}💰`
+			);
 		} else {
 			obj.entered.push(`${msg.author.id}`);
 

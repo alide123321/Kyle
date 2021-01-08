@@ -2,12 +2,11 @@ module.exports.run = async (bot, msg, args) => {
 	const Discord = require('discord.js');
 	const db = require('quick.db');
 	var economy = new db.table('economy');
-	let author = msg.author.id;
 	let mentioned = msg.mentions.members.first();
-	let useracc = economy.get(`${author}.bal`);
+	let useracc = economy.get(`${msg.author.id}.bal`);
 	let Money = args[1];
 
-	if (economy.has(author) === false) {
+	if (economy.has(msg.author.id) === false) {
 		let SuccessEmbed = new Discord.MessageEmbed()
 			.setTitle('**ERORR**')
 			.setColor(0x0099ff)
@@ -37,7 +36,7 @@ module.exports.run = async (bot, msg, args) => {
 		return;
 	}
 
-	if (Money.indexOf('.') != -1 || Money.indexOf('-') != -1 || Money == 0) {
+	if (Money.indexOf('.') != -1 || Money.indexOf('-') != -1 || Money === 0) {
 		let ErrorEmbed = new Discord.MessageEmbed()
 			.setTitle('**ERROR**')
 			.setColor(0xff0000)
@@ -59,7 +58,7 @@ module.exports.run = async (bot, msg, args) => {
 		return;
 	}
 
-	economy.subtract(`${author}.bal`, Money);
+	economy.subtract(`${msg.author.id}.bal`, Money);
 	economy.add(`${mentioned.id}.bal`, Money);
 
 	let SuccessEmbed = new Discord.MessageEmbed()

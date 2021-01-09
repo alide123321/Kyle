@@ -64,17 +64,17 @@ module.exports.run = async (bot, msg, args) => {
 			} more`
 		);
 
-	if (economy.get(`${msg.author.id}.bal`) < Math.floor(0.2 * economy.get(`${mentioned.id}.bal`)))
+	if (economy.get(`${msg.author.id}.bal`) < Math.floor(0.1 * economy.get(`${mentioned.id}.bal`)))
 		return msg.channel.send(
 			`Lol they too rich u cant rob them you need $${
-				Math.floor(0.2 * economy.get(`${mentioned.id}.bal`)) - economy.get(`${msg.author.id}.bal`)
+				Math.floor(0.1 * economy.get(`${mentioned.id}.bal`)) - economy.get(`${msg.author.id}.bal`)
 			} more coins to rob them`
 		);
 
-	if (Math.floor(0.2 * economy.get(`${msg.author.id}.bal`)) > economy.get(`${mentioned.id}.bal`))
+	if (Math.floor(0.1 * economy.get(`${msg.author.id}.bal`)) > economy.get(`${mentioned.id}.bal`))
 		return msg.channel.send(
 			`Lol they too poor u cant rob them they need $${
-				Math.floor(0.2 * economy.get(`${msg.author.id}.bal`)) - economy.get(`${mentioned.id}.bal`)
+				Math.floor(0.1 * economy.get(`${msg.author.id}.bal`)) - economy.get(`${mentioned.id}.bal`)
 			} more coins`
 		);
 

@@ -43,7 +43,7 @@ module.exports.run = async (bot, msg, args) => {
 		if (obj.entered.includes(`${msg.author.id}`)) {
 			msg.channel.send(
 				`Your already in. There is **${d}d ${h}h ${m}m ${s}s** left the prize pool so far is ${Math.floor(
-					economy.get(`Prizepool`) / 2
+					economy.get(`Prizepool`) / 4
 				)}💰`
 			);
 		} else {
@@ -52,7 +52,7 @@ module.exports.run = async (bot, msg, args) => {
 			fs.writeFileSync('assets/util/givwaway.json', JSON.stringify(obj));
 			msg.channel.send(
 				`You joined the give away good luck winner will be announced in **${d}d ${h}h ${m}m ${s}** the prize pool so far is ${Math.floor(
-					economy.get(`Prizepool`) / 2
+					economy.get(`Prizepool`) / 4
 				)}💰`
 			);
 		}
@@ -69,7 +69,7 @@ module.exports.run = async (bot, msg, args) => {
 
 		msg.channel.send(
 			`Its not friday yet wait **${d}d ${h}h ${m}m ${s}s** the prize pool so far is ${Math.floor(
-				economy.get(`Prizepool`) / 2
+				economy.get(`Prizepool`) / 4
 			)}💰`
 		);
 	}
@@ -98,7 +98,7 @@ Fri.start();
 function End() {
 	const obj = JSON.parse(fs.readFileSync('assets/util/givwaway.json'));
 	winerId = obj.entered[Math.floor(Math.random() * obj.entered.length)];
-	ammount = Math.floor(economy.get(`Prizepool`) / 2);
+	ammount = Math.floor(economy.get(`Prizepool`) / 4);
 
 	if (obj.entered.length === 0) {
 		try {

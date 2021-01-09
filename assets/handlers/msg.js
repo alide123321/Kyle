@@ -130,7 +130,7 @@ bot.on('message', async (msg) => {
 	if (!command.startsWith(process.env.PREFIX)) return;
 
 	if (cooldown.has(msg.author.id) && msg.author.id !== '698051518754062387') {
-		msg.channel.send('Cooldown 3 sec').then((msge) => {
+		msg.channel.send('Cooldown 2 sec').then((msge) => {
 			msge.delete({ timeout: 5000 });
 		});
 		return;
@@ -139,7 +139,7 @@ bot.on('message', async (msg) => {
 	cooldown.add(msg.author.id);
 	setTimeout(() => {
 		cooldown.delete(msg.author.id);
-	}, 3000);
+	}, 2000);
 
 	let cmd = bot.commands.get(command.slice(process.env.PREFIX.length));
 

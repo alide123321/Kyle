@@ -1,9 +1,6 @@
 const playingGame = require('../../assets/functions/playingGame.js').playingGame;
 
 module.exports.run = async (bot, msg, args) => {
-	if (msg.author.id === '284138828917112833' || msg.author.id === '313490096554770432')
-		return msg.channel.send('U cant play untill u tell me');
-
 	if (playingGame.has(msg.author.id))
 		return msg.channel.send('You are already playing a game finish it to start a new one');
 
@@ -42,6 +39,17 @@ module.exports.run = async (bot, msg, args) => {
 			.setDescription('You must bet 0 or more.');
 		msg.channel.send(ErrorEmbed);
 		return playingGame.delete(msg.author.id);
+	}
+
+	if (bet > 1000) {
+		let ErrorEmbed = new Discord.MessageEmbed()
+			.setTitle('**ERROR**')
+			.setColor(0xff0000)
+			.setDescription('Max bet is 1000💰 ')
+			.setFooter(`Your bet was chaned from ${bet}💰 to 1000💰`);
+		msg.channel.send(ErrorEmbed);
+
+		bet = 1000;
 	}
 
 	if (economy.get(`${author}.bal`) < bet) {

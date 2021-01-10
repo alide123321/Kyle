@@ -20,14 +20,7 @@ module.exports.run = async (bot, msg, args) => {
 	let CertaintyWait = 3;
 
 	msg.channel.send('`This takes a second please wait    *`').then((m) => {
-		m.edit('`This takes a second please wait*   *`');
-		sleep(1000);
-		m.edit('`This takes a second please wait**  *`');
-		sleep(1000);
-		m.edit('`This takes a second please wait*** *`');
-		sleep(1000);
-		m.edit('`This takes a second please wait*****`');
-		sleep(500);
+		sleep(250);
 		m.delete();
 	});
 

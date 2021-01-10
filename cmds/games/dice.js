@@ -59,6 +59,17 @@ module.exports.run = async (bot, msg, args) => {
 		return;
 	}
 
+	if (bet > 1000) {
+		let ErrorEmbed = new Discord.MessageEmbed()
+			.setTitle('**ERROR**')
+			.setColor(0xff0000)
+			.setDescription('Max bet is 1000💰 ')
+			.setFooter(`Your bet was chaned from ${bet}💰 to 1000💰`);
+		msg.channel.send(ErrorEmbed);
+
+		bet = 1000;
+	}
+
 	if (economy.get(`${msg.author.id}.bal`) < bet) {
 		let ErrorEmbed = new Discord.MessageEmbed()
 			.setTitle('**ERROR**')

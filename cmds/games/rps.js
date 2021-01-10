@@ -2,13 +2,11 @@ module.exports.run = async (bot, msg, args) => {
 	const Discord = require('discord.js');
 	const db = require('quick.db');
 	var economy = new db.table('economy');
-	let author = msg.author.id;
-	let useracc = economy.get(`${author}.bal`);
 
 	let bet = args[2];
 	let drand = Math.floor(Math.random() * 3);
 
-	if (!useracc) {
+	if (!economy.get(`${msg.author.id}.bal`)) {
 		let ErrorEmbed = new Discord.MessageEmbed()
 			.setTitle('**ERROR**')
 			.setColor(0xff0000)
@@ -37,7 +35,18 @@ module.exports.run = async (bot, msg, args) => {
 		return msg.channel.send(ErrorEmbed);
 	}
 
-	if (useracc < bet) {
+	if (bet > 1000) {
+		let ErrorEmbed = new Discord.MessageEmbed()
+			.setTitle('**ERROR**')
+			.setColor(0xff0000)
+			.setDescription('Max bet is 1000💰 ')
+			.setFooter(`Your bet was chaned from ${bet}💰 to 1000💰`);
+		msg.channel.send(ErrorEmbed);
+
+		bet = 1000;
+	}
+
+	if (economy.get(`${msg.author.id}.bal`) < bet) {
 		let ErrorEmbed = new Discord.MessageEmbed()
 			.setTitle('**ERROR**')
 			.setColor(0xff0000)
@@ -80,8 +89,8 @@ module.exports.run = async (bot, msg, args) => {
 			msg.channel.send(SuccessEmbed);
 		} else if (drand === 1) {
 			//if u get rock and dealer gets paper
-			var dealer = 'paper';
-			economy.subtract(`${author}.bal`, bet);
+			let dealer = 'paper';
+			economy.subtract(`${msg.author.id}.bal`, bet);
 			economy.add(`Prizepool`, bet);
 			let SuccessEmbed = new Discord.MessageEmbed()
 				.setTitle('**LOSS**')
@@ -91,10 +100,10 @@ module.exports.run = async (bot, msg, args) => {
 			msg.channel.send(SuccessEmbed);
 		} else if (drand === 2) {
 			//if u get rock and dealer gets sis
-			var dealer = 'scissors';
+			let dealer = 'scissors';
 			bet *= 4;
 			bet = Math.floor(bet / 5);
-			economy.add(`${author}.bal`, bet);
+			economy.add(`${msg.author.id}.bal`, bet);
 			let SuccessEmbed = new Discord.MessageEmbed()
 				.setTitle('**Win**')
 				.setColor(0x32cd32)
@@ -115,8 +124,8 @@ module.exports.run = async (bot, msg, args) => {
 			msg.channel.send(SuccessEmbed);
 		} else if (drand === 2) {
 			//if u get paper and dealer gets sis
-			var dealer = 'scissors';
-			economy.subtract(`${author}.bal`, bet);
+			let dealer = 'scissors';
+			economy.subtract(`${msg.author.id}.bal`, bet);
 			economy.add(`Prizepool`, bet);
 			let SuccessEmbed = new Discord.MessageEmbed()
 				.setTitle('**LOSS**')
@@ -126,10 +135,10 @@ module.exports.run = async (bot, msg, args) => {
 			msg.channel.send(SuccessEmbed);
 		} else if (drand === 0) {
 			//if u get paper and dealer gets rock
-			var dealer = 'rock';
+			let dealer = 'rock';
 			bet *= 4;
 			bet = Math.floor(bet / 5);
-			economy.add(`${author}.bal`, bet);
+			economy.add(`${msg.author.id}.bal`, bet);
 			let SuccessEmbed = new Discord.MessageEmbed()
 				.setTitle('**Win**')
 				.setColor(0x32cd32)
@@ -150,8 +159,8 @@ module.exports.run = async (bot, msg, args) => {
 			msg.channel.send(SuccessEmbed);
 		} else if (drand === 0) {
 			//if u get sis and dealer gets rock
-			var dealer = 'rock';
-			economy.subtract(`${author}.bal`, bet);
+			let dealer = 'rock';
+			economy.subtract(`${msg.author.id}.bal`, bet);
 			economy.add(`Prizepool`, bet);
 			let SuccessEmbed = new Discord.MessageEmbed()
         .setTitle("**LOSS**")
@@ -161,10 +170,10 @@ module.exports.run = async (bot, msg, args) => {
 			msg.channel.send(SuccessEmbed);
 		} else if (drand === 1) {
 			//if u get sis and dealer gets paper
-			var dealer = 'paper';
+			let dealer = 'paper';
 			bet *= 4;
 			bet = Math.floor(bet / 5);
-			economy.add(`${author}.bal`, bet);
+			economy.add(`${msg.author.id}.bal`, bet);
 			let SuccessEmbed = new Discord.MessageEmbed()
 				.setTitle('**Win**')
 				.setColor(0x32cd32)

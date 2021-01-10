@@ -4,8 +4,8 @@ module.exports.run = async (bot, msg, args) => {
 	let economy = new db.table('economy');
 	const ms = require('parse-ms');
 	let mentioned = msg.mentions.members.first();
-	let RobTimeout = 21600000; // rob ppl every 6 hours
-	let RobedTimeout = 43200000; // get robed once every 12 hours
+	let RobTimeout = 10800000; // rob ppl every 6 hours
+	let RobedTimeout = 21600000; // get robed once every 12 hours
 
 	if (!mentioned) return msg.channel.send('Sorry, you forgot to mention somebody. \n.rob <@>');
 	if (msg.author.id === mentioned.id) return msg.channel.send('Sorry, you cant rob your self');

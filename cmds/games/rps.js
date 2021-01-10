@@ -6,7 +6,7 @@ module.exports.run = async (bot, msg, args) => {
 	let bet = args[2];
 	let drand = Math.floor(Math.random() * 3);
 
-	if (!economy.get(`${msg.author.id}.bal`)) {
+	if (!economy.has(`${msg.author.id}.bal`)) {
 		let ErrorEmbed = new Discord.MessageEmbed()
 			.setTitle('**ERROR**')
 			.setColor(0xff0000)

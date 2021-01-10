@@ -12,7 +12,7 @@ module.exports.run = async (bot, msg, args) => {
 	let author = msg.author.id;
 	let bet = args[1];
 
-	if (!economy.get(`${author}.bal`)) {
+	if (!economy.has(`${author}.bal`)) {
 		let ErrorEmbed = new Discord.MessageEmbed()
 			.setTitle('**ERROR**')
 			.setColor(0xff0000)

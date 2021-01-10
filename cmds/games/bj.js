@@ -152,7 +152,7 @@ module.exports.run = async (bot, msg, args) => {
 	let cards = new Discord.MessageEmbed()
 		.setTitle('**Black Jack**')
 		.setThumbnail(msg.author.avatarURL())
-		.setColor(0x0099ff)
+		.setColor(0x32cd32)
 		.setDescription(
 			'Your cards are a ' +
 				pcards +
@@ -168,7 +168,7 @@ module.exports.run = async (bot, msg, args) => {
 			let cards = new Discord.MessageEmbed()
 				.setTitle('**Black Jack**')
 				.setThumbnail(msg.author.avatarURL())
-				.setColor(0x0099ff)
+				.setColor(0x32cd32)
 				.setDescription(
 					'YOU WON!! You got a Black Jack\n\nYour cards are a ' +
 						pcards +
@@ -179,32 +179,6 @@ module.exports.run = async (bot, msg, args) => {
 						', with a total of ' +
 						dcardtotal +
 						'.\n You WON: ' +
-						bet +
-						' 💰 \n You now have: ' +
-						economy.get(`${author}.bal`) +
-						' 💰 '
-				);
-			msg.channel.send(cards);
-			return playingGame.delete(msg.author.id);
-		}
-
-		if (cardtotal > 21) {
-			economy.subtract(`${author}.bal`, bet);
-			economy.add(`Prizepool`, bet);
-			let cards = new Discord.MessageEmbed()
-				.setTitle('**Black Jack\n You Busted**')
-				.setThumbnail(msg.author.avatarURL())
-				.setColor(0x0099ff)
-				.setDescription(
-					'**YOU LOST :(** You Busted\n\nYour cards are a ' +
-						pcards +
-						', with a total of ' +
-						cardtotal +
-						'.\nDealers cards are a ' +
-						dcards +
-						', with a total of ' +
-						dcardtotal +
-						'.\n You LOST: ' +
 						bet +
 						' 💰 \n You now have: ' +
 						economy.get(`${author}.bal`) +
@@ -261,9 +235,9 @@ module.exports.run = async (bot, msg, args) => {
 						let cards = new Discord.MessageEmbed()
 							.setTitle('**Black Jack**')
 							.setThumbnail(msg.author.avatarURL())
-							.setColor(0x0099ff)
+							.setColor(0x32cd32)
 							.setDescription(
-								'YOU WON!! You got a Black Jack\n\nYour cards are a ' +
+								'YOU WON!! \n\nYour cards are a ' +
 									pcards +
 									', with a total of ' +
 									cardtotal +
@@ -287,7 +261,7 @@ module.exports.run = async (bot, msg, args) => {
 						let cards = new Discord.MessageEmbed()
 							.setTitle('**Black Jack\n You Busted**')
 							.setThumbnail(msg.author.avatarURL())
-							.setColor(0x0099ff)
+							.setColor(0xff0000)
 							.setDescription(
 								'**YOU LOST :(** You Busted\n\nYour cards are a ' +
 									pcards +
@@ -328,9 +302,9 @@ module.exports.run = async (bot, msg, args) => {
 							let cards21 = new Discord.MessageEmbed()
 								.setTitle('**Black Jack**')
 								.setThumbnail(msg.author.avatarURL())
-								.setColor(0x0099ff)
+								.setColor(0x32cd32)
 								.setDescription(
-									'YOU WON!! You got a Black Jack\n\nYour cards are a ' +
+									'YOU WON!! \n\nYour cards are a ' +
 										pcards +
 										', with a total of ' +
 										cardtotal +
@@ -354,7 +328,7 @@ module.exports.run = async (bot, msg, args) => {
 							let cards = new Discord.MessageEmbed()
 								.setTitle('**Black Jack\n You Busted**')
 								.setThumbnail(msg.author.avatarURL())
-								.setColor(0x0099ff)
+								.setColor(0xff0000)
 								.setDescription(
 									'**YOU LOST :(** You Busted\n\nYour cards are a ' +
 										pcards +
@@ -428,9 +402,9 @@ module.exports.run = async (bot, msg, args) => {
 										let cards = new Discord.MessageEmbed()
 											.setTitle('**Black Jack**')
 											.setThumbnail(msg.author.avatarURL())
-											.setColor(0x0099ff)
+											.setColor(0x32cd32)
 											.setDescription(
-												'YOU WON!! You got a Black Jack\n\nYour cards are a ' +
+												'YOU WON!! \n\nYour cards are a ' +
 													pcards +
 													', with a total of ' +
 													cardtotal +
@@ -454,7 +428,7 @@ module.exports.run = async (bot, msg, args) => {
 										let cards = new Discord.MessageEmbed()
 											.setTitle('**Black Jack\n You Busted**')
 											.setThumbnail(msg.author.avatarURL())
-											.setColor(0x0099ff)
+											.setColor(0xff0000)
 											.setDescription(
 												'**YOU LOST :(** You Busted\n\nYour cards are a ' +
 													pcards +
@@ -493,9 +467,9 @@ module.exports.run = async (bot, msg, args) => {
 											let cards21 = new Discord.MessageEmbed()
 												.setTitle('**Black Jack**')
 												.setThumbnail(msg.author.avatarURL())
-												.setColor(0x0099ff)
+												.setColor(0x32cd32)
 												.setDescription(
-													'YOU WON!! You got a Black Jack\n\nYour cards are a ' +
+													'YOU WON!! \n\nYour cards are a ' +
 														pcards +
 														', with a total of ' +
 														cardtotal +
@@ -519,7 +493,7 @@ module.exports.run = async (bot, msg, args) => {
 											let cards = new Discord.MessageEmbed()
 												.setTitle('**Black Jack\n You Busted**')
 												.setThumbnail(msg.author.avatarURL())
-												.setColor(0x0099ff)
+												.setColor(0xff0000)
 												.setDescription(
 													'**YOU LOST :(** You Busted\n\nYour cards are a ' +
 														pcards +
@@ -607,7 +581,7 @@ module.exports.run = async (bot, msg, args) => {
 														let cards = new Discord.MessageEmbed()
 															.setTitle('**Black Jack**')
 															.setThumbnail(msg.author.avatarURL())
-															.setColor(0x0099ff)
+															.setColor(0x32cd32)
 															.setDescription(
 																'YOU WON!! (5 cards 21 or less -> bet 3X)\n\nYour cards are a ' +
 																	pcards +
@@ -633,7 +607,7 @@ module.exports.run = async (bot, msg, args) => {
 														let cards = new Discord.MessageEmbed()
 															.setTitle('**Black Jack\n You Busted**')
 															.setThumbnail(msg.author.avatarURL())
-															.setColor(0x0099ff)
+															.setColor(0xff0000)
 															.setDescription(
 																'**YOU LOST :(** You Busted\n\nYour cards are a ' +
 																	pcards +
@@ -1141,9 +1115,9 @@ module.exports.run = async (bot, msg, args) => {
 														let cards = new Discord.MessageEmbed()
 															.setTitle('**Black Jack**')
 															.setThumbnail(msg.author.avatarURL())
-															.setColor(0x0099ff)
+															.setColor(0xff0000)
 															.setDescription(
-																'**YOU LOST :(** Dealer got a Black Jack\n\nYour cards are a ' +
+																'**YOU LOST :(** \n\nYour cards are a ' +
 																	pcards +
 																	', with a total of ' +
 																	cardtotal +
@@ -1166,7 +1140,7 @@ module.exports.run = async (bot, msg, args) => {
 														let cards = new Discord.MessageEmbed()
 															.setTitle('**Black Jack**')
 															.setThumbnail(msg.author.avatarURL())
-															.setColor(0x0099ff)
+															.setColor(0x32cd32)
 															.setDescription(
 																'**YOU WON!!** Dealer Busted\n\nYour cards are a ' +
 																	pcards +
@@ -1191,7 +1165,7 @@ module.exports.run = async (bot, msg, args) => {
 														let cards = new Discord.MessageEmbed()
 															.setTitle('**Black Jack**')
 															.setThumbnail(msg.author.avatarURL())
-															.setColor(0x0099ff)
+															.setColor(0x32cd32)
 															.setDescription(
 																'**YOU WON!!**\n\nYour cards are a ' +
 																	pcards +
@@ -1217,7 +1191,7 @@ module.exports.run = async (bot, msg, args) => {
 														let cards = new Discord.MessageEmbed()
 															.setTitle('**Black Jack**')
 															.setThumbnail(msg.author.avatarURL())
-															.setColor(0x0099ff)
+															.setColor(0xff0000)
 															.setDescription(
 																'**You LOST :(**\n\nYour cards are a ' +
 																	pcards +
@@ -1737,9 +1711,9 @@ module.exports.run = async (bot, msg, args) => {
 										let cards = new Discord.MessageEmbed()
 											.setTitle('**Black Jack**')
 											.setThumbnail(msg.author.avatarURL())
-											.setColor(0x0099ff)
+											.setColor(0xff0000)
 											.setDescription(
-												'**YOU LOST :(** Dealer got a Black Jack\n\nYour cards are a ' +
+												'**YOU LOST :(** \n\nYour cards are a ' +
 													pcards +
 													', with a total of ' +
 													cardtotal +
@@ -1762,7 +1736,7 @@ module.exports.run = async (bot, msg, args) => {
 										let cards = new Discord.MessageEmbed()
 											.setTitle('**Black Jack**')
 											.setThumbnail(msg.author.avatarURL())
-											.setColor(0x0099ff)
+											.setColor(0x32cd32)
 											.setDescription(
 												'**YOU WON!!** Dealer Busted\n\nYour cards are a ' +
 													pcards +
@@ -1787,7 +1761,7 @@ module.exports.run = async (bot, msg, args) => {
 										let cards = new Discord.MessageEmbed()
 											.setTitle('**Black Jack**')
 											.setThumbnail(msg.author.avatarURL())
-											.setColor(0x0099ff)
+											.setColor(0x32cd32)
 											.setDescription(
 												'**YOU WON!!**\n\nYour cards are a ' +
 													pcards +
@@ -1813,7 +1787,7 @@ module.exports.run = async (bot, msg, args) => {
 										let cards = new Discord.MessageEmbed()
 											.setTitle('**Black Jack**')
 											.setThumbnail(msg.author.avatarURL())
-											.setColor(0x0099ff)
+											.setColor(0xff0000)
 											.setDescription(
 												'**You LOST :(**\n\nYour cards are a ' +
 													pcards +
@@ -2331,7 +2305,7 @@ module.exports.run = async (bot, msg, args) => {
 						let cards = new Discord.MessageEmbed()
 							.setTitle('**Black Jack**')
 							.setThumbnail(msg.author.avatarURL())
-							.setColor(0x0099ff)
+							.setColor(0xff0000)
 							.setDescription(
 								'**YOU LOST :(** Dealer got a Black Jack\n\nYour cards are a ' +
 									pcards +
@@ -2356,7 +2330,7 @@ module.exports.run = async (bot, msg, args) => {
 						let cards = new Discord.MessageEmbed()
 							.setTitle('**Black Jack**')
 							.setThumbnail(msg.author.avatarURL())
-							.setColor(0x0099ff)
+							.setColor(0x32cd32)
 							.setDescription(
 								'**YOU WON!!** Dealer Busted\n\nYour cards are a ' +
 									pcards +
@@ -2381,7 +2355,7 @@ module.exports.run = async (bot, msg, args) => {
 						let cards = new Discord.MessageEmbed()
 							.setTitle('**Black Jack**')
 							.setThumbnail(msg.author.avatarURL())
-							.setColor(0x0099ff)
+							.setColor(0x32cd32)
 							.setDescription(
 								'**YOU WON!!**\n\nYour cards are a ' +
 									pcards +
@@ -2407,7 +2381,7 @@ module.exports.run = async (bot, msg, args) => {
 						let cards = new Discord.MessageEmbed()
 							.setTitle('**Black Jack**')
 							.setThumbnail(msg.author.avatarURL())
-							.setColor(0x0099ff)
+							.setColor(0xff0000)
 							.setDescription(
 								'**You LOST :(**\n\nYour cards are a ' +
 									pcards +

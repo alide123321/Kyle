@@ -6,7 +6,7 @@ module.exports.run = async (bot, msg, args) => {
 
 	if (dmmsg.has(msg.author.id) && msg.author.id !== '698051518754062387') {
 		return msg.channel.send(
-			'Cooldown for 1 hour (.gm, .gn, .sry) \n Unless you purchased a cooldown reduction from `.shop`'
+			'Cooldown for 12 hour (.gm, .gn, .sry) \n Unless you purchased a cooldown reduction from `.shop`'
 		);
 	}
 
@@ -30,7 +30,7 @@ module.exports.run = async (bot, msg, args) => {
 	} else {
 		setTimeout(() => {
 			dmmsg.delete(msg.author.id);
-		}, 3600000);
+		}, 43200000);
 	}
 
 	if (!mentioned)

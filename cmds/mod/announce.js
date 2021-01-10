@@ -37,7 +37,6 @@ module.exports.run = async (bot, msg, args) => {
 	}
 
 	let mention = ' ';
-	if (args[1] === '0') mention = 'No one';
 	if (args[1] === '1') mention = '@everyone';
 	if (args[1] === '2') mention = '<@&740828344794349658>';
 	if (args[1] === '3') mention = '<@&740828341069676594>';
@@ -59,7 +58,7 @@ module.exports.run = async (bot, msg, args) => {
         		.setDescription(disc)
         		.setThumbnail("https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png"); // prettier-ignore
 
-			if (mention !== 'no one') chat.send('||' + mention + '||');
+			if (args[1] !== 0) chat.send(`|| ${mention} ||`);
 			chat.send(announce);
 			chat.send({ files: ['./assets/images/bar.gif'] });
 		});

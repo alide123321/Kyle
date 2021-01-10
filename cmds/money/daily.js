@@ -29,13 +29,13 @@ module.exports.run = async (bot, msg, args) => {
       .setDescription(`You have claimed this today already.\n**${time.hours}h ${time.minutes}m ${time.seconds}s**!`); // prettier-ignore
 		msg.channel.send(WarningEmbed);
 	} else {
-		economy.add(`${msg.author.id}.bal`, 50);
+		economy.add(`${msg.author.id}.bal`, 20);
 		economy.set(`${msg.author.id}.lc`, new Date().getTime());
 		let SuccessEmbed = new Discord.MessageEmbed()
       .setTitle("**SUCCESS**")
       .setColor(0x32cd32)
       .setThumbnail(msg.author.avatarURL())
-      .setDescription("You have claimed your daily reward of 50 💰!"); // prettier-ignore
+      .setDescription("You have claimed your daily reward of 20 💰!"); // prettier-ignore
 		msg.channel.send(SuccessEmbed);
 	}
 };

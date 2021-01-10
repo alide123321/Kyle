@@ -11,7 +11,11 @@ module.exports.run = async (bot, msg, args) => {
 	}
 
 	dmmsg.add(msg.author.id);
-	if (shop.get(`${msg.author.id}.gn5mincooldown`) === 1) {
+	if (shop.get(`${msg.author.id}.gnnocooldown`) === 1) {
+		setTimeout(() => {
+			dmmsg.delete(msg.author.id);
+		}, 10);
+	} else if (shop.get(`${msg.author.id}.gn5mincooldown`) === 1) {
 		setTimeout(() => {
 			dmmsg.delete(msg.author.id);
 		}, 300000);

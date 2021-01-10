@@ -13,6 +13,7 @@ module.exports.run = async (bot, msg, args) => {
 		`Gn30MinCoolDown --- ${shopObj.gn30mincooldown}💰`,
 		`Gn15MinCoolDown --- ${shopObj.gn15mincooldown}💰`,
 		`Gn5MinCoolDown --- ${shopObj.gn5mincooldown}💰`,
+		`GnNoCoolDown --- ${shopObj.gnnocooldown}💰`,
 		'These include .gm, .gn, and .sry',
 	];
 

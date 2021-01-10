@@ -6,7 +6,7 @@ bot.on('message', async (msg) => {
 	const sleep = require('../../assets/functions/sleep.js').sleep;
 	require('dotenv').config();
 
-	if (msg.author.bot) return;
+	if (msg.author.bot && msg.author.id !== '797572849291755580') return;
 
 	let args = msg.content.toLowerCase().substring(process.env.PREFIX.length).split(/\s+/g);
 	let text = msg.content.toLowerCase();

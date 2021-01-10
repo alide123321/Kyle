@@ -152,7 +152,7 @@ module.exports.run = async (bot, msg, args) => {
 	let cards = new Discord.MessageEmbed()
 		.setTitle('**Black Jack**')
 		.setThumbnail(msg.author.avatarURL())
-		.setColor(0x32cd32)
+		.setColor(0x0099ff)
 		.setDescription(
 			'Your cards are a ' +
 				pcards +

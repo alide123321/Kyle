@@ -1,6 +1,9 @@
 const playingGame = require('../../assets/functions/playingGame.js').playingGame;
 
 module.exports.run = async (bot, msg, args) => {
+	if (msg.author.id === '284138828917112833' || msg.author.id === '313490096554770432')
+		return msg.channel.send('U cant play untill u tell me');
+
 	if (playingGame.has(msg.author.id))
 		return msg.channel.send('You are already playing a game finish it to start a new one');
 

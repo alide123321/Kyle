@@ -13,7 +13,7 @@ module.exports.run = async (bot, msg, args) => {
 		try {
 			msg.channel.bulkDelete(args[1]).catch(console.error);
 		} catch (error) {
-			msg.channel.send(`error ${error}`);
+			return msg.channel.send(`error ${error}`);
 		}
 	} else {
 		return msg.reply('Error: You dont have administrator perms.');

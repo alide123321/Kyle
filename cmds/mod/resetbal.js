@@ -8,6 +8,8 @@ module.exports.run = async (bot, msg, args) => {
 		return;
 	}
 
+	economy.set(`Prizepool`, 0);
+
 	var allusers = (await msg.guild.members.fetch()).keyArray('id');
 	var send = [];
 

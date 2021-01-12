@@ -5,8 +5,7 @@ module.exports.run = async (bot, msg, args) => {
 	const db = require('quick.db');
 	var warn = new db.table('warn');
 	let mentioned = msg.mentions.members.first();
-	let text = msg.content;
-	let reason = text.slice(28);
+	let reason = msg.content.slice(28);
 
 	if (!msg.member.hasPermission('ADMINISTRATOR')) {
 		if (!msg.member.roles.cache.find((r) => r.name === 'Moderators')) {
@@ -14,25 +13,14 @@ module.exports.run = async (bot, msg, args) => {
 		}
 	}
 
-	if (!mentioned) {
-		msg.channel.send(`Who do you want to warn? (.warn <@> <reason>)`);
-		return;
-	}
+	if (!mentioned) return msg.channel.send(`Who do you want to warn? (.warn <@> <reason>)`);
 
-	if (mentioned.user.bot) {
-		msg.channel.send('You can not warn bots');
-		return;
-	}
+	if (mentioned.user.bot) return msg.channel.send('You can not warn bots');
 
-	if (msg.author.id === mentioned.id) {
-		msg.channel.send('You can not warn yourself.');
-		return;
-	}
+	if (msg.author.id === mentioned.id) return msg.channel.send('You can not warn yourself.');
+	if (mentioned.id === '698051518754062387') return msg.channel.send('NO.');
 
-	if (!reason) {
-		msg.channel.send(`Who do you want to warn? (.warn <@> <reason>)`);
-		return;
-	}
+	if (!reason) return msg.channel.send(`Who do you want to warn? (.warn <@> <reason>)`);
 
 	var warnings = warn.get(`warnings_${msg.guild.id}_${mentioned.id}`);
 

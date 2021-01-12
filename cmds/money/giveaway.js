@@ -98,7 +98,7 @@ Fri.start();
 function End() {
 	const obj = JSON.parse(fs.readFileSync('assets/util/givwaway.json'));
 	winerId = obj.entered[Math.floor(Math.random() * obj.entered.length)];
-	ammount = Math.floor(economy.get(`Prizepool`) / 32);
+	ammount = Math.floor(economy.get(`Prizepool`) / 16);
 
 	if (obj.entered.length === 0) {
 		try {

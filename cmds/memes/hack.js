@@ -24,7 +24,7 @@ module.exports.run = async (bot, msg, args) => {
 	sleep(1000);
 	await prompt.edit('Listing most common words...');
 	sleep(1000);
-	await prompt.edit(`Injecting virus into discriminator <@ ${hacked.id}>`);
+	await prompt.edit(`Injecting virus into discriminator ${hacked.id}`);
 	sleep(1000);
 	await prompt.edit('Virus injected');
 	sleep(1000);

@@ -23,8 +23,8 @@ module.exports.run = async (bot, msg, args) => {
 		perc = 'HARAM Fuck No bitch HARAM';
 
 	if (
-		(mentioned1.id === '542196378940473354' && mentioned2.id === '767836972084494337') ||
-		(mentioned1.id === '767836972084494337' && mentioned2.id === '542196378940473354')
+		(mentioned1.id === '542196378940473354' && mentioned2.id === '576362222964572180') ||
+		(mentioned1.id === '576362222964572180' && mentioned2.id === '542196378940473354')
 	)
 		perc = 'HALAL YES DADDY PLEASE HALAL';
 

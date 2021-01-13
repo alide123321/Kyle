@@ -99,7 +99,7 @@ bot.on('message', async (msg) => {
 	if (msg.channel.id === '716206448970825799') {
 		//removes !d bump
 		if (text.includes('!d bump')) {
-			sleep(3000);
+			sleep(8000);
 			try {
 				msg.channel.bulkDelete(2);
 			} catch (error) {

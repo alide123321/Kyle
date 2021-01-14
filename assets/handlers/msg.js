@@ -99,13 +99,12 @@ bot.on('message', async (msg) => {
 	if (msg.channel.id === '716206448970825799') {
 		//removes !d bump
 		if (text.includes('!d bump')) {
-			sleep(8000);
+			sleep(10000);
 			try {
-				msg.channel.bulkDelete(2);
+				return msg.channel.bulkDelete(2);
 			} catch (error) {
-				console.log(`*Error ${error}`);
+				return console.log(`*Error ${error}`);
 			}
-			return;
 		} else if (text.startsWith('redo')) {
 			try {
 				msg.delete();

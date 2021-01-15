@@ -111,6 +111,7 @@ bot.on('message', async (msg) => {
 			return;
 		} else {
 			try {
+				sleep(1000);
 				msg.delete();
 			} catch (error) {
 				console.log(`*Error ${error}`);

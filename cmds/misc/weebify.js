@@ -3,7 +3,7 @@ module.exports.run = async (bot, msg, args) => {
 	const prefix = process.env.PREFIX;
 	let words = msg.content.substring(prefix.length + 8);
 
-	let faces = ['', 'uwu', 'uvu'];
+	let faces = ['uwu', 'uvu'];
 
 	if (!words) {
 		return msg.channel.send('Need text to weebify. Send .weebify <text> ');

@@ -8,7 +8,9 @@ module.exports.run = async (bot, msg, args) => {
 	if (!words) {
 		return msg.channel.send('Need text to weebify. Send .weebify <text> ');
 	}
-	msg.channel.send(owoify(words, faces[Math.floor(Math.random() * faces.length)]));
+
+	let FinalMsg = await owoify(words, faces[Math.floor(Math.random() * faces.length)]);
+	msg.channel.send(FinalMsg);
 };
 
 module.exports.help = {

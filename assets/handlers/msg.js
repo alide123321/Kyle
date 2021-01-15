@@ -6,7 +6,7 @@ bot.on('message', async (msg) => {
 	const sleep = require('../../assets/functions/sleep.js').sleep;
 	require('dotenv').config();
 
-	if (msg.author.bot && msg.author.id !== '797572849291755580') return;
+	if (msg.author.bot && msg.author.id !== '302050872383242240') return;
 
 	let args = msg.content.toLowerCase().substring(process.env.PREFIX.length).split(/\s+/g);
 	let text = msg.content.toLowerCase();
@@ -98,14 +98,7 @@ bot.on('message', async (msg) => {
 
 	if (msg.channel.id === '716206448970825799') {
 		//removes !d bump
-		if (text.includes('!d bump')) {
-			sleep(10000);
-			try {
-				return msg.channel.bulkDelete(2);
-			} catch (error) {
-				return console.log(`*Error ${error}`);
-			}
-		} else if (text.startsWith('redo')) {
+		if (text.startsWith('redo')) {
 			try {
 				msg.delete();
 				let doneem = new Discord.MessageEmbed()
@@ -125,6 +118,8 @@ bot.on('message', async (msg) => {
 			return;
 		}
 	}
+
+	if (msg.author.id === '302050872383242240') return;
 
 	if (!command.startsWith(process.env.PREFIX)) return;
 

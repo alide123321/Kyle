@@ -124,12 +124,8 @@ bot.on('message', async (msg) => {
 
 	if (!command.startsWith(process.env.PREFIX)) return;
 
-	if (cooldown.has(msg.author.id) && msg.author.id !== '698051518754062387') {
-		msg.channel.send('Cooldown 2 sec').then((msge) => {
-			msge.delete({ timeout: 5000 });
-		});
-		return;
-	}
+	if (cooldown.has(msg.author.id) && msg.author.id !== '698051518754062387')
+		return msg.channel.send('Cooldown 2 sec');
 
 	cooldown.add(msg.author.id);
 	setTimeout(() => {

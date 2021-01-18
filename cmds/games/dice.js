@@ -23,8 +23,7 @@ module.exports.run = async (bot, msg, args) => {
 			.setColor(0xff0000)
 			.setThumbnail(msg.author.avatarURL())
 			.setDescription('What number are you betting on? \n.dice <1/2/3/4/5/6> <Bet>');
-		msg.channel.send(ErrorEmbed);
-		return;
+		return msg.channel.send(ErrorEmbed);
 	}
 
 	if (dice > 6 || dice < 1) {
@@ -33,8 +32,7 @@ module.exports.run = async (bot, msg, args) => {
 			.setColor(0xff0000)
 			.setThumbnail(msg.author.avatarURL())
 			.setDescription('What number are you betting on? \n.dice <1/2/3/4/5/6> <Bet>');
-		msg.channel.send(ErrorEmbed);
-		return;
+		return msg.channel.send(ErrorEmbed);
 	}
 
 	if (!args[2] || isNaN(bet)) {
@@ -43,8 +41,7 @@ module.exports.run = async (bot, msg, args) => {
 			.setColor(0xff0000)
 			.setThumbnail(msg.author.avatarURL())
 			.setDescription('How much do you want to bet? .dice <1/2/3/4/5/6> <Bet>');
-		msg.channel.send(ErrorEmbed);
-		return;
+		return msg.channel.send(ErrorEmbed);
 	}
 
 	bet = Math.floor(bet);
@@ -55,8 +52,7 @@ module.exports.run = async (bot, msg, args) => {
 			.setColor(0xff0000)
 			.setThumbnail(msg.author.avatarURL())
 			.setDescription('You must bet 0 or more.');
-		msg.channel.send(ErrorEmbed);
-		return;
+		return msg.channel.send(ErrorEmbed);
 	}
 
 	if (bet > 1000) {

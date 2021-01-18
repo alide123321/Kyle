@@ -3,38 +3,28 @@ module.exports.run = async (bot, msg, args) => {
 
 	let chat = bot.channels.cache.get('707451011471507466');
 
-	if (!msg.member.hasPermission('ADMINISTRATOR')) {
-		msg.channel.send("Dumb, dumb, you're not an admin.");
-		return;
-	}
+	if (!msg.member.hasPermission('ADMINISTRATOR'))
+		return msg.channel.send("Dumb, dumb, you're not an admin.");
 
-	if (!args[1]) {
-		msg.channel.send(
+	if (!args[1])
+		return msg.channel.send(
 			'The format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight'
 		);
-		return;
-	}
 
-	if (!args[2]) {
-		msg.channel.send(
+	if (!args[2])
+		return msg.channel.send(
 			'The format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight'
 		);
-		return;
-	}
 
-	if (isNaN(args[1])) {
-		msg.channel.send(
+	if (isNaN(args[1]))
+		return msg.channel.send(
 			'The format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight'
 		);
-		return;
-	}
 
-	if (args[1] !== '0' && args[1] !== '1' && args[1] !== '2' && args[1] !== '3') {
-		msg.channel.send(
+	if (args[1] !== '0' && args[1] !== '1' && args[1] !== '2' && args[1] !== '3')
+		return msg.channel.send(
 			'The format for this command is .announce <0/1/2/3> <title>\n0-no one\n1-everyone\n2-gamenight\n3-movienight'
 		);
-		return;
-	}
 
 	let mention = ' ';
 	if (args[1] === '1') mention = '@everyone';

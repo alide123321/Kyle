@@ -6,10 +6,8 @@ module.exports.run = async (bot, msg, args) => {
 	let mentioned = msg.mentions.members.first();
 	let Money = args[1];
 
-	if (author !== '698051518754062387') {
-		msg.channel.send('Only Alide can use this command, try using .pay');
-		return;
-	}
+	if (author !== '698051518754062387')
+		return msg.channel.send('Only Alide can use this command, try using .pay');
 
 	if (!Money || isNaN(Money) || !mentioned) {
 		let ErrorEmbed = new Discord.MessageEmbed()
@@ -17,8 +15,7 @@ module.exports.run = async (bot, msg, args) => {
 			.setColor(0xff0000)
 			.setThumbnail(msg.author.avatarURL())
 			.setDescription('Please specify an amount/user to give. (.give <#> <@>)');
-		msg.channel.send(ErrorEmbed);
-		return;
+		return msg.channel.send(ErrorEmbed);
 	}
 
 	if (Money.includes('.')) {
@@ -27,8 +24,7 @@ module.exports.run = async (bot, msg, args) => {
 			.setColor(0xff0000)
 			.setThumbnail(msg.author.avatarURL())
 			.setDescription('Please specify an integer value greater than 0. (.pay <#> <@>)');
-		msg.channel.send(ErrorEmbed);
-		return;
+		return msg.channel.send(ErrorEmbed);
 	}
 
 	let menacc = economy.get(mentioned.id);

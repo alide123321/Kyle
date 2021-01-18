@@ -9,16 +9,21 @@ module.exports.run = async (bot, msg, args) => {
 			.setDescription('What do you want to search? `.gif Your_mom`');
 		return msg.channel.send(ErrorEmbed);
 	}
+	try {
+		let response = await fetch(
+			`https://api.tenor.com/v1/search?q=${args[1]}&key=${process.env.TENOR_API_KEY}&contentfilter=high`
+		);
+		let json = await response.json();
+		let index = Math.floor(Math.random() * json.results.length);
 
-	let response = await fetch(
-		`https://api.tenor.com/v1/search?q=${args[1]}&key=${process.env.TENOR_API_KEY}&contentfilter=high`
-	);
-	let json = await response.json();
-	let index = Math.floor(Math.random() * json.results.length);
-
-	msg.channel.send(
-		json.results[index] ? json.results[index].url : 'No gif was found with your search parameters.'
-	);
+		msg.channel.send(
+			json.results[index]
+				? json.results[index].url
+				: 'No gif was found with your search parameters.'
+		);
+	} catch (error) {
+		return msg.channel.send('You broke it ');
+	}
 };
 
 module.exports.help = {

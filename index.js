@@ -1,7 +1,9 @@
 const express = require('express');
 const app = express();
 const Discord = require('discord.js');
-const bot = new Discord.Client();
+const bot = new Discord.Client({
+	restTimeOffset: 0,
+});
 require('dotenv').config();
 bot.queue = new Map();
 bot.commands = new Discord.Collection();

@@ -20,7 +20,7 @@ module.exports.run = async (bot, msg, args) => {
 	usersplayingmoney.sort((a, b) => a - b);
 	usersplayingmoney.reverse();
 
-	for (var i = 0; i < 100; ++i) {
+	for (var i = 0; i < usersplayingmoney.length; ++i) {
 		for (var n = 0; n < usersplaying.length; ++n) {
 			if (usersplayingmoney[i] === economy.get(`${usersplaying[n]}.bal`)) {
 				send.push(`${(await msg.guild.members.fetch(usersplaying[n])).displayName} -- ${usersplayingmoney[i]}💰`); // prettier-ignore
@@ -30,7 +30,7 @@ module.exports.run = async (bot, msg, args) => {
 	}
 
 	let topbaly = new Discord.MessageEmbed()
-		.setTitle('**100 BALANCE**')
+		.setTitle(`**BALANCE**`)
 		.setColor('#0099ff')
 		.setDescription(send);
 	msg.author.send(topbaly).catch(() => {

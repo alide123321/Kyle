@@ -10,8 +10,7 @@ module.exports.run = async (bot, msg, args) => {
 			.setColor(0x32cd32)
 			.setThumbnail(mentioned.user.avatarURL())
 			.setDescription(`**${perc}% gay :rainbow_flag:**`);
-		msg.channel.send(menEmbed);
-		return;
+		return msg.channel.send(menEmbed);
 	} else {
 		if (msg.author.id === '698051518754062387' || msg.author.id === '397822189707198475')
 			perc = '-0';

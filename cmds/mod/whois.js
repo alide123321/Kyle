@@ -5,19 +5,17 @@ module.exports.run = async (bot, msg, args) => {
 	var economy = new db.table('economy');
 	var warn = new db.table('warn');
 
-	if (!msg.member.hasPermission('ADMINISTRATOR')) {
-		msg.channel.send("Dumb, dumb, you're not an admin.");
-		return;
-	}
+	if (!msg.member.hasPermission('ADMINISTRATOR'))
+		return msg.channel.send("Dumb, dumb, you're not an admin.");
 
 	if (!Mentioned) {
 		let ErrorEmbed = new Discord.MessageEmbed()
 			.setTitle('**ERROR**')
 			.setColor(0xff0000)
 			.setDescription('Please mention a user.');
-		msg.channel.send(ErrorEmbed);
-		return;
+		return msg.channel.send(ErrorEmbed);
 	}
+
 	let bal = economy.get(`${Mentioned.id}.bal`);
 	let warnings = warn.get(`warnings_${msg.guild.id}_${Mentioned.id}`);
 

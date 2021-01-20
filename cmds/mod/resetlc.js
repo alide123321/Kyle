@@ -3,10 +3,11 @@ module.exports.run = async (bot, msg, args) => {
 	const db = require('quick.db');
 	var economy = new db.table('economy');
 
-	if (msg.author.id !== '698051518754062387') {
-		msg.channel.send('Only Alide can use this command');
-		return;
-	}
+	if (msg.author.id !== '698051518754062387')
+		return msg.channel.send('Only Alide can use this command');
+
+	if (args[1] !== '-y')
+		return msg.channel.send('Are you sure you want to reset everyone? if so use the tag -y');
 
 	var allusers = (await msg.guild.members.fetch()).keyArray('id');
 	var send = [];

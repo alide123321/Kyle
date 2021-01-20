@@ -9,7 +9,6 @@ var winerId, ammount;
 module.exports.run = async (bot, msg, args) => {
 	if (args[1] === '--forceend' && msg.author.id === '698051518754062387') {
 		await End();
-
 		return;
 	}
 

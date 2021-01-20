@@ -6,14 +6,12 @@ module.exports.run = async (bot, msg, args) => {
 	var economy = new db.table('economy');
 	const shopObj = JSON.parse(fs.readFileSync('assets/util/shop.json'));
 
-	var ItemList = ['gn45mincooldown', 'gn30mincooldown', 'gn15mincooldown', 'gn5mincooldown'];
-
 	var shopArr = [
 		`Gn45MinCoolDown --- ${shopObj.gn45mincooldown}💰`,
 		`Gn30MinCoolDown --- ${shopObj.gn30mincooldown}💰`,
 		`Gn15MinCoolDown --- ${shopObj.gn15mincooldown}💰`,
 		`Gn5MinCoolDown --- ${shopObj.gn5mincooldown}💰`,
-		`GnNoCoolDown --- ${shopObj.gnnocooldown}💰`,
+		`gn30scooldown --- ${shopObj.gnnocooldown}💰`,
 		'These include .gm, .gn, and .sry',
 	];
 
@@ -64,6 +62,15 @@ module.exports.run = async (bot, msg, args) => {
 					shopObj[args[1]] - economy.get(`${msg.author.id}.bal`)
 				} 💰`
 			);
+		return msg.channel.send(ErrorEmbed);
+	}
+
+	if (shop.get(`${msg.author.id}.${args[1]}`) === 1) {
+		let ErrorEmbed = new Discord.MessageEmbed()
+			.setTitle('**ERROR**')
+			.setColor(0xff0000)
+			.setThumbnail(msg.author.avatarURL())
+			.setDescription(`You already Have ${shopObj[args[1]]}`);
 		return msg.channel.send(ErrorEmbed);
 	}
 

@@ -1,13 +1,11 @@
 module.exports.run = async (bot, msg, args) => {
 	const talkedRecently = require('../../assets/functions/talked.js').talkedRecently;
 	const sleep = require('../../assets/functions/sleep.js').sleep;
-	let text = msg.content;
 
 	if (talkedRecently.has(msg.author.id) && msg.author.id !== '698051518754062387') {
 		msg.channel.send('Cooldown 120 sec');
 		sleep(1000);
-		msg.delete();
-		return;
+		return msg.delete();
 	}
 
 	talkedRecently.add(msg.author.id);
@@ -15,11 +13,10 @@ module.exports.run = async (bot, msg, args) => {
 		talkedRecently.delete(msg.author.id);
 	}, 120000);
 
-	if (text.includes('@') && msg.author.id !== '698051518754062387') {
-		msg.channel.send('No.');
-		return;
-	}
-	for (var i = 0; i !== 5; ++i) msg.reply(` said: ${text.slice(5)} `);
+	if (msg.content.includes('@') && msg.author.id !== '698051518754062387')
+		return msg.channel.send('No.');
+
+	for (var i = 0; i !== 5; ++i) msg.reply(` said: ${msg.content.slice(5)} `);
 };
 
 module.exports.help = {

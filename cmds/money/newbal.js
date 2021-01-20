@@ -2,9 +2,8 @@ module.exports.run = async (bot, msg, args) => {
 	const Discord = require('discord.js');
 	const db = require('quick.db');
 	var economy = new db.table('economy');
-	let author = msg.author.id;
 
-	if (economy.has(`${author}.bal`)) {
+	if (economy.has(`${msg.author.id}.bal`)) {
 		let SuccessEmbed = new Discord.MessageEmbed()
 			.setTitle('**ERORR**')
 			.setColor(0x0099ff)
@@ -14,8 +13,8 @@ module.exports.run = async (bot, msg, args) => {
 		return;
 	}
 
-	economy.set(`${author}.bal`, 100);
-	economy.add(`${author}.lc`, 0);
+	economy.set(`${msg.author.id}.bal`, 100);
+	economy.add(`${msg.author.id}.lc`, 0);
 	economy.set(`${msg.author.id}.lrobed`, 0);
 	economy.set(`${msg.author.id}.lgrobed`, 0);
 

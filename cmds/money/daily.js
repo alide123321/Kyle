@@ -6,17 +6,16 @@ module.exports.run = async (bot, msg, args) => {
 	let economy = new db.table('economy');
 	let lc = economy.get(`${msg.author.id}.lc`);
 
-	if (msg.author.id === '579052473600442370' || msg.author.id === '792865251922018314') {
+	if (msg.author.id === '579052473600442370' || msg.author.id === '792865251922018314')
 		return msg.channel.send('no nigga');
-	}
+
 	if (!economy.has(msg.author.id)) {
 		let SuccessEmbed = new Discord.MessageEmbed()
 			.setTitle('**ERORR**')
 			.setColor(0x0099ff)
 			.setThumbnail(msg.author.avatarURL())
 			.setDescription('You are not in the economy, try .newbal');
-		msg.channel.send(SuccessEmbed);
-		return;
+		return msg.channel.send(SuccessEmbed);
 	}
 
 	if (timeout - (Date.now() - lc) > 0) {

@@ -3,17 +3,15 @@ module.exports.run = async (bot, msg, args) => {
 	const db = require('quick.db');
 	var economy = new db.table('economy');
 	let mentioned = msg.mentions.members.first();
-	let useracc = economy.get(`${msg.author.id}.bal`);
 	let Money = args[1];
 
-	if (economy.has(msg.author.id) === false) {
+	if (!economy.has(`${msg.author.id}.bal`)) {
 		let SuccessEmbed = new Discord.MessageEmbed()
 			.setTitle('**ERORR**')
 			.setColor(0x0099ff)
 			.setThumbnail(msg.author.avatarURL())
 			.setDescription('You are not in the economy, try .newbal');
-		msg.channel.send(SuccessEmbed);
-		return;
+		return msg.channel.send(SuccessEmbed);
 	}
 
 	if (!Money || isNaN(Money) || !mentioned) {
@@ -22,40 +20,36 @@ module.exports.run = async (bot, msg, args) => {
 			.setColor(0xff0000)
 			.setThumbnail(msg.author.avatarURL())
 			.setDescription('Please specify an amount/user to give. (.pay <#> <@>)');
-		msg.channel.send(ErrorEmbed);
-		return;
+		return msg.channel.send(ErrorEmbed);
 	}
 
-	if (useracc < Money) {
-		let ErrorEmbed = new Discord.MessageEmbed()
-			.setTitle('**ERROR**')
-			.setColor(0xff0000)
-			.setThumbnail(msg.author.avatarURL())
-			.setDescription('You do not have enough money.');
-		msg.channel.send(ErrorEmbed);
-		return;
-	}
-
-	if (Money.indexOf('.') != -1 || Money.indexOf('-') != -1 || Money === 0) {
-		let ErrorEmbed = new Discord.MessageEmbed()
-			.setTitle('**ERROR**')
-			.setColor(0xff0000)
-			.setThumbnail(msg.author.avatarURL())
-			.setDescription('Please specify an integer value greater than 0. (.pay <#> <@>)');
-		msg.channel.send(ErrorEmbed);
-		return;
-	}
-
-	let menacc = economy.get(mentioned.id);
-
-	if (!menacc) {
+	if (!economy.has(`${mentioned.id}.bal`)) {
 		let ErrorEmbed = new Discord.MessageEmbed()
 			.setTitle('**ERROR**')
 			.setColor(0xff0000)
 			.setThumbnail(msg.author.avatarURL())
 			.setDescription("That person isn't in the system, tell them to use the .newbal command.");
-		msg.channel.send(ErrorEmbed);
-		return;
+		return msg.channel.send(ErrorEmbed);
+	}
+
+	Money = Math.abs(Math.floor(Money));
+
+	if (economy.get(`${msg.author.id}.bal`) < Money) {
+		let ErrorEmbed = new Discord.MessageEmbed()
+			.setTitle('**ERROR**')
+			.setColor(0xff0000)
+			.setThumbnail(msg.author.avatarURL())
+			.setDescription('You do not have enough money.');
+		return msg.channel.send(ErrorEmbed);
+	}
+
+	if (Money <= 0) {
+		let ErrorEmbed = new Discord.MessageEmbed()
+			.setTitle('**ERROR**')
+			.setColor(0xff0000)
+			.setThumbnail(msg.author.avatarURL())
+			.setDescription('Please specify an integer value greater than 0. (.pay <#> <@>)');
+		return msg.channel.send(ErrorEmbed);
 	}
 
 	if (msg.author.id === mentioned.id) return msg.channel.send('Sorry, you cant pay your self');

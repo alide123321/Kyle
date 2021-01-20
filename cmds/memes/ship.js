@@ -41,7 +41,6 @@ module.exports.run = async (bot, msg, args) => {
 		.setImage(mentioned2.user.avatarURL())
 		.setDescription(`**${perc}% secy time :tired_face:**`);
 	msg.channel.send(ShipEmbed);
-	return;
 };
 
 module.exports.help = {

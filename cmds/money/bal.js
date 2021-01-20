@@ -2,12 +2,10 @@ module.exports.run = async (bot, msg, args) => {
 	const Discord = require('discord.js');
 	const db = require('quick.db');
 	var economy = new db.table('economy');
-	let author = msg.author.id;
 	let mentioned = msg.mentions.members.first();
-	let useracc = economy.get(`${author}.bal`);
 
 	if (mentioned) {
-		if (!economy.has(mentioned.id)) {
+		if (!economy.has(`${mentioned.id}.bal`)) {
 			let ErrorEmbed = new Discord.MessageEmbed()
 				.setTitle('**ERROR**')
 				.setColor(0xff0000)
@@ -25,11 +23,21 @@ module.exports.run = async (bot, msg, args) => {
 		msg.channel.send(SuccessEmbed);
 		return;
 	} else {
+		if (!economy.has(`${msg.author.id}.bal`)) {
+			let ErrorEmbed = new Discord.MessageEmbed()
+				.setTitle('**ERROR**')
+				.setColor(0xff0000)
+				.setThumbnail(msg.author.avatarURL())
+				.setDescription('You are not in the system, use the .newbal command.');
+			msg.channel.send(ErrorEmbed);
+			return;
+		}
+
 		let SuccessEmbed = new Discord.MessageEmbed()
 			.setTitle('**YOUR BALANCE**')
 			.setColor(0x32cd32)
 			.setThumbnail(msg.author.avatarURL())
-			.addField('Balance', useracc, '💰');
+			.addField('Balance', economy.get(`${msg.author.id}.bal`), '💰');
 		msg.channel.send(SuccessEmbed);
 	}
 };

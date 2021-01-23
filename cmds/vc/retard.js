@@ -3,7 +3,7 @@ module.exports.run = async (bot, msg, args) => {
 
 	vc('retard', 0.5, msg);
 	msg.channel.send(
-		'https://cdn.discordapp.com/attachments/724055819548622968/768747697376198666/120862237_329041051492571_197292215089316325_n.mp4'
+		'https://cdn.discordapp.com/attachments/707451317626470455/802454040323424276/video0.mp4'
 	);
 };
 

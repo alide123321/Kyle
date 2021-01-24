@@ -51,7 +51,14 @@ module.exports.run = async (bot, msg, args) => {
 		await vcName.set(`${msg.author.id}`, name);
 		msg.channel.send(SucsessEmbed);
 	} else {
-		msg.channel.send(`Sorry but you need to have one of these roles ${AllowedRoles}`);
+		let ErrorEmbed = new Discord.MessageEmbed()
+			.setColor('#0099ff')
+			.setTitle('**Sorry**')
+			.setURL('https://discord.gg/z4FpxSJ')
+			.setImage(aki.answers[0].absolute_picture_path)
+			.setDescription(`Sorry but you need one of these roles \n${AllowedRoles}`);
+
+		msg.channel.send(ErrorEmbed);
 	}
 };
 

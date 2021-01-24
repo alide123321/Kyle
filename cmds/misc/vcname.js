@@ -12,6 +12,7 @@ module.exports.run = async (bot, msg, args) => {
 		'VIP',
 		'Nitro Booster',
 		'[50+] Gods',
+		'Streamers',
 	];
 
 	if (msg.member.roles.cache.some((r) => AllowedRoles.includes(r.name))) {

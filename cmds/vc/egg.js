@@ -9,4 +9,5 @@ module.exports.run = async (bot, msg, args) => {
 
 module.exports.help = {
 	name: 'egg',
+	description: 'Asain man',
 };

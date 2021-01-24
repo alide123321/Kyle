@@ -6,4 +6,5 @@ module.exports.run = async (bot, msg, args) => {
 
 module.exports.help = {
 	name: 'pardon',
+	description: 'Explain you self',
 };

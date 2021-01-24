@@ -53,4 +53,5 @@ module.exports.run = async (bot, msg, args) => {
 
 module.exports.help = {
 	name: 'serverstats',
+	description: 'Show the server stats',
 };

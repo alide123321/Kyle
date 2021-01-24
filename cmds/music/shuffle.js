@@ -7,4 +7,5 @@ module.exports.run = async (bot, msg, args) => {
 };
 module.exports.help = {
 	name: 'shuffle',
+	description: 'Shuffle the queue around',
 };

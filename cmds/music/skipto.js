@@ -8,4 +8,5 @@ module.exports.run = async (bot, msg, args) => {
 module.exports.help = {
 	name: 'skipto',
 	Alias: 'st',
+	description: 'Skip to a song',
 };

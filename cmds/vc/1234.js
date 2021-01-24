@@ -9,4 +9,5 @@ module.exports.run = async (bot, msg, args) => {
 
 module.exports.help = {
 	name: '1234',
+	description: 'How many are in your store?',
 };

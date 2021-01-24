@@ -8,4 +8,5 @@ module.exports.run = async (bot, msg, args) => {
 module.exports.help = {
 	name: 'resume',
 	Alias: 'r',
+	description: 'Resume playing the song',
 };

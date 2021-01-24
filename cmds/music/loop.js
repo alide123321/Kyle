@@ -9,4 +9,5 @@ module.exports.run = async (bot, msg, args) => {
 module.exports.help = {
 	name: 'loop',
 	Alias: 'l',
+	description: 'Loop a song',
 };

@@ -563,4 +563,5 @@ function PrettyMap() {
 
 module.exports.help = {
 	name: 'blocky',
+	description: 'A block based puzzle',
 };

@@ -102,4 +102,5 @@ module.exports.run = async (bot, msg, args) => {
 
 module.exports.help = {
 	name: 'dice',
+	description: 'Roll a dice and win 5X your bet when you win',
 };

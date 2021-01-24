@@ -6,5 +6,7 @@ module.exports.run = async (bot, msg, args) => {
 	return;
 };
 module.exports.help = {
-	name: 'np',
+	name: 'nowplaying',
+	Alias: 'np',
+	description: 'Show the Now PLaying song',
 };

@@ -3,5 +3,7 @@ module.exports.run = async (bot, msg, args) => {
 };
 
 module.exports.help = {
-	name: 'cya',
+	name: 'bye',
+	Alias: 'cya',
+	description: 'when you want to end a conversation',
 };

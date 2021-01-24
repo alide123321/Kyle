@@ -48,4 +48,5 @@ module.exports.run = async (bot, msg, args) => {
 
 module.exports.help = {
 	name: 'ascii',
+	description: 'Turn a picture into ascii art',
 };

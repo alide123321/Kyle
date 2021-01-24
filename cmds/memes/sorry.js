@@ -59,4 +59,5 @@ module.exports.run = async (bot, msg, args) => {
 module.exports.help = {
 	name: 'sorry',
 	Alias: 'sry',
+	description: 'Say sorry to someone',
 };

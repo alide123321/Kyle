@@ -64,4 +64,5 @@ module.exports.run = async (bot, msg, args) => {
 
 module.exports.help = {
 	name: 'vcname',
+	description: "Change your Private room's name",
 };

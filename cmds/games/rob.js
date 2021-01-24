@@ -123,5 +123,5 @@ module.exports.run = async (bot, msg, args) => {
 
 module.exports.help = {
 	name: 'rob',
-	Alias: 'steal',
+	description: 'Rob anyone in the econamy to fuel your addiction',
 };

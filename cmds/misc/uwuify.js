@@ -14,5 +14,6 @@ module.exports.run = async (bot, msg, args) => {
 };
 
 module.exports.help = {
-	name: 'weebify',
+	name: 'uwuify',
+	description: 'when you have to catfish a discord mod',
 };

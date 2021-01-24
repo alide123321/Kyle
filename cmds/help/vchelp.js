@@ -18,8 +18,10 @@ module.exports.run = async (bot, msg, args) => {
 		let jsfiles = files.filter((f) => f.split('.').pop() === 'js');
 
 		jsfiles.forEach((f, i) => {
-			f = f.slice(0, f.length - 3);
-			VcHelp.addFields({ name: `**${prefix}${f}**`, value: i + 1, inline: true });
+			let props = require(`../vc/${f}`);
+			let name = props.help.Alias ? `${props.help.name} [${props.help.Alias}]` : props.help.name;
+			let disc = props.help.description ? props.help.description : i + 1;
+			VcHelp.addFields({ name: `**${prefix}${name}**`, value: disc, inline: true });
 		});
 
 		msg.channel.send(VcHelp);

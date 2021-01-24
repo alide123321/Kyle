@@ -29,4 +29,5 @@ module.exports.run = async (bot, msg, args) => {
 
 module.exports.help = {
 	name: 'resetlc',
+	description: 'No.',
 };

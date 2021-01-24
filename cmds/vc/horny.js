@@ -10,4 +10,5 @@ module.exports.run = async (bot, msg, args) => {
 module.exports.help = {
 	name: 'horny',
 	Alias: 'nicwee',
+	description: 'When u need some titty pics',
 };

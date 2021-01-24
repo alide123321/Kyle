@@ -43,4 +43,5 @@ module.exports.run = async (bot, msg, args) => {
 
 module.exports.help = {
 	name: 'shhdm',
+	description: 'Send an anonymous message to someone in the server',
 };

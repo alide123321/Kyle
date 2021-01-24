@@ -41,4 +41,5 @@ module.exports.run = async (bot, msg, args) => {
 
 module.exports.help = {
 	name: 'allbal',
+	description: 'Check everyones ballance',
 };

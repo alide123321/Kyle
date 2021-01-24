@@ -7,4 +7,5 @@ module.exports.run = async (bot, msg, args) => {
 };
 module.exports.help = {
 	name: 'search',
+	description: 'Search for a song',
 };

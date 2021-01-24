@@ -7,4 +7,6 @@ module.exports.run = async (bot, msg, args) => {
 };
 module.exports.help = {
 	name: 'stop',
+
+	description: 'End the Queue',
 };

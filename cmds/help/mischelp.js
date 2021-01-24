@@ -18,8 +18,10 @@ module.exports.run = (bot, msg, args) => {
 		let jsfiles = files.filter((f) => f.split('.').pop() === 'js');
 
 		jsfiles.forEach((f, i) => {
-			f = f.slice(0, f.length - 3);
-			Misc.addFields({ name: `**${prefix}${f}**`, value: i + 1, inline: true });
+			let props = require(`../misc/${f}`);
+			let name = props.help.Alias ? `${props.help.name} [${props.help.Alias}]` : props.help.name;
+			let disc = props.help.description ? props.help.description : i + 1;
+			Misc.addFields({ name: `**${prefix}${name}**`, value: disc, inline: true });
 		});
 
 		msg.channel.send(Misc);

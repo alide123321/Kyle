@@ -143,4 +143,5 @@ function End() {
 
 module.exports.help = {
 	name: 'giveaway',
+	description: 'Weekly prizepool',
 };

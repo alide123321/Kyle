@@ -25,4 +25,5 @@ module.exports.run = async (bot, msg, args) => {
 
 module.exports.help = {
 	name: 'howgay',
+	description: 'Check someones gay level',
 };

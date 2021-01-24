@@ -260,4 +260,5 @@ function gui() {
 module.exports.help = {
 	name: 'hangman',
 	Alias: 'hm',
+	description: 'play hangman',
 };

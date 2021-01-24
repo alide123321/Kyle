@@ -164,6 +164,7 @@ module.exports.run = async (bot, msg, args) => {
 };
 
 module.exports.help = {
-	name: 'aki',
+	name: 'akinator',
+	Alias: 'aki',
 	description: 'Play akinator',
 };

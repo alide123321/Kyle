@@ -21,4 +21,5 @@ module.exports.run = async (bot, msg, args) => {
 
 module.exports.help = {
 	name: 'spam',
+	description: 'Repeat a message 5 times',
 };

@@ -14,4 +14,5 @@ module.exports.run = async (bot, msg, args) => {
 
 module.exports.help = {
 	name: 'meme',
+	description: 'A random Meme from reddit',
 };

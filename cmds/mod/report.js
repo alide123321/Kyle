@@ -4,4 +4,5 @@ module.exports.run = async (bot, msg, args) => {
 
 module.exports.help = {
 	name: 'report',
+	description: 'Report something for staff to see',
 };

@@ -2414,7 +2414,7 @@ module.exports.run = async (bot, msg, args) => {
 };
 
 module.exports.help = {
-	name: 'bj',
-	Alias: 'blackjack',
+	name: 'blackjack',
+	Alias: 'bj',
 	description: 'Play Black Jack',
 };

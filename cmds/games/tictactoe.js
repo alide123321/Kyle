@@ -60,7 +60,7 @@ module.exports.run = async (bot, msg, args) => {
 							else if (reaction[0].startsWith('9')) Place(8);
 						});
 				} catch (error) {
-					playingGame.delete(msg.author.id);
+					end = true;
 					return msg.channel.send('Time ran out. Bye');
 				}
 			});
@@ -118,11 +118,13 @@ module.exports.run = async (bot, msg, args) => {
 	}
 
 	function Map() {
-		let gameMap = '';
+		let gameMap = '```\n';
 		for (var i = 0; i < 9; ++i) {
 			gameMap = board[i] ? gameMap.concat(`** ${board[i]}** `) : gameMap.concat(`** []** `);
 			if (i === 2 || i === 5) gameMap = gameMap.concat('\n');
 		}
+		gameMap = gameMap.concat('\n```');
+		console.log(gameMap);
 		return gameMap;
 	}
 };

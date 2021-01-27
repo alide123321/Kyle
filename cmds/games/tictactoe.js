@@ -118,13 +118,11 @@ module.exports.run = async (bot, msg, args) => {
 	}
 
 	function Map() {
-		let gameMap = '```\n';
+		let gameMap = '';
 		for (var i = 0; i < 9; ++i) {
-			gameMap = board[i] ? gameMap.concat(`** ${board[i]}** `) : gameMap.concat(`** []** `);
+			gameMap = board[i] ? gameMap.concat(`** ${board[i]}** `) : gameMap.concat(`** \*** `);
 			if (i === 2 || i === 5) gameMap = gameMap.concat('\n');
 		}
-		gameMap = gameMap.concat('\n```');
-		console.log(gameMap);
 		return gameMap;
 	}
 };

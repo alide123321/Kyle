@@ -17,7 +17,7 @@ module.exports.run = async (bot, msg, args) => {
 		} else icon = 'None';
 
 		if (msg.guild.splash) {
-			let splashURL = `https://cdn.discordapp.com/icons/${guild.id}/${guild.splash}.png?size=4096`;
+			let splashURL = `https://cdn.discordapp.com/icons/${msg.guild.id}/${msg.guild.splash}.png?size=4096`;
 			splash = `[Click](${splashURL})`;
 			Stats.setImage(splashURL);
 		} else splash = 'None';

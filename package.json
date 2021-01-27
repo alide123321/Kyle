@@ -35,7 +35,7 @@
 		"request": "^2.88.2",
 		"simple-youtube-api": "^5.2.1",
 		"unirest": "^0.6.0",
-		"ytdl-core": "^4.4.4"
+		"ytdl-core": "^4.4.5"
 	},
 	"repository": {
 		"type": "git",

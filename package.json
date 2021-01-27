@@ -10,6 +10,7 @@
 	"author": "alide123321#1000",
 	"license": "ISC",
 	"dependencies": {
+		"ai-tic-tac-toe": "^1.1.1",
 		"aki-api": "^5.2.1",
 		"asciify-image": "^0.1.6",
 		"cron": "^1.8.2",
@@ -22,6 +23,7 @@
 		"lyrics-finder": "^21.7.0",
 		"moment": "^2.29.1",
 		"new": "^0.1.1",
+		"nicnacno": "^2.0.2",
 		"node-fetch": "^2.6.1",
 		"node-gyp": "^7.1.2",
 		"node-opus": "^0.3.3",

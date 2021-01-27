@@ -47,7 +47,7 @@ module.exports.run = async (bot, msg, args) => {
 		msg.guild.channels.cache.get('715444948568244305').setName(`Users: ${Total - bots}`); // 770998825677488178
 		msg.guild.channels.cache.get('715444951332290591').setName(`Bots: ${bots}`); // 770998873937805383
 	} catch (error) {
-		console.log(error);
+		return console.log(error);
 	}
 };
 

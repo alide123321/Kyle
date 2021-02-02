@@ -52,15 +52,15 @@ module.exports.run = async (bot, msg, args) => {
 		return msg.channel.send(RobEmbed);
 	}
 
-	if (economy.get(`${msg.author.id}.bal`) < 300)
+	if (economy.get(`${msg.author.id}.bal`) < 200)
 		return msg.channel.send(
-			`Bruh you broke asf calm down \nyou need $${300 - economy.get(`${msg.author.id}.bal`)} more`
+			`Bruh you broke asf calm down \nyou need $${200 - economy.get(`${msg.author.id}.bal`)} more`
 		);
 
-	if (economy.get(`${mentioned.id}.bal`) < 300)
+	if (economy.get(`${mentioned.id}.bal`) < 200)
 		return msg.channel.send(
 			`Bruh they broke aswell calm down \nthey need $${
-				300 - economy.get(`${mentioned.id}.bal`)
+				200 - economy.get(`${mentioned.id}.bal`)
 			} more`
 		);
 

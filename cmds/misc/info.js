@@ -14,7 +14,11 @@ module.exports.run = async (bot, msg, args) => {
 	seconds %= 60;
 	minutes %= 60;
 	hours %= 24;
-	let time = `Uptime: \`${days} day(s),${hours} hours, ${minutes} minutes, ${seconds} seconds\``;
+	let time = `
+	${days} day(s),
+	${hours} hours, 
+	${minutes} minutes, 
+	${seconds} seconds`;
 
 	let info = new Discord.MessageEmbed()
 		.setColor('#0099ff')

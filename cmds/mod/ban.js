@@ -1,7 +1,7 @@
 module.exports.run = async (bot, msg, args) => {
 	let mention = msg.mentions.members.first();
 
-	if (msg.author.id !== '413323768954355712' || msg.author.id !== '698051518754062387') {
+	if (msg.author.id !== '413323768954355712' && msg.author.id !== '698051518754062387') {
 		// Cosmic and me
 		return msg.channel.send('I told you. You cant use this command');
 	}

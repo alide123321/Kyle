@@ -8,12 +8,6 @@ bot.on('message', async (msg) => {
 
 	if (msg.author.bot && msg.author.id !== '302050872383242240') return;
 
-	if (
-		msg.author.id === '326895102708547585' || //modest
-		msg.author.id === '575142986988650506' // mexican
-	)
-		return;
-
 	let args = msg.content.toLowerCase().substring(process.env.PREFIX.length).split(/\s+/g);
 	let text = msg.content.toLowerCase();
 	let msgarray = msg.content.split(/\s+/g);
@@ -126,7 +120,13 @@ bot.on('message', async (msg) => {
 		}
 	}
 
-	if (msg.author.id === '302050872383242240') return;
+	if (msg.author.id === '302050872383242240') return; // d bump bot
+
+	if (
+		msg.author.id === '326895102708547585' || //modest
+		msg.author.id === '575142986988650506' // mexican
+	)
+		return;
 
 	if (!command.startsWith(process.env.PREFIX)) return;
 

@@ -122,13 +122,15 @@ bot.on('message', async (msg) => {
 
 	if (msg.author.id === '302050872383242240') return; // d bump bot
 
+	if (!command.startsWith(process.env.PREFIX)) return;
+
 	if (
 		msg.author.id === '326895102708547585' || //modest
 		msg.author.id === '575142986988650506' // mexican
 	)
-		return;
-
-	if (!command.startsWith(process.env.PREFIX)) return;
+		return msg.channel.send(
+			'https://cdn.discordapp.com/attachments/599061991281131531/806628977870897183/Fuck_u_modest.gif'
+		);
 
 	if (cooldown.has(msg.author.id) && msg.author.id !== '698051518754062387')
 		return msg.channel.send('Cooldown 2 sec');

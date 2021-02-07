@@ -30,4 +30,5 @@ module.exports.run = async (bot, msg, args) => {
 
 module.exports.help = {
 	name: 'vchelp',
+	description: 'List of sound commands',
 };

@@ -60,4 +60,5 @@ module.exports.run = async (bot, msg, args) => {
 
 module.exports.help = {
 	name: 'help',
+	description: 'Get a list of all my help commands',
 };

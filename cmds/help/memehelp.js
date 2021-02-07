@@ -31,4 +31,5 @@ module.exports.run = async (bot, msg, args) => {
 
 module.exports.help = {
 	name: 'memehelp',
+	description: 'Get a list of all my meme commands',
 };

@@ -30,4 +30,5 @@ module.exports.run = (bot, msg, args) => {
 
 module.exports.help = {
 	name: 'mischelp',
+	description: 'Get a list of the misc commands',
 };

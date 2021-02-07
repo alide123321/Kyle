@@ -30,4 +30,5 @@ module.exports.run = (bot, msg, args) => {
 
 module.exports.help = {
 	name: 'gamehelp',
+	description: 'Get a list of all my games',
 };

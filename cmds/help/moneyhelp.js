@@ -30,4 +30,5 @@ module.exports.run = async (bot, msg, args) => {
 
 module.exports.help = {
 	name: 'moneyhelp',
+	description: 'List of my econamy commands',
 };

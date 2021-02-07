@@ -128,9 +128,7 @@ bot.on('message', async (msg) => {
 		msg.author.id === '326895102708547585' || //modest
 		msg.author.id === '575142986988650506' // mexican
 	)
-		return msg.channel.send(
-			'https://cdn.discordapp.com/attachments/599061991281131531/806628977870897183/Fuck_u_modest.gif'
-		);
+		return;
 
 	if (cooldown.has(msg.author.id) && msg.author.id !== '698051518754062387')
 		return msg.channel.send('Cooldown 2 sec');

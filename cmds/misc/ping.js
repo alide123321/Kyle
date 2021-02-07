@@ -1,5 +1,6 @@
 module.exports.run = async (bot, msg, args) => {
 	const Discord = require('discord.js');
+	msg.channel.send('Pinging...');
 	msg.channel.send('Pinging...').then((m) => {
 		var ping = m.createdTimestamp - msg.createdTimestamp;
 		var botPing = Math.round(bot.ws.ping);

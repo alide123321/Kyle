@@ -20,7 +20,7 @@ module.exports = (bot) => {
 		if (err) return console.error(err);
 		for (let dir of folders) {
 			Fs.readdir(`./cmds/${dir}/`, (ierr, files) => {
-				console.log(`____________${dir}_______________`);
+				console.log(`| __________________${dir}_____________________`);
 				if (ierr) return console.error(ierr);
 
 				let jsfiles = files.filter((f) => f.split('.').pop() === 'js');
@@ -28,9 +28,11 @@ module.exports = (bot) => {
 
 				jsfiles.forEach((f, i) => {
 					let props = require(`./cmds/${dir}/${f}`);
-					console.log(`${i + 1}: ${f} loaded in ${dir}!`);
 					bot.commands.set(props.help.name, props);
 					if (props.help.Alias) bot.commands.set(props.help.Alias, props);
+					props.help.description
+						? console.log(`| ${f} loaded With no Errors ✅`)
+						: console.log(`| ${f} Does not have Description ❌`);
 				});
 			});
 		}

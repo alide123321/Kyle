@@ -139,7 +139,6 @@ bot.on('message', async (msg) => {
 	}, 2000);
 
 	let cmd = bot.commands.get(command.slice(process.env.PREFIX.length));
-
 	if (cmd) cmd.run(bot, msg, args);
 });
 

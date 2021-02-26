@@ -35,7 +35,7 @@ module.exports.run = async (bot, msg, args) => {
 
 	let dayNum = today.getDay();
 	if (dayNum > 4 || dayNum < 0) {
-		return msg.channel.send('You dont have a class now');
+		return msg.channel.send('Its not a school day');
 	}
 
 	let hour = today.getHours().toString();

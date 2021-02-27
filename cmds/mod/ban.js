@@ -22,8 +22,8 @@ module.exports.run = async (bot, msg, args) => {
 		let roles = mention.roles.cache.map((r) => r.name).slice(0, -1);
 
 		try {
-			await mention.send(`U had these roles \`${roles}\` \nhttps://discord.gg/z4FpxSJ`);
 			await msg.author.send(`He had these roles \`${roles}\``);
+			await mention.send(`U had these roles \`${roles}\` \nhttps://discord.gg/z4FpxSJ`);
 		} catch (error) {
 			msg.channel.send('Hes not letting me send him a invite link so hes not getting one');
 		}

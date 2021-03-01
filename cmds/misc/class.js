@@ -40,7 +40,8 @@ module.exports.run = async (bot, msg, args) => {
 
 	let hour = today.getHours().toString();
 	let min = today.getMinutes().toString();
-	min.length > 1 ? min : `0${min}`;
+	min = min.length > 1 ? min : `0${min}`;
+	console.log(min);
 	let time = parseInt(hour.concat(min));
 	let classNum = 0;
 	if (time >= 900 && time < 945) classNum = 0;

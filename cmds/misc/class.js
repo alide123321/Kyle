@@ -1,4 +1,4 @@
-let schedule = {
+let scheduleAm1 = {
 	0: ['Eco | Bio', 'IE', 'Math', 'English', 'Break', 'ACC | Chemistry', 'BST | Physics'],
 	1: [
 		'English',
@@ -29,6 +29,21 @@ let schedule = {
 		'English',
 	],
 };
+let scheduleAm2 = {
+	0: ['Eco | Bio', 'IE', 'Arabic', 'Math', 'Break', 'ACC | Chemistry', 'BST | Physics'],
+	1: ['Quran', 'English', 'BST | Physics', 'Math', 'Break', 'Math', 'World geography '],
+	2: ['Computer', 'IE', 'Eco | Bio', 'Math', 'Break', 'English', 'Arabic'],
+	3: ['Eco | Bio', 'Arabic', 'SSA', 'ACC | Chemistry', 'Break', 'Math', 'English'],
+	4: [
+		'BST | Physics',
+		'English',
+		'World Geography ',
+		'ACC | Chemistry',
+		'Break',
+		'Math',
+		'Computer',
+	],
+};
 
 module.exports.run = async (bot, msg, args) => {
 	let today = new Date();
@@ -53,13 +68,38 @@ module.exports.run = async (bot, msg, args) => {
 	else if (time >= 1310 && time < 1350) classNum = 6;
 	else return msg.channel.send('School ended');
 
-	msg.channel.send(
-		classNum === 6
-			? `You have \`${schedule[dayNum][classNum]}\` now`
-			: `You have \`${schedule[dayNum][classNum]}\` now \nthen you have \`${
-					schedule[dayNum][++classNum]
-			  }\``
-	);
+	let embed = new Discord.MessageEmbed()
+		.setColor('#0099ff')
+		.setTitle('**React to one**')
+		.setURL('https://discord.gg/z4FpxSJ')
+		.addFields(
+			{
+				name: '**12Am1**',
+				value:
+					classNum === 6
+						? `You have \`${scheduleAm1[dayNum][classNum]}\` now`
+						: `You have \`${scheduleAm1[dayNum][classNum]}\` now \nthen you have \`${
+								scheduleAm1[dayNum][++classNum]
+						  }\``,
+				inline: false,
+			},
+			{
+				name: '**12Am2**',
+				value:
+					classNum === 6
+						? `You have \`${scheduleAm2[dayNum][classNum]}\` now`
+						: `You have \`${scheduleAm2[dayNum][classNum]}\` now \nthen you have \`${
+								scheduleAm2[dayNum][++classNum]
+						  }\``,
+				inline: false,
+			}
+		)
+		.setThumbnail(
+			'https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png'
+		)
+		.setFooter('I didnt make the 12Am2 Schedule If its Wrong make fun of <@598656566895312908>'); //Fighter-07
+
+	msg.channel.send(embed);
 };
 
 module.exports.help = {

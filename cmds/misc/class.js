@@ -1,3 +1,5 @@
+const Discord = require('discord.js');
+
 let scheduleAm1 = {
 	0: ['Eco | Bio', 'IE', 'Math', 'English', 'Break', 'ACC | Chemistry', 'BST | Physics'],
 	1: [

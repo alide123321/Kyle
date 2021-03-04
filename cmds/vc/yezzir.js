@@ -8,7 +8,7 @@ module.exports.run = async (bot, msg, args) => {
 };
 
 module.exports.help = {
-	name: 'yezzer',
+	name: 'yezzir',
 	Alias: 'yessir',
 	description: 'YES SIRR',
 };

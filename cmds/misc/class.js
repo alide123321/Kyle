@@ -72,7 +72,7 @@ module.exports.run = async (bot, msg, args) => {
 
 	let embed = new Discord.MessageEmbed()
 		.setColor('#0099ff')
-		.setTitle('**React to one**')
+		.setTitle('**Class BRRR**')
 		.setURL('https://discord.gg/z4FpxSJ')
 		.addFields(
 			{
@@ -99,7 +99,7 @@ module.exports.run = async (bot, msg, args) => {
 		.setThumbnail(
 			'https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png'
 		)
-		.setFooter('I didnt make the 12Am2 Schedule If its Wrong make fun of <@598656566895312908>'); //Fighter-07
+		.setFooter('I didnt make the 12Am2 Schedule \nIf its Wrong make fun of <@598656566895312908>'); //Fighter-07
 
 	msg.channel.send(embed);
 };

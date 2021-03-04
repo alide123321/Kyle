@@ -10,5 +10,5 @@ module.exports.run = async (bot, msg, args) => {
 module.exports.help = {
 	name: 'yezzir',
 	Alias: 'yessir',
-	description: 'YES SIRR',
+	description: 'YES SIRR.',
 };

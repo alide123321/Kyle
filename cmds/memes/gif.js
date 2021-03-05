@@ -1,4 +1,5 @@
 module.exports.run = async (bot, msg, args) => {
+	const Discord = require('discord.js');
 	const fetch = require('node-fetch');
 
 	if (!args[1]) {

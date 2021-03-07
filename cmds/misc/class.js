@@ -58,7 +58,6 @@ module.exports.run = async (bot, msg, args) => {
 	let hour = today.getHours().toString();
 	let min = today.getMinutes().toString();
 	min = min.length > 1 ? min : `0${min}`;
-	console.log(min);
 	let time = parseInt(hour.concat(min));
 	let classNum = 0;
 	if (time >= 900 && time < 945) classNum = 0;
@@ -70,6 +69,26 @@ module.exports.run = async (bot, msg, args) => {
 	else if (time >= 1310 && time < 1350) classNum = 6;
 	else return msg.channel.send('School ended');
 
+	let startTimeObj = {
+		0: '9:00',
+		1: '9:45',
+		2: '10:30',
+		3: '11:15',
+		4: '11:55',
+		5: '12:25',
+		6: '1:10',
+	};
+
+	let endTimeObj = {
+		0: '9:40',
+		1: '10:25',
+		2: '11:10',
+		3: '11:55',
+		4: '12:25',
+		5: '1:05',
+		6: '1:50',
+	};
+
 	let embed = new Discord.MessageEmbed()
 		.setColor('#0099ff')
 		.setTitle('**Class BRRR**')
@@ -79,20 +98,24 @@ module.exports.run = async (bot, msg, args) => {
 				name: '**12Am1**',
 				value:
 					classNum === 6
-						? `You have \`${scheduleAm1[dayNum][classNum]}\` now`
-						: `You have \`${scheduleAm1[dayNum][classNum]}\` now \nthen you have \`${
-								scheduleAm1[dayNum][++classNum]
-						  }\``,
+						? `You have \`${scheduleAm1[dayNum][classNum]}\` now (${startTimeObj[classNum]} - ${endTimeObj[classNum]})`
+						: `You have \`${scheduleAm1[dayNum][classNum]}\` now (${startTimeObj[classNum]} - ${
+								endTimeObj[classNum]
+						  })\nthen you have \`${scheduleAm1[dayNum][classNum + 1]}\` (${
+								startTimeObj[classNum + 1]
+						  } - ${endTimeObj[classNum + 1]})`,
 				inline: false,
 			},
 			{
 				name: '**12Am2**',
 				value:
 					classNum === 6
-						? `You have \`${scheduleAm2[dayNum][classNum]}\` now`
-						: `You have \`${scheduleAm2[dayNum][classNum]}\` now \nthen you have \`${
-								scheduleAm2[dayNum][++classNum]
-						  }\``,
+						? `You have \`${scheduleAm2[dayNum][classNum]}\` now (${startTimeObj[classNum]} - ${endTimeObj[classNum]})`
+						: `You have \`${scheduleAm2[dayNum][classNum]}\` now (${startTimeObj[classNum]} - ${
+								endTimeObj[classNum]
+						  })\nthen you have \`${scheduleAm2[dayNum][classNum + 1]}\` (${
+								startTimeObj[classNum + 1]
+						  } - ${endTimeObj[classNum + 1]})`,
 				inline: false,
 			}
 		)

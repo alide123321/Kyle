@@ -9,5 +9,6 @@ module.exports.run = async (bot, msg, args) => {
 
 module.exports.help = {
 	name: 'mozam',
+	Alias: 'mozan',
 	description: 'Mozambique HERE',
 };

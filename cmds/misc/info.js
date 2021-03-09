@@ -2,7 +2,7 @@ module.exports.run = async (bot, msg, args) => {
 	const Discord = require('discord.js');
 
 	let helpLink = 'https://sites.google.com/view/kyle-bot/home';
-	let codeLink = 'https://github.com/alide123321/discordbot';
+	let codeLink = 'https://github.com/alide123321/Kyle';
 	let version = process.env.VERSION;
 	let prefix = process.env.PREFIX;
 	let author = process.env.ALIDE;

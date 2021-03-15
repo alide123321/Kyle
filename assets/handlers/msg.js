@@ -96,28 +96,27 @@ bot.on('message', async (msg) => {
 		msg.channel.send('https://suicidepreventionlifeline.org/');
 	}
 
-	if (msg.channel.id === '716206448970825799') {
-		//removes !d bump
-		if (text.startsWith('redo')) {
-			try {
-				msg.delete();
-				let doneem = new Discord.MessageEmbed()
+	//removes !d bump
+	if (text.startsWith('!d bump redo')) {
+		try {
+			msg.delete();
+			let doneem = new Discord.MessageEmbed()
         		.setTitle("**!D BUMP**")
         		.setDescription("Help grow the server by using the command **!d bump** - it helps other people find and join the server to grow the fam!"); // prettier-ignore
-				msg.channel.send(doneem);
-			} catch (error) {
-				console.log(`*Error ${error}`);
-			}
-			return;
-		} else {
-			try {
-				sleep(1000);
-				msg.delete();
-			} catch (error) {
-				console.log(`*Error ${error}`);
-			}
-			return;
+			msg.channel.send(doneem);
+		} catch (error) {
+			console.log(`*Error ${error}`);
 		}
+		return;
+	}
+	if (text.startsWith('!d bump')) {
+		try {
+			sleep(1000);
+			msg.delete();
+		} catch (error) {
+			console.log(`*Error ${error}`);
+		}
+		return;
 	}
 
 	if (msg.author.id === '302050872383242240') return; // d bump bot

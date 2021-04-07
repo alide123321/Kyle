@@ -1,6 +1,6 @@
 const { bot } = require('../../index');
 
-bot.on('message', async (msg) => {
+function OnMsg(msg) {
 	const Discord = require('discord.js');
 	const cooldown = require('../functions/cool.js').cooldown;
 	const sleep = require('../../assets/functions/sleep.js').sleep;
@@ -139,8 +139,6 @@ bot.on('message', async (msg) => {
 
 	let cmd = bot.commands.get(command.slice(process.env.PREFIX.length));
 	if (cmd) cmd.run(bot, msg, args);
-});
+}
 
-module.exports.help = {
-	name: 'msg',
-};
+module.exports = { OnMsg: OnMsg };

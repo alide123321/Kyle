@@ -1,19 +1,6 @@
 const Fs = require('fs');
-
+const sleep = require('./assets/functions/sleep.js').sleep;
 module.exports = (bot) => {
-	Fs.readdir('./assets/handlers/', (err, files) => {
-		console.log('____________Handlers_______________');
-		if (err) console.error(err);
-
-		let jsfiles = files.filter((f) => f.split('.').pop() === 'js');
-		if (jsfiles.length <= 0) return console.log('There are no events to load...');
-
-		jsfiles.forEach((f, i) => {
-			require(`./assets/handlers/${f}`);
-			console.log(`${i + 1}: ${f} loaded!`);
-		});
-	});
-
 	//loading all commands
 
 	Fs.readdir(`./cmds/`, async (err, folders) => {

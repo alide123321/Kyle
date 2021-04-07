@@ -1,9 +1,10 @@
 const { bot } = require('../../index');
 const sleep = require('../../assets/functions/sleep.js').sleep;
 
-bot.on('guildMemberRemove', (member) => {
+function OnGuildMemberRemove(member) {
 	if (member.guild.id === '599061990828277770') serverstats(member);
-});
+}
+module.exports = { OnGuildMemberRemove: OnGuildMemberRemove };
 
 function serverstats(member) {
 	sleep(2000);

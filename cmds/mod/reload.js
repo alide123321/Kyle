@@ -31,9 +31,20 @@ module.exports.run = async (bot, msg, args) => {
 	});
 
 	await sleep(1000);
-
-	msg.channel.send('Done all commands reloaded');
-	console.log('Done all commands reloaded');
+	try {
+		msg.channel
+			.send('Attempting to reload commands...')
+			.then((smsg) => {
+				setTimeout(function () {
+					smsg.react('🆗');
+					smsg.edit('Done all commands reloaded');
+				}, 5000);
+			})
+			.then(bot.destroy())
+			.then(bot.login(process.env.TOKEN));
+	} catch (e) {
+		return console.log(`ERROR: ${e}`);
+	}
 };
 
 function wait(timeout) {

@@ -1,7 +1,8 @@
 const { bot } = require('../../index');
 require('dotenv').config();
 
-bot.once('ready', () => {
+function OnReady(bot) {
+	bot.user.setActivity('Im also mod mail DM me');
 	let index = 1;
 	console.log('______________________');
 	console.log('Ready!');
@@ -13,5 +14,5 @@ bot.once('ready', () => {
 		++index;
 	});
 	console.log('‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾');
-	bot.user.setActivity('Im also mod mail DM me');
-});
+}
+module.exports = { OnReady: OnReady };

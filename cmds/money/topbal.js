@@ -1,5 +1,3 @@
-const e = require('express');
-
 module.exports.run = async (bot, msg, args) => {
 	const Discord = require('discord.js');
 	const db = require('quick.db');

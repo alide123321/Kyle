@@ -1,5 +1,4 @@
 const Fs = require('fs');
-const sleep = require('../../assets/functions/sleep.js').sleep;
 require('dotenv').config();
 
 module.exports.run = async (bot, msg, args) => {
@@ -30,30 +29,8 @@ module.exports.run = async (bot, msg, args) => {
 		}
 	});
 
-	await sleep(1000);
-	try {
-		msg.channel
-			.send('Attempting to reload commands...')
-			.then((smsg) => {
-				setTimeout(function () {
-					smsg.react('🆗');
-					smsg.edit('Done all commands reloaded');
-				}, 5000);
-			})
-			.then(bot.destroy())
-			.then(bot.login(process.env.TOKEN));
-	} catch (e) {
-		return console.log(`ERROR: ${e}`);
-	}
+	msg.channel.send('Done ✅');
 };
-
-function wait(timeout) {
-	return new Promise((resolve) => {
-		setTimeout(() => {
-			resolve();
-		}, timeout);
-	});
-}
 
 module.exports.help = {
 	name: 'reload',

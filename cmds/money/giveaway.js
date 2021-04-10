@@ -92,20 +92,8 @@ var Sat = new cron.CronJob('00 00 * * 6', () => {
 	End();
 });
 
-let myPromise = new Promise(function (myResolve) {
-	try {
-		Sat.stop();
-		Fri.stop();
-	} catch (error) {
-		console.log(error);
-	}
-	myResolve();
-});
-
-myPromise.then((s) => {
-	Sat.start();
-	Fri.start();
-});
+Sat.start();
+Fri.start();
 
 function End() {
 	const obj = JSON.parse(fs.readFileSync('assets/util/givwaway.json'));

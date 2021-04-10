@@ -18,6 +18,7 @@ module.exports.run = async (bot, msg, args) => {
 						delete require.cache[require.resolve(`../${dir}/${f}`)];
 
 					try {
+						if (f === 'giveaway.js') return;
 						const props = require(`../${dir}/${f}`);
 						bot.commands.set(props.help.name, props);
 						if (props.help.Alias) bot.commands.set(props.help.Alias, props);

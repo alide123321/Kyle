@@ -3,6 +3,10 @@ const bot = new Discord.Client({
 	restTimeOffset: 0,
 });
 
+module.exports = {
+	bot: bot,
+};
+
 require('dotenv').config();
 bot.queue = new Map();
 bot.commands = new Discord.Collection();
@@ -31,16 +35,6 @@ bot.on('guildMemberRemove', (member) => {
 	delete require.cache[require.resolve('./assets/handlers/guildMemberRemove')];
 });
 
-bot.on('voiceStateUpdate', async (oldState, newState) => {
-	const OnVoiceStateUpdate = require('./assets/handlers/voiceStateUpdate').OnVoiceStateUpdate;
-	OnVoiceStateUpdate(oldState, newState);
-	delete require.cache[require.resolve('./assets/handlers/voiceStateUpdate')];
-});
-
 require('./handler')(bot);
-
-module.exports = {
-	bot: bot,
-};
 
 bot.login(process.env.TOKEN); // turn bot online

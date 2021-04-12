@@ -1,6 +1,8 @@
 const Fs = require('fs');
 const sleep = require('./assets/functions/sleep.js').sleep;
 module.exports = (bot) => {
+	require('./assets/handlers/voiceStateUpdate.js');
+
 	//loading all commands
 
 	Fs.readdir(`./cmds/`, async (err, folders) => {

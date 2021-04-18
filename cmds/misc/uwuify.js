@@ -1,7 +1,7 @@
 module.exports.run = async (bot, msg, args) => {
 	const owoify = require('owoify-js').default;
 	const prefix = process.env.PREFIX;
-	let words = msg.content.substring(prefix.length + 8);
+	let words = msg.content.substring(prefix.length + 7);
 
 	let faces = ['uwu', 'uvu'];
 

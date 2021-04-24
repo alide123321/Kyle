@@ -120,7 +120,6 @@ function OnMsg(msg) {
 	}
 
 	if (msg.author.id === '302050872383242240') return; // d bump bot
-
 	if (!command.startsWith(process.env.PREFIX)) return;
 
 	if (

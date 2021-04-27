@@ -12,7 +12,7 @@ function OnGuildMemberAdd(member) {
 
 		serverstats(member);
 		member.guild.channels.cache
-			.get('716939268504813578')
+			.get('599061991281131531')
 			.send(
 				'Welcome to ' +
 					member.guild.name +

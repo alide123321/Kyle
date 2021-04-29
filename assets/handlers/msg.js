@@ -6,7 +6,13 @@ function OnMsg(msg) {
 	const sleep = require('../../assets/functions/sleep.js').sleep;
 	require('dotenv').config();
 
-	if (msg.author.bot && msg.author.id !== '302050872383242240') return;
+	if (msg.author.id === '302050872383242240') {
+		sleep(1000);
+		msg.delete();
+		return;
+	}
+
+	if (msg.author.bot) return;
 
 	let args = msg.content.toLowerCase().substring(process.env.PREFIX.length).split(/\s+/g);
 	let text = msg.content.toLowerCase();
@@ -119,7 +125,6 @@ function OnMsg(msg) {
 		return;
 	}
 
-	if (msg.author.id === '302050872383242240') return; // d bump bot
 	if (!command.startsWith(process.env.PREFIX)) return;
 
 	if (

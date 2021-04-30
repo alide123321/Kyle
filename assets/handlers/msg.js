@@ -16,6 +16,13 @@ function OnMsg(msg) {
 		}
 	}
 
+	if (msg.author.bot) return;
+
+	let args = msg.content.toLowerCase().substring(process.env.PREFIX.length).split(/\s+/g);
+	let text = msg.content.toLowerCase();
+	let msgarray = msg.content.split(/\s+/g);
+	let command = msgarray[0].toLowerCase();
+
 	//removes !d bump
 	if (text.startsWith('!d bump redo')) {
 		try {
@@ -38,13 +45,6 @@ function OnMsg(msg) {
 		}
 		return;
 	}
-
-	if (msg.author.bot) return;
-
-	let args = msg.content.toLowerCase().substring(process.env.PREFIX.length).split(/\s+/g);
-	let text = msg.content.toLowerCase();
-	let msgarray = msg.content.split(/\s+/g);
-	let command = msgarray[0].toLowerCase();
 
 	if (msg.guild === null) {
 		if (text.charAt(0) !== process.env.PREFIX)

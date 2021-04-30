@@ -7,8 +7,35 @@ function OnMsg(msg) {
 	require('dotenv').config();
 
 	if (msg.author.id === '302050872383242240') {
-		sleep(1000);
-		msg.delete();
+		try {
+			sleep(2000);
+			msg.delete();
+			return;
+		} catch (error) {
+			console.log(`*Error ${error}`);
+		}
+	}
+
+	//removes !d bump
+	if (text.startsWith('!d bump redo')) {
+		try {
+			msg.delete();
+			let doneem = new Discord.MessageEmbed()
+					  .setTitle("**!D BUMP**")
+					  .setDescription("Help grow the server by using the command **!d bump** - it helps other people find and join the server to grow the fam!"); // prettier-ignore
+			msg.channel.send(doneem);
+		} catch (error) {
+			console.log(`*Error ${error}`);
+		}
+		return;
+	}
+	if (text.startsWith('!d bump')) {
+		try {
+			sleep(2000);
+			msg.delete();
+		} catch (error) {
+			console.log(`*Error ${error}`);
+		}
 		return;
 	}
 
@@ -100,29 +127,6 @@ function OnMsg(msg) {
 
 	if (text.includes('kys') || text.includes('i wanna die') || text.includes('kms')) {
 		msg.channel.send('https://suicidepreventionlifeline.org/');
-	}
-
-	//removes !d bump
-	if (text.startsWith('!d bump redo')) {
-		try {
-			msg.delete();
-			let doneem = new Discord.MessageEmbed()
-        		.setTitle("**!D BUMP**")
-        		.setDescription("Help grow the server by using the command **!d bump** - it helps other people find and join the server to grow the fam!"); // prettier-ignore
-			msg.channel.send(doneem);
-		} catch (error) {
-			console.log(`*Error ${error}`);
-		}
-		return;
-	}
-	if (text.startsWith('!d bump')) {
-		try {
-			sleep(1000);
-			msg.delete();
-		} catch (error) {
-			console.log(`*Error ${error}`);
-		}
-		return;
 	}
 
 	if (!command.startsWith(process.env.PREFIX)) return;

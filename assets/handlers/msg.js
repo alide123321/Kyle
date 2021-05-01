@@ -13,6 +13,7 @@ function OnMsg(msg) {
 			return;
 		} catch (error) {
 			console.log(`*Error ${error}`);
+			return;
 		}
 	}
 

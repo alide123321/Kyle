@@ -14,16 +14,6 @@ function OnMsg(msg) {
 	let command = msgarray[0].toLowerCase();
 
 	//removes !d bump
-	if (msg.author.id === '302050872383242240') {
-		try {
-			sleep(3000);
-			msg.delete();
-			return;
-		} catch (error) {
-			console.log(`*Error ${error}`);
-			return;
-		}
-	}
 	if (text.startsWith('!d bump redo')) {
 		try {
 			msg.delete();
@@ -42,6 +32,15 @@ function OnMsg(msg) {
 			msg.delete();
 		} catch (error) {
 			console.log(`*Error ${error}`);
+		}
+		return;
+	}
+	if (msg.author.id === '302050872383242240') {
+		try {
+			sleep(3000);
+			msg.delete();
+		} catch (error) {
+			return console.log(`*Error ${error}`);
 		}
 		return;
 	}

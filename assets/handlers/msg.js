@@ -8,7 +8,7 @@ function OnMsg(msg) {
 
 	if (msg.author.id === '302050872383242240') {
 		try {
-			sleep(2000);
+			sleep(3000);
 			msg.delete();
 			return;
 		} catch (error) {

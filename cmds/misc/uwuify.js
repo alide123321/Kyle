@@ -6,7 +6,7 @@ module.exports.run = async (bot, msg, args) => {
 	let faces = ['uwu', 'uvu'];
 
 	if (!words) {
-		return msg.channel.send('Need text to weebify. Send .weebify <text> ');
+		return msg.channel.send('Need text to uwuify. Send .uwuify <text> ');
 	}
 
 	let FinalMsg = await owoify(words, faces[Math.floor(Math.random() * faces.length)]);

@@ -14,36 +14,28 @@ function OnMsg(msg) {
 	let command = msgarray[0].toLowerCase();
 
 	//removes !d bump
-	if (text.startsWith('!d bump redo')) {
-		try {
-			msg.delete();
-			let doneem = new Discord.MessageEmbed()
+	if (msg.channel.id === '837682880330596412') {
+		if (text.startsWith('!d bump redo')) {
+			try {
+				msg.delete();
+				let doneem = new Discord.MessageEmbed()
 					  .setTitle("**!D BUMP**")
 					  .setDescription("Help grow the server by using the command **!d bump** - it helps other people find and join the server to grow the fam!"); // prettier-ignore
-			msg.channel.send(doneem);
-		} catch (error) {
-			console.log(`*Error ${error}`);
+				msg.channel.send(doneem);
+			} catch (error) {
+				return console.log(`*Error ${error}`);
+			}
+		} else {
+			try {
+				sleep(3000);
+				msg.delete();
+			} catch (error) {
+				return console.log(`*Error ${error}`);
+			}
 		}
 		return;
 	}
-	if (text.startsWith('!d bump')) {
-		try {
-			sleep(2000);
-			msg.delete();
-		} catch (error) {
-			console.log(`*Error ${error}`);
-		}
-		return;
-	}
-	if (msg.author.id === '302050872383242240') {
-		try {
-			sleep(3000);
-			msg.delete();
-		} catch (error) {
-			return console.log(`*Error ${error}`);
-		}
-		return;
-	}
+	if (msg.author.id === '302050872383242240') return;
 
 	if (msg.guild === null) {
 		if (text.charAt(0) !== process.env.PREFIX)

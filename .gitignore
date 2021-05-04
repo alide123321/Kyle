@@ -3,4 +3,3 @@ node_modules
 json.sqlite
 ignore
 assets/images/HigherQualityAscii.txt
-assets/util/ChatBot.json

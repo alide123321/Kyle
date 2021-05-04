@@ -14,7 +14,6 @@
 		"aki-api": "^5.2.1",
 		"asciify-image": "^0.1.6",
 		"cron": "^1.8.2",
-		"derieri": "^0.0.4",
 		"discord.js": "^12.5.3",
 		"dotenv": "^8.2.0",
 		"erit-ytdl": "^0.1.3",

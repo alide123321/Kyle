@@ -29,7 +29,7 @@ function OnMsg(msg) {
 			try {
 				msg.delete();
 			} catch (error) {
-				return console.log(`*Error ${error}`);
+				console.log(`*Error ${error}`);
 			}
 		}
 		return;

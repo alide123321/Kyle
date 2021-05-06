@@ -27,7 +27,6 @@ function OnMsg(msg) {
 			}
 		} else {
 			try {
-				sleep(3000);
 				msg.delete();
 			} catch (error) {
 				return console.log(`*Error ${error}`);

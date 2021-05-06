@@ -11,7 +11,7 @@ function vc(sound, vol, msg) {
 	const serverQueue = chan.client.queue.get(chan.guild.id);
 
 	if (talkedRecently.has(author) && author !== '698051518754062387') {
-		chan.send('Cooldown 60 sec').then((msg) => {
+		chan.send('Cooldown 10 sec').then((msg) => {
 			msg.delete({ timeout: 5000 });
 		});
 		return;
@@ -20,7 +20,7 @@ function vc(sound, vol, msg) {
 	talkedRecently.add(author);
 	setTimeout(() => {
 		talkedRecently.delete(author);
-	}, 60000);
+	}, 10000);
 
 	if (VC) {
 		if (serverQueue) {

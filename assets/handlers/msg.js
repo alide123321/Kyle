@@ -115,8 +115,8 @@ function OnMsg(msg) {
 	let discordInvite = /(https:\/\/)?(www\.)?(discord\.gg|discord\.me|discordapp\.com\/invite|discord\.com\/invite)\/([a-z0-9-.]+)?/i; //checks for links
 	if (discordInvite.test(text) && !msg.member.hasPermission('ADMINISTRATOR')) return msg.delete();
 
-	if (text.includes('kys') || text.includes('i wanna die') || text.includes('kms')) {
-		msg.channel.send('https://suicidepreventionlifeline.org/');
+	if (text.includes('i want to die') || text.includes('kill myself') || text.includes('kms')) {
+		msg.channel.send('dam thats CRAAAZZZZYYYYY!');
 	}
 
 	if (!command.startsWith(process.env.PREFIX)) return;

@@ -1,7 +1,7 @@
 {
-	"gn45mincooldown": 10000,
-	"gn30mincooldown": 15000,
-	"gn15mincooldown": 30000,
-	"gn5mincooldown": 50000,
-	"gn30scooldown": 1000000
+	"gn45mincooldown": 1000,
+	"gn30mincooldown": 1500,
+	"gn15mincooldown": 3000,
+	"gn5mincooldown": 5000,
+	"gn30scooldown": 100000
 }

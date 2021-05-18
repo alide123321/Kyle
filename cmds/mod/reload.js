@@ -5,6 +5,8 @@ module.exports.run = async (bot, msg, args) => {
 	if (msg.author.id != process.env.ALIDEID)
 		return msg.channel.send(`only ${process.env.ALIDE} Can use this command`);
 
+	bot.user.setActivity('Im also mod mail DM me');
+
 	Fs.readdir(`./cmds/`, async (err, folders) => {
 		if (err) return console.error(err);
 		for (let dir of folders) {

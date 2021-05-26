@@ -57,4 +57,5 @@ module.exports.run = async (bot, msg, args) => {
 module.exports.help = {
 	name: 'announce',
 	description: 'Send a announcement message that looks good',
+	AllowModest: true,
 };

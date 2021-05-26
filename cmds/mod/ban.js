@@ -38,4 +38,5 @@ module.exports.run = async (bot, msg, args) => {
 module.exports.help = {
 	name: 'ban',
 	description: 'No U cant use this command',
+	AllowModest: true,
 };

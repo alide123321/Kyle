@@ -38,4 +38,5 @@ module.exports.run = async (bot, msg, args) => {
 module.exports.help = {
 	name: 'reload',
 	description: 'Reload commands',
+	AllowModest: true,
 };

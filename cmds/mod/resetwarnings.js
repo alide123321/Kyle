@@ -26,4 +26,5 @@ module.exports.run = async (bot, msg, args) => {
 module.exports.help = {
 	name: 'resetwarnings',
 	description: 'Reset someones warnings',
+	AllowModest: true,
 };

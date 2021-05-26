@@ -32,4 +32,5 @@ module.exports.run = async (bot, msg, args) => {
 module.exports.help = {
 	name: 'resetbal',
 	description: 'No.',
+	AllowModest: true,
 };

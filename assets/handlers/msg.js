@@ -112,7 +112,8 @@ function OnMsg(msg) {
 		return;
 	}
 
-	let discordInvite = /(https:\/\/)?(www\.)?(discord\.gg|discord\.me|discordapp\.com\/invite|discord\.com\/invite)\/([a-z0-9-.]+)?/i; //checks for links
+	let discordInvite =
+		/(https:\/\/)?(www\.)?(discord\.gg|discord\.me|discordapp\.com\/invite|discord\.com\/invite)\/([a-z0-9-.]+)?/i; //checks for links
 	if (discordInvite.test(text) && !msg.member.hasPermission('ADMINISTRATOR')) return msg.delete();
 
 	if (text.includes('i want to die') || text.includes('kill myself') || text.includes('kms')) {
@@ -121,11 +122,7 @@ function OnMsg(msg) {
 
 	if (!command.startsWith(process.env.PREFIX)) return;
 
-	if (
-		msg.author.id === '326895102708547585' || //modest
-		msg.author.id === '575142986988650506' // mexican
-	)
-		return;
+	if (msg.author.id === '575142986988650506') return; // mexican
 
 	if (cooldown.has(msg.author.id) && msg.author.id !== '698051518754062387')
 		return msg.channel.send('Cooldown 2 sec');
@@ -136,6 +133,8 @@ function OnMsg(msg) {
 	}, 2000);
 
 	let cmd = bot.commands.get(command.slice(process.env.PREFIX.length));
+
+	if (msg.author.id === '326895102708547585' && !cmd.help.AllowModest) return; // modest
 	if (cmd) cmd.run(bot, msg, args);
 }
 

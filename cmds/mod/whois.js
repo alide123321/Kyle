@@ -58,4 +58,5 @@ module.exports.run = async (bot, msg, args) => {
 module.exports.help = {
 	name: 'whois',
 	description: 'View information about a user',
+	AllowModest: true,
 };

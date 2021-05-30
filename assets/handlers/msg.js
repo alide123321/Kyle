@@ -133,9 +133,10 @@ function OnMsg(msg) {
 	}, 2000);
 
 	let cmd = bot.commands.get(command.slice(process.env.PREFIX.length));
+	if (!cmd) return;
 
 	if (msg.author.id === '326895102708547585' && !cmd.help.AllowModest) return; // modest
-	if (cmd) cmd.run(bot, msg, args);
+	cmd.run(bot, msg, args);
 }
 
 module.exports = { OnMsg: OnMsg };

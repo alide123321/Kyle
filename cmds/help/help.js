@@ -51,9 +51,6 @@ module.exports.run = async (bot, msg, args) => {
 				value: prefix + 'mischelp',
 				inline: true,
 			}
-		)
-		.setImage(
-			'https://cdn.discordapp.com/attachments/739019780576641096/739022260857470981/Discord_Rose.png'
 		);
 	msg.channel.send(helpem);
 };

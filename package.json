@@ -7,7 +7,7 @@
 		"test": "echo \"Error: no test specified \" && exit 1",
 		"start": "node index.js"
 	},
-	"author": "alide123321#1000",
+	"author": "alide123321#2825",
 	"license": "ISC",
 	"dependencies": {
 		"ai-tic-tac-toe": "^1.1.1",

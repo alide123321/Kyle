@@ -1,23 +1,20 @@
 module.exports.run = async (bot, msg, args) => {
+	const Discord = require('discord.js');
 	var unirest = require('unirest');
 
-	var req = unirest('GET', 'https://joke3.p.rapidapi.com/v1/joke');
+	var req = unirest('GET', 'https://manatee-jokes.p.rapidapi.com/manatees/random');
 
 	req.headers({
-		'x-rapidapi-host': 'joke3.p.rapidapi.com',
-		'x-rapidapi-key': process.env.RAPIDAPI,
+		'x-rapidapi-key': '73d301f3eemshb03e814d13d59d4p105050jsn9c11ec6d87e2',
+		'x-rapidapi-host': 'manatee-jokes.p.rapidapi.com',
 		useQueryString: true,
 	});
 
 	req.end(function (res) {
-		if (res.error) throw new Error(res.error);
+		if (res.error) return msg.channel.send('shit broken tell alide to fix it');
 
-		if (res.status != 200) {
-			message.reply('An error occurred while trying to make the API request!');
-		} else {
-			var json = JSON.parse(JSON.stringify(res.body));
-			msg.channel.send(json.content);
-		}
+		msg.channel.send(res.body.setup);
+		msg.channel.send(res.body.punchline);
 	});
 };
 

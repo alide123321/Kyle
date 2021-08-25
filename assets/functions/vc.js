@@ -37,7 +37,7 @@ function vc(sound, vol, msg) {
 				});
 
 				dispatcher.on('finish', (end) => {
-					sleep(3000);
+					sleep(10000);
 					VC.leave();
 				});
 			})

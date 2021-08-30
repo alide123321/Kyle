@@ -3,7 +3,6 @@ const talkedRecently = require('./talked.js').talkedRecently;
 function vc(sound, vol, msg) {
 	if (msg.content.toLowerCase().includes('--mute')) return;
 
-	vol += 0.7;
 	let author = msg.author.id;
 	let chan = msg.channel;
 	let VC = msg.member.voice.channel;
@@ -29,6 +28,7 @@ function vc(sound, vol, msg) {
 			});
 			return;
 		}
+
 		VC.join()
 			.then((connection) => {
 				connection.voice.setSelfDeaf(true);
@@ -37,7 +37,7 @@ function vc(sound, vol, msg) {
 				});
 
 				dispatcher.on('finish', (end) => {
-					sleep(10000);
+					sleep(3000);
 					VC.leave();
 				});
 			})

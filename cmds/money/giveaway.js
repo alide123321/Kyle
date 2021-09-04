@@ -82,7 +82,7 @@ var Fri = new cron.CronJob('00 00 * * 5', () => {
 			.setTitle('**GIVEAWAY**')
 			.setColor(0x0099ff)
 			.setDescription(`The Giveaway Started `);
-		guild.channels.cache.get('740514553531465769').send(StartEmbed); //Channel Id
+		guild.channels.cache.get('883514561578295448').send(StartEmbed); //Channel Id
 	} catch (error) {
 		console.log(error);
 	}
@@ -107,7 +107,7 @@ function End() {
 				.setTitle('**GIVEAWAY ENDED**')
 				.setColor(0x0099ff)
 				.setDescription(`Nobody entered so the prize of ${ammount}💰 will carry on till next week`);
-			guild.channels.cache.get('740514553531465769').send(EndEmbed); //Channel Id
+			guild.channels.cache.get('883514561578295448').send(EndEmbed); //Channel Id
 		} catch (error) {
 			console.log(error);
 		}
@@ -124,7 +124,7 @@ function End() {
 			.setColor(0x0099ff)
 			.setDescription(`Winner is <@${winerId}> and won ${ammount}💰`);
 
-		guild.channels.cache.get('740514553531465769').send(EndEmbed); //Channel Id
+		guild.channels.cache.get('883514561578295448').send(EndEmbed); //Channel Id
 	} catch (error) {
 		console.log(error);
 	}

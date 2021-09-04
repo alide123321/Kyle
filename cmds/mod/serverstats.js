@@ -3,7 +3,6 @@ module.exports.run = async (bot, msg, args) => {
 	try {
 		const Discord = require('discord.js');
 		let Total = await msg.guild.memberCount;
-		let bots = await msg.guild.members.cache.filter((m) => m.user.bot).size;
 		let icon, splash;
 		let Voice = 0;
 		const voiceChannels = await msg.guild.channels.cache.filter((c) => c.type === 'voice');
@@ -110,16 +109,6 @@ module.exports.run = async (bot, msg, args) => {
 			},
 			{
 				name: 'Members',
-				value: Total - bots,
-				inline: true,
-			},
-			{
-				name: 'Bots',
-				value: bots,
-				inline: true,
-			},
-			{
-				name: 'Total users',
 				value: Total,
 				inline: true,
 			}

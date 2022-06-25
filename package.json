@@ -23,7 +23,7 @@
 		"moment": "^2.29.1",
 		"new": "^0.1.1",
 		"nicnacno": "^2.0.2",
-		"node-fetch": "^2.6.1",
+		"node-fetch": "^2.6.7",
 		"node-gyp": "^8.0.0",
 		"node-opus": "^0.3.3",
 		"opusscript": "0.0.8",

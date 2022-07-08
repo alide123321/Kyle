@@ -20,7 +20,7 @@
 		"ffmpeg-static": "^4.3.0",
 		"js-youtube-id": "^1.0.0",
 		"lyrics-finder": "^21.7.0",
-		"moment": "^2.29.1",
+		"moment": "^2.29.4",
 		"new": "^0.1.1",
 		"nicnacno": "^2.0.2",
 		"node-fetch": "^2.6.1",
